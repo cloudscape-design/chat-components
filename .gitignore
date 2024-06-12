@@ -1,0 +1,9 @@
+.cache
+node_modules
+coverage
+lib
+/__image_snapshots__
+dist
+/src/test-utils/selectors
+/src/test-utils/dom/index.ts
+.DS_STORE
