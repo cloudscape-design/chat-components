@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`definition for avatar matches the snapshot > avatar 1`] = `
+{
+  "events": [],
+  "functions": [],
+  "name": "Avatar",
+  "properties": [
+    {
+      "name": "initials",
+      "optional": true,
+      "type": "string",
+    },
+  ],
+  "regions": [],
+  "releaseStatus": "stable",
+}
+`;
