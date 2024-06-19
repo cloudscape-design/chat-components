@@ -1,6 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import { defineConfig } from "vite";
+import os from 'node:os';
 import base from "./vite.config.mjs";
 
 // https://vitejs.dev/config/
