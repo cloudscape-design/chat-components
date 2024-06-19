@@ -10,6 +10,13 @@ export default defineConfig({
   test: {
     environment: "node",
     testTimeout: 60000,
+    poolOptions: {
+      threads: {
+        minThreads: 1,
+        // leave half of CPU capacity for Chrome browser processes
+        maxThreads: Math.max(Math.floor(os.cpus().length / 2), 1),
+      },
+    },
     include: ["./test/functional/**/*.test.ts"],
     setupFiles: ["./test/test-setup.ts"],
     globalSetup: ["./test/global-setup.ts"],
