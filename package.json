@@ -38,6 +38,7 @@
   "exports": {
     ".": "./index.js",
     "./avatar": "./avatar/index.js",
+    "./loading-bar": "./loading-bar/index.js",
     "./test-utils/dom": "./test-utils/dom/index.js",
     "./test-utils/selectors": "./test-utils/selectors/index.js",
     "./internal/api-docs/*.js": "./internal/api-docs/*.js"
