@@ -8,6 +8,7 @@ import {
 } from "@cloudscape-design/component-toolkit/internal";
 import { MutableRefObject } from "react";
 import { PACKAGE_SOURCE, PACKAGE_VERSION } from "../environment";
+import useFocusVisible from "../utils/focus-visible";
 import { useTelemetry } from "./use-telemetry";
 
 initAwsUiVersions(PACKAGE_SOURCE, PACKAGE_VERSION);
@@ -23,6 +24,7 @@ export interface InternalBaseComponentProps {
  */
 export default function useBaseComponent<T = any>(componentName: string, config?: ComponentConfiguration) {
   useTelemetry(componentName, config);
+  useFocusVisible();
   const elementRef = useComponentMetadata<T>(componentName, PACKAGE_VERSION);
   return { __internalRootRef: elementRef };
 }
