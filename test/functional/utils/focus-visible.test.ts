@@ -10,7 +10,7 @@ const wrapper = createWrapper();
 describe("focus-visible", () => {
   test(
     "focus ring updates when switching from keyboard to mouse and back",
-    setupTest("/index.html#/hooks/focus-visible", BasePageObject, async (page) => {
+    setupTest("/index.html#/utils/focus-visible", BasePageObject, async (page) => {
       await page.waitForVisible(wrapper.findButton().toSelector());
       await page.click("#first-button");
       await expect(page.getElementAttribute("body", "data-awsui-focus-visible")).resolves.toBeNull();

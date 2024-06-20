@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import { useEffect } from "react";
-import { KeyCode } from "../../keycode";
+import { KeyCode } from "../keycode";
 
 export function isModifierKey(event: KeyboardEvent) {
   // we do not want to highlight focused element
