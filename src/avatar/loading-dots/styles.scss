@@ -1,0 +1,36 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+@use "../../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
+@use '../mixins.scss' as mixins;
+@use './motion.scss';
+
+$dot-size: 4px;
+
+.root {
+  inline-size: inherit;
+  block-size: inherit;
+  @include mixins.border-radius-avatar;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.typing {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  inline-size: 18px;
+}
+
+.dot {
+  background-color: cs.$color-text-avatar;
+  @include mixins.border-radius-avatar;
+  block-size: $dot-size;
+  inline-size: $dot-size;
+  z-index: 1;
+}

@@ -1,0 +1,117 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+@use "../../internal/shared" as shared;
+@use "../../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
+
+.gen-ai {
+  &::after {
+    content: "";
+    position: absolute;
+    inline-size: inherit;
+    block-size: inherit;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    transform: translate(-50%, -50%);
+    background: cs.$color-background-avatar-gen-ai;
+
+    @include shared.with-motion {
+      // waiting for motion tokens to go public
+      // https://github.com/cloudscape-design/components/pull/2400
+      animation: gradientMove 3.6s infinite cubic-bezier(0.7, 0, 0.3, 1);
+      // animation: gradientMove cs.$motion-duration-avatar-gen-ai-gradient infinite
+      //   cs.$motion-easing-avatar-gen-ai-gradient;
+    }
+  }
+
+  @include shared.with-direction("rtl") {
+    &::after {
+      @include shared.with-motion {
+        animation: gradientMoveReverse 3.6s infinite cubic-bezier(0.7, 0, 0.3, 1);
+        // animation: gradientMoveReverse awsui.$motion-duration-avatar-gen-ai-gradient infinite
+        //     awsui.$motion-easing-avatar-gen-ai-gradient;
+      }
+    }
+  }
+}
+
+// Gradient rotation animation
+@keyframes gradientMove {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  50% {
+    block-size: 44px;
+    inline-size: 44px;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes gradientMoveReverse {
+  0% {
+    transform: translate(-50%, -50%) rotate(360deg);
+    inset-inline-start: -50%;
+  }
+
+  50% {
+    block-size: 44px;
+    inline-size: 44px;
+    inset-inline-start: -100%;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+    inset-inline-start: -50%;
+  }
+}
+
+.dot {
+  @include shared.with-motion {
+    // animation: dotsDancing cs.$motion-duration-avatar-loading-dots infinite ease-in-out;
+    animation: dotsDancing 1.2s infinite ease-in-out;
+  }
+}
+
+// Dots dancing animation
+.dot:nth-child(1) {
+  @include shared.with-motion {
+    animation-delay: 100ms;
+  }
+}
+
+.dot:nth-child(2) {
+  @include shared.with-motion {
+    animation-delay: 200ms;
+  }
+}
+
+.dot:nth-child(3) {
+  @include shared.with-motion {
+    animation-delay: 300ms;
+  }
+}
+
+.dot:last-child {
+  @include shared.with-motion {
+    margin-inline-end: 0;
+  }
+}
+
+@keyframes dotsDancing {
+  0% {
+    transform: translateY(0px);
+  }
+
+  28% {
+    transform: translateY(-4px);
+  }
+
+  44% {
+    transform: translateY(0px);
+  }
+}
