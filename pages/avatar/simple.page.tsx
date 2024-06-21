@@ -11,7 +11,7 @@ export default function AvatarPage() {
   const [initials, setInitials] = useState(false);
 
   return (
-    <div style={{ padding: "30px" }}>
+    <>
       <h1>Avatar</h1>
       <SpaceBetween size="m">
         <Avatar
@@ -38,6 +38,6 @@ export default function AvatarPage() {
           Initials
         </Toggle>
       </SpaceBetween>
-    </div>
+    </>
   );
 }
