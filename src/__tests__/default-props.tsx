@@ -3,7 +3,7 @@
 import type { AvatarProps } from "../../lib/components";
 
 const avatarProps: AvatarProps = {
-  initials: "",
+  ariaLabel: "Avatar",
 };
 export const defaultProps = {
   avatar: avatarProps,
