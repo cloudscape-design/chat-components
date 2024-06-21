@@ -4,7 +4,8 @@
     "noEmit": true,
     "rootDir": "../",
     "types": ["vite/client"],
-    "tsBuildInfoFile": "../.cache/pages.tsbuildinfo"
+    "tsBuildInfoFile": "../.cache/pages.tsbuildinfo",
+    "moduleResolution": "node"
   },
   "include": ["./**/*"]
 }
