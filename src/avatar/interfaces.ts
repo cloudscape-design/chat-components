@@ -34,7 +34,7 @@ export interface AvatarProps {
   /**
    * Text to describe the avatar for assistive technology.
    * When more than one avatar is used, provide a unique label for each.
-   * For example, "User avatar" and "AI assistant avatar". Or "Your avatar" and "User avatar for John Doe".
+   * For example, "User avatar" and "AI assistant avatar" or "Your avatar" and "User avatar for John Doe".
    *
    * If "tooltipText" or "initials" are used make sure to include them in the "ariaLabel".
    */
