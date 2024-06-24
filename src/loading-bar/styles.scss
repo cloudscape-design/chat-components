@@ -1,4 +1,5 @@
 @use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as awsui;
+@use "../internal/shared" as shared;
 
 .root {
   /* used in test-utils */
@@ -12,16 +13,37 @@
     background-position: -200% 0;
   }
 }
+@keyframes searchbar-rtl {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
 
 .variant-gen-ai,
 .variant-gen-ai-masked {
   height: 2px;
   background: awsui.$color-background-loading-bar-gen-ai;
-  background-position: 0 100%;
   background-size: 200% 100%;
-  animation:
-    searchbar 3s cubic-bezier(0, 0.08, 1, 0.82) infinite forwards,
-    awsui.$motion-keyframes-fade-in awsui.$motion-duration-complex awsui.$motion-easing-expressive;
+
+  background-position: 0 100%;
+
+  @include shared.with-motion {
+    animation:
+      searchbar 3s cubic-bezier(0, 0.08, 1, 0.82) infinite forwards,
+      awsui.$motion-keyframes-fade-in awsui.$motion-duration-complex awsui.$motion-easing-expressive;
+  }
+
+  &:dir(rtl) {
+    background-position: -100% 100%;
+    @include shared.with-motion {
+      animation:
+        searchbar-rtl 3s cubic-bezier(0, 0.08, 1, 0.82) infinite forwards,
+        awsui.$motion-keyframes-fade-in awsui.$motion-duration-complex awsui.$motion-easing-expressive;
+    }
+  }
 }
 
 .variant-gen-ai-masked {
