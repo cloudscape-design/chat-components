@@ -25,8 +25,8 @@
   @include shared.with-direction("rtl") {
     &::after {
       @include shared.with-motion {
-        animation: gradientMoveReverse awsui.$motion-duration-avatar-gen-ai-gradient infinite
-          awsui.$motion-easing-avatar-gen-ai-gradient;
+        animation: gradientMoveReverse cs.$motion-duration-avatar-gen-ai-gradient infinite
+          cs.$motion-easing-avatar-gen-ai-gradient;
       }
     }
   }
