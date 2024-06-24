@@ -16,16 +16,22 @@ export default function LoadingBarPage() {
         <TestBed>
           <h2>gen-ai</h2>
           <span aria-live="polite">
-            <TextContent>
-              <em>Generating response</em>
-            </TextContent>
+            <Box margin={{ bottom: "xs", left: "l" }}>
+              <TextContent>
+                <small>
+                  <em>Generating response</em>
+                </small>
+              </TextContent>
+            </Box>
             <LoadingBar variant="gen-ai" />
           </span>
           <h2>gen-ai-masked in container</h2>
           <Container disableContentPaddings={true}>
-            <Box padding="m">
+            <Box padding={{ horizontal: "l", vertical: "s" }}>
               <TextContent>
-                <em>Fetching items...</em>
+                <small>
+                  <em>Fetching items...</em>
+                </small>
               </TextContent>
             </Box>
             <LoadingBar variant="gen-ai-masked" />
