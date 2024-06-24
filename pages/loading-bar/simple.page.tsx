@@ -1,7 +1,9 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import Box from "@cloudscape-design/components/box";
 import Container from "@cloudscape-design/components/container";
+import TextContent from "@cloudscape-design/components/text-content";
 import { LoadingBar } from "../../lib/components";
 import { TestBed } from "../app/test-bed";
 import { ScreenshotArea } from "../screenshot-area";
@@ -13,10 +15,20 @@ export default function LoadingBarPage() {
       <main>
         <TestBed>
           <h2>gen-ai</h2>
-          <LoadingBar variant="gen-ai" />
+          <span aria-live="polite">
+            <TextContent>
+              <em>Generating response</em>
+            </TextContent>
+            <LoadingBar variant="gen-ai" />
+          </span>
           <h2>gen-ai-masked in container</h2>
-          <Container media={{ content: <LoadingBar variant="gen-ai-masked" />, height: 20 }}>
-            Some other content
+          <Container disableContentPaddings={true}>
+            <Box padding="m">
+              <TextContent>
+                <em>Fetching items...</em>
+              </TextContent>
+            </Box>
+            <LoadingBar variant="gen-ai-masked" />
           </Container>
         </TestBed>
       </main>
