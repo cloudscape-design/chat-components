@@ -17,20 +17,16 @@
     background: cs.$color-background-avatar-gen-ai;
 
     @include shared.with-motion {
-      // waiting for motion tokens to go public
-      // https://github.com/cloudscape-design/components/pull/2400
-      animation: gradientMove 3.6s infinite cubic-bezier(0.7, 0, 0.3, 1);
-      // animation: gradientMove cs.$motion-duration-avatar-gen-ai-gradient infinite
-      //   cs.$motion-easing-avatar-gen-ai-gradient;
+      animation: gradientMove cs.$motion-duration-avatar-gen-ai-gradient infinite
+        cs.$motion-easing-avatar-gen-ai-gradient;
     }
   }
 
   @include shared.with-direction("rtl") {
     &::after {
       @include shared.with-motion {
-        animation: gradientMoveReverse 3.6s infinite cubic-bezier(0.7, 0, 0.3, 1);
-        // animation: gradientMoveReverse awsui.$motion-duration-avatar-gen-ai-gradient infinite
-        //     awsui.$motion-easing-avatar-gen-ai-gradient;
+        animation: gradientMoveReverse awsui.$motion-duration-avatar-gen-ai-gradient infinite
+          awsui.$motion-easing-avatar-gen-ai-gradient;
       }
     }
   }

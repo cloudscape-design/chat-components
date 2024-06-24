@@ -89,7 +89,7 @@ export default function InternalAvatar({
           value={tooltipText}
           trackRef={handleRef}
           // This is added to ensure tooltip is closed when clicked for consistency with other tooltip usages
-          // contentAttributes={{ onPointerDown: () => setShowTooltip(false) }}
+          contentAttributes={{ onPointerDown: () => setShowTooltip(false) }}
         />
       )}
 
