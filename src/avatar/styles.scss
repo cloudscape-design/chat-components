@@ -9,8 +9,7 @@
 $avatar-size: 28px;
 
 .root {
-  // do we need this?
-  // @include styles.styles-reset;
+  @include shared.styles-reset;
 
   color: cs.$color-text-avatar;
   block-size: $avatar-size;
