@@ -2,7 +2,7 @@
 @use "../internal/shared" as shared;
 
 .root {
-  /* used in test-utils */
+  @include shared.styles-reset;
 }
 
 @keyframes searchbar {
