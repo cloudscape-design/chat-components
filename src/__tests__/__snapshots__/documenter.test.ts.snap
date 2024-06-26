@@ -10,7 +10,7 @@ exports[`definition for avatar matches the snapshot > avatar 1`] = `
       "description": "Text to describe the avatar for assistive technology.
 When more than one avatar is used, provide a unique label for each.
 For example, "User avatar" and "AI assistant avatar" or "Your avatar" and "User avatar for John Doe".
-If "tooltipText" or "initials" are used make sure to include them in the "ariaLabel".
+If \`tooltipText\` or \`initials\` are used make sure to include them in the \`ariaLabel\`.
 ",
       "name": "ariaLabel",
       "optional": false,
@@ -33,8 +33,9 @@ Use \`gen-ai\` for AI assistants and \`default\` otherwise.",
       "type": "string",
     },
     {
+      "defaultValue": ""user-profile"",
       "description": "Specifies the icon to be displayed as Avatar.
-Use "gen-ai" icon for AI assistants. By default "user-profile" icon is used.
+Use \`gen-ai\` icon for AI assistants. By default \`user-profile\` icon is used.
 If you set both \`iconName\` and \`initials\`, \`initials\` will take precedence.
 ",
       "inlineType": {
@@ -159,7 +160,7 @@ If you set both \`iconUrl\` and \`iconSvg\`, \`iconSvg\` will take precedence.
       "description": "The text content shown directly in the avatar's body.
 Can be 1 or 2 symbols long, every subsequent symbol is ignored.
 Use it to define initials that uniquely identify the avatar's owner.
-When you use this property, make sure to include it in the "ariaLabel".
+When you use this property, make sure to include it in the \`ariaLabel\`.
 ",
       "name": "initials",
       "optional": true,
@@ -173,7 +174,7 @@ When you use this property, make sure to include it in the "ariaLabel".
     },
     {
       "description": "The text content shown in the avatar's tooltip.
-When you use this property, make sure to include it in the "ariaLabel".
+When you use this property, make sure to include it in the \`ariaLabel\`.
 ",
       "name": "tooltipText",
       "optional": true,

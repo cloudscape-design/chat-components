@@ -68,8 +68,7 @@
 
 .dot {
   @include shared.with-motion {
-    // animation: dotsDancing cs.$motion-duration-avatar-loading-dots infinite ease-in-out;
-    animation: dotsDancing 1.2s infinite ease-in-out;
+    animation: dotsDancing cs.$motion-duration-avatar-loading-dots infinite ease-in-out;
   }
 }
 

@@ -31,7 +31,7 @@ const AvatarContent = ({ color, loading, initials, iconName, iconSvg, iconUrl, a
     return <span>{letters}</span>;
   }
 
-  return <Icon name={iconName || "user-profile"} svg={iconSvg} url={iconUrl} alt={ariaLabel} />;
+  return <Icon name={iconName} svg={iconSvg} url={iconUrl} alt={ariaLabel} />;
 };
 
 export default function InternalAvatar({

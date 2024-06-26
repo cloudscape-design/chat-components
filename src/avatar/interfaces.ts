@@ -11,7 +11,7 @@ export interface AvatarProps {
   /**
    * The text content shown in the avatar's tooltip.
    *
-   * When you use this property, make sure to include it in the "ariaLabel".
+   * When you use this property, make sure to include it in the `ariaLabel`.
    */
   tooltipText?: string;
 
@@ -20,7 +20,7 @@ export interface AvatarProps {
    * Can be 1 or 2 symbols long, every subsequent symbol is ignored.
    * Use it to define initials that uniquely identify the avatar's owner.
    *
-   * When you use this property, make sure to include it in the "ariaLabel".
+   * When you use this property, make sure to include it in the `ariaLabel`.
    */
   initials?: string;
 
@@ -34,13 +34,13 @@ export interface AvatarProps {
    * When more than one avatar is used, provide a unique label for each.
    * For example, "User avatar" and "AI assistant avatar" or "Your avatar" and "User avatar for John Doe".
    *
-   * If "tooltipText" or "initials" are used make sure to include them in the "ariaLabel".
+   * If `tooltipText` or `initials` are used make sure to include them in the `ariaLabel`.
    */
   ariaLabel: string;
 
   /**
    * Specifies the icon to be displayed as Avatar.
-   * Use "gen-ai" icon for AI assistants. By default "user-profile" icon is used.
+   * Use `gen-ai` icon for AI assistants. By default `user-profile` icon is used.
    *
    * If you set both `iconName` and `initials`, `initials` will take precedence.
    */
