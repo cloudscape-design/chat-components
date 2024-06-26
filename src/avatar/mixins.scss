@@ -1,0 +1,11 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+
+@mixin border-radius-avatar {
+  border-start-start-radius: 50%;
+  border-start-end-radius: 50%;
+  border-end-start-radius: 50%;
+  border-end-end-radius: 50%;
+}

@@ -1,3 +1,51 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+@use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
+@use "./mixins.scss" as mixins;
+@use "../internal/shared" as shared;
+
+$avatar-size: 28px;
+
 .root {
-  /* used in test-utils */
+  @include shared.styles-reset;
+
+  color: cs.$color-text-avatar;
+  block-size: $avatar-size;
+  inline-size: $avatar-size;
+  position: relative;
+  @include mixins.border-radius-avatar;
+
+  &.avatar-color-default {
+    background-color: cs.$color-background-avatar-default;
+  }
+
+  &.avatar-color-gen-ai {
+    background: cs.$color-background-avatar-gen-ai;
+  }
+
+  &.initials {
+    font-family: cs.$font-family-base;
+    font-size: cs.$font-size-body-s;
+    line-height: cs.$line-height-body-s;
+    font-weight: cs.$font-weight-heading-l;
+  }
+
+  &:focus {
+    outline: none;
+
+    @include shared.when-visible {
+      @include shared.focus-highlight(1px, 50%);
+    }
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  block-size: inherit;
+  inline-size: inherit;
+  overflow: hidden;
 }

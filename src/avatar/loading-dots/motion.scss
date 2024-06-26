@@ -1,0 +1,112 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+@use "../../internal/shared" as shared;
+@use "../../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
+
+.gen-ai {
+  &::before {
+    content: "";
+    position: absolute;
+    inline-size: inherit;
+    block-size: inherit;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    transform: translate(-50%, -50%);
+    background: cs.$color-background-avatar-gen-ai;
+
+    @include shared.with-motion {
+      animation: gradientMove cs.$motion-duration-avatar-gen-ai-gradient infinite
+        cs.$motion-easing-avatar-gen-ai-gradient;
+    }
+  }
+
+  @include shared.with-direction("rtl") {
+    &::before {
+      @include shared.with-motion {
+        animation: gradientMoveReverse cs.$motion-duration-avatar-gen-ai-gradient infinite
+          cs.$motion-easing-avatar-gen-ai-gradient;
+      }
+    }
+  }
+}
+
+// Gradient rotation animation
+@keyframes gradientMove {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  50% {
+    block-size: 44px;
+    inline-size: 44px;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes gradientMoveReverse {
+  0% {
+    transform: translate(-50%, -50%) rotate(360deg);
+    inset-inline-start: -50%;
+  }
+
+  50% {
+    block-size: 44px;
+    inline-size: 44px;
+    inset-inline-start: -100%;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+    inset-inline-start: -50%;
+  }
+}
+
+.dot {
+  @include shared.with-motion {
+    animation: dotsDancing cs.$motion-duration-avatar-loading-dots infinite ease-in-out;
+  }
+}
+
+// Dots dancing animation
+.dot:nth-child(1) {
+  @include shared.with-motion {
+    animation-delay: 100ms;
+  }
+}
+
+.dot:nth-child(2) {
+  @include shared.with-motion {
+    animation-delay: 200ms;
+  }
+}
+
+.dot:nth-child(3) {
+  @include shared.with-motion {
+    animation-delay: 300ms;
+  }
+}
+
+.dot:last-child {
+  @include shared.with-motion {
+    margin-inline-end: 0;
+  }
+}
+
+@keyframes dotsDancing {
+  0% {
+    transform: translateY(0px);
+  }
+
+  28% {
+    transform: translateY(-4px);
+  }
+
+  44% {
+    transform: translateY(0px);
+  }
+}
