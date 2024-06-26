@@ -16,3 +16,31 @@ exports[`definition for avatar matches the snapshot > avatar 1`] = `
   "releaseStatus": "stable",
 }
 `;
+
+exports[`definition for loading-bar matches the snapshot > loading-bar 1`] = `
+{
+  "events": [],
+  "functions": [],
+  "name": "LoadingBar",
+  "properties": [
+    {
+      "description": "Specifies the variant of the loading bar. Use \`gen-ai\` to indicate an ongoing generative AI process.
+Use \`gen-ai-masked\` for generative AI processes where the bar is displayed at the edge of an element
+with rounded corners.",
+      "inlineType": {
+        "name": "LoadingBarProps.Variant",
+        "type": "union",
+        "values": [
+          "gen-ai",
+          "gen-ai-masked",
+        ],
+      },
+      "name": "variant",
+      "optional": false,
+      "type": "string",
+    },
+  ],
+  "regions": [],
+  "releaseStatus": "stable",
+}
+`;
