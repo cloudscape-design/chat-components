@@ -8,7 +8,7 @@ import { InternalLoadingBar } from "./internal";
 export type { LoadingBarProps };
 
 export default function LoadingBar(props: LoadingBarProps) {
-  const baseComponentProps = useBaseComponent("LoadingBar");
+  const baseComponentProps = useBaseComponent("LoadingBar", {variant: props.variant});
   return <InternalLoadingBar {...props} {...baseComponentProps} />;
 }
 
