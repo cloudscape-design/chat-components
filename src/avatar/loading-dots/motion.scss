@@ -6,7 +6,7 @@
 @use "../../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
 
 .gen-ai {
-  &::after {
+  &::before {
     content: "";
     position: absolute;
     inline-size: inherit;
@@ -23,7 +23,7 @@
   }
 
   @include shared.with-direction("rtl") {
-    &::after {
+    &::before {
       @include shared.with-motion {
         animation: gradientMoveReverse cs.$motion-duration-avatar-gen-ai-gradient infinite
           cs.$motion-easing-avatar-gen-ai-gradient;

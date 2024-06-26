@@ -31,5 +31,4 @@ $dot-size: 4px;
   @include mixins.border-radius-avatar;
   block-size: $dot-size;
   inline-size: $dot-size;
-  z-index: 1;
 }
