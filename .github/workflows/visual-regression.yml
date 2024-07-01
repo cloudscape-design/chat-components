@@ -32,7 +32,6 @@ jobs:
         with:
           name: visual-regression-snapshots
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ env.GITHUB_REPOSITORY }}
           run-id: ${{ env.RUN_ID }}
           path: ${{ env.VISUAL_REGRESSION_SNAPSHOT_DIRECTORY }}
       - run: npm install
