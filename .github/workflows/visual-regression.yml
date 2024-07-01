@@ -22,21 +22,23 @@ jobs:
         with:
           node-version: 18
           cache: "npm"
-      - name: "Download artifacts"
-        # Turns out you can not use artifacts from a previous workflow run.
-        # I'm reluctant to check in the resulting screenshots into the repository,
-        # which is why we use the following hack, until it's solved on Github side:
-        # https://github.com/actions/download-artifact/issues/3
+      - name: "Get reference run id"
         run: |
           RUN_ID=`gh run --repo $GITHUB_REPOSITORY --branch main list --workflow "Visual Regressions" --json databaseId --jq .[0].databaseId`
-          echo "Downloading snapshots created in run ${RUN_ID}"
-          gh run --repo $GITHUB_REPOSITORY download ${RUN_ID} -n "visual-regression-snapshots" -D ${{ env.VISUAL_REGRESSION_SNAPSHOT_DIRECTORY }}
+          echo "Reference snapshots created in run ${RUN_ID}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: visual-regression-snapshots
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ env.GITHUB_REPOSITORY }}
+          run-id: ${{ env.RUN_ID }}
+          path: ${{ env.VISUAL_REGRESSION_SNAPSHOT_DIRECTORY }}
       - run: npm install
       - run: npm run build
       - run: npm run test:visual
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: visual-regression-snapshots-results
@@ -54,7 +56,7 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm run test:visual:update
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: visual-regression-snapshots
           path: ${{ env.VISUAL_REGRESSION_SNAPSHOT_DIRECTORY }}
