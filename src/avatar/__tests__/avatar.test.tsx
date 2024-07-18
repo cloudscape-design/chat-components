@@ -1,11 +1,14 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import * as ComponentToolkitInternal from "@cloudscape-design/component-toolkit/internal";
-import { act, cleanup, fireEvent, render } from "@testing-library/react";
 import { afterEach, describe, expect, test, vi } from "vitest";
+import { act, cleanup, fireEvent, render } from "@testing-library/react";
+
+import * as ComponentToolkitInternal from "@cloudscape-design/component-toolkit/internal";
+
 import Avatar, { AvatarProps } from "../../../lib/components/avatar";
-import loadingDotsStyles from "../../../lib/components/avatar/loading-dots/styles.selectors.js";
 import createWrapper from "../../../lib/components/test-utils/dom";
+
+import loadingDotsStyles from "../../../lib/components/avatar/loading-dots/styles.selectors.js";
 
 const defaultAvatarProps: AvatarProps = { ariaLabel: "Avatar" };
 

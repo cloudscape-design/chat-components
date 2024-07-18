@@ -1,9 +1,9 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+import { globbySync } from "globby";
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
-import { globbySync } from "globby";
 const cwd = process.cwd();
 
 const targetDir = path.join(cwd, "./lib/components-themeable/internal");

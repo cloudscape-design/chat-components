@@ -1,9 +1,11 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { useState } from "react";
+
 import SpaceBetween from "@cloudscape-design/components/space-between";
 import Toggle from "@cloudscape-design/components/toggle";
-import { useState } from "react";
+
 import { Avatar } from "../../lib/components";
 
 export default function AvatarPage() {
