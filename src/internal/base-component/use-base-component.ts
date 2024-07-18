@@ -5,10 +5,10 @@ import {
   ComponentConfiguration,
   initAwsUiVersions,
   useComponentMetadata,
-  useFocusVisible,
 } from "@cloudscape-design/component-toolkit/internal";
 import { MutableRefObject } from "react";
 import { PACKAGE_SOURCE, PACKAGE_VERSION } from "../environment";
+import useFocusVisible from "../utils/focus-visible";
 import { useTelemetry } from "./use-telemetry";
 
 initAwsUiVersions(PACKAGE_SOURCE, PACKAGE_VERSION);
