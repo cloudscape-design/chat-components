@@ -3,6 +3,7 @@
  SPDX-License-Identifier: Apache-2.0
 */
 @use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
+@use "../../node_modules/@cloudscape-design/component-toolkit/internal/focus-visible" as focus-visible;
 @use "./mixins.scss" as mixins;
 @use "../internal/shared" as shared;
 
@@ -35,7 +36,7 @@ $avatar-size: 28px;
   &:focus {
     outline: none;
 
-    @include shared.when-visible {
+    @include focus-visible.when-visible {
       @include shared.focus-highlight(1px, 50%);
     }
   }

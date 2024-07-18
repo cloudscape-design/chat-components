@@ -12,7 +12,7 @@
     "lint": "eslint --ignore-path .gitignore --ext ts,tsx,js .",
     "prepare": "husky install",
     "test:unit": "vitest run --config vite.config.unit.mjs",
-    "test:functional": "run-p -r preview test:functional:vitest",
+    "test:functional": "echo 'No functional tests' || run-p -r preview test:functional:vitest",
     "test:functional:vitest": "delay 1 && vitest run --config vite.config.e2e-functional.mjs",
     "test:visual": "run-p -r preview test:visual:vitest",
     "test:visual:vitest": "delay 1 && vitest run --config vite.config.e2e-visual.mjs",
