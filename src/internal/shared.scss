@@ -41,16 +41,6 @@
     transition: none;
   }
 }
-/* stylelint-enable @cloudscape-design/no-motion-outside-of-mixin, selector-combinator-disallowed-list, selector-pseudo-class-no-unknown, selector-class-pattern */
-
-// mixin to apply styles only when keyboard focus is needed
-// requires JavaScript part from useFocusVisible hook to be applied
-@mixin when-visible {
-  // stylelint-disable-next-line selector-combinator-disallowed-list
-  body[data-awsui-focus-visible="true"] &:focus {
-    @content;
-  }
-}
 
 @mixin styles-reset {
   border-collapse: separate;
