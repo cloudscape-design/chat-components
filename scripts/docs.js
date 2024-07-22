@@ -3,6 +3,7 @@
 import path from "node:path";
 
 import { documentComponents, documentTestUtils } from "@cloudscape-design/documenter";
+
 import { dashCase, listPublicDirs, writeSourceFile } from "./utils.js";
 
 const publicDirs = listPublicDirs("src");

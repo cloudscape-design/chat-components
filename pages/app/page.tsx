@@ -1,11 +1,13 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import Toggle from "@cloudscape-design/components/toggle";
-import { Density, Mode, applyDensity, applyMode } from "@cloudscape-design/global-styles";
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+
+import SpaceBetween from "@cloudscape-design/components/space-between";
+import Toggle from "@cloudscape-design/components/toggle";
+import { applyDensity, applyMode, Density, Mode } from "@cloudscape-design/global-styles";
+
 import { pagesMap } from "../pages";
 import PageLayout from "./page-layout";
 

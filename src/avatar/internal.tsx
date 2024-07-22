@@ -1,17 +1,18 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+import { useRef, useState } from "react";
+import clsx from "clsx";
+
 import { warnOnce } from "@cloudscape-design/component-toolkit/internal";
 import Icon from "@cloudscape-design/components/icon";
 import Tooltip from "@cloudscape-design/components/internal/tooltip-do-not-use";
-import clsx from "clsx";
-import { useRef, useState } from "react";
 
 import { getDataAttributes } from "../internal/base-component/get-data-attributes";
 import { InternalBaseComponentProps } from "../internal/base-component/use-base-component";
 import { useMergeRefs } from "../internal/utils/use-merge-refs";
-
 import { AvatarProps } from "./interfaces.js";
 import LoadingDots from "./loading-dots";
+
 import styles from "./styles.css.js";
 
 export interface InternalAvatarProps extends AvatarProps, InternalBaseComponentProps {}

@@ -1,8 +1,10 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import { COMPONENT_METADATA_KEY } from "@cloudscape-design/component-toolkit/internal";
 import { render } from "@testing-library/react";
 import { expect, test, vi } from "vitest";
+
+import { COMPONENT_METADATA_KEY } from "@cloudscape-design/component-toolkit/internal";
+
 import useBaseComponent, {
   InternalBaseComponentProps,
 } from "../../../../lib/components/internal/base-component/use-base-component";
