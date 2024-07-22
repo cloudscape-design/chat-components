@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import { expect, test, vi } from "vitest";
 import { render } from "@testing-library/react";
+import { expect, test, vi } from "vitest";
 
 import { COMPONENT_METADATA_KEY } from "@cloudscape-design/component-toolkit/internal";
 

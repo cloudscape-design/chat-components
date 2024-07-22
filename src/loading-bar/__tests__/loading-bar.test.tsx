@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import { afterEach, describe, expect, test } from "vitest";
 import { cleanup, render } from "@testing-library/react";
+import { afterEach, describe, expect, test } from "vitest";
 
 import LoadingBar from "../../../lib/components/loading-bar";
 import createWrapper from "../../../lib/components/test-utils/dom";

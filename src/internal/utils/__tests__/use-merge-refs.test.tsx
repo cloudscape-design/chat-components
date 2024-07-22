@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 // eslint-disable-next-line no-restricted-imports
 import React from "react";
-import { describe, expect, test, vi } from "vitest";
 import { render } from "@testing-library/react";
+import { describe, expect, test, vi } from "vitest";
 
 import { useMergeRefs } from "../use-merge-refs";
 
