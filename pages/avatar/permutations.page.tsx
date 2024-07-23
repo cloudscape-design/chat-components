@@ -32,7 +32,7 @@ export default function AvatarPage() {
       <main>
         <TestBed>
           <Avatar ariaLabel="User avatar" />
-          <Avatar color="gen-ai" iconName="gen-ai" ariaLabel="User avatar" />
+          <Avatar color="gen-ai" iconName="gen-ai" ariaLabel="Gen AI assistant" />
 
           <Avatar initials="GW" ariaLabel="User avatar GW" tooltipText="User avatar" />
           <Avatar color="gen-ai" initials="GW" ariaLabel="Gen AI assistant GW" tooltipText="Gen AI assistant" />
@@ -45,8 +45,8 @@ export default function AvatarPage() {
             tooltipText="Gen AI assistant generating response"
           />
 
-          <Avatar iconSvg={customIconSvg} ariaLabel="Avatar loading" />
-          <Avatar color="gen-ai" iconSvg={customIconSvg} ariaLabel="Gen AI assistant loading" />
+          <Avatar iconSvg={customIconSvg} ariaLabel="Avatar with custom SVG icon" />
+          <Avatar color="gen-ai" iconSvg={customIconSvg} ariaLabel="Gen AI avatar with custom SVG icon" />
         </TestBed>
       </main>
     </ScreenshotArea>
