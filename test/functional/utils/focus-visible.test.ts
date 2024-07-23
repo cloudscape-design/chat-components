@@ -1,8 +1,10 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+import { describe, expect, test } from "vitest";
+
 import { BasePageObject } from "@cloudscape-design/browser-test-tools/page-objects";
 import createWrapper from "@cloudscape-design/components/test-utils/selectors";
-import { describe, expect, test } from "vitest";
+
 import { setupTest } from "../../utils";
 
 const wrapper = createWrapper();

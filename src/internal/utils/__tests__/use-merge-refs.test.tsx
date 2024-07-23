@@ -1,9 +1,10 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import { render } from "@testing-library/react";
 // eslint-disable-next-line no-restricted-imports
 import React from "react";
+import { render } from "@testing-library/react";
 import { describe, expect, test, vi } from "vitest";
+
 import { useMergeRefs } from "../use-merge-refs";
 
 const Demo = React.forwardRef((props, ref) => {
