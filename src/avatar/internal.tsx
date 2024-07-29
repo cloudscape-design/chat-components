@@ -94,7 +94,9 @@ export default function InternalAvatar({
         />
       )}
 
-      <div className={styles.content}>
+      {/* aria-hidden is added so that screen readers focus only the parent div */}
+      {/* when it is not hidden, it becomes unstable in JAWS */}
+      <div className={styles.content} aria-hidden="true">
         <AvatarContent
           color={color}
           ariaLabel={ariaLabel}
