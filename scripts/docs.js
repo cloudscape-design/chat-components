@@ -21,7 +21,7 @@ function validatePublicFiles(definitionFiles) {
 }
 
 function componentDocs() {
-  const definitions = documentComponents(path.resolve("tsconfig.json"), "src/*/index.tsx");
+  const definitions = documentComponents(path.resolve("tsconfig.json"), "src/*/index.tsx", true);
   const outDir = path.join(targetDir, "components");
   const fileNames = definitions
     .filter((definition) => {

@@ -9,6 +9,7 @@
   "scripts": {
     "prebuild": "rm -rf lib dist .cache",
     "build": "npm-run-all build:pkg --parallel build:src:* --parallel build:pages:* build:themeable",
+    "quick-build": "npm-run-all build:pkg --parallel build:src:js build:src:css build:src:copy build:src:environment --parallel build:pages:* build:themeable",
     "lint": "eslint --ignore-path .gitignore --ext ts,tsx,js .",
     "prepare": "husky install",
     "test:unit": "vitest run --config vite.config.unit.mjs",
