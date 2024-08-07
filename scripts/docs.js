@@ -1,10 +1,12 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import path from "node:path";
+import process from "node:process";
 
 import { documentComponents, documentTestUtils } from "@cloudscape-design/documenter";
 
 import { dashCase, listPublicDirs, writeSourceFile } from "./utils.js";
+const cwd = process.cwd();
 
 const publicDirs = listPublicDirs("src");
 const targetDir = "lib/components/internal/api-docs";
@@ -20,8 +22,14 @@ function validatePublicFiles(definitionFiles) {
   }
 }
 
+function getNodeModulesInterfacePath(componentName) {
+  return cwd + "/node_modules/@cloudscape-design/components/" + componentName + "/interfaces.d.ts";
+}
+
 function componentDocs() {
-  const definitions = documentComponents(path.resolve("tsconfig.json"), "src/*/index.tsx", true);
+  const importedCoreComponents = ["icon"];
+  const nodeModulesInputFilePaths = importedCoreComponents.map(getNodeModulesInterfacePath);
+  const definitions = documentComponents(path.resolve("tsconfig.json"), "src/*/index.tsx", nodeModulesInputFilePaths);
   const outDir = path.join(targetDir, "components");
   const fileNames = definitions
     .filter((definition) => {
