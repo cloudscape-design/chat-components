@@ -193,6 +193,57 @@ If you set both \`iconUrl\` and \`iconSvg\`, \`iconSvg\` will take precedence.
 }
 `;
 
+exports[`definition for chat-bubble matches the snapshot > chat-bubble 1`] = `
+{
+  "events": [],
+  "functions": [],
+  "name": "ChatBubble",
+  "properties": [
+    {
+      "defaultValue": ""transparent"",
+      "description": "Background color of the chat bubble",
+      "inlineType": {
+        "name": "ChatBubbleProps.BackgroundColor",
+        "type": "union",
+        "values": [
+          "grey",
+          "transparent",
+          "high-contrast",
+        ],
+      },
+      "name": "backgroundColor",
+      "optional": true,
+      "type": "string",
+    },
+    {
+      "defaultValue": "false",
+      "description": "Setting it true makes inline actions appear when chat bubble is hovered or focused.",
+      "name": "showInlineActionsOnHover",
+      "optional": true,
+      "type": "boolean",
+    },
+  ],
+  "regions": [
+    {
+      "description": "Props for the avatar of the chat bubble",
+      "isDefault": false,
+      "name": "avatar",
+    },
+    {
+      "description": "Content of the chat bubble",
+      "isDefault": true,
+      "name": "children",
+    },
+    {
+      "description": "Actions such as buttons placed at the footer of the bubble, should we call it footerActions?",
+      "isDefault": false,
+      "name": "inlineActions",
+    },
+  ],
+  "releaseStatus": "stable",
+}
+`;
+
 exports[`definition for loading-bar matches the snapshot > loading-bar 1`] = `
 {
   "events": [],
