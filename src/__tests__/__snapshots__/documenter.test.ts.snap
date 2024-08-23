@@ -222,6 +222,12 @@ exports[`definition for chat-bubble matches the snapshot > chat-bubble 1`] = `
       "optional": true,
       "type": "boolean",
     },
+    {
+      "defaultValue": "false",
+      "name": "staggered",
+      "optional": true,
+      "type": "boolean",
+    },
   ],
   "regions": [
     {

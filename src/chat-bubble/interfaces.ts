@@ -18,6 +18,8 @@ export interface ChatBubbleProps {
    * Setting it true makes inline actions appear when chat bubble is hovered or focused.
    */
   showInlineActionsOnHover?: boolean;
+
+  staggered?: boolean;
 }
 
 export namespace ChatBubbleProps {

@@ -18,6 +18,10 @@
   font-style: normal;
   font-weight: 400;
   line-height: 22px;
+
+  &.staggered {
+    flex-direction: row-reverse;
+  }
 }
 
 .bubble {
@@ -39,6 +43,20 @@
   &.chat-bubble-bg-high-contrast {
     background-color: #0073bb;
     color: white;
+  }
+
+  &:focus {
+    outline: none;
+
+    @include shared.when-visible {
+      @include shared.focus-highlight(1px);
+    }
+  }
+
+  &.staggered {
+    display: flex;
+    flex-direction: row-reverse;
+    width: fit-content;
   }
 }
 

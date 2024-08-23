@@ -12,12 +12,12 @@ import { Avatar } from "../../lib/components";
 export const longText =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum finibus maximus. Quisque blandit volutpat nulla id ullamcorper. Morbi at felis sit amet nisl hendrerit sodales. Fusce eget quam feugiat nulla mollis lacinia. Donec vestibulum nibh at ullamcorper faucibus. Donec at nunc sapien. Curabitur eleifend in lacus eget tincidunt. Ut porta sodales nisi a faucibus. Donec sagittis lobortis tempus.";
 
-export function ChatBubbleAvatarUser() {
-  return <Avatar ariaLabel="chat-bubble-avatar-user" />;
+export function ChatBubbleAvatarUser({ initials, tooltipText }: { initials?: string; tooltipText?: string }) {
+  return <Avatar ariaLabel="chat-bubble-avatar-user" initials={initials} tooltipText={tooltipText} />;
 }
 
-export function ChatBubbleAvatarGenAI() {
-  return <Avatar ariaLabel="chat-bubble-avatar-genai" color="gen-ai" iconName="gen-ai" />;
+export function ChatBubbleAvatarGenAI({ tooltipText }: { tooltipText?: string }) {
+  return <Avatar ariaLabel="chat-bubble-avatar-genai" color="gen-ai" iconName="gen-ai" tooltipText={tooltipText} />;
 }
 
 export function InlineActions() {

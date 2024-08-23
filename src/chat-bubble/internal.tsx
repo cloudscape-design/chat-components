@@ -27,6 +27,7 @@ export default function InternalChatBubble({
   avatar,
   inlineActions,
   showInlineActionsOnHover,
+  staggered,
   __internalRootRef = null,
   ...rest
 }: InternalChatBubbleProps) {
@@ -34,7 +35,11 @@ export default function InternalChatBubble({
   const [hasFocus, setHasFocus] = useState(false);
 
   return (
-    <div className={styles.root} {...getDataAttributes(rest)} ref={__internalRootRef}>
+    <div
+      className={clsx(styles.root, staggered && styles.staggered)}
+      {...getDataAttributes(rest)}
+      ref={__internalRootRef}
+    >
       {avatar && <div className={styles.avatar}>{avatar}</div>}
 
       <div
@@ -42,7 +47,7 @@ export default function InternalChatBubble({
         // role=""
         // aria-roledescription="" // ?
         // aria-label="" // what to announce?
-        className={clsx(styles.bubble, styles[`chat-bubble-bg-${backgroundColor}`])}
+        className={clsx(styles.bubble, styles[`chat-bubble-bg-${backgroundColor}`], staggered && styles.staggered)}
         onMouseEnter={() => setHasHover(true)}
         onMouseLeave={() => setHasHover(false)}
         onFocus={() => setHasFocus(true)}

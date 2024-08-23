@@ -28,20 +28,49 @@ import {
 
 export default function ChatBubblePage() {
   const [inlineActionsOnHover, setInlineActionsOnHover] = useState(false);
+  const [staggeredUserBubble, setStaggeredUserBubble] = useState(false);
+  const [highConstrastUserBubble, setHighContrastUserBubble] = useState(false);
+  const [withoutUserAvatar, setWithoutUserAvatar] = useState(false);
+
+  const userChatBubbleBackgroundColor = highConstrastUserBubble ? "high-contrast" : "transparent";
 
   return (
     <>
       <h1>Chat bubble</h1>
 
-      <Box padding="m">
-        <Checkbox checked={inlineActionsOnHover} onChange={({ detail }) => setInlineActionsOnHover(detail.checked)}>
-          Show inline actions on hover
-        </Checkbox>
+      <Box margin={{ bottom: "m" }}>
+        <SpaceBetween size="s">
+          <Box variant="awsui-key-label">Gen-AI bubble settings</Box>
+          <Checkbox checked={inlineActionsOnHover} onChange={({ detail }) => setInlineActionsOnHover(detail.checked)}>
+            Show inline actions on hover
+          </Checkbox>
+
+          <Box variant="awsui-key-label">User bubble settings</Box>
+
+          <Checkbox checked={staggeredUserBubble} onChange={({ detail }) => setStaggeredUserBubble(detail.checked)}>
+            Staggered
+          </Checkbox>
+
+          <Checkbox
+            checked={highConstrastUserBubble}
+            onChange={({ detail }) => setHighContrastUserBubble(detail.checked)}
+          >
+            High contrast
+          </Checkbox>
+
+          <Checkbox checked={withoutUserAvatar} onChange={({ detail }) => setWithoutUserAvatar(detail.checked)}>
+            Without avatar
+          </Checkbox>
+        </SpaceBetween>
       </Box>
 
       <ChatContainer>
-        <ChatBubble avatar={<ChatBubbleAvatarUser />} backgroundColor="transparent">
-          This is an example content
+        <ChatBubble
+          avatar={!withoutUserAvatar && <ChatBubbleAvatarUser />}
+          backgroundColor={userChatBubbleBackgroundColor}
+          staggered={staggeredUserBubble}
+        >
+          What can I do with Amazon S3?
         </ChatBubble>
         <ChatBubble
           avatar={<ChatBubbleAvatarGenAI />}
@@ -49,11 +78,56 @@ export default function ChatBubblePage() {
           inlineActions={<InlineActions />}
           showInlineActionsOnHover={inlineActionsOnHover}
         >
-          This is an example content
+          Amazon S3 provides a simple web service interface that you can use to store and retrieve any amount of data,
+          at any time, from anywhere.
         </ChatBubble>
 
-        <ChatBubble avatar={<ChatBubbleAvatarUser />} backgroundColor="transparent">
-          This is an example content
+        <ChatBubble
+          avatar={!withoutUserAvatar && <ChatBubbleAvatarUser initials="JD" tooltipText="Jane Doe" />}
+          backgroundColor={userChatBubbleBackgroundColor}
+          staggered={staggeredUserBubble}
+        >
+          How can I create configurations?
+        </ChatBubble>
+
+        <ChatBubble
+          avatar={<ChatBubbleAvatarGenAI tooltipText="Gen-AI assistant" />}
+          backgroundColor="grey"
+          inlineActions={<InlineActions />}
+          showInlineActionsOnHover={inlineActionsOnHover}
+        >
+          <SpaceBetween size="s">
+            <span>
+              Next, follow these steps:
+              <ol>
+                <li>In the Buckets list, choose the name of the bucket that you want.</li>
+                <li>Choose Properties.</li>
+                <li>Navigate to S3.</li>
+              </ol>
+            </span>
+
+            <Sources />
+          </SpaceBetween>
+        </ChatBubble>
+
+        <ChatBubble
+          avatar={!withoutUserAvatar && <ChatBubbleAvatarUser />}
+          backgroundColor={userChatBubbleBackgroundColor}
+          staggered={staggeredUserBubble}
+        >
+          <span>List all the accounts in the organization.</span>
+        </ChatBubble>
+        <Alert statusIconAriaLabel="Error" type="error" header="Access denied">
+          You don&apos;t have permissions to [AWSOrganizations:ListAccounts]. To request access, contact your AWS
+          administrator.
+        </Alert>
+
+        <ChatBubble
+          avatar={!withoutUserAvatar && <ChatBubbleAvatarUser />}
+          backgroundColor={userChatBubbleBackgroundColor}
+          staggered={staggeredUserBubble}
+        >
+          List my S3 buckets.
         </ChatBubble>
 
         <ChatBubble
@@ -71,25 +145,21 @@ export default function ChatBubblePage() {
         </ChatBubble>
 
         <ChatBubble
+          avatar={!withoutUserAvatar && <ChatBubbleAvatarUser />}
+          backgroundColor={userChatBubbleBackgroundColor}
+          staggered={staggeredUserBubble}
+        >
+          Long text. {longText}
+        </ChatBubble>
+
+        <ChatBubble
           avatar={<ChatBubbleAvatarGenAI />}
           backgroundColor="grey"
           inlineActions={<InlineActions />}
           showInlineActionsOnHover={inlineActionsOnHover}
         >
-          <SpaceBetween size="s">
-            <span>{longText}</span>
-
-            <Sources />
-          </SpaceBetween>
+          Short answer
         </ChatBubble>
-
-        <ChatBubble avatar={<ChatBubbleAvatarUser />} backgroundColor="transparent">
-          <span>What can I do with Amazon S3?</span>
-        </ChatBubble>
-        <Alert statusIconAriaLabel="Error" type="error" header="Access denied">
-          You don&apos;t have permissions to [AWSOrganizations:ListAccounts]. To request access, contact your AWS
-          administrator.
-        </Alert>
       </ChatContainer>
     </>
   );

@@ -10,13 +10,17 @@ export type { ChatBubbleProps };
 export default function ChatBubble({
   backgroundColor = "transparent",
   showInlineActionsOnHover = false,
+  staggered = false,
   ...props
 }: ChatBubbleProps) {
-  const baseComponentProps = useBaseComponent("ChatBubble", { props: { backgroundColor, showInlineActionsOnHover } });
+  const baseComponentProps = useBaseComponent("ChatBubble", {
+    props: { backgroundColor, showInlineActionsOnHover, staggered },
+  });
   return (
     <InternalChatBubble
       backgroundColor={backgroundColor}
       showInlineActionsOnHover={showInlineActionsOnHover}
+      staggered={staggered}
       {...props}
       {...baseComponentProps}
     />
