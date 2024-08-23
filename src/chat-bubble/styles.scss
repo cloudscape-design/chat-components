@@ -77,7 +77,7 @@
   justify-content: end;
 
   &.hide {
-    pointer-events: "none";
+    pointer-events: none;
     opacity: 0;
   }
 }

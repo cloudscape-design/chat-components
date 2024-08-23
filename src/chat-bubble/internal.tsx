@@ -31,8 +31,7 @@ export default function InternalChatBubble({
   __internalRootRef = null,
   ...rest
 }: InternalChatBubbleProps) {
-  const [hasHover, setHasHover] = useState(false);
-  const [hasFocus, setHasFocus] = useState(false);
+  const [hasHoverOrFocus, setHasHoverOrFocus] = useState(false);
 
   return (
     <div
@@ -48,10 +47,10 @@ export default function InternalChatBubble({
         // aria-roledescription="" // ?
         // aria-label="" // what to announce?
         className={clsx(styles.bubble, styles[`chat-bubble-bg-${backgroundColor}`], staggered && styles.staggered)}
-        onMouseEnter={() => setHasHover(true)}
-        onMouseLeave={() => setHasHover(false)}
-        onFocus={() => setHasFocus(true)}
-        onBlur={() => setHasFocus(false)}
+        onMouseEnter={() => setHasHoverOrFocus(true)}
+        onMouseLeave={() => setHasHoverOrFocus(false)}
+        onFocus={() => setHasHoverOrFocus(true)}
+        onBlur={() => setHasHoverOrFocus(false)}
         // onTouchStart and onTouchEnd?
       >
         <div className={styles["content-container"]}>
@@ -65,10 +64,8 @@ export default function InternalChatBubble({
           {/* visibility css doesn't work bc button sets it to visible so setting it here doesn't work */}
           {inlineActions && (
             <div
-              className={clsx(
-                styles["inline-actions"],
-                showInlineActionsOnHover && !(hasFocus || hasHover) && styles.hide,
-              )}
+              className={clsx(styles["inline-actions"], showInlineActionsOnHover && !hasHoverOrFocus && styles.hide)}
+              hidden={showInlineActionsOnHover && !hasHoverOrFocus} // test fails without this saying element is visible even though it has opacity set to 0 by "hide" class?
             >
               {inlineActions}
             </div>

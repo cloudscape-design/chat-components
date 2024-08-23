@@ -131,7 +131,7 @@ export default function ChatBubblePage() {
         </ChatBubble>
 
         <ChatBubble
-          avatar={<ChatBubbleAvatarGenAI />}
+          avatar={<ChatBubbleAvatarGenAI loading={true} />}
           backgroundColor="grey"
           inlineActions={<InlineActions />}
           showInlineActionsOnHover={inlineActionsOnHover}

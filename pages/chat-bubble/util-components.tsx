@@ -16,8 +16,16 @@ export function ChatBubbleAvatarUser({ initials, tooltipText }: { initials?: str
   return <Avatar ariaLabel="chat-bubble-avatar-user" initials={initials} tooltipText={tooltipText} />;
 }
 
-export function ChatBubbleAvatarGenAI({ tooltipText }: { tooltipText?: string }) {
-  return <Avatar ariaLabel="chat-bubble-avatar-genai" color="gen-ai" iconName="gen-ai" tooltipText={tooltipText} />;
+export function ChatBubbleAvatarGenAI({ tooltipText, loading }: { tooltipText?: string; loading?: boolean }) {
+  return (
+    <Avatar
+      ariaLabel="chat-bubble-avatar-genai"
+      color="gen-ai"
+      iconName="gen-ai"
+      tooltipText={tooltipText}
+      loading={loading}
+    />
+  );
 }
 
 export function InlineActions() {
