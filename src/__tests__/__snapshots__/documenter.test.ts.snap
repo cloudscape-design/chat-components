@@ -200,11 +200,14 @@ exports[`definition for chat-bubble matches the snapshot > chat-bubble 1`] = `
   "name": "ChatBubble",
   "properties": [
     {
+      "description": "Adding for testing purposes",
+      "name": "ariaRole",
+      "optional": true,
+      "type": "string",
+    },
+    {
       "defaultValue": ""transparent"",
-      "description": "Background color of the chat bubble
-Questions for API review:
-- Why backgroundColor over having a variant and setting the color of bubble and avatar out of the box?
-- - Chat bubble can be used in a chat experience where there are multiple authors and each author has a different colored chat bubble.",
+      "description": "Background color of the chat bubble",
       "inlineType": {
         "name": "ChatBubbleProps.BackgroundColor",
         "type": "union",
@@ -227,7 +230,6 @@ Questions for API review:
     },
     {
       "defaultValue": "false",
-      "description": "Setting it true enables staggered view of chat bubble where avatar and bubble are aligned to the opposite side and bubble wraps the content instead of occupying the whole width.",
       "name": "staggered",
       "optional": true,
       "type": "boolean",
@@ -235,10 +237,7 @@ Questions for API review:
   ],
   "regions": [
     {
-      "description": "Props for the avatar of the chat bubble
-Questions for API review:
-- Why is avatar included in chat bubble?
-- Why is it a slot?",
+      "description": "Props for the avatar of the chat bubble",
       "isDefault": false,
       "name": "avatar",
     },
@@ -248,13 +247,7 @@ Questions for API review:
       "name": "children",
     },
     {
-      "description": "Actions such as buttons placed at the footer of the bubble
-Questions for API review:
-- Maybe a different name for it?
-- - footerActions?
-- Why slot? It could be a part of the content rendered by customer?
-- - Even though we'll suggest customers to use button-group for this slot, they may want to render a different kind of button or control.
-- - It could be rendered by customer but this slot is always positioned at the footer of bubble, on the right side. Should we provide the option to render actions in different places e.g. top right?",
+      "description": "Actions such as buttons placed at the footer of the bubble, should we call it footerActions?",
       "isDefault": false,
       "name": "inlineActions",
     },
