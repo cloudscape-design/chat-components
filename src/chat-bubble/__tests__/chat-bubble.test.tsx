@@ -41,12 +41,12 @@ describe("Chat bubble", () => {
     });
 
     act(() => {
-      fireEvent.mouseEnter(wrapper.findBubble().getElement());
+      fireEvent.mouseEnter(wrapper.findBubble()!.getElement());
     });
     expect(wrapper.findByClassName(styles["inline-actions"])?.getElement()).toBeVisible();
 
     act(() => {
-      fireEvent.mouseLeave(wrapper.findBubble().getElement());
+      fireEvent.mouseLeave(wrapper.findBubble()!.getElement());
     });
     expect(wrapper.findByClassName(styles["inline-actions"])?.getElement()).not.toBeVisible();
   });
