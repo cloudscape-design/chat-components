@@ -27,6 +27,7 @@ import {
 // If simple keyboard navigation is not yet implemented in chat demo or component, and customer wants to use it, we can expose onFocus and onBlur callbacks to chat bubble (with customer request)
 
 export default function ChatBubblePage() {
+  const [logAriaRole, setLogAriaRole] = useState("");
   const [inlineActionsOnHover, setInlineActionsOnHover] = useState(false);
   const [staggeredUserBubble, setStaggeredUserBubble] = useState(false);
   const [highConstrastUserBubble, setHighContrastUserBubble] = useState(false);
@@ -40,6 +41,10 @@ export default function ChatBubblePage() {
 
       <Box margin={{ bottom: "m" }}>
         <SpaceBetween size="s">
+          <Checkbox checked={!!logAriaRole} onChange={({ detail }) => setLogAriaRole(detail.checked ? "log" : "")}>
+            Use aria-role `log`
+          </Checkbox>
+
           <Box variant="awsui-key-label">Gen-AI bubble settings</Box>
           <Checkbox checked={inlineActionsOnHover} onChange={({ detail }) => setInlineActionsOnHover(detail.checked)}>
             Show inline actions on hover
@@ -69,6 +74,7 @@ export default function ChatBubblePage() {
           avatar={!withoutUserAvatar && <ChatBubbleAvatarUser />}
           backgroundColor={userChatBubbleBackgroundColor}
           staggered={staggeredUserBubble}
+          ariaRole={logAriaRole}
         >
           What can I do with Amazon S3?
         </ChatBubble>
@@ -77,6 +83,7 @@ export default function ChatBubblePage() {
           backgroundColor="grey"
           inlineActions={<InlineActions />}
           showInlineActionsOnHover={inlineActionsOnHover}
+          ariaRole={logAriaRole}
         >
           Amazon S3 provides a simple web service interface that you can use to store and retrieve any amount of data,
           at any time, from anywhere.
@@ -86,6 +93,7 @@ export default function ChatBubblePage() {
           avatar={!withoutUserAvatar && <ChatBubbleAvatarUser initials="JD" tooltipText="Jane Doe" />}
           backgroundColor={userChatBubbleBackgroundColor}
           staggered={staggeredUserBubble}
+          ariaRole={logAriaRole}
         >
           How can I create configurations?
         </ChatBubble>
@@ -95,6 +103,7 @@ export default function ChatBubblePage() {
           backgroundColor="grey"
           inlineActions={<InlineActions />}
           showInlineActionsOnHover={inlineActionsOnHover}
+          ariaRole={logAriaRole}
         >
           <SpaceBetween size="s">
             <span>
@@ -114,6 +123,7 @@ export default function ChatBubblePage() {
           avatar={!withoutUserAvatar && <ChatBubbleAvatarUser />}
           backgroundColor={userChatBubbleBackgroundColor}
           staggered={staggeredUserBubble}
+          ariaRole={logAriaRole}
         >
           <span>List all the accounts in the organization.</span>
         </ChatBubble>
@@ -126,6 +136,7 @@ export default function ChatBubblePage() {
           avatar={!withoutUserAvatar && <ChatBubbleAvatarUser />}
           backgroundColor={userChatBubbleBackgroundColor}
           staggered={staggeredUserBubble}
+          ariaRole={logAriaRole}
         >
           List my S3 buckets.
         </ChatBubble>
@@ -135,6 +146,7 @@ export default function ChatBubblePage() {
           backgroundColor="grey"
           inlineActions={<InlineActions />}
           showInlineActionsOnHover={inlineActionsOnHover}
+          ariaRole={logAriaRole}
         >
           <div>
             <Box margin={{ bottom: "xs", left: "l" }} color="text-body-secondary">
@@ -148,6 +160,7 @@ export default function ChatBubblePage() {
           avatar={!withoutUserAvatar && <ChatBubbleAvatarUser />}
           backgroundColor={userChatBubbleBackgroundColor}
           staggered={staggeredUserBubble}
+          ariaRole={logAriaRole}
         >
           Long text. {longText}
         </ChatBubble>
@@ -157,6 +170,7 @@ export default function ChatBubblePage() {
           backgroundColor="grey"
           inlineActions={<InlineActions />}
           showInlineActionsOnHover={inlineActionsOnHover}
+          ariaRole={logAriaRole}
         >
           Short answer
         </ChatBubble>

@@ -20,6 +20,11 @@ export interface ChatBubbleProps {
   showInlineActionsOnHover?: boolean;
 
   staggered?: boolean;
+
+  /**
+   * Adding for testing purposes
+   */
+  ariaRole?: string;
 }
 
 export namespace ChatBubbleProps {

@@ -11,16 +11,6 @@ import styles from "./styles.css.js";
 
 export interface InternalChatBubbleProps extends ChatBubbleProps, InternalBaseComponentProps {}
 
-// function SourceLink({ external, target, href, text }: ChatBubbleProps.Source) {
-//   return (
-//     <div key={`${text}-${href}`}>
-//       <Link external={external} href={href} target={target}>
-//         {text || href}
-//       </Link>
-//     </div>
-//   );
-// }
-
 export default function InternalChatBubble({
   backgroundColor,
   children,
@@ -28,6 +18,7 @@ export default function InternalChatBubble({
   inlineActions,
   showInlineActionsOnHover,
   staggered,
+  ariaRole,
   __internalRootRef = null,
   ...rest
 }: InternalChatBubbleProps) {
@@ -43,6 +34,7 @@ export default function InternalChatBubble({
 
       <div
         tabIndex={0}
+        role={ariaRole}
         // role=""
         // aria-roledescription="" // ?
         // aria-label="" // what to announce?
@@ -55,10 +47,6 @@ export default function InternalChatBubble({
       >
         <div className={styles["content-container"]}>
           <div className={styles.content}>{children}</div>
-
-          {/* {sources && sources.length > 0 && (
-            <ExpandableSection headerText="Sources">{sources.map(SourceLink)}</ExpandableSection>
-          )} */}
 
           {/* removing inline actions when bubble is not focused is alright but if all inline actions stay in the dom, aria labels must be different? To be discussed with a11y */}
           {/* visibility css doesn't work bc button sets it to visible so setting it here doesn't work */}
