@@ -12,20 +12,28 @@ import { Avatar } from "../../lib/components";
 export const longText =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum finibus maximus. Quisque blandit volutpat nulla id ullamcorper. Morbi at felis sit amet nisl hendrerit sodales. Fusce eget quam feugiat nulla mollis lacinia. Donec vestibulum nibh at ullamcorper faucibus. Donec at nunc sapien. Curabitur eleifend in lacus eget tincidunt. Ut porta sodales nisi a faucibus. Donec sagittis lobortis tempus.";
 
-export function ChatBubbleAvatarUser({ initials, tooltipText }: { initials?: string; tooltipText?: string }) {
-  return <Avatar ariaLabel="chat-bubble-avatar-user" initials={initials} tooltipText={tooltipText} />;
+export function ChatBubbleAvatarUser({
+  initials,
+  tooltipText,
+  ariaLabel = "User avatar",
+}: {
+  initials?: string;
+  tooltipText?: string;
+  ariaLabel?: string;
+}) {
+  return <Avatar ariaLabel={ariaLabel} initials={initials} tooltipText={tooltipText} />;
 }
 
-export function ChatBubbleAvatarGenAI({ tooltipText, loading }: { tooltipText?: string; loading?: boolean }) {
-  return (
-    <Avatar
-      ariaLabel="chat-bubble-avatar-genai"
-      color="gen-ai"
-      iconName="gen-ai"
-      tooltipText={tooltipText}
-      loading={loading}
-    />
-  );
+export function ChatBubbleAvatarGenAI({
+  tooltipText,
+  loading,
+  ariaLabel = "Gen AI assistant",
+}: {
+  tooltipText?: string;
+  loading?: boolean;
+  ariaLabel?: string;
+}) {
+  return <Avatar ariaLabel={ariaLabel} color="gen-ai" iconName="gen-ai" tooltipText={tooltipText} loading={loading} />;
 }
 
 export function InlineActions() {

@@ -29,13 +29,14 @@ import {
 export default function ChatBubblePage() {
   const [logAriaRole, setLogAriaRole] = useState("");
   const [focusHighlightContainer, setFocusHighlightContainer] = useState(false);
+  const [focusHighlightBubble, setFocusHighlightBubble] = useState(true);
   const [inlineActionsOnHover, setInlineActionsOnHover] = useState(false);
   const [staggeredUserBubble, setStaggeredUserBubble] = useState(false);
   const [highConstrastUserBubble, setHighContrastUserBubble] = useState(false);
   const [withoutUserAvatar, setWithoutUserAvatar] = useState(false);
 
-  const userChatBubbleBackgroundColor = highConstrastUserBubble ? "high-contrast" : "grey";
-  const backgroundColorGenAI = "transparent";
+  const userChatBubbleBackgroundColor = highConstrastUserBubble ? "high-contrast" : "transparent";
+  const backgroundColorGenAI = "grey";
 
   return (
     <>
@@ -43,6 +44,7 @@ export default function ChatBubblePage() {
 
       <Box margin={{ bottom: "m" }}>
         <SpaceBetween size="s">
+          <Box variant="awsui-key-label">Accessibility settings</Box>
           <Checkbox checked={!!logAriaRole} onChange={({ detail }) => setLogAriaRole(detail.checked ? "log" : "")}>
             Use aria-role `log`
           </Checkbox>
@@ -52,6 +54,9 @@ export default function ChatBubblePage() {
             onChange={({ detail }) => setFocusHighlightContainer(detail.checked)}
           >
             Focusable container (avatar + bubble)
+          </Checkbox>
+          <Checkbox checked={focusHighlightBubble} onChange={({ detail }) => setFocusHighlightBubble(detail.checked)}>
+            Focusable bubble
           </Checkbox>
 
           <Box variant="awsui-key-label">Gen-AI bubble settings</Box>
@@ -85,6 +90,7 @@ export default function ChatBubblePage() {
           staggered={staggeredUserBubble}
           ariaRole={logAriaRole}
           focusHighlightContainer={focusHighlightContainer}
+          focusHighlightBubble={focusHighlightBubble}
         >
           What can I do with Amazon S3?
         </ChatBubble>
@@ -95,17 +101,21 @@ export default function ChatBubblePage() {
           showInlineActionsOnHover={inlineActionsOnHover}
           ariaRole={logAriaRole}
           focusHighlightContainer={focusHighlightContainer}
+          focusHighlightBubble={focusHighlightBubble}
         >
           Amazon S3 provides a simple web service interface that you can use to store and retrieve any amount of data,
           at any time, from anywhere.
         </ChatBubble>
 
         <ChatBubble
-          avatar={!withoutUserAvatar && <ChatBubbleAvatarUser initials="JD" tooltipText="Jane Doe" />}
+          avatar={
+            !withoutUserAvatar && <ChatBubbleAvatarUser initials="JD" tooltipText="Jane Doe" ariaLabel="Jane Doe" />
+          }
           backgroundColor={userChatBubbleBackgroundColor}
           staggered={staggeredUserBubble}
           ariaRole={logAriaRole}
           focusHighlightContainer={focusHighlightContainer}
+          focusHighlightBubble={focusHighlightBubble}
         >
           How can I create configurations?
         </ChatBubble>
@@ -117,6 +127,7 @@ export default function ChatBubblePage() {
           showInlineActionsOnHover={inlineActionsOnHover}
           ariaRole={logAriaRole}
           focusHighlightContainer={focusHighlightContainer}
+          focusHighlightBubble={focusHighlightBubble}
         >
           <SpaceBetween size="s">
             <span>
@@ -138,6 +149,7 @@ export default function ChatBubblePage() {
           staggered={staggeredUserBubble}
           ariaRole={logAriaRole}
           focusHighlightContainer={focusHighlightContainer}
+          focusHighlightBubble={focusHighlightBubble}
         >
           <span>List all the accounts in the organization.</span>
         </ChatBubble>
@@ -152,6 +164,7 @@ export default function ChatBubblePage() {
           staggered={staggeredUserBubble}
           ariaRole={logAriaRole}
           focusHighlightContainer={focusHighlightContainer}
+          focusHighlightBubble={focusHighlightBubble}
         >
           List my S3 buckets.
         </ChatBubble>
@@ -163,6 +176,7 @@ export default function ChatBubblePage() {
           showInlineActionsOnHover={inlineActionsOnHover}
           ariaRole={logAriaRole}
           focusHighlightContainer={focusHighlightContainer}
+          focusHighlightBubble={focusHighlightBubble}
         >
           <div>
             <Box margin={{ bottom: "xs", left: "l" }} color="text-body-secondary">
@@ -178,6 +192,7 @@ export default function ChatBubblePage() {
           staggered={staggeredUserBubble}
           ariaRole={logAriaRole}
           focusHighlightContainer={focusHighlightContainer}
+          focusHighlightBubble={focusHighlightBubble}
         >
           Long text. {longText}
         </ChatBubble>
@@ -189,9 +204,39 @@ export default function ChatBubblePage() {
           showInlineActionsOnHover={inlineActionsOnHover}
           ariaRole={logAriaRole}
           focusHighlightContainer={focusHighlightContainer}
+          focusHighlightBubble={focusHighlightBubble}
         >
           Short answer
         </ChatBubble>
+        {/* <ChatBubble avatar={<ChatBubbleAvatarGenAI loading={true} />} backgroundColor={backgroundColorGenAI}>
+          Passing loading bar to chat bubble in content. Loading text wrapped with a box.
+          <Box margin={{ bottom: "xs" }} color="text-body-secondary">
+            Generating response with gen-ai-masked variant
+          </Box>
+          <LoadingBar variant="gen-ai-masked" />
+        </ChatBubble>
+        <ChatBubble avatar={<ChatBubbleAvatarGenAI loading={true} />} backgroundColor={backgroundColorGenAI}>
+          Passing loading bar to chat bubble in content. Loading text wrapped with a box.
+          <Box margin={{ bottom: "xs" }} color="text-body-secondary">
+            Generating response with gen-ai variant
+          </Box>
+          <LoadingBar variant="gen-ai" />
+        </ChatBubble>
+
+        <ChatBubble
+          avatar={<ChatBubbleAvatarGenAI loading={true} />}
+          backgroundColor={backgroundColorGenAI}
+          loadingText="Generating response. Using loadingBar prop of chat bubble."
+          loadingWithBar={true}
+        >
+        </ChatBubble>
+        <ChatBubble
+          avatar={<ChatBubbleAvatarGenAI loading={true} />}
+          backgroundColor={backgroundColorGenAI}
+          loadingText="Generating response. Using loadingText prop of chat bubble."
+          loading={true}
+        >
+        </ChatBubble> */}
       </ChatContainer>
     </>
   );

@@ -20,10 +20,18 @@ export default function InternalChatBubble({
   staggered,
   ariaRole,
   focusHighlightContainer,
+  focusHighlightBubble = true,
   __internalRootRef = null,
   ...rest
 }: InternalChatBubbleProps) {
   const [hasHoverOrFocus, setHasHoverOrFocus] = useState(false);
+
+  const focusAndHoverAttributes = {
+    onMouseEnter: () => setHasHoverOrFocus(true),
+    onMouseLeave: () => setHasHoverOrFocus(false),
+    onFocus: () => setHasHoverOrFocus(true),
+    onBlur: () => setHasHoverOrFocus(false),
+  };
 
   return (
     <div
@@ -31,20 +39,16 @@ export default function InternalChatBubble({
       className={clsx(styles.root, staggered && styles.staggered)}
       {...getDataAttributes(rest)}
       ref={__internalRootRef}
+      role={focusHighlightContainer ? ariaRole : ""}
+      {...(focusHighlightContainer ? focusAndHoverAttributes : {})}
     >
       {avatar && <div className={styles.avatar}>{avatar}</div>}
 
       <div
-        tabIndex={0}
-        role={ariaRole}
-        // role=""
-        // aria-roledescription="" // ?
-        // aria-label="" // what to announce?
+        tabIndex={focusHighlightBubble ? 0 : undefined}
+        role={!focusHighlightContainer && focusHighlightBubble ? ariaRole : ""}
         className={clsx(styles.bubble, styles[`chat-bubble-bg-${backgroundColor}`], staggered && styles.staggered)}
-        onMouseEnter={() => setHasHoverOrFocus(true)}
-        onMouseLeave={() => setHasHoverOrFocus(false)}
-        onFocus={() => setHasHoverOrFocus(true)}
-        onBlur={() => setHasHoverOrFocus(false)}
+        {...(!focusHighlightContainer && focusHighlightBubble ? focusAndHoverAttributes : {})}
         // onTouchStart and onTouchEnd?
       >
         <div className={styles["content-container"]}>
