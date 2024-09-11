@@ -222,6 +222,12 @@ exports[`definition for chat-bubble matches the snapshot > chat-bubble 1`] = `
       "type": "string",
     },
     {
+      "description": "Adding for testing purposes",
+      "name": "focusHighlightContainer",
+      "optional": true,
+      "type": "boolean",
+    },
+    {
       "defaultValue": "false",
       "description": "Setting it true makes inline actions appear when chat bubble is hovered or focused.",
       "name": "showInlineActionsOnHover",

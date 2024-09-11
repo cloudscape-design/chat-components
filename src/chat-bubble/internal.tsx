@@ -19,6 +19,7 @@ export default function InternalChatBubble({
   showInlineActionsOnHover,
   staggered,
   ariaRole,
+  focusHighlightContainer,
   __internalRootRef = null,
   ...rest
 }: InternalChatBubbleProps) {
@@ -26,6 +27,7 @@ export default function InternalChatBubble({
 
   return (
     <div
+      tabIndex={focusHighlightContainer ? 0 : undefined}
       className={clsx(styles.root, staggered && styles.staggered)}
       {...getDataAttributes(rest)}
       ref={__internalRootRef}

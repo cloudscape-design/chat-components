@@ -25,6 +25,11 @@ export interface ChatBubbleProps {
    * Adding for testing purposes
    */
   ariaRole?: string;
+
+  /**
+   * Adding for testing purposes
+   */
+  focusHighlightContainer?: boolean;
 }
 
 export namespace ChatBubbleProps {

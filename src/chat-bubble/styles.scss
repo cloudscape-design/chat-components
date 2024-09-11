@@ -22,6 +22,14 @@
   &.staggered {
     flex-direction: row-reverse;
   }
+
+  &:focus {
+    outline: none;
+
+    @include shared.when-visible {
+      @include shared.focus-highlight(5px);
+    }
+  }
 }
 
 .bubble {
