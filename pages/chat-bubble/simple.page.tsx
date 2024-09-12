@@ -28,8 +28,8 @@ import {
 
 export default function ChatBubblePage() {
   const [logAriaRole, setLogAriaRole] = useState("");
-  const [focusHighlightContainer, setFocusHighlightContainer] = useState(false);
-  const [focusHighlightBubble, setFocusHighlightBubble] = useState(true);
+  const [focusHighlightContainer, setFocusHighlightContainer] = useState(true);
+  const [focusHighlightBubble, setFocusHighlightBubble] = useState(false);
   const [inlineActionsOnHover, setInlineActionsOnHover] = useState(false);
   const [staggeredUserBubble, setStaggeredUserBubble] = useState(false);
   const [highConstrastUserBubble, setHighContrastUserBubble] = useState(false);

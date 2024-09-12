@@ -21,8 +21,8 @@ export default function InternalChatBubble({
   staggered,
   showLoadingBar,
   ariaRole,
-  focusHighlightContainer,
-  focusHighlightBubble = true,
+  focusHighlightContainer = true,
+  focusHighlightBubble,
   __internalRootRef = null,
   ...rest
 }: InternalChatBubbleProps) {
