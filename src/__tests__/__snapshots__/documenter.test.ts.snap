@@ -244,6 +244,14 @@ Questions for API review:
       "type": "boolean",
     },
     {
+      "description": "Adds a loading bar to the bottom of the chat bubble.
+This property should only be used for Generative AI loading state.
+If avatar is being used, set its \`loading\` state to true.",
+      "name": "showLoadingBar",
+      "optional": true,
+      "type": "boolean",
+    },
+    {
       "defaultValue": "false",
       "description": "Setting it true enables staggered view of chat bubble where avatar and bubble are aligned to the opposite side and bubble wraps the content instead of occupying the whole width.",
       "name": "staggered",
