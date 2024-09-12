@@ -8,7 +8,7 @@ import Box from "@cloudscape-design/components/box";
 import Checkbox from "@cloudscape-design/components/checkbox";
 import SpaceBetween from "@cloudscape-design/components/space-between";
 
-import { ChatBubble, LoadingBar } from "../../lib/components";
+import { ChatBubble } from "../../lib/components";
 import {
   ChatBubbleAvatarGenAI,
   ChatBubbleAvatarUser,
@@ -172,17 +172,28 @@ export default function ChatBubblePage() {
         <ChatBubble
           avatar={<ChatBubbleAvatarGenAI loading={true} />}
           backgroundColor={backgroundColorGenAI}
+          ariaRole={logAriaRole}
+          focusHighlightContainer={focusHighlightContainer}
+          focusHighlightBubble={focusHighlightBubble}
+          showLoadingBar={true}
+        >
+          <div>
+            <Box color="text-body-secondary">Generating a response</Box>
+          </div>
+        </ChatBubble>
+
+        <ChatBubble
+          avatar={<ChatBubbleAvatarGenAI loading={true} />}
+          backgroundColor={backgroundColorGenAI}
           inlineActions={<InlineActions />}
           showInlineActionsOnHover={inlineActionsOnHover}
           ariaRole={logAriaRole}
           focusHighlightContainer={focusHighlightContainer}
           focusHighlightBubble={focusHighlightBubble}
+          showLoadingBar={true}
         >
           <div>
-            <Box margin={{ bottom: "xs", left: "l" }} color="text-body-secondary">
-              Generating a response
-            </Box>
-            <LoadingBar variant="gen-ai" />
+            <Box color="text-body-secondary">Generating a response, with inline actions</Box>
           </div>
         </ChatBubble>
 
@@ -208,35 +219,6 @@ export default function ChatBubblePage() {
         >
           Short answer
         </ChatBubble>
-        {/* <ChatBubble avatar={<ChatBubbleAvatarGenAI loading={true} />} backgroundColor={backgroundColorGenAI}>
-          Passing loading bar to chat bubble in content. Loading text wrapped with a box.
-          <Box margin={{ bottom: "xs" }} color="text-body-secondary">
-            Generating response with gen-ai-masked variant
-          </Box>
-          <LoadingBar variant="gen-ai-masked" />
-        </ChatBubble>
-        <ChatBubble avatar={<ChatBubbleAvatarGenAI loading={true} />} backgroundColor={backgroundColorGenAI}>
-          Passing loading bar to chat bubble in content. Loading text wrapped with a box.
-          <Box margin={{ bottom: "xs" }} color="text-body-secondary">
-            Generating response with gen-ai variant
-          </Box>
-          <LoadingBar variant="gen-ai" />
-        </ChatBubble>
-
-        <ChatBubble
-          avatar={<ChatBubbleAvatarGenAI loading={true} />}
-          backgroundColor={backgroundColorGenAI}
-          loadingText="Generating response. Using loadingBar prop of chat bubble."
-          loadingWithBar={true}
-        >
-        </ChatBubble>
-        <ChatBubble
-          avatar={<ChatBubbleAvatarGenAI loading={true} />}
-          backgroundColor={backgroundColorGenAI}
-          loadingText="Generating response. Using loadingText prop of chat bubble."
-          loading={true}
-        >
-        </ChatBubble> */}
       </ChatContainer>
     </>
   );

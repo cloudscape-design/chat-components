@@ -5,6 +5,7 @@ import clsx from "clsx";
 
 import { getDataAttributes } from "../internal/base-component/get-data-attributes";
 import { InternalBaseComponentProps } from "../internal/base-component/use-base-component";
+import { InternalLoadingBar } from "../loading-bar/internal";
 import { ChatBubbleProps } from "./interfaces.js";
 
 import styles from "./styles.css.js";
@@ -18,6 +19,7 @@ export default function InternalChatBubble({
   inlineActions,
   showInlineActionsOnHover,
   staggered,
+  showLoadingBar,
   ariaRole,
   focusHighlightContainer,
   focusHighlightBubble = true,
@@ -51,8 +53,12 @@ export default function InternalChatBubble({
         {...(!focusHighlightContainer && focusHighlightBubble ? focusAndHoverAttributes : {})}
         // onTouchStart and onTouchEnd?
       >
-        <div className={styles["content-container"]}>
+        <div
+          className={clsx(styles["content-container"], showLoadingBar && !inlineActions && styles["has-loading-bar"])}
+        >
           <div className={styles.content}>{children}</div>
+
+          {showLoadingBar && <InternalLoadingBar variant="gen-ai-masked" />}
 
           {/* removing inline actions when bubble is not focused is alright but if all inline actions stay in the dom, aria labels must be different? To be discussed with a11y */}
           {/* visibility css doesn't work bc button sets it to visible so setting it here doesn't work */}

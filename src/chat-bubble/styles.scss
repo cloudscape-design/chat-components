@@ -78,6 +78,11 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  &.has-loading-bar {
+    padding-bottom: 0;
+    gap: 9px; // todo: confirm if 9px is okay, needed to align the loadig bar with the bottom border of bubble
+  }
 }
 
 .inline-actions {

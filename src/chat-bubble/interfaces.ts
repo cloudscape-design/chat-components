@@ -57,6 +57,7 @@ export interface ChatBubbleProps {
   // /**
   //  * Text shown when chat bubble is loading
   //  * Need to add i18n? e.g. loading? generating? typing?
+  //  * Do we even need the loadingText and loading APIs? Loading text is content of the bubble at the end of the day
   //  */
   // loadingText?: string;
 
@@ -66,12 +67,12 @@ export interface ChatBubbleProps {
   //  */
   // loading?: boolean;
 
-  // /**
-  //  * Adds a loading bar to the bottom of the chat bubble with `loadingText`.
-  //  * This property should only be used for Generative AI loading state.
-  //  * If avatar is being used, set its `loading` state to true.
-  //  */
-  // loadingWithBar?: boolean;
+  /**
+   * Adds a loading bar to the bottom of the chat bubble.
+   * This property should only be used for Generative AI loading state.
+   * If avatar is being used, set its `loading` state to true.
+   */
+  showLoadingBar?: boolean;
 }
 
 export namespace ChatBubbleProps {
