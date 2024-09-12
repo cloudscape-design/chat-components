@@ -26,10 +26,10 @@ describe("Chat bubble", () => {
       showInlineActionsOnHover: true,
     });
 
-    wrapper.findBubble()?.focus();
+    wrapper?.focus();
     expect(wrapper.findByClassName(styles["inline-actions"])?.getElement()).toBeVisible();
 
-    wrapper.findBubble()?.blur();
+    wrapper?.blur();
     expect(wrapper.findByClassName(styles["inline-actions"])?.getElement()).not.toBeVisible();
   });
 
@@ -41,12 +41,12 @@ describe("Chat bubble", () => {
     });
 
     act(() => {
-      fireEvent.mouseEnter(wrapper.findBubble()!.getElement());
+      fireEvent.mouseEnter(wrapper!.getElement());
     });
     expect(wrapper.findByClassName(styles["inline-actions"])?.getElement()).toBeVisible();
 
     act(() => {
-      fireEvent.mouseLeave(wrapper.findBubble()!.getElement());
+      fireEvent.mouseLeave(wrapper!.getElement());
     });
     expect(wrapper.findByClassName(styles["inline-actions"])?.getElement()).not.toBeVisible();
   });
