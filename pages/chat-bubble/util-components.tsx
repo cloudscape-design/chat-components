@@ -101,6 +101,8 @@ interface ChatContainerProps {
 export function ChatContainer({ children }: ChatContainerProps) {
   return (
     <div
+      role="log"
+      aria-label="Chat"
       style={{
         display: "flex",
         flexDirection: "column",

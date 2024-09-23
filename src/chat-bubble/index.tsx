@@ -7,23 +7,10 @@ import InternalChatBubble from "./internal";
 
 export type { ChatBubbleProps };
 
-export default function ChatBubble({
-  backgroundColor = "transparent",
-  showInlineActionsOnHover = false,
-  staggered = false,
-  ...props
-}: ChatBubbleProps) {
+export default function ChatBubble({ backgroundColor = "transparent", ...props }: ChatBubbleProps) {
   const baseComponentProps = useBaseComponent("ChatBubble", {
-    props: { backgroundColor, showInlineActionsOnHover, staggered },
+    props: { backgroundColor },
   });
-  return (
-    <InternalChatBubble
-      backgroundColor={backgroundColor}
-      showInlineActionsOnHover={showInlineActionsOnHover}
-      staggered={staggered}
-      {...props}
-      {...baseComponentProps}
-    />
-  );
+  return <InternalChatBubble backgroundColor={backgroundColor} {...props} {...baseComponentProps} />;
 }
 applyDisplayName(ChatBubble, "ChatBubble");

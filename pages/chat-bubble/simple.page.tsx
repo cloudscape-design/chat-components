@@ -1,11 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { useState } from "react";
-
 import Alert from "@cloudscape-design/components/alert";
 import Box from "@cloudscape-design/components/box";
-import Checkbox from "@cloudscape-design/components/checkbox";
 import SpaceBetween from "@cloudscape-design/components/space-between";
 
 import { ChatBubble } from "../../lib/components";
@@ -27,70 +24,18 @@ import {
 // If simple keyboard navigation is not yet implemented in chat demo or component, and customer wants to use it, we can expose onFocus and onBlur callbacks to chat bubble (with customer request)
 
 export default function ChatBubblePage() {
-  const [logAriaRole, setLogAriaRole] = useState("");
-  const [focusHighlightContainer, setFocusHighlightContainer] = useState(true);
-  const [focusHighlightBubble, setFocusHighlightBubble] = useState(false);
-  const [inlineActionsOnHover, setInlineActionsOnHover] = useState(false);
-  const [staggeredUserBubble, setStaggeredUserBubble] = useState(false);
-  const [highConstrastUserBubble, setHighContrastUserBubble] = useState(false);
-  const [withoutUserAvatar, setWithoutUserAvatar] = useState(false);
-
-  const userChatBubbleBackgroundColor = highConstrastUserBubble ? "high-contrast" : "transparent";
+  const userChatBubbleBackgroundColor = "transparent";
   const backgroundColorGenAI = "grey";
 
   return (
     <>
       <h1>Chat bubble</h1>
 
-      <Box margin={{ bottom: "m" }}>
-        <SpaceBetween size="s">
-          <Box variant="awsui-key-label">Accessibility settings</Box>
-          <Checkbox checked={!!logAriaRole} onChange={({ detail }) => setLogAriaRole(detail.checked ? "log" : "")}>
-            Use aria-role `log`
-          </Checkbox>
-
-          <Checkbox
-            checked={focusHighlightContainer}
-            onChange={({ detail }) => setFocusHighlightContainer(detail.checked)}
-          >
-            Focusable container (avatar + bubble)
-          </Checkbox>
-          <Checkbox checked={focusHighlightBubble} onChange={({ detail }) => setFocusHighlightBubble(detail.checked)}>
-            Focusable bubble
-          </Checkbox>
-
-          <Box variant="awsui-key-label">Gen-AI bubble settings</Box>
-          <Checkbox checked={inlineActionsOnHover} onChange={({ detail }) => setInlineActionsOnHover(detail.checked)}>
-            Show inline actions on hover
-          </Checkbox>
-
-          <Box variant="awsui-key-label">User bubble settings</Box>
-
-          <Checkbox checked={staggeredUserBubble} onChange={({ detail }) => setStaggeredUserBubble(detail.checked)}>
-            Staggered
-          </Checkbox>
-
-          <Checkbox
-            checked={highConstrastUserBubble}
-            onChange={({ detail }) => setHighContrastUserBubble(detail.checked)}
-          >
-            High contrast
-          </Checkbox>
-
-          <Checkbox checked={withoutUserAvatar} onChange={({ detail }) => setWithoutUserAvatar(detail.checked)}>
-            Without avatar
-          </Checkbox>
-        </SpaceBetween>
-      </Box>
-
       <ChatContainer>
         <ChatBubble
-          avatar={!withoutUserAvatar && <ChatBubbleAvatarUser />}
+          avatar={<ChatBubbleAvatarUser />}
           backgroundColor={userChatBubbleBackgroundColor}
-          staggered={staggeredUserBubble}
-          ariaRole={logAriaRole}
-          focusHighlightContainer={focusHighlightContainer}
-          focusHighlightBubble={focusHighlightBubble}
+          ariaLabel="User message 1"
         >
           What can I do with Amazon S3?
         </ChatBubble>
@@ -98,24 +43,16 @@ export default function ChatBubblePage() {
           avatar={<ChatBubbleAvatarGenAI />}
           backgroundColor="grey"
           inlineActions={<InlineActions />}
-          showInlineActionsOnHover={inlineActionsOnHover}
-          ariaRole={logAriaRole}
-          focusHighlightContainer={focusHighlightContainer}
-          focusHighlightBubble={focusHighlightBubble}
+          ariaLabel="Gen AI message 2"
         >
           Amazon S3 provides a simple web service interface that you can use to store and retrieve any amount of data,
           at any time, from anywhere.
         </ChatBubble>
 
         <ChatBubble
-          avatar={
-            !withoutUserAvatar && <ChatBubbleAvatarUser initials="JD" tooltipText="Jane Doe" ariaLabel="Jane Doe" />
-          }
+          avatar={<ChatBubbleAvatarUser initials="JD" tooltipText="Jane Doe" ariaLabel="Jane Doe" />}
           backgroundColor={userChatBubbleBackgroundColor}
-          staggered={staggeredUserBubble}
-          ariaRole={logAriaRole}
-          focusHighlightContainer={focusHighlightContainer}
-          focusHighlightBubble={focusHighlightBubble}
+          ariaLabel="User message 3"
         >
           How can I create configurations?
         </ChatBubble>
@@ -124,10 +61,7 @@ export default function ChatBubblePage() {
           avatar={<ChatBubbleAvatarGenAI tooltipText="Gen-AI assistant" />}
           backgroundColor={backgroundColorGenAI}
           inlineActions={<InlineActions />}
-          showInlineActionsOnHover={inlineActionsOnHover}
-          ariaRole={logAriaRole}
-          focusHighlightContainer={focusHighlightContainer}
-          focusHighlightBubble={focusHighlightBubble}
+          ariaLabel="Gen AI message 4"
         >
           <SpaceBetween size="s">
             <span>
@@ -144,12 +78,9 @@ export default function ChatBubblePage() {
         </ChatBubble>
 
         <ChatBubble
-          avatar={!withoutUserAvatar && <ChatBubbleAvatarUser />}
+          avatar={<ChatBubbleAvatarUser />}
           backgroundColor={userChatBubbleBackgroundColor}
-          staggered={staggeredUserBubble}
-          ariaRole={logAriaRole}
-          focusHighlightContainer={focusHighlightContainer}
-          focusHighlightBubble={focusHighlightBubble}
+          ariaLabel="User message 5"
         >
           <span>List all the accounts in the organization.</span>
         </ChatBubble>
@@ -159,12 +90,9 @@ export default function ChatBubblePage() {
         </Alert>
 
         <ChatBubble
-          avatar={!withoutUserAvatar && <ChatBubbleAvatarUser />}
+          avatar={<ChatBubbleAvatarUser />}
           backgroundColor={userChatBubbleBackgroundColor}
-          staggered={staggeredUserBubble}
-          ariaRole={logAriaRole}
-          focusHighlightContainer={focusHighlightContainer}
-          focusHighlightBubble={focusHighlightBubble}
+          ariaLabel="User message 6"
         >
           List my S3 buckets.
         </ChatBubble>
@@ -172,10 +100,8 @@ export default function ChatBubblePage() {
         <ChatBubble
           avatar={<ChatBubbleAvatarGenAI loading={true} />}
           backgroundColor={backgroundColorGenAI}
-          ariaRole={logAriaRole}
-          focusHighlightContainer={focusHighlightContainer}
-          focusHighlightBubble={focusHighlightBubble}
           showLoadingBar={true}
+          ariaLabel="Gen AI message 7"
         >
           <div>
             <Box color="text-body-secondary">Generating a response</Box>
@@ -186,11 +112,8 @@ export default function ChatBubblePage() {
           avatar={<ChatBubbleAvatarGenAI loading={true} />}
           backgroundColor={backgroundColorGenAI}
           inlineActions={<InlineActions />}
-          showInlineActionsOnHover={inlineActionsOnHover}
-          ariaRole={logAriaRole}
-          focusHighlightContainer={focusHighlightContainer}
-          focusHighlightBubble={focusHighlightBubble}
           showLoadingBar={true}
+          ariaLabel="Gen AI message 8"
         >
           <div>
             <Box color="text-body-secondary">Generating a response, with inline actions</Box>
@@ -198,12 +121,9 @@ export default function ChatBubblePage() {
         </ChatBubble>
 
         <ChatBubble
-          avatar={!withoutUserAvatar && <ChatBubbleAvatarUser />}
+          avatar={<ChatBubbleAvatarUser />}
           backgroundColor={userChatBubbleBackgroundColor}
-          staggered={staggeredUserBubble}
-          ariaRole={logAriaRole}
-          focusHighlightContainer={focusHighlightContainer}
-          focusHighlightBubble={focusHighlightBubble}
+          ariaLabel="User message 9"
         >
           Long text. {longText}
         </ChatBubble>
@@ -212,10 +132,7 @@ export default function ChatBubblePage() {
           avatar={<ChatBubbleAvatarGenAI />}
           backgroundColor={backgroundColorGenAI}
           inlineActions={<InlineActions />}
-          showInlineActionsOnHover={inlineActionsOnHover}
-          ariaRole={logAriaRole}
-          focusHighlightContainer={focusHighlightContainer}
-          focusHighlightBubble={focusHighlightBubble}
+          ariaLabel="Gen AI message 10"
         >
           Short answer
         </ChatBubble>

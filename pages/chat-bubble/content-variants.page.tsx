@@ -305,12 +305,7 @@ export default function ChatBubblesContentVariantsPage() {
 
 function GenAIChatBubble({ children }: { children: React.ReactNode }) {
   return (
-    <ChatBubble
-      avatar={<ChatBubbleAvatarGenAI />}
-      backgroundColor="grey"
-      inlineActions={<InlineActions />}
-      showInlineActionsOnHover={true}
-    >
+    <ChatBubble avatar={<ChatBubbleAvatarGenAI />} backgroundColor="grey" inlineActions={<InlineActions />}>
       <SpaceBetween size="s">{children}</SpaceBetween>
     </ChatBubble>
   );

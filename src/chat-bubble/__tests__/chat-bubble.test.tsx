@@ -1,6 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import { act, cleanup, fireEvent, render } from "@testing-library/react";
+import { cleanup, render } from "@testing-library/react";
 import { afterEach, describe, expect, test } from "vitest";
 
 import ChatBubble, { ChatBubbleProps } from "../../../lib/components/chat-bubble";
@@ -19,35 +19,17 @@ describe("Chat bubble", () => {
     cleanup();
   });
 
-  test("Inline actions are shown on focus", () => {
+  // to be updated
+  test("Inline actions are shown", () => {
     const wrapper = renderChatBubble({
       children: "Test content",
       inlineActions: <button>Inline action</button>,
-      showInlineActionsOnHover: true,
     });
 
-    wrapper?.focus();
+    console.log(
+      'wrapper.findByClassName(styles["inline-actions"])?.getElement(): ',
+      wrapper.findByClassName(styles["inline-actions"])?.getElement(),
+    );
     expect(wrapper.findByClassName(styles["inline-actions"])?.getElement()).toBeVisible();
-
-    wrapper?.blur();
-    expect(wrapper.findByClassName(styles["inline-actions"])?.getElement()).not.toBeVisible();
-  });
-
-  test("Inline actions are shown on mouse enter", () => {
-    const wrapper = renderChatBubble({
-      children: "Test content",
-      inlineActions: <button>Inline action</button>,
-      showInlineActionsOnHover: true,
-    });
-
-    act(() => {
-      fireEvent.mouseEnter(wrapper!.getElement());
-    });
-    expect(wrapper.findByClassName(styles["inline-actions"])?.getElement()).toBeVisible();
-
-    act(() => {
-      fireEvent.mouseLeave(wrapper!.getElement());
-    });
-    expect(wrapper.findByClassName(styles["inline-actions"])?.getElement()).not.toBeVisible();
   });
 });
