@@ -7,8 +7,15 @@ import chatBubbleStyles from "../../../chat-bubble/styles.selectors.js";
 export default class ChatBubbleWrapper extends ComponentWrapper {
   static rootSelector: string = chatBubbleStyles.root;
 
-  // This is needed because of avatar
-  findBubble(): ElementWrapper | null {
-    return this.findByClassName(chatBubbleStyles.bubble);
+  findAvatarSlot(): ElementWrapper | null {
+    return this.findByClassName(chatBubbleStyles.avatar);
+  }
+
+  findContent(): ElementWrapper | null {
+    return this.findByClassName(chatBubbleStyles.content);
+  }
+
+  findActionsSlot(): ElementWrapper | null {
+    return this.findByClassName(chatBubbleStyles.actions);
   }
 }

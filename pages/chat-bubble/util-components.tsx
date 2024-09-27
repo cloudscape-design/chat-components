@@ -14,8 +14,8 @@ export const longText =
 
 export function ChatBubbleAvatarUser({
   initials,
-  tooltipText,
-  ariaLabel = "User avatar",
+  tooltipText = "Jane Doe",
+  ariaLabel = "Jane Doe",
 }: {
   initials?: string;
   tooltipText?: string;
@@ -25,7 +25,7 @@ export function ChatBubbleAvatarUser({
 }
 
 export function ChatBubbleAvatarGenAI({
-  tooltipText,
+  tooltipText = "Gen AI assistant",
   loading,
   ariaLabel = "Gen AI assistant",
 }: {
@@ -36,7 +36,7 @@ export function ChatBubbleAvatarGenAI({
   return <Avatar ariaLabel={ariaLabel} color="gen-ai" iconName="gen-ai" tooltipText={tooltipText} loading={loading} />;
 }
 
-export function InlineActions() {
+export function Actions() {
   const [helpfulChoice, setHelpfulChoice] = useState("");
 
   return (

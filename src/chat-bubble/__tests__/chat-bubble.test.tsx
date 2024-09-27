@@ -3,10 +3,9 @@
 import { cleanup, render } from "@testing-library/react";
 import { afterEach, describe, expect, test } from "vitest";
 
+import { Avatar } from "../../../lib/components";
 import ChatBubble, { ChatBubbleProps } from "../../../lib/components/chat-bubble";
 import createWrapper from "../../../lib/components/test-utils/dom";
-
-import styles from "../../../lib/components/chat-bubble/styles.selectors.js";
 
 function renderChatBubble(props: ChatBubbleProps) {
   const { container } = render(<ChatBubble {...props} />);
@@ -19,17 +18,21 @@ describe("Chat bubble", () => {
     cleanup();
   });
 
-  // to be updated
-  test("Inline actions are shown", () => {
-    const wrapper = renderChatBubble({
+  test("Hides the avatar", () => {
+    const withVisibleAvatar = renderChatBubble({
+      avatar: <Avatar ariaLabel="Avatar" />,
       children: "Test content",
-      inlineActions: <button>Inline action</button>,
+      ariaLabel: "Chat bubble",
+    });
+    expect(withVisibleAvatar.findAvatarSlot()?.getElement()).not.toHaveAttribute("inert");
+    expect(withVisibleAvatar.findAvatarSlot()?.findAvatar()?.getElement()).toBeVisible();
+
+    const withHiddenAvatar = renderChatBubble({
+      children: "Test content",
+      ariaLabel: "Chat bubble",
+      hideAvatar: true,
     });
 
-    console.log(
-      'wrapper.findByClassName(styles["inline-actions"])?.getElement(): ',
-      wrapper.findByClassName(styles["inline-actions"])?.getElement(),
-    );
-    expect(wrapper.findByClassName(styles["inline-actions"])?.getElement()).toBeVisible();
+    expect(withHiddenAvatar.findAvatarSlot()?.getElement()).toBeUndefined();
   });
 });

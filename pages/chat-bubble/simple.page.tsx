@@ -1,16 +1,14 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import Alert from "@cloudscape-design/components/alert";
 import Box from "@cloudscape-design/components/box";
-import SpaceBetween from "@cloudscape-design/components/space-between";
 
 import { ChatBubble } from "../../lib/components";
 import {
+  Actions,
   ChatBubbleAvatarGenAI,
   ChatBubbleAvatarUser,
   ChatContainer,
-  InlineActions,
   longText,
   Sources,
 } from "./util-components";
@@ -24,117 +22,75 @@ import {
 // If simple keyboard navigation is not yet implemented in chat demo or component, and customer wants to use it, we can expose onFocus and onBlur callbacks to chat bubble (with customer request)
 
 export default function ChatBubblePage() {
-  const userChatBubbleBackgroundColor = "transparent";
-  const backgroundColorGenAI = "grey";
+  const colorGenAI = "low-contrast";
 
   return (
     <>
       <h1>Chat bubble</h1>
 
       <ChatContainer>
-        <ChatBubble
-          avatar={<ChatBubbleAvatarUser />}
-          backgroundColor={userChatBubbleBackgroundColor}
-          ariaLabel="User message 1"
-        >
+        <ChatBubble avatar={<ChatBubbleAvatarUser />} ariaLabel="User message 1">
           What can I do with Amazon S3?
         </ChatBubble>
-        <ChatBubble
-          avatar={<ChatBubbleAvatarGenAI />}
-          backgroundColor="grey"
-          inlineActions={<InlineActions />}
-          ariaLabel="Gen AI message 2"
-        >
+        <ChatBubble avatar={<ChatBubbleAvatarGenAI />} color={colorGenAI} ariaLabel="Gen AI message 2">
           Amazon S3 provides a simple web service interface that you can use to store and retrieve any amount of data,
           at any time, from anywhere.
         </ChatBubble>
 
-        <ChatBubble
-          avatar={<ChatBubbleAvatarUser initials="JD" tooltipText="Jane Doe" ariaLabel="Jane Doe" />}
-          backgroundColor={userChatBubbleBackgroundColor}
-          ariaLabel="User message 3"
-        >
+        <ChatBubble avatar={<ChatBubbleAvatarUser />} ariaLabel="User message 3">
           How can I create configurations?
         </ChatBubble>
 
         <ChatBubble
-          avatar={<ChatBubbleAvatarGenAI tooltipText="Gen-AI assistant" />}
-          backgroundColor={backgroundColorGenAI}
-          inlineActions={<InlineActions />}
+          avatar={<ChatBubbleAvatarGenAI />}
+          color={colorGenAI}
+          actions={<Actions />}
           ariaLabel="Gen AI message 4"
         >
-          <SpaceBetween size="s">
-            <span>
-              Next, follow these steps:
-              <ol>
-                <li>In the Buckets list, choose the name of the bucket that you want.</li>
-                <li>Choose Properties.</li>
-                <li>Navigate to S3.</li>
-              </ol>
-            </span>
-
-            <Sources />
-          </SpaceBetween>
+          Next, follow these steps:
+          <ol>
+            <li>In the Buckets list, choose the name of the bucket that you want.</li>
+            <li>Choose Properties.</li>
+            <li>Navigate to S3.</li>
+          </ol>
+          <Sources />
         </ChatBubble>
 
-        <ChatBubble
-          avatar={<ChatBubbleAvatarUser />}
-          backgroundColor={userChatBubbleBackgroundColor}
-          ariaLabel="User message 5"
-        >
-          <span>List all the accounts in the organization.</span>
-        </ChatBubble>
-        <Alert statusIconAriaLabel="Error" type="error" header="Access denied">
-          You don&apos;t have permissions to [AWSOrganizations:ListAccounts]. To request access, contact your AWS
-          administrator.
-        </Alert>
-
-        <ChatBubble
-          avatar={<ChatBubbleAvatarUser />}
-          backgroundColor={userChatBubbleBackgroundColor}
-          ariaLabel="User message 6"
-        >
+        <ChatBubble avatar={<ChatBubbleAvatarUser />} ariaLabel="User message 5">
           List my S3 buckets.
         </ChatBubble>
 
         <ChatBubble
           avatar={<ChatBubbleAvatarGenAI loading={true} />}
-          backgroundColor={backgroundColorGenAI}
+          color={colorGenAI}
           showLoadingBar={true}
-          ariaLabel="Gen AI message 7"
+          ariaLabel="Gen AI message 6"
         >
           <div>
             <Box color="text-body-secondary">Generating a response</Box>
           </div>
         </ChatBubble>
 
-        <ChatBubble
-          avatar={<ChatBubbleAvatarGenAI loading={true} />}
-          backgroundColor={backgroundColorGenAI}
-          inlineActions={<InlineActions />}
-          showLoadingBar={true}
-          ariaLabel="Gen AI message 8"
-        >
-          <div>
-            <Box color="text-body-secondary">Generating a response, with inline actions</Box>
-          </div>
-        </ChatBubble>
-
-        <ChatBubble
-          avatar={<ChatBubbleAvatarUser />}
-          backgroundColor={userChatBubbleBackgroundColor}
-          ariaLabel="User message 9"
-        >
+        <ChatBubble avatar={<ChatBubbleAvatarUser />} ariaLabel="User message 7">
           Long text. {longText}
         </ChatBubble>
 
         <ChatBubble
           avatar={<ChatBubbleAvatarGenAI />}
-          backgroundColor={backgroundColorGenAI}
-          inlineActions={<InlineActions />}
-          ariaLabel="Gen AI message 10"
+          color={colorGenAI}
+          actions={<Actions />}
+          ariaLabel="Gen AI message 8"
         >
           Short answer
+        </ChatBubble>
+        <ChatBubble
+          avatar={<ChatBubbleAvatarGenAI />}
+          color={colorGenAI}
+          actions={<Actions />}
+          ariaLabel="Gen AI message 9"
+          hideAvatar={true}
+        >
+          Double text
         </ChatBubble>
       </ChatContainer>
     </>

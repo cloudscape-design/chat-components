@@ -200,34 +200,34 @@ exports[`definition for chat-bubble matches the snapshot > chat-bubble 1`] = `
   "name": "ChatBubble",
   "properties": [
     {
-      "description": "Adds aria-label to the chat bubble group. Use this to provide a unique accessible name for each chat bubble on the page.
-For example, "Jane Doe, message {index}".",
+      "description": "Adds aria-label to the chat bubble group. Use this to provide a unique accessible name for each chat bubble on the page.",
       "name": "ariaLabel",
+      "optional": false,
+      "type": "string",
+    },
+    {
+      "description": "Determines the color of the chat bubble.",
+      "inlineType": {
+        "name": "ChatBubbleProps.Color",
+        "type": "union",
+        "values": [
+          "low-contrast",
+        ],
+      },
+      "name": "color",
       "optional": true,
       "type": "string",
     },
     {
-      "defaultValue": ""transparent"",
-      "description": "Background color of the chat bubble
-Questions for API review:
-- Why backgroundColor over having a variant and setting the color of bubble and avatar out of the box?
-- - Chat bubble can be used in a chat experience where there are multiple authors and each author has a different colored chat bubble.",
-      "inlineType": {
-        "name": "ChatBubbleProps.BackgroundColor",
-        "type": "union",
-        "values": [
-          "grey",
-          "transparent",
-        ],
-      },
-      "name": "backgroundColor",
+      "description": "Hides the avatar while preserving its space.
+Useful for when there are multiple consecutive messages coming from the same author.",
+      "name": "hideAvatar",
       "optional": true,
-      "type": "string",
+      "type": "boolean",
     },
     {
       "description": "Adds a loading bar to the bottom of the chat bubble. This property should only be used for Generative AI loading state.
-If avatar is being used, set its \`loading\` state to true.
-Make sure loading bar is paired with a loading text and announce the loading text using aria-live.",
+If avatar is being used, set its \`loading\` state to true.",
       "name": "showLoadingBar",
       "optional": true,
       "type": "boolean",
@@ -235,10 +235,12 @@ Make sure loading bar is paired with a loading text and announce the loading tex
   ],
   "regions": [
     {
-      "description": "Props for the avatar of the chat bubble
-Questions for API review:
-- Why is avatar included in chat bubble?
-- Why is it a slot?",
+      "description": "Actions placed at the footer of the bubble.",
+      "isDefault": false,
+      "name": "actions",
+    },
+    {
+      "description": "Slot for avatar",
       "isDefault": false,
       "name": "avatar",
     },
@@ -246,16 +248,6 @@ Questions for API review:
       "description": "Content of the chat bubble",
       "isDefault": true,
       "name": "children",
-    },
-    {
-      "description": "Actions such as buttons placed at the footer of the bubble
-Questions for API review:
-- Maybe a different name for it?
-- - footerActions?
-- Why slot? It could be a part of the content rendered by customer?
-- - Even though we'll suggest customers to use button-group for this slot, they may want to render a different kind of button or control.",
-      "isDefault": false,
-      "name": "inlineActions",
     },
   ],
   "releaseStatus": "stable",

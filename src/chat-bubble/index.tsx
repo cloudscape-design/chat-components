@@ -7,10 +7,10 @@ import InternalChatBubble from "./internal";
 
 export type { ChatBubbleProps };
 
-export default function ChatBubble({ backgroundColor = "transparent", ...props }: ChatBubbleProps) {
+export default function ChatBubble({ color, ...props }: ChatBubbleProps) {
   const baseComponentProps = useBaseComponent("ChatBubble", {
-    props: { backgroundColor },
+    props: { color },
   });
-  return <InternalChatBubble backgroundColor={backgroundColor} {...props} {...baseComponentProps} />;
+  return <InternalChatBubble color={color} {...props} {...baseComponentProps} />;
 }
 applyDisplayName(ChatBubble, "ChatBubble");

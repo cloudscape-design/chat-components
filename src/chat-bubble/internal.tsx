@@ -12,11 +12,12 @@ import styles from "./styles.css.js";
 export interface InternalChatBubbleProps extends ChatBubbleProps, InternalBaseComponentProps {}
 
 export default function InternalChatBubble({
-  backgroundColor,
+  color,
   children,
   avatar,
-  inlineActions,
+  actions,
   showLoadingBar,
+  hideAvatar,
   ariaLabel,
   __internalRootRef = null,
   ...rest
@@ -29,17 +30,21 @@ export default function InternalChatBubble({
       role="group"
       aria-label={ariaLabel}
     >
-      {avatar && <div className={styles.avatar}>{avatar}</div>}
+      {avatar && (
+        // `inert` is used to prevent any interactions with the avatar when it's hidden.
+        // It is added by spreading object because it doesn't exist in react types yet.
+        <div className={clsx(styles.avatar, hideAvatar && styles.hide)} {...{ inert: hideAvatar ? "" : undefined }}>
+          {avatar}
+        </div>
+      )}
 
-      <div className={clsx(styles.bubble, styles[`chat-bubble-bg-${backgroundColor}`])}>
-        <div
-          className={clsx(styles["content-container"], showLoadingBar && !inlineActions && styles["has-loading-bar"])}
-        >
+      <div className={clsx(styles.bubble, color && styles[`chat-bubble-color-${color}`])}>
+        <div className={clsx(styles["content-container"], showLoadingBar && !actions && styles["has-loading-bar"])}>
           <div className={styles.content}>{children}</div>
 
           {showLoadingBar && <InternalLoadingBar variant="gen-ai-masked" />}
 
-          {inlineActions && <div className={styles["inline-actions"]}>{inlineActions}</div>}
+          {actions && <div className={styles.actions}>{actions}</div>}
         </div>
       </div>
     </div>

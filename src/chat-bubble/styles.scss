@@ -21,18 +21,20 @@
 }
 
 .bubble {
-  &.chat-bubble-bg-transparent {
-    background-color: transparent;
-  }
+  background-color: transparent;
 
-  &.chat-bubble-bg-grey {
-    background-color: #f2f3f3;
+  &.chat-bubble-color-low-contrast {
+    background-color: #f2f3f3; // to be design token
   }
 }
 
 .avatar {
   padding-block-start: 8px;
   padding-block-end: 8px;
+
+  &.hide {
+    opacity: 0;
+  }
 }
 
 .content-container {
@@ -43,10 +45,9 @@
 
   &.has-loading-bar {
     padding-bottom: 0;
-    gap: 9px; // todo: confirm if 9px is okay, needed to align the loadig bar with the bottom border of bubble
   }
 }
 
-.inline-actions {
-  /* Used for testing */
+.actions {
+  /* Used in test utils */
 }

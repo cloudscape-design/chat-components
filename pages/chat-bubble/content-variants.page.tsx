@@ -16,7 +16,7 @@ import StatusIndicator from "@cloudscape-design/components/status-indicator";
 import Table, { TableProps } from "@cloudscape-design/components/table";
 
 import { ChatBubble } from "../../lib/components";
-import { ChatBubbleAvatarGenAI, ChatContainer, InlineActions } from "./util-components";
+import { Actions, ChatBubbleAvatarGenAI, ChatContainer } from "./util-components";
 
 export default function ChatBubblesContentVariantsPage() {
   return (
@@ -305,7 +305,7 @@ export default function ChatBubblesContentVariantsPage() {
 
 function GenAIChatBubble({ children }: { children: React.ReactNode }) {
   return (
-    <ChatBubble avatar={<ChatBubbleAvatarGenAI />} backgroundColor="grey" inlineActions={<InlineActions />}>
+    <ChatBubble avatar={<ChatBubbleAvatarGenAI />} color="low-contrast" actions={<Actions />} ariaLabel="Message">
       <SpaceBetween size="s">{children}</SpaceBetween>
     </ChatBubble>
   );
