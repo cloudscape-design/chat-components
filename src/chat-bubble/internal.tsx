@@ -12,11 +12,11 @@ import styles from "./styles.css.js";
 export interface InternalChatBubbleProps extends ChatBubbleProps, InternalBaseComponentProps {}
 
 export default function InternalChatBubble({
-  color,
+  type,
   children,
   avatar,
   actions,
-  showLoadingBar,
+  isGeneratingContent,
   hideAvatar,
   ariaLabel,
   __internalRootRef = null,
@@ -38,14 +38,16 @@ export default function InternalChatBubble({
         </div>
       )}
 
-      <div className={clsx(styles.bubble, color && styles[`chat-bubble-color-${color}`])}>
-        <div className={clsx(styles["content-container"], showLoadingBar && !actions && styles["has-loading-bar"])}>
-          <div className={styles.content}>{children}</div>
+      <div
+        className={clsx(styles.bubble, styles[`chat-bubble-type-${type}`], {
+          [styles["generating-content-indicator-bottom"]]: isGeneratingContent && !actions,
+        })}
+      >
+        <div className={styles.content}>{children}</div>
 
-          {showLoadingBar && <InternalLoadingBar variant="gen-ai-masked" />}
+        {isGeneratingContent && <InternalLoadingBar variant="gen-ai-masked" />}
 
-          {actions && <div className={styles.actions}>{actions}</div>}
-        </div>
+        {actions && <div className={styles.actions}>{actions}</div>}
       </div>
     </div>
   );

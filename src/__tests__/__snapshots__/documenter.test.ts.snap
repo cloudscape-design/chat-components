@@ -200,22 +200,9 @@ exports[`definition for chat-bubble matches the snapshot > chat-bubble 1`] = `
   "name": "ChatBubble",
   "properties": [
     {
-      "description": "Adds aria-label to the chat bubble group. Use this to provide a unique accessible name for each chat bubble on the page.",
+      "description": "Adds aria-label to the chat bubble container. Use this to provide a unique accessible name for each chat bubble on the page.",
       "name": "ariaLabel",
       "optional": false,
-      "type": "string",
-    },
-    {
-      "description": "Determines the color of the chat bubble.",
-      "inlineType": {
-        "name": "ChatBubbleProps.Color",
-        "type": "union",
-        "values": [
-          "low-contrast",
-        ],
-      },
-      "name": "color",
-      "optional": true,
       "type": "string",
     },
     {
@@ -228,19 +215,34 @@ Useful for when there are multiple consecutive messages coming from the same aut
     {
       "description": "Adds a loading bar to the bottom of the chat bubble. This property should only be used for Generative AI loading state.
 If avatar is being used, set its \`loading\` state to true.",
-      "name": "showLoadingBar",
+      "name": "isGeneratingContent",
       "optional": true,
       "type": "boolean",
+    },
+    {
+      "defaultValue": ""sent"",
+      "description": "Defines the type of the chat bubble and sets its color accordingly.",
+      "inlineType": {
+        "name": "ChatBubbleProps.Type",
+        "type": "union",
+        "values": [
+          "sent",
+          "received",
+        ],
+      },
+      "name": "type",
+      "optional": true,
+      "type": "string",
     },
   ],
   "regions": [
     {
-      "description": "Actions placed at the footer of the bubble.",
+      "description": "Actions slot of chat bubble, placed at bottom left.",
       "isDefault": false,
       "name": "actions",
     },
     {
-      "description": "Slot for avatar",
+      "description": "Avatar slot paired with the chat bubble.",
       "isDefault": false,
       "name": "avatar",
     },

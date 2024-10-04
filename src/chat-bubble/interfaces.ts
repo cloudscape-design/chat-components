@@ -2,25 +2,25 @@
 // SPDX-License-Identifier: Apache-2.0
 
 export interface ChatBubbleProps {
-  /** Slot for avatar */
-  avatar?: React.ReactNode;
+  /** Avatar slot paired with the chat bubble. */
+  avatar: React.ReactNode;
 
-  /** Determines the color of the chat bubble.  */
-  color?: ChatBubbleProps.Color;
+  /** Defines the type of the chat bubble and sets its color accordingly.  */
+  type?: ChatBubbleProps.Type;
 
   /** Content of the chat bubble */
   children: React.ReactNode;
 
-  /** Actions placed at the footer of the bubble. */
+  /** Actions slot of chat bubble, placed at bottom left. */
   actions?: React.ReactNode;
 
   /**
    * Adds a loading bar to the bottom of the chat bubble. This property should only be used for Generative AI loading state.
    * If avatar is being used, set its `loading` state to true.
    */
-  showLoadingBar?: boolean;
+  isGeneratingContent?: boolean;
 
-  /** Adds aria-label to the chat bubble group. Use this to provide a unique accessible name for each chat bubble on the page. */
+  /** Adds aria-label to the chat bubble container. Use this to provide a unique accessible name for each chat bubble on the page. */
   ariaLabel: string;
 
   /**
@@ -31,5 +31,5 @@ export interface ChatBubbleProps {
 }
 
 export namespace ChatBubbleProps {
-  export type Color = "low-contrast";
+  export type Type = "sent" | "received";
 }

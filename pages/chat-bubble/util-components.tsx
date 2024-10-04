@@ -3,8 +3,6 @@
 import { useState } from "react";
 
 import ButtonGroup from "@cloudscape-design/components/button-group";
-import ExpandableSection from "@cloudscape-design/components/expandable-section";
-import Link from "@cloudscape-design/components/link";
 import StatusIndicator from "@cloudscape-design/components/status-indicator";
 
 import { Avatar } from "../../lib/components";
@@ -75,23 +73,6 @@ export function Actions() {
         },
       ]}
     />
-  );
-}
-
-export function Sources() {
-  return (
-    <ExpandableSection headerText="Sources">
-      <div>
-        <Link href="https://cloudscape.aws.dev/components/link?tabId=playground&example=external-link">
-          Example link
-        </Link>
-      </div>
-      <div>
-        <Link href="https://cloudscape.aws.dev/components/link?tabId=playground&example=external-link">
-          Example link 2
-        </Link>
-      </div>
-    </ExpandableSection>
   );
 }
 

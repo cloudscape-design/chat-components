@@ -7,12 +7,8 @@ import Box from "@cloudscape-design/components/box";
 import Container from "@cloudscape-design/components/container";
 import CopyToClipboard from "@cloudscape-design/components/copy-to-clipboard";
 import ExpandableSection from "@cloudscape-design/components/expandable-section";
-import KeyValuePairs from "@cloudscape-design/components/key-value-pairs";
 import Link from "@cloudscape-design/components/link";
-import ProgressBar from "@cloudscape-design/components/progress-bar";
-import Slider from "@cloudscape-design/components/slider";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import StatusIndicator from "@cloudscape-design/components/status-indicator";
+import Steps from "@cloudscape-design/components/steps";
 import Table, { TableProps } from "@cloudscape-design/components/table";
 
 import { ChatBubble } from "../../lib/components";
@@ -23,8 +19,28 @@ export default function ChatBubblesContentVariantsPage() {
     <>
       <h1>Content variants in chat bubble</h1>
 
-      <h2>Table</h2>
       <ChatContainer>
+        <GenAIChatBubble>
+          Expandable section and list
+          <ol>
+            <li>In the Buckets list, choose the name of the bucket that you want.</li>
+            <li>Choose Properties.</li>
+            <li>Navigate to S3.</li>
+          </ol>
+          <ExpandableSection headerText="Sources" defaultExpanded={true}>
+            <div>
+              <Link href="https://cloudscape.aws.dev/components/link?tabId=playground&example=external-link">
+                Example link
+              </Link>
+            </div>
+            <div>
+              <Link href="https://cloudscape.aws.dev/components/link?tabId=playground&example=external-link">
+                Example link 2
+              </Link>
+            </div>
+          </ExpandableSection>
+        </GenAIChatBubble>
+
         <GenAIChatBubble>
           <span>Table with default variant</span>
 
@@ -32,61 +48,9 @@ export default function ChatBubblesContentVariantsPage() {
         </GenAIChatBubble>
 
         <GenAIChatBubble>
-          <span>Table with default variant, inside an expandable section with default variant</span>
-
-          <ExpandableSection headerText="Data in table" defaultExpanded={true}>
-            <ChatBubbleTable />
-          </ExpandableSection>
-        </GenAIChatBubble>
-
-        <GenAIChatBubble>
-          <span>Table with embedded variant, inside an expandable section with container variant</span>
-
-          <ExpandableSection variant="container" headerText="Data in table" defaultExpanded={true}>
-            <ChatBubbleTable variant="embedded" />
-          </ExpandableSection>
-        </GenAIChatBubble>
-      </ChatContainer>
-
-      <h2>Charts</h2>
-      <ChatContainer>
-        <GenAIChatBubble>
           <span>Bar chart</span>
 
           <ChatBubbleChart />
-        </GenAIChatBubble>
-
-        <GenAIChatBubble>
-          <span>Bar chart, inside container</span>
-
-          <Container>
-            <ChatBubbleChart />
-          </Container>
-        </GenAIChatBubble>
-
-        <GenAIChatBubble>
-          <span>Bar chart, inside expandable section with default variant</span>
-
-          <ExpandableSection headerText="Data in chart" defaultExpanded={true}>
-            <ChatBubbleChart />
-          </ExpandableSection>
-        </GenAIChatBubble>
-
-        <GenAIChatBubble>
-          <span>Bar chart, inside expandable section with container variant</span>
-
-          <ExpandableSection variant="container" headerText="Data in chart" defaultExpanded={true}>
-            <ChatBubbleChart />
-          </ExpandableSection>
-        </GenAIChatBubble>
-      </ChatContainer>
-
-      <h2>Code view</h2>
-      <ChatContainer>
-        <GenAIChatBubble>
-          <span>Code view</span>
-
-          <ChatBubbleCodeView />
         </GenAIChatBubble>
 
         <GenAIChatBubble>
@@ -98,205 +62,20 @@ export default function ChatBubblesContentVariantsPage() {
         </GenAIChatBubble>
 
         <GenAIChatBubble>
-          <span>Code view, inside an expandable section with default variant</span>
+          <span>Steps</span>
 
-          <ExpandableSection headerText="Data in code view" defaultExpanded={true}>
-            <ChatBubbleCodeView />
-          </ExpandableSection>
-        </GenAIChatBubble>
-
-        <GenAIChatBubble>
-          <span>Code view, inside an expandable section with container variant</span>
-
-          <ExpandableSection variant="container" headerText="Data in code view" defaultExpanded={true}>
-            <ChatBubbleCodeView />
-          </ExpandableSection>
-        </GenAIChatBubble>
-      </ChatContainer>
-
-      <h2>Rest</h2>
-
-      <ChatContainer>
-        <GenAIChatBubble>
-          <span>Status indicator with different types</span>
-
-          <StatusIndicator type="error">Error</StatusIndicator>
-          <StatusIndicator type="warning">Warning</StatusIndicator>
-          <StatusIndicator type="success">Success</StatusIndicator>
-          <StatusIndicator type="pending">Pending</StatusIndicator>
-          <StatusIndicator type="stopped">Stopped</StatusIndicator>
-        </GenAIChatBubble>
-
-        <GenAIChatBubble>
-          <span>Status indicator with different types in container</span>
-
-          <Container>
-            <SpaceBetween size="s">
-              <StatusIndicator type="error">Error</StatusIndicator>
-              <StatusIndicator type="warning">Warning</StatusIndicator>
-              <StatusIndicator type="success">Success</StatusIndicator>
-              <StatusIndicator type="pending">Pending</StatusIndicator>
-              <StatusIndicator type="stopped">Stopped</StatusIndicator>
-            </SpaceBetween>
-          </Container>
-        </GenAIChatBubble>
-
-        <GenAIChatBubble>
-          <span>Progress bar</span>
-
-          <ProgressBar
-            value={30}
-            additionalInfo="Additional information"
-            description="Progress bar description"
-            ariaLabelledby="ssl-certificate-id"
-          />
-        </GenAIChatBubble>
-
-        <GenAIChatBubble>
-          <span>Progress bar in container</span>
-
-          <Container>
-            <ProgressBar
-              value={30}
-              additionalInfo="Additional information"
-              description="Progress bar description"
-              ariaLabelledby="ssl-certificate-id"
-            />
-          </Container>
-        </GenAIChatBubble>
-
-        <GenAIChatBubble>
-          <span>Key-value pair</span>
-
-          <KeyValuePairs
-            columns={3}
-            items={[
-              {
-                label: "Distribution ID",
-                value: "E1WG1ZNPRXT0D4",
-                info: (
-                  <Link variant="info" href="#">
-                    Info
-                  </Link>
-                ),
-              },
-              {
-                label: "ARN",
-                value: (
-                  <CopyToClipboard
-                    copyButtonAriaLabel="Copy ARN"
-                    copyErrorText="ARN failed to copy"
-                    copySuccessText="ARN copied"
-                    textToCopy="arn:service23G24::111122223333:distribution/23E1WG1ZNPRXT0D4"
-                    variant="inline"
-                  />
-                ),
-              },
-              {
-                label: "Status",
-                value: <StatusIndicator>Available</StatusIndicator>,
-              },
-              {
-                label: "SSL Certificate",
-                id: "ssl-certificate-id",
-                value: (
-                  <ProgressBar
-                    value={30}
-                    additionalInfo="Additional information"
-                    description="Progress bar description"
-                    ariaLabelledby="ssl-certificate-id"
-                  />
-                ),
-              },
-              {
-                label: "Price class",
-                value: "Use only US, Canada, Europe",
-              },
-              {
-                label: "CNAMEs",
-                value: (
-                  <Link external={true} href="#">
-                    abc.service23G24.xyz
-                  </Link>
-                ),
-              },
+          <Steps
+            steps={[
+              { status: "success", header: "Success step" },
+              { status: "info", header: "Info step" },
+              { status: "warning", header: "Warning step" },
+              { status: "error", header: "Error step" },
+              { status: "loading", header: "Loading step" },
+              { status: "in-progress", header: "In progress step" },
+              { status: "pending", header: "Pending step" },
+              { status: "stopped", header: "Stopped step" },
             ]}
           />
-        </GenAIChatBubble>
-
-        <GenAIChatBubble>
-          <span>Key-value pair in container</span>
-
-          <Container>
-            <KeyValuePairs
-              columns={3}
-              items={[
-                {
-                  label: "Distribution ID",
-                  value: "E1WG1ZNPRXT0D4",
-                  info: (
-                    <Link variant="info" href="#">
-                      Info
-                    </Link>
-                  ),
-                },
-                {
-                  label: "ARN",
-                  value: (
-                    <CopyToClipboard
-                      copyButtonAriaLabel="Copy ARN"
-                      copyErrorText="ARN failed to copy"
-                      copySuccessText="ARN copied"
-                      textToCopy="arn:service23G24::111122223333:distribution/23E1WG1ZNPRXT0D4"
-                      variant="inline"
-                    />
-                  ),
-                },
-                {
-                  label: "Status",
-                  value: <StatusIndicator>Available</StatusIndicator>,
-                },
-                {
-                  label: "SSL Certificate",
-                  id: "ssl-certificate-id",
-                  value: (
-                    <ProgressBar
-                      value={30}
-                      additionalInfo="Additional information"
-                      description="Progress bar description"
-                      ariaLabelledby="ssl-certificate-id"
-                    />
-                  ),
-                },
-                {
-                  label: "Price class",
-                  value: "Use only US, Canada, Europe",
-                },
-                {
-                  label: "CNAMEs",
-                  value: (
-                    <Link external={true} href="#">
-                      abc.service23G24.xyz
-                    </Link>
-                  ),
-                },
-              ]}
-            />
-          </Container>
-        </GenAIChatBubble>
-
-        <GenAIChatBubble>
-          <span>Slider</span>
-
-          <Slider max={100} min={0} />
-        </GenAIChatBubble>
-
-        <GenAIChatBubble>
-          <span>Slider in container</span>
-
-          <Container>
-            <Slider max={100} min={0} />
-          </Container>
         </GenAIChatBubble>
       </ChatContainer>
     </>
@@ -305,8 +84,8 @@ export default function ChatBubblesContentVariantsPage() {
 
 function GenAIChatBubble({ children }: { children: React.ReactNode }) {
   return (
-    <ChatBubble avatar={<ChatBubbleAvatarGenAI />} color="low-contrast" actions={<Actions />} ariaLabel="Message">
-      <SpaceBetween size="s">{children}</SpaceBetween>
+    <ChatBubble avatar={<ChatBubbleAvatarGenAI />} type="received" actions={<Actions />} ariaLabel="Message">
+      {children}
     </ChatBubble>
   );
 }
