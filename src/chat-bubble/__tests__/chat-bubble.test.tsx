@@ -12,8 +12,8 @@ import createWrapper from "../../../lib/components/test-utils/dom";
 
 import styles from "../../../lib/components/chat-bubble/styles.selectors.js";
 
-function renderChatBubble(props: Partial<ChatBubbleProps>) {
-  const { container } = render(<ChatBubble type="sent" ariaLabel="Chat bubble" {...props} />);
+function renderChatBubble(props: ChatBubbleProps) {
+  const { container } = render(<ChatBubble {...props} />);
 
   return createWrapper(container).findChatBubble()!;
 }
@@ -25,6 +25,7 @@ describe("Chat bubble", () => {
 
   test("Can access slots and elements inside", () => {
     const wrapper = renderChatBubble({
+      type: "sent",
       avatar: <Avatar ariaLabel="Avatar" />,
       children: (
         <>
@@ -32,6 +33,7 @@ describe("Chat bubble", () => {
           <ExpandableSection headerText="Sources">Sources</ExpandableSection>
         </>
       ),
+      ariaLabel: "Chat bubble",
       actions: (
         <ButtonGroup
           variant="icon"
@@ -66,8 +68,10 @@ describe("Chat bubble", () => {
 
   test("Can access generating content indicator", () => {
     const wrapper = renderChatBubble({
+      type: "sent",
       avatar: <Avatar ariaLabel="Avatar" />,
       children: "Test content",
+      ariaLabel: "Chat bubble",
       isGeneratingContent: true,
     });
 
@@ -76,15 +80,19 @@ describe("Chat bubble", () => {
 
   test("Hides the avatar", () => {
     const withVisibleAvatar = renderChatBubble({
+      type: "sent",
       avatar: <Avatar ariaLabel="Avatar" />,
       children: "Test content",
+      ariaLabel: "Chat bubble",
     });
     expect(withVisibleAvatar.findAvatarSlot()?.getElement()).not.toHaveClass(styles.hide);
     expect(withVisibleAvatar.findAvatarSlot()?.getElement()).not.toHaveAttribute("inert");
 
     const withHiddenAvatar = renderChatBubble({
+      type: "sent",
       avatar: <Avatar ariaLabel="Avatar" />,
       children: "Test content",
+      ariaLabel: "Chat bubble",
       hideAvatar: true,
     });
 
