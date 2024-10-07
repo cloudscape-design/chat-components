@@ -8,8 +8,9 @@ import ExpandableSection from "@cloudscape-design/components/expandable-section"
 
 import { Avatar } from "../../../lib/components";
 import ChatBubble, { ChatBubbleProps } from "../../../lib/components/chat-bubble";
-import styles from "../../../lib/components/chat-bubble/styles.selectors";
 import createWrapper from "../../../lib/components/test-utils/dom";
+
+import styles from "../../../lib/components/chat-bubble/styles.selectors.js";
 
 function renderChatBubble(props: ChatBubbleProps) {
   const { container } = render(<ChatBubble {...props} />);
