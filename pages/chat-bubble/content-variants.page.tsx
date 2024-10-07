@@ -1,11 +1,10 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import CodeView from "@cloudscape-design/code-view/code-view";
+// import CodeView from "@cloudscape-design/code-view/code-view";
 import BarChart from "@cloudscape-design/components/bar-chart";
 import Box from "@cloudscape-design/components/box";
-import Container from "@cloudscape-design/components/container";
-import CopyToClipboard from "@cloudscape-design/components/copy-to-clipboard";
+// import Container from "@cloudscape-design/components/container";
 import ExpandableSection from "@cloudscape-design/components/expandable-section";
 import Link from "@cloudscape-design/components/link";
 import Steps from "@cloudscape-design/components/steps";
@@ -53,13 +52,13 @@ export default function ChatBubblesContentVariantsPage() {
           <ChatBubbleChart />
         </GenAIChatBubble>
 
-        <GenAIChatBubble>
+        {/* <GenAIChatBubble>
           <span>Code view, inside container</span>
 
           <Container>
             <ChatBubbleCodeView />
           </Container>
-        </GenAIChatBubble>
+        </GenAIChatBubble> */}
 
         <GenAIChatBubble>
           <span>Steps</span>
@@ -252,21 +251,21 @@ function ChatBubbleChart() {
   );
 }
 
-function ChatBubbleCodeView() {
-  return (
-    <CodeView
-      content='const hello: string = "world";
-  console.log(hello);'
-      lineNumbers={true}
-      actions={
-        <CopyToClipboard
-          copyButtonAriaLabel="Copy code"
-          copyErrorText="Code failed to copy"
-          copySuccessText="Code copied"
-          textToCopy='const hello: string = "world";
-  console.log(hello);'
-        />
-      }
-    />
-  );
-}
+// function ChatBubbleCodeView() {
+//   return (
+//     <CodeView
+//       content='const hello: string = "world";
+//   console.log(hello);'
+//       lineNumbers={true}
+//       actions={
+//         <CopyToClipboard
+//           copyButtonAriaLabel="Copy code"
+//           copyErrorText="Code failed to copy"
+//           copySuccessText="Code copied"
+//           textToCopy='const hello: string = "world";
+//   console.log(hello);'
+//         />
+//       }
+//     />
+//   );
+// }
