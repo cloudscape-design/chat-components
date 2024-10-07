@@ -6,7 +6,7 @@ export interface ChatBubbleProps {
   avatar: React.ReactNode;
 
   /** Defines the type of the chat bubble and sets its color accordingly.  */
-  type?: ChatBubbleProps.Type;
+  type: ChatBubbleProps.Type;
 
   /** Content of the chat bubble */
   children: React.ReactNode;

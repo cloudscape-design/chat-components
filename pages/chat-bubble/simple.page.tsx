@@ -15,7 +15,7 @@ export default function ChatBubblePage() {
 
       <TestBed>
         <ChatContainer>
-          <ChatBubble avatar={<ChatBubbleAvatarUser />} ariaLabel="User at 4:23:20pm">
+          <ChatBubble type="sent" avatar={<ChatBubbleAvatarUser />} ariaLabel="User at 4:23:20pm">
             What can I do with Amazon S3?
           </ChatBubble>
           <ChatBubble avatar={<ChatBubbleAvatarGenAI />} type="received" ariaLabel="Gen AI at at 4:23:23pm">
@@ -23,7 +23,7 @@ export default function ChatBubblePage() {
             at any time, from anywhere.
           </ChatBubble>
 
-          <ChatBubble avatar={<ChatBubbleAvatarUser />} ariaLabel="User at 4:25:00pm">
+          <ChatBubble type="sent" avatar={<ChatBubbleAvatarUser />} ariaLabel="User at 4:25:00pm">
             Long text. {longText}
           </ChatBubble>
 
