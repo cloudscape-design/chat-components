@@ -1,0 +1,59 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+@use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
+@use "../internal/shared" as shared;
+
+.root {
+  @include shared.styles-reset;
+
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+
+  color: cs.$color-text-body-default; // to be design token
+  font-family: cs.$font-family-base;
+  font-size: cs.$font-size-body-m; // should we include this? or does the customer define this?
+  line-height: 22px; // same for this one? do we define or let customer define?
+}
+
+.bubble {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+
+  border-start-start-radius: 2px;
+  border-start-end-radius: 2px;
+  border-end-start-radius: 2px;
+  border-end-end-radius: 2px;
+
+  &.generating-content-indicator-bottom {
+    padding-block-end: 0;
+  }
+
+  &.chat-bubble-type-sent {
+    background-color: transparent; // to be design token
+  }
+
+  &.chat-bubble-type-received {
+    background-color: #f2f3f3; // to be design token
+  }
+}
+
+.avatar {
+  padding-block: 8px;
+
+  &.hide {
+    opacity: 0;
+  }
+}
+
+.content {
+  /* Used in test utils */
+}
+
+.actions {
+  /* Used in test utils */
+}
