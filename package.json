@@ -117,6 +117,9 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ],
+    "*.{scss,css}": [
+      "stylelint --fix"
+    ],    
     "package-lock.json": [
       "./scripts/prepare-package-lock.js"
     ]
