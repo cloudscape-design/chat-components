@@ -3,8 +3,8 @@
  SPDX-License-Identifier: Apache-2.0
 */
 @use "../../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
-@use '../mixins.scss' as mixins;
-@use './motion.scss';
+@use "../mixins.scss" as mixins;
+@use "./motion";
 
 $dot-size: 4px;
 
