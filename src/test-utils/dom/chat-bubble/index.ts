@@ -24,6 +24,6 @@ export default class ChatBubbleWrapper extends ComponentWrapper {
   }
 
   findGeneratingContentIndicator(): LoadingBarWrapper | null {
-    return this.findComponent(`.${chatBubbleStyles.bubble} .${loadingBarStyles.root}`, LoadingBarWrapper);
+    return this.findComponent(`.${chatBubbleStyles["message-area"]} .${loadingBarStyles.root}`, LoadingBarWrapper);
   }
 }
