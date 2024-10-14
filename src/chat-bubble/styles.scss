@@ -10,21 +10,21 @@
 
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 8px; // to be design token?
 
   color: cs.$color-text-body-default; // to be design token
   font-family: cs.$font-family-base;
   font-size: cs.$font-size-body-m; // should we include this? or does the customer define this?
-  line-height: 22px; // same for this one? do we define or let customer define?
+  line-height: 22px; // to be design token?
 }
 
-.bubble {
+.message-area {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 12px;
+  gap: 12px; // to be design token?
+  padding: 12px; // to be design token?
 
-  border-start-start-radius: 2px;
+  border-start-start-radius: 2px; // to be design token?
   border-start-end-radius: 2px;
   border-end-start-radius: 2px;
   border-end-end-radius: 2px;
@@ -33,17 +33,17 @@
     padding-block-end: 0;
   }
 
-  &.chat-bubble-type-sent {
+  &.chat-bubble-type-outgoing {
     background-color: transparent; // to be design token
   }
 
-  &.chat-bubble-type-received {
+  &.chat-bubble-type-incoming {
     background-color: #f2f3f3; // to be design token
   }
 }
 
 .avatar {
-  padding-block: 8px;
+  padding-block: 8px; // to be design token?
 
   &.hide {
     opacity: 0;

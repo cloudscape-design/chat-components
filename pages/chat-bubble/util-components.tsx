@@ -77,7 +77,7 @@ export function Actions() {
 }
 
 interface ChatContainerProps {
-  children: string | JSX.Element | JSX.Element[];
+  children: React.ReactNode;
 }
 export function ChatContainer({ children }: ChatContainerProps) {
   return (

@@ -220,14 +220,13 @@ If avatar is being used, set its \`loading\` state to true.",
       "type": "boolean",
     },
     {
-      "defaultValue": ""sent"",
       "description": "Defines the type of the chat bubble and sets its color accordingly.",
       "inlineType": {
         "name": "ChatBubbleProps.Type",
         "type": "union",
         "values": [
-          "sent",
-          "received",
+          "incoming",
+          "outgoing",
         ],
       },
       "name": "type",
@@ -237,7 +236,7 @@ If avatar is being used, set its \`loading\` state to true.",
   ],
   "regions": [
     {
-      "description": "Actions slot of chat bubble, placed at bottom left.",
+      "description": "Actions slot of the chat bubble, placed at the bottom left.",
       "isDefault": false,
       "name": "actions",
     },

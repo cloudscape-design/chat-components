@@ -73,7 +73,7 @@ export default function ChatBubblesContentVariantsPage() {
 
 function GenAIChatBubble({ children }: { children: React.ReactNode }) {
   return (
-    <ChatBubble avatar={<ChatBubbleAvatarGenAI />} type="received" actions={<Actions />} ariaLabel="Message">
+    <ChatBubble avatar={<ChatBubbleAvatarGenAI />} type="incoming" actions={<Actions />} ariaLabel="Message">
       {children}
     </ChatBubble>
   );
@@ -240,22 +240,3 @@ function ChatBubbleChart() {
     />
   );
 }
-
-// function ChatBubbleCodeView() {
-//   return (
-//     <CodeView
-//       content='const hello: string = "world";
-//   console.log(hello);'
-//       lineNumbers={true}
-//       actions={
-//         <CopyToClipboard
-//           copyButtonAriaLabel="Copy code"
-//           copyErrorText="Code failed to copy"
-//           copySuccessText="Code copied"
-//           textToCopy='const hello: string = "world";
-//   console.log(hello);'
-//         />
-//       }
-//     />
-//   );
-// }

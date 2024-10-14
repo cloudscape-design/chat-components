@@ -11,7 +11,7 @@ export interface ChatBubbleProps {
   /** Content of the chat bubble */
   children: React.ReactNode;
 
-  /** Actions slot of chat bubble, placed at bottom left. */
+  /** Actions slot of the chat bubble, placed at the bottom left. */
   actions?: React.ReactNode;
 
   /**
@@ -31,5 +31,5 @@ export interface ChatBubbleProps {
 }
 
 export namespace ChatBubbleProps {
-  export type Type = "sent" | "received";
+  export type Type = "incoming" | "outgoing";
 }

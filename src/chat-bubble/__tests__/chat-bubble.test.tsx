@@ -10,8 +10,6 @@ import { Avatar } from "../../../lib/components";
 import ChatBubble, { ChatBubbleProps } from "../../../lib/components/chat-bubble";
 import createWrapper from "../../../lib/components/test-utils/dom";
 
-import styles from "../../../lib/components/chat-bubble/styles.selectors.js";
-
 function renderChatBubble(props: ChatBubbleProps) {
   const { container } = render(<ChatBubble {...props} />);
 
@@ -25,7 +23,7 @@ describe("Chat bubble", () => {
 
   test("Can access slots and elements inside", () => {
     const wrapper = renderChatBubble({
-      type: "sent",
+      type: "outgoing",
       avatar: <Avatar ariaLabel="Avatar" />,
       children: (
         <>
@@ -61,44 +59,44 @@ describe("Chat bubble", () => {
       ),
     });
 
-    expect(wrapper.findAvatarSlot()?.findAvatar()?.getElement()).toBeVisible();
-    expect(wrapper.findContentSlot()?.findExpandableSection()?.getElement()).toBeVisible();
-    expect(wrapper.findActionsSlot()?.findButtonGroup()?.getElement()).toBeVisible();
+    expect(wrapper.findAvatarSlot()!.findAvatar()!.getElement()).toBeVisible();
+    expect(wrapper.findContentSlot()!.findExpandableSection()!.getElement()).toBeVisible();
+    expect(wrapper.findActionsSlot()!.findButtonGroup()!.getElement()).toBeVisible();
   });
 
   test("Can access generating content indicator", () => {
     const wrapper = renderChatBubble({
-      type: "sent",
+      type: "outgoing",
       avatar: <Avatar ariaLabel="Avatar" />,
       children: "Test content",
       ariaLabel: "Chat bubble",
       isGeneratingContent: true,
     });
 
-    expect(wrapper.findGeneratingContentIndicator()?.getElement()).toBeVisible();
+    expect(wrapper.findGeneratingContentIndicator()!.getElement()).toBeVisible();
   });
 
-  test("Hides the avatar", () => {
-    const withVisibleAvatar = renderChatBubble({
-      type: "sent",
+  test("Generating content indicator is null when set to false", () => {
+    const wrapper = renderChatBubble({
+      type: "outgoing",
       avatar: <Avatar ariaLabel="Avatar" />,
       children: "Test content",
       ariaLabel: "Chat bubble",
+      isGeneratingContent: false,
     });
-    expect(withVisibleAvatar.findAvatarSlot()?.getElement()).not.toHaveClass(styles.hide);
-    expect(withVisibleAvatar.findAvatarSlot()?.getElement()).not.toHaveAttribute("inert");
 
-    const withHiddenAvatar = renderChatBubble({
-      type: "sent",
+    expect(wrapper.findGeneratingContentIndicator()).toBeNull();
+  });
+
+  test("Hides the avatar", () => {
+    const wrapper = renderChatBubble({
+      type: "outgoing",
       avatar: <Avatar ariaLabel="Avatar" />,
       children: "Test content",
       ariaLabel: "Chat bubble",
       hideAvatar: true,
     });
 
-    // Even though `hide` class adds opacity 0, test doesn't detect it unless it's added directly to the div
-    // so testing the class existence instead of visibility
-    expect(withHiddenAvatar.findAvatarSlot()?.getElement()).toHaveClass(styles.hide);
-    expect(withHiddenAvatar.findAvatarSlot()?.getElement()).toHaveAttribute("inert");
+    expect(wrapper.findAvatarSlot()).toBeNull();
   });
 });

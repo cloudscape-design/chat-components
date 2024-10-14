@@ -11,7 +11,8 @@ export default class ChatBubbleWrapper extends ComponentWrapper {
   static rootSelector: string = chatBubbleStyles.root;
 
   findAvatarSlot(): ElementWrapper | null {
-    return this.findByClassName(chatBubbleStyles.avatar);
+    const isAvatarHidden = !!this.find(`.${chatBubbleStyles.avatar}.${chatBubbleStyles.hide}`);
+    return isAvatarHidden ? null : this.findByClassName(chatBubbleStyles.avatar);
   }
 
   findContentSlot(): ElementWrapper | null {

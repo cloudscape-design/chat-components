@@ -33,13 +33,13 @@ export default function InternalChatBubble({
       {avatar && (
         // `inert` is used to prevent any interactions with the avatar when it's hidden.
         // It is added by spreading object because it doesn't exist in react types yet.
-        <div className={clsx(styles.avatar, hideAvatar && styles.hide)} {...{ inert: hideAvatar ? "" : undefined }}>
+        <div className={clsx(styles.avatar, hideAvatar && styles.hide)} {...{ inert: hideAvatar ? true : undefined }}>
           {avatar}
         </div>
       )}
 
       <div
-        className={clsx(styles.bubble, styles[`chat-bubble-type-${type}`], {
+        className={clsx(styles["message-area"], styles[`chat-bubble-type-${type}`], {
           [styles["generating-content-indicator-bottom"]]: isGeneratingContent && !actions,
         })}
       >
