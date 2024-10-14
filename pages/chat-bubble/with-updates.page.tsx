@@ -10,7 +10,7 @@ import { Actions, ChatBubbleAvatarGenAI, ChatBubbleAvatarUser, ChatContainer } f
 const firstBubbleTimestamp = new Date().toLocaleTimeString();
 
 export default function ChatBubblesWithUpdates() {
-  const [bubbleAriaLabels, setBubbleAriaLabels] = useState<Array<string>>([]);
+  const [bubbleTimestamps, setBubbleTimestamps] = useState<Array<string>>([]);
   const [defaultChatBubbleUpdateCount, setDefaultChatBubbleUpdateCount] = useState(0);
 
   return (
@@ -20,7 +20,7 @@ export default function ChatBubblesWithUpdates() {
       <Button onClick={() => setDefaultChatBubbleUpdateCount(defaultChatBubbleUpdateCount + 1)}>
         Update first chat bubble
       </Button>
-      <Button onClick={() => setBubbleAriaLabels([...bubbleAriaLabels, new Date().toLocaleTimeString()])}>
+      <Button onClick={() => setBubbleTimestamps([new Date().toLocaleTimeString(), ...bubbleTimestamps])}>
         Add new chat bubble
       </Button>
 
@@ -28,14 +28,13 @@ export default function ChatBubblesWithUpdates() {
         <ChatBubble type="outgoing" ariaLabel={firstBubbleTimestamp} avatar={<ChatBubbleAvatarUser />}>
           Bubble updated {defaultChatBubbleUpdateCount} times
         </ChatBubble>
-
-        {bubbleAriaLabels.map((ariaLabel: string, index: number) => {
+        {bubbleTimestamps.map((timestamp: string, index: number) => {
           const isGenAi = index % 2 === 0;
 
           return (
             <ChatBubble
-              key={ariaLabel + index}
-              ariaLabel={ariaLabel}
+              key={timestamp + index}
+              ariaLabel={`${isGenAi ? "Gen AI assistant" : "Jane Doe"} at ${timestamp}`}
               type={isGenAi ? "incoming" : "outgoing"}
               avatar={isGenAi ? <ChatBubbleAvatarGenAI /> : <ChatBubbleAvatarUser />}
               actions={isGenAi ? <Actions /> : undefined}
