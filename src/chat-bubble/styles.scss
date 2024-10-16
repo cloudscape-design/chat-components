@@ -1,0 +1,64 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+@use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
+@use "../internal/shared" as shared;
+
+.root {
+  @include shared.styles-reset;
+
+  display: flex;
+  flex-direction: row;
+  gap: cs.$space-scaled-xs;
+
+  color: cs.$color-text-body-default; // to be design token
+  font-family: cs.$font-family-base;
+  font-size: cs.$font-size-body-m;
+  line-height: cs.$line-height-heading-m;
+}
+
+.message-area {
+  display: flex;
+  flex-direction: column;
+  gap: cs.$space-scaled-s;
+  padding: cs.$space-scaled-s;
+
+  border-start-start-radius: 2px; // to be design token
+  border-start-end-radius: 2px;
+  border-end-start-radius: 2px;
+  border-end-end-radius: 2px;
+
+  &.generating-content-indicator-bottom {
+    padding-block-end: 0;
+  }
+
+  &.chat-bubble-type-outgoing {
+    background-color: transparent; // to be design token
+  }
+
+  &.chat-bubble-type-incoming {
+    background-color: #f2f3f3; // to be design token
+
+    // will be removed once design tokens are deployed
+    :global(.awsui-dark-mode) & {
+      background-color: #16191f;
+    }
+  }
+}
+
+.avatar {
+  padding-block: cs.$space-scaled-xs;
+
+  &.hide {
+    opacity: 0;
+  }
+}
+
+.content {
+  /* Used in test utils */
+}
+
+.actions {
+  /* Used in test utils */
+}
