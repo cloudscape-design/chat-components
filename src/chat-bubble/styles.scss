@@ -39,6 +39,11 @@
 
   &.chat-bubble-type-incoming {
     background-color: #f2f3f3; // to be design token
+
+    // will be removed once design tokens are deployed
+    :global(.awsui-dark-mode) & {
+      background-color: #16191f;
+    }
   }
 }
 
