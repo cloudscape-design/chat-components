@@ -10,21 +10,21 @@
 
   display: flex;
   flex-direction: row;
-  gap: 8px; // to be design token?
+  gap: cs.$space-scaled-xs;
 
   color: cs.$color-text-body-default; // to be design token
   font-family: cs.$font-family-base;
-  font-size: cs.$font-size-body-m; // should we include this? or does the customer define this?
-  line-height: 22px; // to be design token?
+  font-size: cs.$font-size-body-m;
+  line-height: cs.$line-height-heading-m;
 }
 
 .message-area {
   display: flex;
   flex-direction: column;
-  gap: 12px; // to be design token?
-  padding: 12px; // to be design token?
+  gap: cs.$space-scaled-s;
+  padding: cs.$space-scaled-s;
 
-  border-start-start-radius: 2px; // to be design token?
+  border-start-start-radius: 2px; // to be design token
   border-start-end-radius: 2px;
   border-end-start-radius: 2px;
   border-end-end-radius: 2px;
@@ -43,7 +43,7 @@
 }
 
 .avatar {
-  padding-block: 8px; // to be design token?
+  padding-block: cs.$space-scaled-xs;
 
   &.hide {
     opacity: 0;

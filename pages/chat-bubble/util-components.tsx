@@ -84,6 +84,7 @@ export function ChatContainer({ children }: ChatContainerProps) {
     <div
       role="log"
       aria-label="Chat"
+      aria-atomic={false}
       style={{
         display: "flex",
         flexDirection: "column",
