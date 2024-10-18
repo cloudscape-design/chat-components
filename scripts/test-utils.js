@@ -50,6 +50,7 @@ function generateIndexFileContent({ testUtilType, buildFinderInterface }) {
   return [
     // language=TypeScript
     `import { ElementWrapper } from '@cloudscape-design/test-utils-core/${testUtilType}';`,
+    `import '@cloudscape-design/components/test-utils/${testUtilType}';`,
     `import { appendSelector } from '@cloudscape-design/test-utils-core/utils';`,
     `export { ElementWrapper };`,
     ...components.map((componentName) => {
