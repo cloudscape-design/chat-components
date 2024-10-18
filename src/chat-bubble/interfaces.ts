@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 export interface ChatBubbleProps {
-  /** Avatar slot paired with the chat bubble. */
+  /** Avatar slot paired with the chat bubble content. */
   avatar: React.ReactNode;
 
   /** Defines the type of the chat bubble and sets its color accordingly.  */

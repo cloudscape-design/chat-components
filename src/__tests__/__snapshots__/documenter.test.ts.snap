@@ -242,7 +242,7 @@ If avatar is being used, set its \`loading\` state to true.",
       "name": "actions",
     },
     {
-      "description": "Avatar slot paired with the chat bubble.",
+      "description": "Avatar slot paired with the chat bubble content.",
       "isDefault": false,
       "name": "avatar",
     },
