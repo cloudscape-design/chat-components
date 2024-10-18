@@ -11,7 +11,7 @@ export interface ChatBubbleProps {
   /** Content of the chat bubble */
   children: React.ReactNode;
 
-  /** Actions slot of the chat bubble, placed at the bottom left. */
+  /** Actions slot of the chat bubble, placed at the footer. */
   actions?: React.ReactNode;
 
   /**
@@ -20,7 +20,10 @@ export interface ChatBubbleProps {
    */
   isGeneratingContent?: boolean;
 
-  /** Adds aria-label to the chat bubble container. Use this to provide a unique accessible name for each chat bubble on the page. */
+  /**
+   * Adds aria-label to the chat bubble container. Use this to provide a unique accessible name for each chat bubble on the page.
+   * For example, "John Doe at 3:42:10am".
+   */
   ariaLabel: string;
 
   /**

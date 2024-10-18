@@ -217,7 +217,7 @@ function ChatBubbleChart() {
                 : e.toFixed(2);
         },
       }}
-      ariaLabel="Single data series line chart"
+      ariaLabel="Bar chart"
       height={300}
       xTitle="Time (UTC)"
       yTitle="Revenue (USD)"

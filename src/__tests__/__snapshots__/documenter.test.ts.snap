@@ -200,7 +200,8 @@ exports[`definition for chat-bubble matches the snapshot > chat-bubble 1`] = `
   "name": "ChatBubble",
   "properties": [
     {
-      "description": "Adds aria-label to the chat bubble container. Use this to provide a unique accessible name for each chat bubble on the page.",
+      "description": "Adds aria-label to the chat bubble container. Use this to provide a unique accessible name for each chat bubble on the page.
+For example, "John Doe at 3:42:10am".",
       "name": "ariaLabel",
       "optional": false,
       "type": "string",
@@ -236,7 +237,7 @@ If avatar is being used, set its \`loading\` state to true.",
   ],
   "regions": [
     {
-      "description": "Actions slot of the chat bubble, placed at the bottom left.",
+      "description": "Actions slot of the chat bubble, placed at the footer.",
       "isDefault": false,
       "name": "actions",
     },

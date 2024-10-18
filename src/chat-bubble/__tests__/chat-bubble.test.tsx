@@ -10,6 +10,8 @@ import { Avatar } from "../../../lib/components";
 import ChatBubble, { ChatBubbleProps } from "../../../lib/components/chat-bubble";
 import createWrapper from "../../../lib/components/test-utils/dom";
 
+import styles from "../../../lib/components/chat-bubble/styles.selectors.js";
+
 function renderChatBubble(props: ChatBubbleProps) {
   const { container } = render(<ChatBubble {...props} />);
 
@@ -98,5 +100,9 @@ describe("Chat bubble", () => {
     });
 
     expect(wrapper.findAvatarSlot()).toBeNull();
+
+    const avatar = wrapper.findByClassName(styles.avatar)?.getElement();
+    expect(avatar).toHaveClass(styles.hide);
+    expect(avatar).toHaveAttribute("inert");
   });
 });
