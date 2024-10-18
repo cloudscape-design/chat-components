@@ -12,7 +12,6 @@
   flex-direction: row;
   gap: cs.$space-scaled-xs;
 
-  color: cs.$color-text-body-default; // to be design token
   font-family: cs.$font-family-base;
   font-size: cs.$font-size-body-m;
   line-height: cs.$line-height-heading-m;
@@ -24,26 +23,23 @@
   gap: cs.$space-scaled-s;
   padding: cs.$space-scaled-s;
 
-  border-start-start-radius: 2px; // to be design token
-  border-start-end-radius: 2px;
-  border-end-start-radius: 2px;
-  border-end-end-radius: 2px;
+  border-start-start-radius: cs.$border-radius-chat-bubble;
+  border-start-end-radius: cs.$border-radius-chat-bubble;
+  border-end-start-radius: cs.$border-radius-chat-bubble;
+  border-end-end-radius: cs.$border-radius-chat-bubble;
 
   &.generating-content-indicator-bottom {
     padding-block-end: 0;
   }
 
   &.chat-bubble-type-outgoing {
-    background-color: transparent; // to be design token
+    color: cs.$color-text-chat-bubble-outgoing;
+    background-color: cs.$color-background-chat-bubble-outgoing;
   }
 
   &.chat-bubble-type-incoming {
-    background-color: #f2f3f3; // to be design token
-
-    // will be removed once design tokens are deployed
-    :global(.awsui-dark-mode) & {
-      background-color: #16191f;
-    }
+    color: cs.$color-text-chat-bubble-incoming;
+    background-color: cs.$color-background-chat-bubble-incoming;
   }
 }
 
