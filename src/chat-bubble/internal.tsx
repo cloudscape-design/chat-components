@@ -40,14 +40,14 @@ export default function InternalChatBubble({
 
       <div
         className={clsx(styles["message-area"], styles[`chat-bubble-type-${type}`], {
-          [styles["generating-content-indicator-bottom"]]: isGeneratingContent && !actions,
+          [styles["generating-content-indicator-bottom"]]: isGeneratingContent,
         })}
       >
         <div className={styles.content}>{children}</div>
 
-        {isGeneratingContent && <InternalLoadingBar variant="gen-ai-masked" />}
-
         {actions && <div className={styles.actions}>{actions}</div>}
+
+        {isGeneratingContent && <InternalLoadingBar variant="gen-ai-masked" />}
       </div>
     </div>
   );

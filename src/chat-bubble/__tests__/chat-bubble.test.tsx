@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import { cleanup, render } from "@testing-library/react";
-import { afterEach, describe, expect, test } from "vitest";
+import { render } from "@testing-library/react";
+import { describe, expect, test } from "vitest";
 
 import ButtonGroup from "@cloudscape-design/components/button-group";
 import ExpandableSection from "@cloudscape-design/components/expandable-section";
@@ -19,10 +19,6 @@ function renderChatBubble(props: ChatBubbleProps) {
 }
 
 describe("Chat bubble", () => {
-  afterEach(() => {
-    cleanup();
-  });
-
   test("Can access slots and elements inside", () => {
     const wrapper = renderChatBubble({
       type: "outgoing",
