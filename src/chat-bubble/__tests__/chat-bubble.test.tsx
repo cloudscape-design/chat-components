@@ -99,6 +99,6 @@ describe("Chat bubble", () => {
 
     const avatar = wrapper.findByClassName(styles.avatar)?.getElement();
     expect(avatar).toHaveClass(styles.hide);
-    expect(avatar).toHaveAttribute("inert");
+    expect(avatar!.inert).toBe(true);
   });
 });
