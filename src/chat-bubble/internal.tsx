@@ -1,5 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+import { useEffect, useRef } from "react";
 import clsx from "clsx";
 
 import { getDataAttributes } from "../internal/base-component/get-data-attributes";
@@ -17,11 +18,24 @@ export default function InternalChatBubble({
   avatar,
   actions,
   isGeneratingContent,
-  hideAvatar,
+  hideAvatar = false,
   ariaLabel,
   __internalRootRef = null,
   ...rest
 }: InternalChatBubbleProps) {
+  const avatarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // We have to do this because `inert` isn't properly supported until
+    // React 19 and this seems much more maintainable than version detection.
+    // `inert` is better than `hidden` because it also blocks pointer and
+    // focus events as well as hiding the contents from screen readers.
+    // https://github.com/facebook/react/issues/17157
+    if (avatarRef.current) {
+      avatarRef.current.inert = hideAvatar;
+    }
+  }, [hideAvatar]);
+
   return (
     <div
       className={styles.root}
@@ -31,9 +45,7 @@ export default function InternalChatBubble({
       aria-label={ariaLabel}
     >
       {avatar && (
-        // `inert` is used to prevent any interactions with the avatar when it's hidden.
-        // It is added by spreading object because it doesn't exist in react types yet.
-        <div className={clsx(styles.avatar, hideAvatar && styles.hide)} {...{ inert: hideAvatar ? "" : undefined }}>
+        <div ref={avatarRef} className={clsx(styles.avatar, hideAvatar && styles.hide)}>
           {avatar}
         </div>
       )}
