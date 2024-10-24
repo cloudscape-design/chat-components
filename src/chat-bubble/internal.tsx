@@ -17,7 +17,7 @@ export default function InternalChatBubble({
   children,
   avatar,
   actions,
-  isGeneratingContent,
+  showLoadingBar,
   hideAvatar = false,
   ariaLabel,
   __internalRootRef = null,
@@ -52,14 +52,14 @@ export default function InternalChatBubble({
 
       <div
         className={clsx(styles["message-area"], styles[`chat-bubble-type-${type}`], {
-          [styles["generating-content-indicator-bottom"]]: isGeneratingContent,
+          [styles["with-loading-bar"]]: showLoadingBar,
         })}
       >
         <div className={styles.content}>{children}</div>
 
         {actions && <div className={styles.actions}>{actions}</div>}
 
-        {isGeneratingContent && <InternalLoadingBar variant="gen-ai-masked" />}
+        {showLoadingBar && <InternalLoadingBar variant="gen-ai-masked" />}
       </div>
     </div>
   );

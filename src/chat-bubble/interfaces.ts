@@ -18,7 +18,7 @@ export interface ChatBubbleProps {
    * Adds a loading bar to the bottom of the chat bubble. This property should only be used for Generative AI loading state.
    * If avatar is being used, set its `loading` state to true.
    */
-  isGeneratingContent?: boolean;
+  showLoadingBar?: boolean;
 
   /**
    * Adds aria-label to the chat bubble container. Use this to provide a unique accessible name for each chat bubble on the page.

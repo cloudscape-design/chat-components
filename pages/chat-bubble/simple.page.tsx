@@ -48,7 +48,7 @@ export default function ChatBubblePage() {
           <ChatBubble
             avatar={<ChatBubbleAvatarGenAI loading={true} />}
             type="incoming"
-            isGeneratingContent={true}
+            showLoadingBar={true}
             ariaLabel="Gen AI at 4:24:24pm"
           >
             <Box color="text-body-secondary">Generating a response (using Box)</Box>
@@ -57,7 +57,7 @@ export default function ChatBubblePage() {
           <ChatBubble
             avatar={<ChatBubbleAvatarGenAI loading={true} />}
             type="incoming"
-            isGeneratingContent={true}
+            showLoadingBar={true}
             actions={<Actions />}
             ariaLabel="Gen AI at 4:24:25pm"
           >

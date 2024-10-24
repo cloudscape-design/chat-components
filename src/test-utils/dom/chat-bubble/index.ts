@@ -23,7 +23,7 @@ export default class ChatBubbleWrapper extends ComponentWrapper {
     return this.findByClassName(chatBubbleStyles.actions);
   }
 
-  findGeneratingContentIndicator(): LoadingBarWrapper | null {
+  findLoadingBar(): LoadingBarWrapper | null {
     return this.findComponent(`.${chatBubbleStyles["message-area"]} .${loadingBarStyles.root}`, LoadingBarWrapper);
   }
 }

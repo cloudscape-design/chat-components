@@ -68,10 +68,10 @@ describe("Chat bubble", () => {
       avatar: <Avatar ariaLabel="Avatar" />,
       children: "Test content",
       ariaLabel: "Chat bubble",
-      isGeneratingContent: true,
+      showLoadingBar: true,
     });
 
-    expect(wrapper.findGeneratingContentIndicator()!.getElement()).toBeVisible();
+    expect(wrapper.findLoadingBar()!.getElement()).toBeVisible();
   });
 
   test("Generating content indicator is null when set to false", () => {
@@ -80,10 +80,10 @@ describe("Chat bubble", () => {
       avatar: <Avatar ariaLabel="Avatar" />,
       children: "Test content",
       ariaLabel: "Chat bubble",
-      isGeneratingContent: false,
+      showLoadingBar: false,
     });
 
-    expect(wrapper.findGeneratingContentIndicator()).toBeNull();
+    expect(wrapper.findLoadingBar()).toBeNull();
   });
 
   test("Hides the avatar", () => {
