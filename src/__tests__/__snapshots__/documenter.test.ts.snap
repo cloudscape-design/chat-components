@@ -237,12 +237,12 @@ If avatar is being used, set its \`loading\` state to true.",
   ],
   "regions": [
     {
-      "description": "Actions slot of the chat bubble, placed at the footer.",
+      "description": "Actions slot of the chat bubble, placed at the footer. Use [button group](/components/button-group/).",
       "isDefault": false,
       "name": "actions",
     },
     {
-      "description": "Avatar slot paired with the chat bubble content.",
+      "description": "Avatar slot paired with the chat bubble content. Use [avatar](/components/avatar/).",
       "isDefault": false,
       "name": "avatar",
     },

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 export interface ChatBubbleProps {
-  /** Avatar slot paired with the chat bubble content. */
+  /** Avatar slot paired with the chat bubble content. Use [avatar](/components/avatar/). */
   avatar: React.ReactNode;
 
   /** Defines the type of the chat bubble and sets its color accordingly.  */
@@ -11,7 +11,7 @@ export interface ChatBubbleProps {
   /** Content of the chat bubble */
   children: React.ReactNode;
 
-  /** Actions slot of the chat bubble, placed at the footer. */
+  /** Actions slot of the chat bubble, placed at the footer. Use [button group](/components/button-group/). */
   actions?: React.ReactNode;
 
   /**
