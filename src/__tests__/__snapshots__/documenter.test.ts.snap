@@ -193,6 +193,69 @@ If you set both \`iconUrl\` and \`iconSvg\`, \`iconSvg\` will take precedence.
 }
 `;
 
+exports[`definition for chat-bubble matches the snapshot > chat-bubble 1`] = `
+{
+  "events": [],
+  "functions": [],
+  "name": "ChatBubble",
+  "properties": [
+    {
+      "description": "Adds aria-label to the chat bubble container. Use this to provide a unique accessible name for each chat bubble on the page.
+For example, "John Doe at 3:42:10am".",
+      "name": "ariaLabel",
+      "optional": false,
+      "type": "string",
+    },
+    {
+      "description": "Hides the avatar while preserving its space.
+Useful for when there are multiple consecutive messages coming from the same author.",
+      "name": "hideAvatar",
+      "optional": true,
+      "type": "boolean",
+    },
+    {
+      "description": "Adds a loading bar to the bottom of the chat bubble. This property should only be used for Generative AI loading state.
+If avatar is being used, set its \`loading\` state to true.",
+      "name": "showLoadingBar",
+      "optional": true,
+      "type": "boolean",
+    },
+    {
+      "description": "Defines the type of the chat bubble and sets its color accordingly.",
+      "inlineType": {
+        "name": "ChatBubbleProps.Type",
+        "type": "union",
+        "values": [
+          "incoming",
+          "outgoing",
+        ],
+      },
+      "name": "type",
+      "optional": false,
+      "type": "string",
+    },
+  ],
+  "regions": [
+    {
+      "description": "Actions slot of the chat bubble, placed at the footer. Use [button group](/components/button-group/).",
+      "isDefault": false,
+      "name": "actions",
+    },
+    {
+      "description": "Avatar slot paired with the chat bubble content. Use [avatar](/components/avatar/).",
+      "isDefault": false,
+      "name": "avatar",
+    },
+    {
+      "description": "Content of the chat bubble",
+      "isDefault": true,
+      "name": "children",
+    },
+  ],
+  "releaseStatus": "stable",
+}
+`;
+
 exports[`definition for loading-bar matches the snapshot > loading-bar 1`] = `
 {
   "events": [],
