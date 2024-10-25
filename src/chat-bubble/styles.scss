@@ -1,0 +1,60 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+@use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
+@use "../internal/shared" as shared;
+
+.root {
+  @include shared.styles-reset;
+
+  display: flex;
+  flex-direction: row;
+  gap: cs.$space-scaled-xs;
+
+  font-family: cs.$font-family-base;
+  font-size: cs.$font-size-body-m;
+  line-height: cs.$line-height-heading-m;
+}
+
+.message-area {
+  display: flex;
+  flex-direction: column;
+  gap: cs.$space-scaled-s;
+  padding: cs.$space-scaled-s;
+
+  border-start-start-radius: cs.$border-radius-chat-bubble;
+  border-start-end-radius: cs.$border-radius-chat-bubble;
+  border-end-start-radius: cs.$border-radius-chat-bubble;
+  border-end-end-radius: cs.$border-radius-chat-bubble;
+
+  &.with-loading-bar {
+    padding-block-end: 0;
+  }
+
+  &.chat-bubble-type-outgoing {
+    color: cs.$color-text-chat-bubble-outgoing;
+    background-color: cs.$color-background-chat-bubble-outgoing;
+  }
+
+  &.chat-bubble-type-incoming {
+    color: cs.$color-text-chat-bubble-incoming;
+    background-color: cs.$color-background-chat-bubble-incoming;
+  }
+}
+
+.avatar {
+  padding-block: cs.$space-scaled-xs;
+
+  &.hide {
+    opacity: 0;
+  }
+}
+
+.content {
+  /* Used in test utils */
+}
+
+.actions {
+  /* Used in test utils */
+}
