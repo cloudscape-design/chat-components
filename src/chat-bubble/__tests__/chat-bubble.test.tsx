@@ -62,7 +62,7 @@ describe("Chat bubble", () => {
     expect(wrapper.findActionsSlot()!.findButtonGroup()!.getElement()).toBeVisible();
   });
 
-  test("Can access generating content indicator", () => {
+  test("Can access loading bar", () => {
     const wrapper = renderChatBubble({
       type: "outgoing",
       avatar: <Avatar ariaLabel="Avatar" />,
@@ -74,7 +74,7 @@ describe("Chat bubble", () => {
     expect(wrapper.findLoadingBar()!.getElement()).toBeVisible();
   });
 
-  test("Generating content indicator is null when set to false", () => {
+  test("findLoadingBar returns null when set to false", () => {
     const wrapper = renderChatBubble({
       type: "outgoing",
       avatar: <Avatar ariaLabel="Avatar" />,
