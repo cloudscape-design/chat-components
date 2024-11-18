@@ -74,7 +74,7 @@ describe("Chat bubble", () => {
     expect(wrapper.findLoadingBar()!.getElement()).toBeVisible();
   });
 
-  test("findLoadingBar returns null when set to false", () => {
+  test("findLoadingBar returns null when showLoadingBar is set to false", () => {
     const wrapper = renderChatBubble({
       type: "outgoing",
       avatar: <Avatar ariaLabel="Avatar" />,
