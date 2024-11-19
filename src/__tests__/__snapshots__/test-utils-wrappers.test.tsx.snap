@@ -1,0 +1,229 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Generate test utils ElementWrapper > 'dom' ElementWrapper matches the snapshot 1`] = `
+"import { ElementWrapper } from '@cloudscape-design/test-utils-core/dom';
+import '@cloudscape-design/components/test-utils/dom';
+import { appendSelector } from '@cloudscape-design/test-utils-core/utils';
+export { ElementWrapper };
+
+        import AvatarWrapper from './avatar';
+        export { AvatarWrapper };
+      
+
+        import ChatBubbleWrapper from './chat-bubble';
+        export { ChatBubbleWrapper };
+      
+
+        import LoadingBarWrapper from './loading-bar';
+        export { LoadingBarWrapper };
+      
+declare module '@cloudscape-design/test-utils-core/dist/dom' {
+      interface ElementWrapper {
+        
+       /**
+        * Returns the wrapper of the first Avatar that matches the specified CSS selector.
+        * If no CSS selector is specified, returns the wrapper of the first Avatar.
+        * If no matching Avatar is found, returns \`null\`.
+        *
+        * @param {string} [selector] CSS Selector
+        * @returns {AvatarWrapper | null}
+        */
+       findAvatar(selector?: string): AvatarWrapper | null;
+
+       /**
+        * Returns an array of Avatar wrapper that matches the specified CSS selector.
+        * If no CSS selector is specified, returns all of the Avatars inside the current wrapper.
+        * If no matching Avatar is found, returns an empty array.
+        *
+        * @param {string} [selector] CSS Selector
+        * @returns {Array<AvatarWrapper>}
+        */
+       findAllAvatars(selector?: string): Array<AvatarWrapper>;
+
+       /**
+        * Returns the wrapper of the first ChatBubble that matches the specified CSS selector.
+        * If no CSS selector is specified, returns the wrapper of the first ChatBubble.
+        * If no matching ChatBubble is found, returns \`null\`.
+        *
+        * @param {string} [selector] CSS Selector
+        * @returns {ChatBubbleWrapper | null}
+        */
+       findChatBubble(selector?: string): ChatBubbleWrapper | null;
+
+       /**
+        * Returns an array of ChatBubble wrapper that matches the specified CSS selector.
+        * If no CSS selector is specified, returns all of the ChatBubbles inside the current wrapper.
+        * If no matching ChatBubble is found, returns an empty array.
+        *
+        * @param {string} [selector] CSS Selector
+        * @returns {Array<ChatBubbleWrapper>}
+        */
+       findAllChatBubbles(selector?: string): Array<ChatBubbleWrapper>;
+
+       /**
+        * Returns the wrapper of the first LoadingBar that matches the specified CSS selector.
+        * If no CSS selector is specified, returns the wrapper of the first LoadingBar.
+        * If no matching LoadingBar is found, returns \`null\`.
+        *
+        * @param {string} [selector] CSS Selector
+        * @returns {LoadingBarWrapper | null}
+        */
+       findLoadingBar(selector?: string): LoadingBarWrapper | null;
+
+       /**
+        * Returns an array of LoadingBar wrapper that matches the specified CSS selector.
+        * If no CSS selector is specified, returns all of the LoadingBars inside the current wrapper.
+        * If no matching LoadingBar is found, returns an empty array.
+        *
+        * @param {string} [selector] CSS Selector
+        * @returns {Array<LoadingBarWrapper>}
+        */
+       findAllLoadingBars(selector?: string): Array<LoadingBarWrapper>;
+      }
+  }
+
+      ElementWrapper.prototype.findAvatar = function(selector) {
+        const rootSelector = \`.\${AvatarWrapper.rootSelector}\`;
+        // casting to 'any' is needed to avoid this issue with generics
+        // https://github.com/microsoft/TypeScript/issues/29132
+        return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, AvatarWrapper);
+      };
+
+      ElementWrapper.prototype.findAllAvatars = function(selector) {
+        return this.findAllComponents(AvatarWrapper, selector);
+      };
+
+      ElementWrapper.prototype.findChatBubble = function(selector) {
+        const rootSelector = \`.\${ChatBubbleWrapper.rootSelector}\`;
+        // casting to 'any' is needed to avoid this issue with generics
+        // https://github.com/microsoft/TypeScript/issues/29132
+        return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, ChatBubbleWrapper);
+      };
+
+      ElementWrapper.prototype.findAllChatBubbles = function(selector) {
+        return this.findAllComponents(ChatBubbleWrapper, selector);
+      };
+
+      ElementWrapper.prototype.findLoadingBar = function(selector) {
+        const rootSelector = \`.\${LoadingBarWrapper.rootSelector}\`;
+        // casting to 'any' is needed to avoid this issue with generics
+        // https://github.com/microsoft/TypeScript/issues/29132
+        return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, LoadingBarWrapper);
+      };
+
+      ElementWrapper.prototype.findAllLoadingBars = function(selector) {
+        return this.findAllComponents(LoadingBarWrapper, selector);
+      };
+export default function wrapper(root: Element = document.body) { if (document && document.body && !document.body.contains(root)) { console.warn('[AwsUi] [test-utils] provided element is not part of the document body, interactions may work incorrectly')}; return new ElementWrapper(root); }"
+`;
+
+exports[`Generate test utils ElementWrapper > 'selectors' ElementWrapper matches the snapshot 1`] = `
+"import { ElementWrapper } from '@cloudscape-design/test-utils-core/selectors';
+import '@cloudscape-design/components/test-utils/selectors';
+import { appendSelector } from '@cloudscape-design/test-utils-core/utils';
+export { ElementWrapper };
+
+        import AvatarWrapper from './avatar';
+        export { AvatarWrapper };
+      
+
+        import ChatBubbleWrapper from './chat-bubble';
+        export { ChatBubbleWrapper };
+      
+
+        import LoadingBarWrapper from './loading-bar';
+        export { LoadingBarWrapper };
+      
+declare module '@cloudscape-design/test-utils-core/dist/selectors' {
+      interface ElementWrapper {
+        
+       /**
+        * Returns a wrapper that matches the Avatars with the specified CSS selector.
+        * If no CSS selector is specified, returns a wrapper that matches Avatars.
+        *
+        * @param {string} [selector] CSS Selector
+        * @returns {AvatarWrapper}
+        */
+       findAvatar(selector?: string): AvatarWrapper;
+
+       /**
+        * Returns a multi-element wrapper that matches Avatars with the specified CSS selector.
+        * If no CSS selector is specified, returns a multi-element wrapper that matches Avatars.
+        *
+        * @param {string} [selector] CSS Selector
+        * @returns {MultiElementWrapper<AvatarWrapper>}
+        */
+       findAllAvatars(selector?: string): MultiElementWrapper<AvatarWrapper>;
+
+       /**
+        * Returns a wrapper that matches the ChatBubbles with the specified CSS selector.
+        * If no CSS selector is specified, returns a wrapper that matches ChatBubbles.
+        *
+        * @param {string} [selector] CSS Selector
+        * @returns {ChatBubbleWrapper}
+        */
+       findChatBubble(selector?: string): ChatBubbleWrapper;
+
+       /**
+        * Returns a multi-element wrapper that matches ChatBubbles with the specified CSS selector.
+        * If no CSS selector is specified, returns a multi-element wrapper that matches ChatBubbles.
+        *
+        * @param {string} [selector] CSS Selector
+        * @returns {MultiElementWrapper<ChatBubbleWrapper>}
+        */
+       findAllChatBubbles(selector?: string): MultiElementWrapper<ChatBubbleWrapper>;
+
+       /**
+        * Returns a wrapper that matches the LoadingBars with the specified CSS selector.
+        * If no CSS selector is specified, returns a wrapper that matches LoadingBars.
+        *
+        * @param {string} [selector] CSS Selector
+        * @returns {LoadingBarWrapper}
+        */
+       findLoadingBar(selector?: string): LoadingBarWrapper;
+
+       /**
+        * Returns a multi-element wrapper that matches LoadingBars with the specified CSS selector.
+        * If no CSS selector is specified, returns a multi-element wrapper that matches LoadingBars.
+        *
+        * @param {string} [selector] CSS Selector
+        * @returns {MultiElementWrapper<LoadingBarWrapper>}
+        */
+       findAllLoadingBars(selector?: string): MultiElementWrapper<LoadingBarWrapper>;
+      }
+  }
+
+      ElementWrapper.prototype.findAvatar = function(selector) {
+        const rootSelector = \`.\${AvatarWrapper.rootSelector}\`;
+        // casting to 'any' is needed to avoid this issue with generics
+        // https://github.com/microsoft/TypeScript/issues/29132
+        return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, AvatarWrapper);
+      };
+
+      ElementWrapper.prototype.findAllAvatars = function(selector) {
+        return this.findAllComponents(AvatarWrapper, selector);
+      };
+
+      ElementWrapper.prototype.findChatBubble = function(selector) {
+        const rootSelector = \`.\${ChatBubbleWrapper.rootSelector}\`;
+        // casting to 'any' is needed to avoid this issue with generics
+        // https://github.com/microsoft/TypeScript/issues/29132
+        return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, ChatBubbleWrapper);
+      };
+
+      ElementWrapper.prototype.findAllChatBubbles = function(selector) {
+        return this.findAllComponents(ChatBubbleWrapper, selector);
+      };
+
+      ElementWrapper.prototype.findLoadingBar = function(selector) {
+        const rootSelector = \`.\${LoadingBarWrapper.rootSelector}\`;
+        // casting to 'any' is needed to avoid this issue with generics
+        // https://github.com/microsoft/TypeScript/issues/29132
+        return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, LoadingBarWrapper);
+      };
+
+      ElementWrapper.prototype.findAllLoadingBars = function(selector) {
+        return this.findAllComponents(LoadingBarWrapper, selector);
+      };
+export default function wrapper(root: string = 'body') { return new ElementWrapper(root); }"
+`;
