@@ -1,0 +1,39 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+@use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as awsui;
+@use "../internal/shared" as shared;
+
+.root {
+  @include shared.styles-reset;
+  cursor: pointer;
+
+  font-family: awsui.$font-family-base;
+  font-size: awsui.$font-size-body-m;
+  line-height: awsui.$line-height-heading-m;
+
+  padding-block: awsui.$space-scaled-xs;
+  padding-inline: awsui.$space-static-s;
+
+  color: awsui.$color-text-button-normal-default;
+  background: awsui.$color-background-button-normal-default;
+
+  border: 1px solid awsui.$color-border-button-normal-default;
+  border-start-start-radius: awsui.$space-static-xs;
+  border-start-end-radius: awsui.$space-static-xs;
+  border-end-start-radius: awsui.$space-static-xs;
+  border-end-end-radius: awsui.$space-static-xs;
+
+  &:hover {
+    color: awsui.$color-text-button-normal-hover;
+    background: awsui.$color-background-button-normal-hover;
+    border-color: awsui.$color-border-button-normal-hover;
+  }
+
+  &:active {
+    color: awsui.$color-text-button-normal-active;
+    background: awsui.$color-background-button-normal-active;
+    border-color: awsui.$color-border-button-normal-active;
+  }
+}
