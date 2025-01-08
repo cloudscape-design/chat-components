@@ -5,6 +5,8 @@
 @use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as awsui;
 @use "../internal/shared" as shared;
 
+@use "@cloudscape-design/component-toolkit/internal/focus-visible" as focus-visible;
+
 .root {
   @include shared.styles-reset;
   cursor: pointer;
@@ -25,6 +27,10 @@
   border-end-start-radius: awsui.$space-static-xs;
   border-end-end-radius: awsui.$space-static-xs;
 
+  &:not(:last-child) {
+    margin-inline-end: awsui.$space-scaled-xs;
+  }
+
   &:hover {
     color: awsui.$color-text-button-normal-hover;
     background: awsui.$color-background-button-normal-hover;
@@ -35,5 +41,13 @@
     color: awsui.$color-text-button-normal-active;
     background: awsui.$color-background-button-normal-active;
     border-color: awsui.$color-border-button-normal-active;
+  }
+
+  &:focus {
+    outline: none;
+
+    @include shared.when-visible {
+      @include shared.focus-highlight(4px, 4px);
+    }
   }
 }

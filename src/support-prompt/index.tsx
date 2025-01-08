@@ -2,14 +2,14 @@
 // SPDX-License-Identifier: Apache-2.0
 import useBaseComponent from "../internal/base-component/use-base-component";
 import { applyDisplayName } from "../internal/utils/apply-display-name";
-import { SupportPromptProps } from "./interfaces";
-import { InternalSupportPrompt } from "./internal";
+import { SupportPromptGroupProps } from "./interfaces";
+import { InternalSupportPromptGroup } from "./internal";
 
-export type { SupportPromptProps };
+export type { SupportPromptGroupProps };
 
-export default function SupportPrompt(props: SupportPromptProps) {
-  const baseComponentProps = useBaseComponent("SupportPrompt");
-  return <InternalSupportPrompt {...props} {...baseComponentProps} />;
+export default function SupportPromptGroup(props: SupportPromptGroupProps) {
+  const baseComponentProps = useBaseComponent("SupportPromptGroup");
+  return <InternalSupportPromptGroup {...props} {...baseComponentProps} />;
 }
 
-applyDisplayName(SupportPrompt, "SupportPrompt");
+applyDisplayName(SupportPromptGroup, "SupportPromptGroup");
