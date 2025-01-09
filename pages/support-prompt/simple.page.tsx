@@ -17,15 +17,12 @@ export default function SupportPromptPage() {
             onItemClick={({ detail }) => console.log(detail)}
             items={[
               {
-                id: "image",
                 label: "Create image",
               },
               {
-                id: "brainstorm",
                 label: "Brainstorm",
               },
               {
-                id: "summarize",
                 label: "Summarize text",
               },
             ]}
@@ -37,15 +34,12 @@ export default function SupportPromptPage() {
             onItemClick={({ detail }) => console.log(detail)}
             items={[
               {
-                id: "image-2",
                 label: "Create image",
               },
               {
-                id: "brainstorm-2",
                 label: "Brainstorm",
               },
               {
-                id: "summarize-2",
                 label: "Summarize text",
               },
             ]}

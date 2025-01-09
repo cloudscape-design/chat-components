@@ -9,6 +9,16 @@
 
 .root {
   @include shared.styles-reset;
+
+  display: flex;
+  gap: awsui.$space-scaled-xs;
+
+  &.vertical {
+    flex-direction: column;
+  }
+}
+
+.support-prompt {
   cursor: pointer;
 
   font-family: awsui.$font-family-base;
@@ -27,9 +37,7 @@
   border-end-start-radius: awsui.$space-static-xs;
   border-end-end-radius: awsui.$space-static-xs;
 
-  &:not(:last-child) {
-    margin-inline-end: awsui.$space-scaled-xs;
-  }
+  inline-size: fit-content;
 
   &:hover {
     color: awsui.$color-text-button-normal-hover;

@@ -12,7 +12,6 @@ export interface SupportPromptGroupProps {
   /**
    * An array of objects representing support prompts.
    * Each item has the following properties:
-   *   - id: The id of the support prompt.
    *   - label: The label of the support prompt.
    **/
   items: ReadonlyArray<SupportPromptGroupProps.Item>;
@@ -21,24 +20,29 @@ export interface SupportPromptGroupProps {
    * Called when the user clicks on a support prompt. The event detail object contains the id of the clicked item.
    */
   onItemClick: CancelableEventHandler<SupportPromptGroupProps.ItemClickDetail>;
+
+  /**
+   * Adds an aria label to the support prompt group.
+   * Use this to provide a unique accessible name for each support prompt group on the page.
+   */
+  ariaLabel?: string;
 }
 
 export namespace SupportPromptGroupProps {
   export type Alignment = "vertical" | "horizontal";
 
   export interface Item {
-    id: string;
     label: string;
   }
 
   export interface ItemClickDetail extends _ClickDetail {
-    id: string;
+    label: string;
   }
 
   export interface Ref {
     /**
      * Focuses support prompt group item by id.
      */
-    focus(itemId: string): void;
+    focus(itemIndex: number): void;
   }
 }
