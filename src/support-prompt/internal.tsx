@@ -17,9 +17,9 @@ export function InternalSupportPromptGroup({
   ariaLabel,
   ...rest
 }: SupportPromptGroupProps & InternalBaseComponentProps) {
-  const handleClick = (event: React.MouseEvent, label: string) => {
+  const handleClick = (event: React.MouseEvent, id: string) => {
     const { altKey, button, ctrlKey, metaKey, shiftKey } = event;
-    fireCancelableEvent(onItemClick, { label, altKey, button, ctrlKey, metaKey, shiftKey }, event);
+    fireCancelableEvent(onItemClick, { id, altKey, button, ctrlKey, metaKey, shiftKey }, event);
   };
 
   return (
@@ -34,12 +34,12 @@ export function InternalSupportPromptGroup({
         <button
           key={index}
           role="menuitem"
-          onClick={(event) => handleClick(event, item.label)}
+          onClick={(event) => handleClick(event, item.id)}
           ref={__internalRootRef}
           {...getDataAttributes(rest)}
           className={clsx(styles["support-prompt"])}
         >
-          {item.label}
+          {item.text}
         </button>
       ))}
     </div>

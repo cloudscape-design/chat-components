@@ -13,34 +13,42 @@ export default function SupportPromptPage() {
         <TestBed>
           <h2>horizontal group</h2>
           <SupportPromptGroup
+            ariaLabel="Horizontal support prompt group"
             alignment="horizontal"
             onItemClick={({ detail }) => console.log(detail)}
             items={[
               {
-                label: "Create image",
+                text: "Create image",
+                id: "image",
               },
               {
-                label: "Brainstorm",
+                text: "Brainstorm",
+                id: "brainstorm",
               },
               {
-                label: "Summarize text",
+                text: "Summarize text",
+                id: "summarize",
               },
             ]}
           />
 
           <h2>vertical group</h2>
           <SupportPromptGroup
+            ariaLabel="Vertical support prompt group"
             alignment="vertical"
             onItemClick={({ detail }) => console.log(detail)}
             items={[
               {
-                label: "Create image",
+                text: "Create image",
+                id: "image-2",
               },
               {
-                label: "Brainstorm",
+                text: "Brainstorm",
+                id: "brainstorm-2",
               },
               {
-                label: "Summarize text",
+                text: "Summarize text",
+                id: "summarize-2",
               },
             ]}
           />
