@@ -5,19 +5,15 @@ import clsx from "clsx";
 
 import { KeyCode } from "@cloudscape-design/component-toolkit/internal";
 
-import { getDataAttributes } from "../internal/base-component/get-data-attributes";
 import { InternalBaseComponentProps } from "../internal/base-component/use-base-component";
 import { fireCancelableEvent } from "../internal/events";
 import { getAllFocusables } from "../internal/focus-lock/utils";
-import {
-  //useSingleTabStopNavigation,
-  SingleTabStopNavigationAPI,
-  SingleTabStopNavigationProvider,
-} from "../internal/single-tab-stop";
+import { SingleTabStopNavigationAPI, SingleTabStopNavigationProvider } from "../internal/single-tab-stop";
 import { circleIndex } from "../internal/utils/circle-index";
 import handleKey from "../internal/utils/handle-key";
 import { useMergeRefs } from "../internal/utils/use-merge-refs";
 import { SupportPromptGroupProps } from "./interfaces";
+import { Prompt } from "./prompt";
 
 import styles from "./styles.css.js";
 
@@ -27,7 +23,6 @@ export function InternalSupportPromptGroup({
   items,
   __internalRootRef,
   ariaLabel,
-  ...rest
 }: SupportPromptGroupProps & InternalBaseComponentProps) {
   const focusedIdRef = useRef<null | string>(null);
   const navigationAPI = useRef<SingleTabStopNavigationAPI>(null);
@@ -38,6 +33,7 @@ export function InternalSupportPromptGroup({
 
   const handleClick = (event: React.MouseEvent, id: string) => {
     const { altKey, button, ctrlKey, metaKey, shiftKey } = event;
+    console.log("potato");
     fireCancelableEvent(onItemClick, { id, altKey, button, ctrlKey, metaKey, shiftKey }, event);
   };
 
@@ -113,23 +109,20 @@ export function InternalSupportPromptGroup({
 
   // List all non-disabled and registered focusables: those are eligible for keyboard navigation.
   function getFocusablesFrom(target: HTMLElement) {
-    // function isElementRegistered(element: HTMLElement) {
-    //   return navigationAPI.current?.isRegistered(element) ?? false;
-    // }
+    function isElementRegistered(element: HTMLElement) {
+      return navigationAPI.current?.isRegistered(element) ?? false;
+    }
 
-    // function isElementDisabled(element: HTMLElement) {
-    //   if (element instanceof HTMLButtonElement) {
-    //     return element.disabled;
-    //   }
+    function isElementDisabled(element: HTMLElement) {
+      if (element instanceof HTMLButtonElement) {
+        return element.disabled;
+      }
 
-    //   return false;
-    // }
+      return false;
+    }
 
-    return getAllFocusables(target);
-    //return getAllFocusables(target).filter((el) => isElementRegistered(el) && !isElementDisabled(el));
+    return getAllFocusables(target).filter((el) => isElementRegistered(el) && !isElementDisabled(el));
   }
-
-  //const { tabIndex } = useSingleTabStopNavigation(itemsRef.current[item.id]);
 
   return (
     <SingleTabStopNavigationProvider
@@ -151,18 +144,14 @@ export function InternalSupportPromptGroup({
       >
         {items.map((item, index) => {
           return (
-            <button
+            <Prompt
               key={index}
-              role="menuitem"
               onClick={(event) => handleClick(event, item.id)}
-              {...getDataAttributes(rest)}
-              className={clsx(styles["support-prompt"])}
-              data-itemid={item.id}
+              id={item.id}
               ref={(element) => (itemsRef.current[item.id] = element)}
-              //tabIndex={tabIndex}
             >
               {item.text}
-            </button>
+            </Prompt>
           );
         })}
       </div>
