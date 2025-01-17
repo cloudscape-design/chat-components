@@ -5,10 +5,11 @@ import { describe, expect, test } from "vitest";
 
 import ButtonGroup from "@cloudscape-design/components/button-group";
 import ExpandableSection from "@cloudscape-design/components/expandable-section";
+import createWrapper from "@cloudscape-design/components/test-utils/dom";
 
+import "../../../lib/components/test-utils/dom";
 import { Avatar } from "../../../lib/components";
 import ChatBubble, { ChatBubbleProps } from "../../../lib/components/chat-bubble";
-import createWrapper from "../../../lib/components/test-utils/dom";
 
 import styles from "../../../lib/components/chat-bubble/styles.selectors.js";
 
