@@ -33,7 +33,6 @@ export function InternalSupportPromptGroup({
 
   const handleClick = (event: React.MouseEvent, id: string) => {
     const { altKey, button, ctrlKey, metaKey, shiftKey } = event;
-    console.log("potato");
     fireCancelableEvent(onItemClick, { id, altKey, button, ctrlKey, metaKey, shiftKey }, event);
   };
 
@@ -75,7 +74,16 @@ export function InternalSupportPromptGroup({
 
   function onKeyDown(event: React.KeyboardEvent) {
     const focusTarget = navigationAPI.current?.getFocusTarget();
-    const specialKeys = [KeyCode.right, KeyCode.left, KeyCode.end, KeyCode.home, KeyCode.pageUp, KeyCode.pageDown];
+    const specialKeys = [
+      KeyCode.right,
+      KeyCode.left,
+      KeyCode.up,
+      KeyCode.down,
+      KeyCode.end,
+      KeyCode.home,
+      KeyCode.pageUp,
+      KeyCode.pageDown,
+    ];
 
     const hasModifierKeys = (event: React.MouseEvent | React.KeyboardEvent) => {
       return event.ctrlKey || event.altKey || event.shiftKey || event.metaKey;
@@ -98,8 +106,16 @@ export function InternalSupportPromptGroup({
     handleKey(event as any, {
       onHome: () => focusElement(focusables[0]),
       onEnd: () => focusElement(focusables[focusables.length - 1]),
-      onInlineStart: () => focusElement(focusables[circleIndex(activeIndex - 1, [0, focusables.length - 1])]),
-      onInlineEnd: () => focusElement(focusables[circleIndex(activeIndex + 1, [0, focusables.length - 1])]),
+      onInlineStart: () =>
+        alignment === "horizontal" &&
+        focusElement(focusables[circleIndex(activeIndex - 1, [0, focusables.length - 1])]),
+      onInlineEnd: () =>
+        alignment === "horizontal" &&
+        focusElement(focusables[circleIndex(activeIndex + 1, [0, focusables.length - 1])]),
+      onBlockStart: () =>
+        alignment === "vertical" && focusElement(focusables[circleIndex(activeIndex - 1, [0, focusables.length - 1])]),
+      onBlockEnd: () =>
+        alignment === "vertical" && focusElement(focusables[circleIndex(activeIndex + 1, [0, focusables.length - 1])]),
     });
   }
 
@@ -122,6 +138,10 @@ export function InternalSupportPromptGroup({
     }
 
     return getAllFocusables(target).filter((el) => isElementRegistered(el) && !isElementDisabled(el));
+  }
+
+  if (!items || items.length === 0) {
+    return <div />;
   }
 
   return (

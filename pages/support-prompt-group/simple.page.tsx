@@ -11,6 +11,7 @@ export default function SupportPromptPage() {
       <h1>Support prompt</h1>
       <main>
         <TestBed>
+          <button>Before</button>
           <h2>horizontal group</h2>
           <SupportPromptGroup
             ariaLabel="Horizontal support prompt group"

@@ -183,3 +183,100 @@ with rounded corners.",
   "releaseStatus": "stable",
 }
 `;
+
+exports[`definition for support-prompt-group matches the snapshot > support-prompt-group 1`] = `
+{
+  "events": [
+    {
+      "cancelable": true,
+      "description": "Called when the user clicks on a support prompt. The event detail object contains the id of the clicked item.",
+      "detailInlineType": {
+        "name": "SupportPromptGroupProps.ItemClickDetail",
+        "properties": [
+          {
+            "name": "altKey",
+            "optional": false,
+            "type": "boolean",
+          },
+          {
+            "name": "button",
+            "optional": false,
+            "type": "number",
+          },
+          {
+            "name": "ctrlKey",
+            "optional": false,
+            "type": "boolean",
+          },
+          {
+            "name": "id",
+            "optional": false,
+            "type": "string",
+          },
+          {
+            "name": "metaKey",
+            "optional": false,
+            "type": "boolean",
+          },
+          {
+            "name": "shiftKey",
+            "optional": false,
+            "type": "boolean",
+          },
+        ],
+        "type": "object",
+      },
+      "detailType": "SupportPromptGroupProps.ItemClickDetail",
+      "name": "onItemClick",
+    },
+  ],
+  "functions": [
+    {
+      "description": "Focuses support prompt group item by id.",
+      "name": "focus",
+      "parameters": [
+        {
+          "name": "itemId",
+          "type": "number",
+        },
+      ],
+      "returnType": "void",
+    },
+  ],
+  "name": "SupportPromptGroup",
+  "properties": [
+    {
+      "description": "Alignment of the prompts. Defaults to \`vertical\`.",
+      "inlineType": {
+        "name": "SupportPromptGroupProps.Alignment",
+        "type": "union",
+        "values": [
+          "vertical",
+          "horizontal",
+        ],
+      },
+      "name": "alignment",
+      "optional": true,
+      "type": "string",
+    },
+    {
+      "description": "Adds an aria label to the support prompt group.
+Use this to provide a unique accessible name for each support prompt group on the page.",
+      "name": "ariaLabel",
+      "optional": false,
+      "type": "string",
+    },
+    {
+      "description": "An array of objects representing support prompts.
+Each item has the following properties:
+  - text: The text of the support prompt.
+  - id: The id of the support prompt.",
+      "name": "items",
+      "optional": false,
+      "type": "ReadonlyArray<SupportPromptGroupProps.Item>",
+    },
+  ],
+  "regions": [],
+  "releaseStatus": "stable",
+}
+`;

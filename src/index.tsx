@@ -10,5 +10,5 @@ export type { LoadingBarProps } from "./loading-bar";
 export { default as ChatBubble } from "./chat-bubble";
 export type { ChatBubbleProps } from "./chat-bubble";
 
-export { default as SupportPromptGroup } from "./support-prompt";
-export type { SupportPromptGroupProps } from "./support-prompt";
+export { default as SupportPromptGroup } from "./support-prompt-group";
+export type { SupportPromptGroupProps } from "./support-prompt-group";

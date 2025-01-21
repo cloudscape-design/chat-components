@@ -32,6 +32,7 @@ export const Prompt = forwardRef(
           onClick(event, id);
         }}
         id={id}
+        data-testid={id}
         data-itemid={id}
         className={clsx(styles["support-prompt"])}
       >
