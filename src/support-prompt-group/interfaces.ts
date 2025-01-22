@@ -45,6 +45,6 @@ export namespace SupportPromptGroupProps {
     /**
      * Focuses support prompt group item by id.
      */
-    focus(itemId: number): void;
+    focus(itemId: string): void;
   }
 }
