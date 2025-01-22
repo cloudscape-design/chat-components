@@ -11,7 +11,6 @@ export default function SupportPromptPage() {
       <h1>Support prompt</h1>
       <main>
         <TestBed>
-          <button>Before</button>
           <h2>horizontal group</h2>
           <SupportPromptGroup
             ariaLabel="Horizontal support prompt group"
@@ -50,6 +49,48 @@ export default function SupportPromptPage() {
               {
                 text: "Summarize text",
                 id: "summarize-2",
+              },
+            ]}
+          />
+
+          <h2>group with really long text</h2>
+          <SupportPromptGroup
+            ariaLabel="Horizontal support prompt group"
+            alignment="horizontal"
+            onItemClick={({ detail }) => console.log(detail)}
+            items={[
+              {
+                text: "Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. ",
+                id: "image",
+              },
+              {
+                text: "Help me brainstorm for an upcoming sign-off. Help me brainstorm for an upcoming sign-off. Help me brainstorm for an upcoming sign-off.",
+                id: "brainstorm",
+              },
+              {
+                text: "Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. ",
+                id: "summarize",
+              },
+            ]}
+          />
+
+          <h2>vertical group with really long text</h2>
+          <SupportPromptGroup
+            ariaLabel="Horizontal support prompt group"
+            alignment="vertical"
+            onItemClick={({ detail }) => console.log(detail)}
+            items={[
+              {
+                text: "Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. ",
+                id: "image",
+              },
+              {
+                text: "Help me brainstorm for an upcoming sign-off. Help me brainstorm for an upcoming sign-off. Help me brainstorm for an upcoming sign-off.",
+                id: "brainstorm",
+              },
+              {
+                text: "Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. ",
+                id: "summarize",
               },
             ]}
           />
