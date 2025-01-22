@@ -5,6 +5,7 @@ import clsx from "clsx";
 
 import { KeyCode } from "@cloudscape-design/component-toolkit/internal";
 
+import { getDataAttributes } from "../internal/base-component/get-data-attributes";
 import { InternalBaseComponentProps } from "../internal/base-component/use-base-component";
 import { fireCancelableEvent } from "../internal/events";
 import { getAllFocusables } from "../internal/focus-lock/utils";
@@ -25,6 +26,7 @@ export const InternalSupportPromptGroup = forwardRef(
       items,
       __internalRootRef,
       ariaLabel,
+      ...rest
     }: SupportPromptGroupProps & InternalBaseComponentProps,
     ref: Ref<SupportPromptGroupProps.Ref>,
   ) => {
@@ -159,22 +161,23 @@ export const InternalSupportPromptGroup = forwardRef(
     }
 
     return (
-      <SingleTabStopNavigationProvider
-        ref={navigationAPI}
-        navigationActive={true}
-        getNextFocusTarget={getNextFocusTarget}
-        onUnregisterActive={onUnregisterActive}
+      <div
+        {...getDataAttributes(rest)}
+        role="menubar"
+        className={clsx(styles.root, {
+          [styles.vertical]: alignment === "vertical",
+        })}
+        aria-label={ariaLabel}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onKeyDown={onKeyDown}
+        ref={mergedRef}
       >
-        <div
-          role="menubar"
-          className={clsx(styles.root, {
-            [styles.vertical]: alignment === "vertical",
-          })}
-          aria-label={ariaLabel}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          onKeyDown={onKeyDown}
-          ref={mergedRef}
+        <SingleTabStopNavigationProvider
+          ref={navigationAPI}
+          navigationActive={true}
+          getNextFocusTarget={getNextFocusTarget}
+          onUnregisterActive={onUnregisterActive}
         >
           {items.map((item, index) => {
             return (
@@ -188,8 +191,8 @@ export const InternalSupportPromptGroup = forwardRef(
               </Prompt>
             );
           })}
-        </div>
-      </SingleTabStopNavigationProvider>
+        </SingleTabStopNavigationProvider>
+      </div>
     );
   },
 );

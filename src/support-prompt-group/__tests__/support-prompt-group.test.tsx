@@ -112,7 +112,7 @@ describe("Support prompt group", () => {
   });
 
   describe("a11y", () => {
-    test("Assigns correct aria label", () => {
+    test("Group has accessible name", () => {
       const wrapper = renderSupportPromptGroup({
         ...defaultProps,
         items: [
@@ -124,6 +124,20 @@ describe("Support prompt group", () => {
       });
 
       expect(wrapper.getElement()).toHaveAccessibleName("Test support prompt group");
+    });
+
+    test("Prompt has accessible name", () => {
+      const wrapper = renderSupportPromptGroup({
+        ...defaultProps,
+        items: [
+          {
+            text: "Item 1",
+            id: "item-1",
+          },
+        ],
+      });
+
+      expect(wrapper.findItemById("item-1")!.getElement()).toHaveAccessibleName("Item 1");
     });
   });
 
