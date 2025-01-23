@@ -237,7 +237,7 @@ exports[`definition for support-prompt-group matches the snapshot > support-prom
       "parameters": [
         {
           "name": "itemId",
-          "type": "number",
+          "type": "string",
         },
       ],
       "returnType": "void",
