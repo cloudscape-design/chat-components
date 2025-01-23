@@ -35,7 +35,6 @@ export default function SupportPromptPage() {
           <h2>vertical group</h2>
           <SupportPromptGroup
             ariaLabel="Vertical support prompt group"
-            alignment="vertical"
             onItemClick={({ detail }) => console.log(detail)}
             items={[
               {
@@ -60,16 +59,20 @@ export default function SupportPromptPage() {
             onItemClick={({ detail }) => console.log(detail)}
             items={[
               {
-                text: "Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. ",
+                text: "Create a really detailed and powerful image. The image should be of a mountain scene with a blue lake and green hills, with a sunset in the background. In the lake, there should be 3 whales leaping out of the water.",
                 id: "image",
               },
               {
-                text: "Help me brainstorm for an upcoming sign-off. Help me brainstorm for an upcoming sign-off. Help me brainstorm for an upcoming sign-off.",
+                text: "Help me brainstorm for an upcoming sign-off.",
                 id: "brainstorm",
               },
               {
-                text: "Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. ",
+                text: "Summarize this long and complex PDF for me. Include a paragraph containing 3-4 sentences that capture the main ideas and overall message of the documents, a list of 5 to 10 key points from the document, and up to 3 follow-up questions that arise from the content of the document.",
                 id: "summarize",
+              },
+              {
+                text: "What  questions remain unanswered after reading the document(s)? The response shall consider all current or past uploaded documents.",
+                id: "image",
               },
             ]}
           />
@@ -77,20 +80,23 @@ export default function SupportPromptPage() {
           <h2>vertical group with really long text</h2>
           <SupportPromptGroup
             ariaLabel="Horizontal support prompt group"
-            alignment="vertical"
             onItemClick={({ detail }) => console.log(detail)}
             items={[
               {
-                text: "Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. ",
+                text: "Create a really detailed and powerful image. The image should be of a mountain scene with a blue lake and green hills, with a sunset in the background. In the lake, there should be 3 whales leaping out of the water.",
                 id: "image",
               },
               {
-                text: "Help me brainstorm for an upcoming sign-off. Help me brainstorm for an upcoming sign-off. Help me brainstorm for an upcoming sign-off.",
+                text: "Help me brainstorm for an upcoming sign-off.",
                 id: "brainstorm",
               },
               {
-                text: "Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. ",
+                text: "Summarize this long and complex PDF for me. Include a paragraph containing 3-4 sentences that capture the main ideas and overall message of the documents, a list of 5 to 10 key points from the document, and up to 3 follow-up questions that arise from the content of the document.",
                 id: "summarize",
+              },
+              {
+                text: "What  questions remain unanswered after reading the document(s)? The response shall consider all current or past uploaded documents.",
+                id: "image",
               },
             ]}
           />

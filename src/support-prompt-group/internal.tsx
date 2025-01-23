@@ -25,7 +25,7 @@ import styles from "./styles.css.js";
 export const InternalSupportPromptGroup = forwardRef(
   (
     {
-      alignment = "horizontal",
+      alignment = "vertical",
       onItemClick,
       items,
       __internalRootRef,
@@ -170,7 +170,7 @@ export const InternalSupportPromptGroup = forwardRef(
         {...getDataAttributes(rest)}
         role="menubar"
         className={clsx(styles.root, {
-          [styles.vertical]: alignment === "vertical",
+          [styles.vertical]: alignment !== "horizontal",
         })}
         aria-label={ariaLabel}
         onFocus={onFocus}

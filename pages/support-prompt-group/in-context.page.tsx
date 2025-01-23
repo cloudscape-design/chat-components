@@ -16,75 +16,82 @@ export default function SupportPromptPage() {
     <ScreenshotArea>
       <main style={{ maxWidth: "800px" }}>
         <TestBed>
-          <Container header={<Header>Image generator</Header>}>
-            <SpaceBetween direction="vertical" size="xxl">
-              <div style={{ height: "100px" }} />
+          <SpaceBetween size="xl">
+            <Container header={<Header>Image generator</Header>}>
+              <SpaceBetween direction="vertical" size="xxl">
+                <div style={{ height: "100px" }} />
 
-              <SpaceBetween direction="vertical" size="m">
-                <SupportPromptGroup
-                  ariaLabel="Horizontal support prompt group"
-                  alignment="horizontal"
-                  onItemClick={({ detail }) => console.log(detail)}
-                  items={[
-                    {
-                      text: "Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. Create a really detailed and powerful image. ",
-                      id: "image",
-                    },
-                    {
-                      text: "Help me brainstorm for an upcoming sign-off. Help me brainstorm for an upcoming sign-off. Help me brainstorm for an upcoming sign-off.",
-                      id: "brainstorm",
-                    },
-                    {
-                      text: "Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. Summarize this long and complex PDF for me. ",
-                      id: "summarize",
-                    },
-                  ]}
-                />
-                <PromptInput placeholder="Write a prompt" value="" actionButtonIconName="send" />
-              </SpaceBetween>
-            </SpaceBetween>
-          </Container>
+                <SpaceBetween direction="vertical" size="m">
+                  <SupportPromptGroup
+                    alignment="horizontal"
+                    ariaLabel="Horizontal support prompt group"
+                    onItemClick={({ detail }) => console.log(detail)}
+                    items={[
+                      {
+                        text: "Create a really detailed and powerful image.",
+                        id: "image",
+                      },
+                      {
+                        text: "Help me brainstorm for an upcoming sign-off.",
+                        id: "brainstorm",
+                      },
+                      {
+                        text: "Summarize this long and complex PDF for me.",
+                        id: "summarize",
+                      },
+                    ]}
+                  />
 
-          <Container header={<Header>Image generator</Header>}>
-            <SpaceBetween direction="vertical" size="xxl">
-              <div>
-                <ChatBubble type="outgoing" avatar={<ChatBubbleAvatarUser />} ariaLabel="User at 4:23:20pm">
-                  What can I do with Amazon S3?
-                </ChatBubble>
-                <SpaceBetween direction="vertical" size="xs">
-                  <ChatBubble avatar={<ChatBubbleAvatarGenAI />} type="incoming" ariaLabel="Gen AI at at 4:23:23pm">
-                    Amazon S3 provides a simple web service interface that you can use to store and retrieve any amount
-                    of data, at any time, from anywhere.
-                  </ChatBubble>
-                  <div style={{ marginInlineStart: "36px" }}>
-                    <SupportPromptGroup
-                      ariaLabel="Horizontal support prompt group"
-                      alignment="vertical"
-                      onItemClick={({ detail }) => console.log(detail)}
-                      items={[
-                        {
-                          text: "Create a really detailed and powerful image.",
-                          id: "image",
-                        },
-                        {
-                          text: "Help me brainstorm for an upcoming sign-off.",
-                          id: "brainstorm",
-                        },
-                        {
-                          text: "Summarize this long and complex PDF for me.",
-                          id: "summarize",
-                        },
-                      ]}
-                    />
-                  </div>
+                  <PromptInput placeholder="Write a prompt" value="" actionButtonIconName="send" />
                 </SpaceBetween>
-              </div>
-
-              <SpaceBetween direction="vertical" size="m">
-                <PromptInput placeholder="Write a prompt" value="" actionButtonIconName="send" />
               </SpaceBetween>
-            </SpaceBetween>
-          </Container>
+            </Container>
+
+            <Container header={<Header>Image generator</Header>}>
+              <SpaceBetween direction="vertical" size="xxl">
+                <div>
+                  <ChatBubble type="outgoing" avatar={<ChatBubbleAvatarUser />} ariaLabel="User at 4:23:20pm">
+                    What can I do with Amazon S3?
+                  </ChatBubble>
+                  <SpaceBetween direction="vertical" size="xs">
+                    <ChatBubble avatar={<ChatBubbleAvatarGenAI />} type="incoming" ariaLabel="Gen AI at at 4:23:23pm">
+                      Amazon S3 provides a simple web service interface that you can use to store and retrieve any
+                      amount of data, at any time, from anywhere.
+                    </ChatBubble>
+                    <div style={{ marginInlineStart: "36px" }}>
+                      <SupportPromptGroup
+                        ariaLabel="Horizontal support prompt group"
+                        alignment="vertical"
+                        onItemClick={({ detail }) => console.log(detail)}
+                        items={[
+                          {
+                            text: "Create a really detailed and powerful image. The image should be of a mountain scene with a blue lake and green hills, with a sunset in the background. In the lake, there should be 3 whales leaping out of the water.",
+                            id: "image",
+                          },
+                          {
+                            text: "Help me brainstorm for an upcoming sign-off.",
+                            id: "brainstorm",
+                          },
+                          {
+                            text: "Summarize this long and complex PDF for me. Include a paragraph containing 3-4 sentences that capture the main ideas and overall message of the documents, a list of 5 to 10 key points from the document, and up to 3 follow-up questions that arise from the content of the document.",
+                            id: "summarize",
+                          },
+                          {
+                            text: "What  questions remain unanswered after reading the document(s)? The response shall consider all current or past uploaded documents.",
+                            id: "image",
+                          },
+                        ]}
+                      />
+                    </div>
+                  </SpaceBetween>
+                </div>
+
+                <SpaceBetween direction="vertical" size="m">
+                  <PromptInput placeholder="Write a prompt" value="" actionButtonIconName="send" />
+                </SpaceBetween>
+              </SpaceBetween>
+            </Container>
+          </SpaceBetween>
         </TestBed>
       </main>
     </ScreenshotArea>
