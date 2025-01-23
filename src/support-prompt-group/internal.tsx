@@ -3,15 +3,19 @@
 import { forwardRef, Ref, useEffect, useImperativeHandle, useRef } from "react";
 import clsx from "clsx";
 
-import { KeyCode } from "@cloudscape-design/component-toolkit/internal";
+import {
+  circleIndex,
+  //SingleTabStopNavigationProvider,
+  getAllFocusables,
+  handleKey,
+  KeyCode,
+  SingleTabStopNavigationAPI,
+} from "@cloudscape-design/component-toolkit/internal";
 
 import { getDataAttributes } from "../internal/base-component/get-data-attributes";
 import { InternalBaseComponentProps } from "../internal/base-component/use-base-component";
 import { fireCancelableEvent } from "../internal/events";
-import { getAllFocusables } from "../internal/focus-lock/utils";
-import { SingleTabStopNavigationAPI, SingleTabStopNavigationProvider } from "../internal/single-tab-stop";
-import { circleIndex } from "../internal/utils/circle-index";
-import handleKey from "../internal/utils/handle-key";
+import { SingleTabStopNavigationProvider } from "../internal/single-tab-stop";
 import { useMergeRefs } from "../internal/utils/use-merge-refs";
 import { SupportPromptGroupProps } from "./interfaces";
 import { Prompt } from "./prompt";
@@ -45,6 +49,7 @@ export const InternalSupportPromptGroup = forwardRef(
 
     const handleClick = (event: React.MouseEvent, id: string) => {
       const { altKey, button, ctrlKey, metaKey, shiftKey } = event;
+
       fireCancelableEvent(onItemClick, { id, altKey, button, ctrlKey, metaKey, shiftKey }, event);
     };
 

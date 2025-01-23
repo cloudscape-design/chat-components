@@ -8,10 +8,10 @@ const avatarProps: AvatarProps = {
 };
 const supportPromptGroupProps: SupportPromptGroupProps = {
   ariaLabel: "Support prompt group",
-  items: [],
+  items: [{ text: "test", id: "test" }],
   onItemClick: () => {},
 };
 export const defaultProps = {
   avatar: avatarProps,
-  supportPromptGroup: supportPromptGroupProps,
+  ["support-prompt-group"]: supportPromptGroupProps,
 } as const;

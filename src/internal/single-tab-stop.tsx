@@ -3,7 +3,7 @@
 
 import { createContext, forwardRef, useContext, useImperativeHandle, useLayoutEffect, useRef, useState } from "react";
 
-import { nodeBelongs } from "./utils/node-belongs";
+import { nodeBelongs } from "@cloudscape-design/component-toolkit/dom";
 
 export type FocusableChangeHandler = (isFocusable: boolean) => void;
 
@@ -93,7 +93,6 @@ export const SingleTabStopNavigationProvider = forwardRef(
     // The focusable element tabIndex is only set to 0 if the element matches the focus target.
     function registerFocusable(focusableElement: Element, changeHandler: FocusableChangeHandler) {
       focusables.current.add(focusableElement);
-      console.log("isRegistered", focusableElement);
 
       focusHandlers.current.set(focusableElement, changeHandler);
       const isFocusable = !!focusablesState.current.get(focusableElement);
