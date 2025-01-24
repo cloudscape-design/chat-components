@@ -1,6 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import SpaceBetween from "@cloudscape-design/components/space-between";
+
 import { Avatar } from "../../lib/components";
 import { TestBed } from "../app/test-bed";
 import { ScreenshotArea } from "../screenshot-area";
@@ -38,15 +40,74 @@ export default function AvatarPage() {
           <Avatar color="gen-ai" initials="GW" ariaLabel="Gen AI assistant GW" tooltipText="Gen AI assistant" />
 
           <Avatar loading={true} ariaLabel="User avatar typing" tooltipText="User avatar typing" />
+
+          {/* Loading should take prioirty over image */}
           <Avatar
             color="gen-ai"
             loading={true}
+            imgUrl="https://cdn.marvel.com/content/1x/x-men_origins_-_gambit_2009_1_art_by_david_yardin.jpg"
             ariaLabel="Gen AI assistant generating response"
             tooltipText="Gen AI assistant generating response"
           />
 
           <Avatar iconSvg={customIconSvg} ariaLabel="Avatar with custom SVG icon" />
           <Avatar color="gen-ai" iconSvg={customIconSvg} ariaLabel="Gen AI avatar with custom SVG icon" />
+
+          <br />
+
+          <SpaceBetween direction="vertical" size="xxs">
+            {/* Image with tiny width */}
+            <Avatar
+              ariaLabel="An awesome picture of Wolverine"
+              imgUrl="https://static1.colliderimages.com/wordpress/wp-content/uploads/2024/08/deadpool-wolverine-hugh-jackman-mask-reveal.jpg"
+              width={20}
+            />
+
+            {/* Image with default width */}
+            <Avatar
+              ariaLabel="An awesome picture of Wolverine"
+              imgUrl="https://static1.colliderimages.com/wordpress/wp-content/uploads/2024/08/deadpool-wolverine-hugh-jackman-mask-reveal.jpg"
+            />
+
+            {/* Image with custom width should take priority over initials */}
+            <Avatar
+              ariaLabel="An awesome picture of Wolverine"
+              initials="WV"
+              imgUrl="https://static1.colliderimages.com/wordpress/wp-content/uploads/2024/08/deadpool-wolverine-hugh-jackman-mask-reveal.jpg"
+              width={50}
+            />
+
+            {/* Image with custom width and tooltip should take priority over icon */}
+            <Avatar
+              ariaLabel="An awesome picture of Wolverine"
+              tooltipText="Snikt!"
+              imgUrl="https://static1.colliderimages.com/wordpress/wp-content/uploads/2024/08/deadpool-wolverine-hugh-jackman-mask-reveal.jpg"
+              iconSvg={customIconSvg}
+              width={70}
+            />
+
+            {/* Icon SVG with custom width */}
+            <Avatar iconSvg={customIconSvg} ariaLabel="Avatar with custom SVG icon" width={90} />
+
+            {/* Custom width without image should be ignored */}
+            <Avatar
+              color="gen-ai"
+              initials="GW"
+              ariaLabel="Gen AI assistant GW"
+              tooltipText="Gen AI assistant"
+              width={110}
+            />
+
+            {/* Custom width without image should be ignored */}
+            <Avatar
+              color="gen-ai"
+              initials="GW"
+              loading={true}
+              ariaLabel="Gen AI assistant GW"
+              tooltipText="Gen AI assistant"
+              width={110}
+            />
+          </SpaceBetween>
         </TestBed>
       </main>
     </ScreenshotArea>

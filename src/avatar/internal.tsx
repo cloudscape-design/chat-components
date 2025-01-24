@@ -17,9 +17,23 @@ import styles from "./styles.css.js";
 
 export interface InternalAvatarProps extends AvatarProps, InternalBaseComponentProps {}
 
-const AvatarContent = ({ color, loading, initials, iconName, iconSvg, iconUrl, ariaLabel }: AvatarProps) => {
+const AvatarContent = ({
+  color,
+  loading,
+  initials,
+  iconName,
+  iconSvg,
+  iconUrl,
+  ariaLabel,
+  width,
+  imgUrl,
+}: AvatarProps) => {
   if (loading) {
     return <LoadingDots color={color} />;
+  }
+
+  if (imgUrl) {
+    return <img src={imgUrl} style={{ height: width, width: width }} />;
   }
 
   if (initials) {
@@ -32,7 +46,7 @@ const AvatarContent = ({ color, loading, initials, iconName, iconSvg, iconUrl, a
     return <span>{letters}</span>;
   }
 
-  return <Icon name={iconName} svg={iconSvg} url={iconUrl} alt={ariaLabel} />;
+  return <Icon name={iconName} svg={iconSvg} url={iconUrl} alt={ariaLabel} size="inherit" />;
 };
 
 export default function InternalAvatar({
@@ -44,6 +58,8 @@ export default function InternalAvatar({
   iconName,
   iconSvg,
   iconUrl,
+  imgUrl,
+  width,
   __internalRootRef = null,
   ...rest
 }: InternalAvatarProps) {
@@ -51,6 +67,7 @@ export default function InternalAvatar({
   const [showTooltip, setShowTooltip] = useState(false);
 
   const mergedRef = useMergeRefs(handleRef, __internalRootRef);
+  const computedSize = imgUrl && width && width > 28 ? width : 28;
 
   const tooltipAttributes = {
     onFocus: () => {
@@ -84,6 +101,7 @@ export default function InternalAvatar({
       role="img"
       aria-label={ariaLabel}
       {...tooltipAttributes}
+      style={{ height: computedSize, width: computedSize }}
     >
       {showTooltip && tooltipText && (
         <Tooltip
@@ -105,6 +123,8 @@ export default function InternalAvatar({
           iconName={iconName}
           iconSvg={iconSvg}
           iconUrl={iconUrl}
+          imgUrl={imgUrl}
+          width={computedSize}
         />
       </div>
     </div>

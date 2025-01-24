@@ -10,7 +10,6 @@ $avatar-size: 28px;
 
 .root {
   @include shared.styles-reset;
-
   color: cs.$color-text-avatar;
   block-size: $avatar-size;
   inline-size: $avatar-size;
@@ -48,4 +47,11 @@ $avatar-size: 28px;
   block-size: inherit;
   inline-size: inherit;
   overflow: hidden;
+
+  img {
+    @include mixins.border-radius-avatar;
+    block-size: $avatar-size;
+    inline-size: $avatar-size;
+    object-fit: cover;
+  }
 }
