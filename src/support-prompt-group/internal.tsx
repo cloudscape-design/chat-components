@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import {
   circleIndex,
-  //SingleTabStopNavigationProvider,
+  // SingleTabStopNavigationProvider,
   getAllFocusables,
   handleKey,
   KeyCode,

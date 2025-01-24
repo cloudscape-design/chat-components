@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import { ReactElement } from "react";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 
 import { defaultProps } from "./default-props";
@@ -18,7 +18,6 @@ describe.each<string>(getAllComponents())(`base props support for %s`, async (co
   test("should allow data-attributes", () => {
     const { container } = renderComponent(<Component {...props} data-testid="example" />);
 
-    screen.debug(container);
     expect(container.firstElementChild).toHaveAttribute("data-testid", "example");
   });
 
