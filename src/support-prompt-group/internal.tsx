@@ -125,18 +125,10 @@ export const InternalSupportPromptGroup = forwardRef(
       handleKey(event as any, {
         onHome: () => focusElement(focusables[0]),
         onEnd: () => focusElement(focusables[focusables.length - 1]),
-        onInlineStart: () =>
-          alignment === "horizontal" &&
-          focusElement(focusables[circleIndex(activeIndex - 1, [0, focusables.length - 1])]),
-        onInlineEnd: () =>
-          alignment === "horizontal" &&
-          focusElement(focusables[circleIndex(activeIndex + 1, [0, focusables.length - 1])]),
-        onBlockStart: () =>
-          alignment === "vertical" &&
-          focusElement(focusables[circleIndex(activeIndex - 1, [0, focusables.length - 1])]),
-        onBlockEnd: () =>
-          alignment === "vertical" &&
-          focusElement(focusables[circleIndex(activeIndex + 1, [0, focusables.length - 1])]),
+        onInlineStart: () => focusElement(focusables[circleIndex(activeIndex - 1, [0, focusables.length - 1])]),
+        onInlineEnd: () => focusElement(focusables[circleIndex(activeIndex + 1, [0, focusables.length - 1])]),
+        onBlockStart: () => focusElement(focusables[circleIndex(activeIndex - 1, [0, focusables.length - 1])]),
+        onBlockEnd: () => focusElement(focusables[circleIndex(activeIndex + 1, [0, focusables.length - 1])]),
       });
     }
 

@@ -1,6 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import { useState } from "react";
+import { createRef, useState } from "react";
 
 import Button from "@cloudscape-design/components/button";
 import Container from "@cloudscape-design/components/container";
@@ -14,10 +14,13 @@ import { TestBed } from "../app/test-bed";
 import { ChatBubbleAvatarGenAI, ChatBubbleAvatarUser } from "../chat-bubble/util-components";
 import { ScreenshotArea } from "../screenshot-area";
 
+import styles from "./styles.module.scss";
+
 export default function SupportPromptPage() {
   const [text, setText] = useState("");
   const [text2, setText2] = useState("");
   const [sentText, setSentText] = useState("");
+  const ref = createRef<HTMLTextAreaElement>();
 
   const items = [
     {
@@ -44,14 +47,14 @@ export default function SupportPromptPage() {
       id: "brainstorm",
     },
     {
-      text: "Summarize this long and complex PDF for me.",
+      text: "Summarize this long PDF for me.",
       id: "summarize",
     },
   ];
 
   return (
     <ScreenshotArea>
-      <main style={{ maxWidth: "800px" }}>
+      <main className={styles.container}>
         <TestBed>
           <SpaceBetween size="xl">
             <Container
@@ -70,9 +73,9 @@ export default function SupportPromptPage() {
                       amount of data, at any time, from anywhere.
                     </ChatBubble>
                     {text === "" && (
-                      <div style={{ marginInlineStart: "36px" }}>
+                      <div className={styles["support-prompt-container"]}>
                         <SupportPromptGroup
-                          ariaLabel="Horizontal support prompt group"
+                          ariaLabel="Test support prompt group 1"
                           alignment="vertical"
                           onItemClick={({ detail }) => {
                             const activeItem = items.find((item) => item.id === detail.id);
@@ -104,7 +107,7 @@ export default function SupportPromptPage() {
               }
             >
               <SpaceBetween direction="vertical" size="m">
-                <div style={{ height: "100px" }} />
+                <div className={styles.placeholder} />
                 {sentText !== "" && (
                   <ChatBubble type="outgoing" avatar={<ChatBubbleAvatarUser />} ariaLabel="User at 4:23:20pm">
                     {sentText}
@@ -114,16 +117,18 @@ export default function SupportPromptPage() {
                   {sentText === "" && (
                     <SupportPromptGroup
                       alignment="horizontal"
-                      ariaLabel="Horizontal support prompt group"
+                      ariaLabel="Test support prompt group 2"
                       onItemClick={({ detail }) => {
                         const activeItem = items2.find((item) => item.id === detail.id);
                         setText2(activeItem?.text || "");
+                        ref.current?.focus();
                       }}
                       items={items2}
                     />
                   )}
 
                   <PromptInput
+                    ref={ref}
                     placeholder="Write a prompt"
                     value={text2}
                     actionButtonIconName="send"

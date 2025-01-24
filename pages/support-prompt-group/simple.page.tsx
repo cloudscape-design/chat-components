@@ -52,7 +52,7 @@ export default function SupportPromptPage() {
             ]}
           />
 
-          <h2>group with really long text</h2>
+          <h2>Horizontal group with really long text</h2>
           <SupportPromptGroup
             ariaLabel="Horizontal support prompt group"
             alignment="horizontal"
@@ -72,7 +72,7 @@ export default function SupportPromptPage() {
               },
               {
                 text: "What  questions remain unanswered after reading the document(s)? The response shall consider all current or past uploaded documents.",
-                id: "image",
+                id: "image-2",
               },
             ]}
           />
@@ -96,7 +96,7 @@ export default function SupportPromptPage() {
               },
               {
                 text: "What  questions remain unanswered after reading the document(s)? The response shall consider all current or past uploaded documents.",
-                id: "image",
+                id: "image-2",
               },
             ]}
           />
