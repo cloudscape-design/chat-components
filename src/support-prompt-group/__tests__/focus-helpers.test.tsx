@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import { describe, expect, test, vi } from "vitest";
 
-import { getNextFocusTarget, onUnregisterActive } from "../../../lib/components/support-prompt-group/internal.js";
+import { getNextFocusTarget, onUnregisterActive } from "../../../lib/components/support-prompt-group/focus-helpers";
 
 describe("getNextFocusTarget", () => {
   test("should return null if containerObjectRef.current is null", () => {
