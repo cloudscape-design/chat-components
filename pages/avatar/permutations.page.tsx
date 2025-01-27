@@ -56,14 +56,14 @@ export default function AvatarPage() {
           <br />
 
           <SpaceBetween direction="vertical" size="xxs">
-            {/* Image with tiny width */}
+            {/* Image with tiny width enforce minimum of 28px */}
             <Avatar
               ariaLabel="An awesome picture of Wolverine"
               imgUrl="https://static1.colliderimages.com/wordpress/wp-content/uploads/2024/08/deadpool-wolverine-hugh-jackman-mask-reveal.jpg"
               width={20}
             />
 
-            {/* Image with default width */}
+            {/* Image with default width of 28px */}
             <Avatar
               ariaLabel="An awesome picture of Wolverine"
               imgUrl="https://static1.colliderimages.com/wordpress/wp-content/uploads/2024/08/deadpool-wolverine-hugh-jackman-mask-reveal.jpg"
@@ -86,10 +86,10 @@ export default function AvatarPage() {
               width={70}
             />
 
-            {/* Icon SVG with custom width */}
+            {/* Icon SVG with custom width not allowed */}
             <Avatar iconSvg={customIconSvg} ariaLabel="Avatar with custom SVG icon" width={90} />
 
-            {/* Custom width without image should be ignored */}
+            {/* Initials with custom width not allowed */}
             <Avatar
               color="gen-ai"
               initials="GW"
@@ -98,7 +98,7 @@ export default function AvatarPage() {
               width={110}
             />
 
-            {/* Custom width without image should be ignored */}
+            {/* Loading with custom width not allowed */}
             <Avatar
               color="gen-ai"
               initials="GW"
