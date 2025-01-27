@@ -10,7 +10,7 @@ export interface ClickDetail {
   metaKey: boolean;
 }
 
-class CustomEventStub<T> {
+export class CustomEventStub<T> {
   defaultPrevented = false;
   cancelBubble = false;
   constructor(

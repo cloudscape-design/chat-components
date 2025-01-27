@@ -17,6 +17,7 @@ import { InternalBaseComponentProps } from "../internal/base-component/use-base-
 import { fireCancelableEvent } from "../internal/events";
 import { SingleTabStopNavigationProvider } from "../internal/single-tab-stop";
 import { useMergeRefs } from "../internal/utils/use-merge-refs";
+import { getNextFocusTarget, onUnregisterActive } from "./focus-helpers";
 import { SupportPromptGroupProps } from "./interfaces";
 import { Prompt } from "./prompt";
 
@@ -52,28 +53,6 @@ export const InternalSupportPromptGroup = forwardRef(
 
       fireCancelableEvent(onItemClick, { id, altKey, button, ctrlKey, metaKey, shiftKey }, event);
     };
-
-    function getNextFocusTarget(): null | HTMLElement {
-      if (containerObjectRef.current) {
-        const buttons: HTMLButtonElement[] = Array.from(
-          containerObjectRef.current.querySelectorAll(`.${styles["support-prompt"]}`),
-        );
-        const activeButtons = buttons.filter((button) => !button.disabled);
-        return (
-          activeButtons.find((button) => button.dataset.itemid === focusedIdRef.current) ?? activeButtons[0] ?? null
-        );
-      }
-      return null;
-    }
-
-    function onUnregisterActive(focusableElement: HTMLElement) {
-      // Only refocus when the node is actually removed (no such ID anymore).
-      const target = navigationAPI.current?.getFocusTarget();
-
-      if (target && target.dataset.itemid !== focusableElement.dataset.itemid) {
-        target.focus();
-      }
-    }
 
     useEffect(() => {
       navigationAPI.current?.updateFocusTarget();
@@ -142,15 +121,7 @@ export const InternalSupportPromptGroup = forwardRef(
         return navigationAPI.current?.isRegistered(element) ?? false;
       }
 
-      function isElementDisabled(element: HTMLElement) {
-        if (element instanceof HTMLButtonElement) {
-          return element.disabled;
-        }
-
-        return false;
-      }
-
-      return getAllFocusables(target).filter((el) => isElementRegistered(el) && !isElementDisabled(el));
+      return getAllFocusables(target).filter((el) => isElementRegistered(el));
     }
 
     if (!items || items.length === 0) {
@@ -173,8 +144,8 @@ export const InternalSupportPromptGroup = forwardRef(
         <SingleTabStopNavigationProvider
           ref={navigationAPI}
           navigationActive={true}
-          getNextFocusTarget={getNextFocusTarget}
-          onUnregisterActive={onUnregisterActive}
+          getNextFocusTarget={() => getNextFocusTarget(containerObjectRef, focusedIdRef)}
+          onUnregisterActive={(element: HTMLElement) => onUnregisterActive(element, navigationAPI)}
         >
           {items.map((item, index) => {
             return (

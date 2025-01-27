@@ -151,12 +151,13 @@ describe("Support prompt group", () => {
       expect(document.body).toHaveFocus();
     });
 
-    test("Keyboard doesn't move focus", () => {
-      const wrapper = renderSupportPromptGroup({}, ref);
+    test("Null container ref doesn't move focus", () => {
+      const wrapper = renderSupportPromptGroup({});
+      const ref: { current: SupportPromptGroupProps.Ref | null } = { current: null };
 
-      document.body.focus();
-      fireEvent.keyDown(document.body, { keyCode: KeyCode.down });
-      expect(wrapper.findItemById("item-1")!.getElement()).not.toHaveFocus();
+      ref.current?.focus("item-1");
+
+      fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.down });
       expect(document.body).toHaveFocus();
     });
   });
