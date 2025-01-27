@@ -15,29 +15,35 @@ const onItemClick = vi.fn();
 const defaultProps = {
   onItemClick,
   ariaLabel: "Test support prompt group",
+  items: [
+    {
+      text: "Item 1",
+      id: "item-1",
+    },
+    {
+      text: "Item 2",
+      id: "item-2",
+    },
+    {
+      text: "Item 3",
+      id: "item-3",
+    },
+  ],
 };
 
-function renderSupportPromptGroup(props: SupportPromptGroupProps) {
-  const { container } = render(<SupportPromptGroup {...props} />);
-
-  return createWrapper(container).findSupportPromptGroup()!;
-}
-
-export function renderSupportPromptGroupWithRef(
+export function renderSupportPromptGroup(
   props: Partial<SupportPromptGroupProps>,
   ref?: React.Ref<SupportPromptGroupProps.Ref>,
 ) {
   const renderResult = render(<SupportPromptGroup ref={ref} {...defaultProps} {...props} />);
   const wrapper = createWrapper(renderResult.container).findSupportPromptGroup()!;
-  const rerender = (props: Partial<SupportPromptGroupProps>) =>
-    renderResult.rerender(<SupportPromptGroup ref={ref} {...defaultProps} {...props} />);
-  return { wrapper, rerender };
+
+  return wrapper;
 }
 
 describe("Support prompt group", () => {
   test("Renders null with no items", () => {
     const wrapper = renderSupportPromptGroup({
-      ...defaultProps,
       items: [],
     });
 
@@ -45,51 +51,19 @@ describe("Support prompt group", () => {
   });
 
   test("Finds number of items", () => {
-    const wrapper = renderSupportPromptGroup({
-      ...defaultProps,
-      items: [
-        {
-          text: "Item 1",
-          id: "item-1",
-        },
-        {
-          text: "Item 2",
-          id: "item-2",
-        },
-      ],
-    });
+    const wrapper = renderSupportPromptGroup({});
 
-    expect(wrapper.findItems().length).toBe(2);
+    expect(wrapper.findItems().length).toBe(3);
   });
 
   test("Finds item by id", () => {
-    const wrapper = renderSupportPromptGroup({
-      ...defaultProps,
-      items: [
-        {
-          text: "Item 1",
-          id: "item-1",
-        },
-        {
-          text: "Item 2",
-          id: "item-2",
-        },
-      ],
-    });
+    const wrapper = renderSupportPromptGroup({});
 
     expect(wrapper.findItemById("item-1")?.getElement()).toHaveTextContent("Item 1");
   });
 
   test("fires onClick", () => {
-    const wrapper = renderSupportPromptGroup({
-      ...defaultProps,
-      items: [
-        {
-          text: "Item 1",
-          id: "item-1",
-        },
-      ],
-    });
+    const wrapper = renderSupportPromptGroup({});
 
     wrapper.findItemById("item-1")!.click();
 
@@ -98,14 +72,7 @@ describe("Support prompt group", () => {
 
   test("Assigns vertical class with vertical alignment", () => {
     const wrapper = renderSupportPromptGroup({
-      ...defaultProps,
       alignment: "vertical",
-      items: [
-        {
-          text: "Item 1",
-          id: "item-1",
-        },
-      ],
     });
 
     expect(wrapper.getElement()).toHaveClass(styles.vertical);
@@ -113,80 +80,47 @@ describe("Support prompt group", () => {
 
   describe("a11y", () => {
     test("Group has accessible name", () => {
-      const wrapper = renderSupportPromptGroup({
-        ...defaultProps,
-        items: [
-          {
-            text: "Item 1",
-            id: "item-1",
-          },
-        ],
-      });
+      const wrapper = renderSupportPromptGroup({});
 
       expect(wrapper.getElement()).toHaveAccessibleName("Test support prompt group");
     });
 
     test("Prompt has accessible name", () => {
-      const wrapper = renderSupportPromptGroup({
-        ...defaultProps,
-        items: [
-          {
-            text: "Item 1",
-            id: "item-1",
-          },
-        ],
-      });
+      const wrapper = renderSupportPromptGroup({});
 
       expect(wrapper.findItemById("item-1")!.getElement()).toHaveAccessibleName("Item 1");
     });
   });
 
   describe("Keyboard navigation", () => {
-    const items = [
-      {
-        text: "Item 1",
-        id: "item-1",
-      },
-      {
-        text: "Item 2",
-        id: "item-2",
-      },
-      {
-        text: "Item 3",
-        id: "item-3",
-      },
-    ];
     const ref: { current: SupportPromptGroupProps.Ref | null } = { current: null };
 
-    test("Left and right arrow keys move focus in horizontal alignment", () => {
-      const { wrapper } = renderSupportPromptGroupWithRef({ ...defaultProps, items }, ref);
+    test("Arrow keys move focus in horizontal alignment", () => {
+      const wrapper = renderSupportPromptGroup({}, ref);
 
       ref.current?.focus("item-1");
 
       fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.right });
       expect(wrapper.findItemById("item-2")!.getElement()).toHaveFocus();
+
+      fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.down });
+      expect(wrapper.findItemById("item-3")!.getElement()).toHaveFocus();
     });
 
-    test("Up and down arrow keys move focus in vertical alignment", () => {
-      const { wrapper } = renderSupportPromptGroupWithRef({ ...defaultProps, items, alignment: "vertical" }, ref);
+    test("Arrow keys move focus in vertical alignment", () => {
+      const wrapper = renderSupportPromptGroup({ alignment: "vertical" }, ref);
 
       ref.current?.focus("item-1");
 
       fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.down });
       expect(wrapper.findItemById("item-2")!.getElement()).toHaveFocus();
-    });
 
-    test("Up and down arrow keys do not move focus in horizontal alignment", () => {
-      const { wrapper } = renderSupportPromptGroupWithRef({ ...defaultProps, items }, ref);
-
-      ref.current?.focus("item-1");
-
-      fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.down });
-      expect(wrapper.findItemById("item-1")!.getElement()).toHaveFocus();
+      fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.right });
+      expect(wrapper.findItemById("item-3")!.getElement()).toHaveFocus();
     });
 
     test("Focus loops", () => {
-      const { wrapper } = renderSupportPromptGroupWithRef({ ...defaultProps, items }, ref);
+      const wrapper = renderSupportPromptGroup({}, ref);
 
       ref.current?.focus("item-1");
 
