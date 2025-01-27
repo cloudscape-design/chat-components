@@ -69,7 +69,22 @@ describe("fireCancelableEvent", () => {
     expect(handler).toHaveBeenCalledTimes(1);
     const event = handler.mock.calls[0][0];
     expect(event.defaultPrevented).toBe(true);
+
     expect(result).toBe(true);
+  });
+
+  it("should call sourceEvent.preventDefault() when event.defaultPrevented is true", () => {
+    const handler = vi.fn((event) => {
+      event.preventDefault();
+    });
+    const detail = { key: "value" };
+    const mockSourceEvent = { preventDefault: vi.fn(), stopPropagation: vi.fn() } as any;
+
+    const result = fireCancelableEvent(handler, detail, mockSourceEvent);
+
+    expect(handler).toHaveBeenCalled();
+    expect(mockSourceEvent.preventDefault).toHaveBeenCalled();
+    expect(result).toBe(true); // Ensures the event's default was prevented
   });
 
   it("should stop propagation if stopPropagation is called in the handler", () => {
