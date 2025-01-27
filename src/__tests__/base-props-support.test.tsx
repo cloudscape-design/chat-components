@@ -17,6 +17,7 @@ describe.each<string>(getAllComponents())(`base props support for %s`, async (co
 
   test("should allow data-attributes", () => {
     const { container } = renderComponent(<Component {...props} data-testid="example" />);
+
     expect(container.firstElementChild).toHaveAttribute("data-testid", "example");
   });
 

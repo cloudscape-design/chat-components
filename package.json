@@ -42,6 +42,7 @@
     "./avatar": "./avatar/index.js",
     "./chat-bubble": "./chat-bubble/index.js",
     "./loading-bar": "./loading-bar/index.js",
+    "./support-prompt-group": "./support-prompt-group/index.js",
     "./test-utils/dom": "./test-utils/dom/index.js",
     "./test-utils/selectors": "./test-utils/selectors/index.js",
     "./internal/api-docs/*.js": "./internal/api-docs/*.js"
@@ -120,7 +121,7 @@
     ],
     "*.{scss,css}": [
       "stylelint --fix"
-    ],    
+    ],
     "package-lock.json": [
       "./scripts/prepare-package-lock.js"
     ]
