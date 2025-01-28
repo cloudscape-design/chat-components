@@ -10,6 +10,7 @@ import {
   KeyCode,
   SingleTabStopNavigationAPI,
   SingleTabStopNavigationProvider,
+  warnOnce,
 } from "@cloudscape-design/component-toolkit/internal";
 
 import { getDataAttributes } from "../internal/base-component/get-data-attributes";
@@ -43,6 +44,9 @@ export const InternalSupportPromptGroup = forwardRef(
 
     useImperativeHandle(ref, () => ({
       focus: (id) => {
+        if (!itemsRef.current[id]) {
+          warnOnce("SupportPromptGroup", "No matching ID found to focus.");
+        }
         itemsRef.current[id]?.focus();
       },
     }));
@@ -86,7 +90,7 @@ export const InternalSupportPromptGroup = forwardRef(
         return event.ctrlKey || event.altKey || event.shiftKey || event.metaKey;
       };
 
-      if (hasModifierKeys(event) || specialKeys.indexOf(event.keyCode) === -1) {
+      if (hasModifierKeys(event) || !specialKeys.includes(event.keyCode)) {
         return;
       }
       if (!containerObjectRef.current || !focusTarget) {

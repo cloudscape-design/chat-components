@@ -3,7 +3,7 @@
 import { cleanup, fireEvent, render } from "@testing-library/react";
 import { afterEach, describe, expect, test, vi } from "vitest";
 
-import { KeyCode } from "@cloudscape-design/component-toolkit/internal";
+import * as ComponentToolkitInternal from "@cloudscape-design/component-toolkit/internal";
 
 import SupportPromptGroup, { SupportPromptGroupProps } from "../../../lib/components/support-prompt-group";
 import createWrapper from "../../../lib/components/test-utils/dom";
@@ -42,6 +42,10 @@ export function renderSupportPromptGroup(
 }
 
 describe("Support prompt group", () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   test("Renders null with no items", () => {
     const wrapper = renderSupportPromptGroup({
       items: [],
@@ -59,7 +63,7 @@ describe("Support prompt group", () => {
   test("Finds item by id", () => {
     const wrapper = renderSupportPromptGroup({});
 
-    expect(wrapper.findItemById("item-1")?.getElement()).toHaveTextContent("Item 1");
+    expect(wrapper.findItemById("item-1")!.getElement()).toHaveTextContent("Item 1");
   });
 
   test("fires onClick", () => {
@@ -92,16 +96,37 @@ describe("Support prompt group", () => {
     });
   });
 
-  describe("Keyboard navigation", () => {
-    afterEach(() => {
-      cleanup();
-    });
+  describe("focus", () => {
     const ref: { current: SupportPromptGroupProps.Ref | null } = { current: null };
+
+    test("Focuses on element using ref", () => {
+      const wrapper = renderSupportPromptGroup({}, ref);
+
+      ref.current!.focus("item-1");
+
+      expect(wrapper.findItemById("item-1")!.getElement()).toHaveFocus();
+    });
+
+    test("Throws console warning when no ID is found", () => {
+      renderSupportPromptGroup({}, ref);
+      const warnOnce = vi.spyOn(ComponentToolkitInternal, "warnOnce");
+
+      ref.current!.focus("doesnt-exist");
+
+      expect(document.body).toHaveFocus();
+
+      expect(warnOnce).toHaveBeenCalledTimes(1);
+      expect(warnOnce).toHaveBeenCalledWith("SupportPromptGroup", `No matching ID found to focus.`);
+    });
+  });
+  describe("Keyboard navigation", () => {
+    const ref: { current: SupportPromptGroupProps.Ref | null } = { current: null };
+    const { KeyCode } = ComponentToolkitInternal;
 
     test("Arrow keys move focus in vertical alignment", () => {
       const wrapper = renderSupportPromptGroup({}, ref);
 
-      ref.current?.focus("item-1");
+      ref.current!.focus("item-1");
 
       fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.right });
       expect(wrapper.findItemById("item-2")!.getElement()).toHaveFocus();
@@ -113,7 +138,7 @@ describe("Support prompt group", () => {
     test("Arrow keys move focus in horizontal alignment", () => {
       const wrapper = renderSupportPromptGroup({ alignment: "horizontal" }, ref);
 
-      ref.current?.focus("item-1");
+      ref.current!.focus("item-1");
 
       fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.down });
       expect(wrapper.findItemById("item-2")!.getElement()).toHaveFocus();
@@ -125,7 +150,7 @@ describe("Support prompt group", () => {
     test("Focus loops", () => {
       const wrapper = renderSupportPromptGroup({}, ref);
 
-      ref.current?.focus("item-1");
+      ref.current!.focus("item-1");
 
       fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.right });
       fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.right });
@@ -137,7 +162,7 @@ describe("Support prompt group", () => {
     test("Modifier keys don't move focus", () => {
       const wrapper = renderSupportPromptGroup({}, ref);
 
-      ref.current?.focus("item-1");
+      ref.current!.focus("item-1");
 
       fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.down, ctrlKey: true });
       expect(wrapper.findItemById("item-1")!.getElement()).toHaveFocus();
@@ -145,17 +170,7 @@ describe("Support prompt group", () => {
 
     test("Nonexistent target doesn't move focus", () => {
       const wrapper = renderSupportPromptGroup({}, ref);
-      ref.current?.focus("doesnt-exist");
-
-      fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.down });
-      expect(document.body).toHaveFocus();
-    });
-
-    test("Null container ref doesn't move focus", () => {
-      const wrapper = renderSupportPromptGroup({});
-      const ref: { current: SupportPromptGroupProps.Ref | null } = { current: null };
-
-      ref.current?.focus("item-1");
+      ref.current!.focus("doesnt-exist");
 
       fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.down });
       expect(document.body).toHaveFocus();

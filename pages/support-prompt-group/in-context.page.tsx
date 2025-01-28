@@ -8,8 +8,7 @@ import Header from "@cloudscape-design/components/header";
 import PromptInput from "@cloudscape-design/components/prompt-input";
 import SpaceBetween from "@cloudscape-design/components/space-between";
 
-import { ChatBubble } from "../../lib/components";
-import { SupportPromptGroup } from "../../lib/components";
+import { ChatBubble, SupportPromptGroup } from "../../lib/components";
 import { TestBed } from "../app/test-bed";
 import { ChatBubbleAvatarGenAI, ChatBubbleAvatarUser } from "../chat-bubble/util-components";
 import { ScreenshotArea } from "../screenshot-area";

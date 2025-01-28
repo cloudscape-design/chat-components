@@ -189,7 +189,7 @@ exports[`definition for support-prompt-group matches the snapshot > support-prom
   "events": [
     {
       "cancelable": true,
-      "description": "Called when the user clicks on a support prompt. The event detail object contains the id of the clicked item.",
+      "description": "Called when the user clicks on a support prompt. The event detail object contains the ID of the clicked item.",
       "detailInlineType": {
         "name": "SupportPromptGroupProps.ItemClickDetail",
         "properties": [
@@ -232,7 +232,7 @@ exports[`definition for support-prompt-group matches the snapshot > support-prom
   ],
   "functions": [
     {
-      "description": "Focuses support prompt group item by id.",
+      "description": "Focuses support prompt group item by ID.",
       "name": "focus",
       "parameters": [
         {
@@ -270,7 +270,7 @@ Use this to provide a unique accessible name for each support prompt group on th
       "description": "An array of objects representing support prompts.
 Each item has the following properties:
   - text: The text of the support prompt.
-  - id: The id of the support prompt.",
+  - id: The ID of the support prompt.",
       "name": "items",
       "optional": false,
       "type": "ReadonlyArray<SupportPromptGroupProps.Item>",

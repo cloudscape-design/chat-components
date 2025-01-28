@@ -13,12 +13,12 @@ export interface SupportPromptGroupProps {
    * An array of objects representing support prompts.
    * Each item has the following properties:
    *   - text: The text of the support prompt.
-   *   - id: The id of the support prompt.
+   *   - id: The ID of the support prompt.
    **/
   items: ReadonlyArray<SupportPromptGroupProps.Item>;
 
   /**
-   * Called when the user clicks on a support prompt. The event detail object contains the id of the clicked item.
+   * Called when the user clicks on a support prompt. The event detail object contains the ID of the clicked item.
    */
   onItemClick: CancelableEventHandler<SupportPromptGroupProps.ItemClickDetail>;
 
@@ -43,7 +43,7 @@ export namespace SupportPromptGroupProps {
 
   export interface Ref {
     /**
-     * Focuses support prompt group item by id.
+     * Focuses support prompt group item by ID.
      */
     focus(itemId: string): void;
   }

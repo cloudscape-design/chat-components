@@ -10,7 +10,7 @@ export function getNextFocusTarget(
     const buttons: HTMLButtonElement[] = Array.from(
       containerObjectRef?.current.querySelectorAll(`.${styles["support-prompt"]}`),
     );
-    return buttons.find((button) => button.dataset.itemid === focusedIdRef?.current) ?? buttons[0] ?? null;
+    return buttons.find((button) => button.dataset.itemid === focusedIdRef.current) ?? buttons[0] ?? null;
   }
   return null;
 }
