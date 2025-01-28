@@ -5,17 +5,16 @@ import clsx from "clsx";
 
 import {
   circleIndex,
-  // SingleTabStopNavigationProvider,
   getAllFocusables,
   handleKey,
   KeyCode,
   SingleTabStopNavigationAPI,
+  SingleTabStopNavigationProvider,
 } from "@cloudscape-design/component-toolkit/internal";
 
 import { getDataAttributes } from "../internal/base-component/get-data-attributes";
 import { InternalBaseComponentProps } from "../internal/base-component/use-base-component";
 import { fireCancelableEvent } from "../internal/events";
-import { SingleTabStopNavigationProvider } from "../internal/single-tab-stop";
 import { useMergeRefs } from "../internal/utils/use-merge-refs";
 import { getNextFocusTarget, onUnregisterActive } from "./focus-helpers";
 import { SupportPromptGroupProps } from "./interfaces";

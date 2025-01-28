@@ -3,7 +3,8 @@
 import { forwardRef, Ref, useRef } from "react";
 import clsx from "clsx";
 
-import { useSingleTabStopNavigation } from "../internal/single-tab-stop";
+import { useSingleTabStopNavigation } from "@cloudscape-design/component-toolkit/internal";
+
 import useForwardFocus from "../internal/utils/use-forward-focus";
 
 import styles from "./styles.css.js";
