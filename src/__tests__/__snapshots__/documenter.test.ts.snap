@@ -188,7 +188,7 @@ exports[`definition for support-prompt-group matches the snapshot > support-prom
 {
   "events": [
     {
-      "cancelable": true,
+      "cancelable": false,
       "description": "Called when the user clicks on a support prompt. The event detail object contains the ID of the clicked item.",
       "detailInlineType": {
         "name": "SupportPromptGroupProps.ItemClickDetail",
