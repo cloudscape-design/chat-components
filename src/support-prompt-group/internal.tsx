@@ -54,7 +54,7 @@ export const InternalSupportPromptGroup = forwardRef(
     const handleClick = (event: React.MouseEvent, id: string) => {
       const { altKey, button, ctrlKey, metaKey, shiftKey } = event;
 
-      fireNonCancelableEvent(onItemClick, { id, altKey, button, ctrlKey, metaKey, shiftKey }, event);
+      fireNonCancelableEvent(onItemClick, { id, altKey, button, ctrlKey, metaKey, shiftKey });
     };
 
     useEffect(() => {
