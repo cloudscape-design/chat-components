@@ -15,7 +15,7 @@ import {
 
 import { getDataAttributes } from "../internal/base-component/get-data-attributes";
 import { InternalBaseComponentProps } from "../internal/base-component/use-base-component";
-import { fireCancelableEvent } from "../internal/events";
+import { fireNonCancelableEvent } from "../internal/events";
 import { useMergeRefs } from "../internal/utils/use-merge-refs";
 import { getNextFocusTarget, onUnregisterActive } from "./focus-helpers";
 import { SupportPromptGroupProps } from "./interfaces";
@@ -54,7 +54,7 @@ export const InternalSupportPromptGroup = forwardRef(
     const handleClick = (event: React.MouseEvent, id: string) => {
       const { altKey, button, ctrlKey, metaKey, shiftKey } = event;
 
-      fireCancelableEvent(onItemClick, { id, altKey, button, ctrlKey, metaKey, shiftKey }, event);
+      fireNonCancelableEvent(onItemClick, { id, altKey, button, ctrlKey, metaKey, shiftKey }, event);
     };
 
     useEffect(() => {

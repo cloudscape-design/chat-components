@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { CancelableEventHandler, ClickDetail as _ClickDetail } from "../internal/events";
+import { ClickDetail as _ClickDetail, NonCancelableEventHandler } from "../internal/events";
 
 export interface SupportPromptGroupProps {
   /**
@@ -20,7 +20,7 @@ export interface SupportPromptGroupProps {
   /**
    * Called when the user clicks on a support prompt. The event detail object contains the ID of the clicked item.
    */
-  onItemClick: CancelableEventHandler<SupportPromptGroupProps.ItemClickDetail>;
+  onItemClick: NonCancelableEventHandler<SupportPromptGroupProps.ItemClickDetail>;
 
   /**
    * Adds an aria label to the support prompt group.

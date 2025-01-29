@@ -2,6 +2,11 @@
 // SPDX-License-Identifier: Apache-2.0
 export type CancelableEventHandler<Detail = object> = (event: CustomEvent<Detail>) => void;
 
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type NonCancelableEventHandler<Detail = {}> = (event: NonCancelableCustomEvent<Detail>) => void;
+
+export type NonCancelableCustomEvent<DetailType> = Omit<CustomEvent<DetailType>, "preventDefault">;
+
 export interface ClickDetail {
   button: number;
   ctrlKey: boolean;
@@ -48,4 +53,12 @@ export function fireCancelableEvent<T>(
     sourceEvent.stopPropagation();
   }
   return event.defaultPrevented;
+}
+
+export function fireNonCancelableEvent<T = null>(handler: NonCancelableEventHandler<T> | undefined, detail?: T) {
+  if (!handler) {
+    return;
+  }
+  const event = createCustomEvent({ cancelable: false, detail });
+  handler(event);
 }
