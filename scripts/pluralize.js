@@ -4,6 +4,7 @@ const pluralizationMap = {
   Avatar: "Avatars",
   ChatBubble: "ChatBubbles",
   LoadingBar: "LoadingBars",
+  SupportPromptGroup: "SupportPromptGroups",
 };
 
 function pluralizeComponentName(componentName) {

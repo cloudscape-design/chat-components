@@ -12,11 +12,13 @@ export { ElementWrapper };
 import AvatarWrapper from './avatar';
 import ChatBubbleWrapper from './chat-bubble';
 import LoadingBarWrapper from './loading-bar';
+import SupportPromptGroupWrapper from './support-prompt-group';
 
 
 export { AvatarWrapper };
 export { ChatBubbleWrapper };
 export { LoadingBarWrapper };
+export { SupportPromptGroupWrapper };
 
 declare module '@cloudscape-design/test-utils-core/dist/dom' {
    interface ElementWrapper {
@@ -78,6 +80,25 @@ findLoadingBar(selector?: string): LoadingBarWrapper | null;
  * @returns {Array<LoadingBarWrapper>}
  */
 findAllLoadingBars(selector?: string): Array<LoadingBarWrapper>;
+/**
+ * Returns the wrapper of the first SupportPromptGroup that matches the specified CSS selector.
+ * If no CSS selector is specified, returns the wrapper of the first SupportPromptGroup.
+ * If no matching SupportPromptGroup is found, returns \`null\`.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {SupportPromptGroupWrapper | null}
+ */
+findSupportPromptGroup(selector?: string): SupportPromptGroupWrapper | null;
+
+/**
+ * Returns an array of SupportPromptGroup wrapper that matches the specified CSS selector.
+ * If no CSS selector is specified, returns all of the SupportPromptGroups inside the current wrapper.
+ * If no matching SupportPromptGroup is found, returns an empty array.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {Array<SupportPromptGroupWrapper>}
+ */
+findAllSupportPromptGroups(selector?: string): Array<SupportPromptGroupWrapper>;
    }
 }
 
@@ -112,6 +133,16 @@ ElementWrapper.prototype.findLoadingBar = function(selector) {
 ElementWrapper.prototype.findAllLoadingBars = function(selector) {
   return this.findAllComponents(LoadingBarWrapper, selector);
 };
+ElementWrapper.prototype.findSupportPromptGroup = function(selector) {
+  const rootSelector = \`.\${SupportPromptGroupWrapper.rootSelector}\`;
+  // casting to 'any' is needed to avoid this issue with generics
+  // https://github.com/microsoft/TypeScript/issues/29132
+  return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, SupportPromptGroupWrapper);
+};
+
+ElementWrapper.prototype.findAllSupportPromptGroups = function(selector) {
+  return this.findAllComponents(SupportPromptGroupWrapper, selector);
+};
 
 
 export default function wrapper(root: Element = document.body) {
@@ -135,11 +166,13 @@ export { ElementWrapper };
 import AvatarWrapper from './avatar';
 import ChatBubbleWrapper from './chat-bubble';
 import LoadingBarWrapper from './loading-bar';
+import SupportPromptGroupWrapper from './support-prompt-group';
 
 
 export { AvatarWrapper };
 export { ChatBubbleWrapper };
 export { LoadingBarWrapper };
+export { SupportPromptGroupWrapper };
 
 declare module '@cloudscape-design/test-utils-core/dist/selectors' {
    interface ElementWrapper {
@@ -195,6 +228,23 @@ findLoadingBar(selector?: string): LoadingBarWrapper;
  * @returns {MultiElementWrapper<LoadingBarWrapper>}
  */
 findAllLoadingBars(selector?: string): MultiElementWrapper<LoadingBarWrapper>;
+/**
+ * Returns a wrapper that matches the SupportPromptGroups with the specified CSS selector.
+ * If no CSS selector is specified, returns a wrapper that matches SupportPromptGroups.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {SupportPromptGroupWrapper}
+ */
+findSupportPromptGroup(selector?: string): SupportPromptGroupWrapper;
+
+/**
+ * Returns a multi-element wrapper that matches SupportPromptGroups with the specified CSS selector.
+ * If no CSS selector is specified, returns a multi-element wrapper that matches SupportPromptGroups.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {MultiElementWrapper<SupportPromptGroupWrapper>}
+ */
+findAllSupportPromptGroups(selector?: string): MultiElementWrapper<SupportPromptGroupWrapper>;
    }
 }
 
@@ -228,6 +278,16 @@ ElementWrapper.prototype.findLoadingBar = function(selector) {
 
 ElementWrapper.prototype.findAllLoadingBars = function(selector) {
   return this.findAllComponents(LoadingBarWrapper, selector);
+};
+ElementWrapper.prototype.findSupportPromptGroup = function(selector) {
+  const rootSelector = \`.\${SupportPromptGroupWrapper.rootSelector}\`;
+  // casting to 'any' is needed to avoid this issue with generics
+  // https://github.com/microsoft/TypeScript/issues/29132
+  return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, SupportPromptGroupWrapper);
+};
+
+ElementWrapper.prototype.findAllSupportPromptGroups = function(selector) {
+  return this.findAllComponents(SupportPromptGroupWrapper, selector);
 };
 
 
