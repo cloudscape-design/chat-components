@@ -60,6 +60,18 @@ export interface AvatarProps {
    * If you set both `iconUrl` and `iconSvg`, `iconSvg` will take precedence.
    */
   iconSvg?: React.ReactNode;
+
+  /**
+   * Specifies the URL of a custom image. If you set both `iconUrl` and `imgUrl`, `imgUrl` will take precedence.
+   */
+  imgUrl?: string;
+
+  /**
+   * Defines the width of the avatar when using a custom image.
+   * This value corresponds to the `width` CSS-property and will center and crop images using `object-fit: cover`.
+   * If no width is provided the avatar will use the default width value.
+   */
+  width?: number;
 }
 
 export namespace AvatarProps {
