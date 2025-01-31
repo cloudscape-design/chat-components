@@ -1,6 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import SpaceBetween from "@cloudscape-design/components/space-between";
+
 import { Avatar } from "../../lib/components";
 import { TestBed } from "../app/test-bed";
 import { ScreenshotArea } from "../screenshot-area";
@@ -25,6 +27,9 @@ const customIconSvg = (
   </svg>
 );
 
+const wolverine =
+  "https://static1.colliderimages.com/wordpress/wp-content/uploads/2024/08/deadpool-wolverine-hugh-jackman-mask-reveal.jpg";
+
 export default function AvatarPage() {
   return (
     <ScreenshotArea>
@@ -38,15 +43,73 @@ export default function AvatarPage() {
           <Avatar color="gen-ai" initials="GW" ariaLabel="Gen AI assistant GW" tooltipText="Gen AI assistant" />
 
           <Avatar loading={true} ariaLabel="User avatar typing" tooltipText="User avatar typing" />
+
+          {/* Loading should take prioirty over image */}
           <Avatar
             color="gen-ai"
             loading={true}
+            imgUrl={wolverine}
             ariaLabel="Gen AI assistant generating response"
             tooltipText="Gen AI assistant generating response"
           />
 
           <Avatar iconSvg={customIconSvg} ariaLabel="Avatar with custom SVG icon" />
           <Avatar color="gen-ai" iconSvg={customIconSvg} ariaLabel="Gen AI avatar with custom SVG icon" />
+
+          <br />
+
+          <SpaceBetween direction="vertical" size="xxs">
+            {/* Image with tiny width enforce minimum of 28px */}
+            <Avatar ariaLabel="An awesome picture of wolverine" imgUrl={wolverine} width={20} />
+
+            {/* Image with default width of 28px */}
+            <Avatar ariaLabel="An awesome picture of wolverine" imgUrl={wolverine} />
+
+            {/* Image should take priority over initials */}
+            <Avatar ariaLabel="An awesome picture of wolverine" initials="WV" imgUrl={wolverine} width={40} />
+
+            {/* Image and tooltip should take priority over icon */}
+            <Avatar
+              ariaLabel="An awesome picture of wolverine"
+              tooltipText="Snikt!"
+              imgUrl={wolverine}
+              iconSvg={customIconSvg}
+              width={60}
+            />
+
+            {/* Icon SVG with custom width */}
+            <Avatar ariaLabel="Avatar with custom SVG icon" iconSvg={customIconSvg} width={60} />
+
+            {/* Icon name with custom width */}
+            <Avatar color="gen-ai" iconName="gen-ai" ariaLabel="Gen AI assistant" width={80} />
+
+            {/* Icon name with custom width */}
+            <Avatar iconName="calendar" ariaLabel="Gen AI assistant" width={100} />
+
+            {/* Initials with custom width */}
+            <Avatar
+              color="gen-ai"
+              initials="GW"
+              ariaLabel="Gen AI assistant GW"
+              tooltipText="Gen AI assistant"
+              width={140}
+            />
+
+            {/* Loading with custom width */}
+            <Avatar color="gen-ai" initials="GW" loading={true} ariaLabel="Gen AI assistant GW" width={160} />
+
+            {/* Initials with custom width */}
+            <Avatar
+              color="gen-ai"
+              initials="GW"
+              ariaLabel="Gen AI assistant GW"
+              tooltipText="Gen AI assistant"
+              width={180}
+            />
+
+            {/* Loading with custom width */}
+            <Avatar color="gen-ai" initials="GW" loading={true} ariaLabel="Gen AI assistant GW" width={200} />
+          </SpaceBetween>
         </TestBed>
       </main>
     </ScreenshotArea>
