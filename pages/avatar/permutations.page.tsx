@@ -6,6 +6,7 @@ import SpaceBetween from "@cloudscape-design/components/space-between";
 import { Avatar } from "../../lib/components";
 import { TestBed } from "../app/test-bed";
 import { ScreenshotArea } from "../screenshot-area";
+import smiley from "./smiley.png";
 
 const customIconSvg = (
   <svg
@@ -27,9 +28,6 @@ const customIconSvg = (
   </svg>
 );
 
-const wolverine =
-  "https://static1.colliderimages.com/wordpress/wp-content/uploads/2024/08/deadpool-wolverine-hugh-jackman-mask-reveal.jpg";
-
 export default function AvatarPage() {
   return (
     <ScreenshotArea>
@@ -48,7 +46,7 @@ export default function AvatarPage() {
           <Avatar
             color="gen-ai"
             loading={true}
-            imgUrl={wolverine}
+            imgUrl={smiley}
             ariaLabel="Gen AI assistant generating response"
             tooltipText="Gen AI assistant generating response"
           />
@@ -60,19 +58,19 @@ export default function AvatarPage() {
 
           <SpaceBetween direction="vertical" size="xxs">
             {/* Image with tiny width enforce minimum of 28px */}
-            <Avatar ariaLabel="An awesome picture of wolverine" imgUrl={wolverine} width={20} />
+            <Avatar ariaLabel="An awesome picture of smiley" imgUrl={smiley} width={20} />
 
             {/* Image with default width of 28px */}
-            <Avatar ariaLabel="An awesome picture of wolverine" imgUrl={wolverine} />
+            <Avatar ariaLabel="An awesome picture of smiley" imgUrl={smiley} />
 
             {/* Image should take priority over initials */}
-            <Avatar ariaLabel="An awesome picture of wolverine" initials="WV" imgUrl={wolverine} width={40} />
+            <Avatar ariaLabel="An awesome picture of smiley" initials="WV" imgUrl={smiley} width={40} />
 
             {/* Image and tooltip should take priority over icon */}
             <Avatar
-              ariaLabel="An awesome picture of wolverine"
+              ariaLabel="An awesome picture of smiley"
               tooltipText="Snikt!"
-              imgUrl={wolverine}
+              imgUrl={smiley}
               iconSvg={customIconSvg}
               width={60}
             />
