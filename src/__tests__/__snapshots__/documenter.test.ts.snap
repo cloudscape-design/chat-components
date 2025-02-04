@@ -85,9 +85,9 @@ When you use this property, make sure to include it in the \`ariaLabel\`.
       "type": "string",
     },
     {
-      "description": "Defines the width of the avatar when using a custom image.
+      "description": "Defines the width of the avatar.
 This value corresponds to the \`width\` CSS-property and will center and crop images using \`object-fit: cover\`.
-If no width is provided the avatar will use the default width value.",
+If no width is provided the avatar will use the default width value of 28px.",
       "name": "width",
       "optional": true,
       "type": "number",
