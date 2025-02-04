@@ -57,6 +57,12 @@ If you set both \`iconUrl\` and \`iconSvg\`, \`iconSvg\` will take precedence.
       "type": "string",
     },
     {
+      "description": "Specifies the URL of a custom image. If you set both \`iconUrl\` and \`imgUrl\`, \`imgUrl\` will take precedence.",
+      "name": "imgUrl",
+      "optional": true,
+      "type": "string",
+    },
+    {
       "description": "The text content shown directly in the avatar's body.
 Can be 1 or 2 symbols long, every subsequent symbol is ignored.
 Use it to define initials that uniquely identify the avatar's owner.",
@@ -77,6 +83,14 @@ When you use this property, make sure to include it in the \`ariaLabel\`.
       "name": "tooltipText",
       "optional": true,
       "type": "string",
+    },
+    {
+      "description": "Defines the width of the avatar when using a custom image.
+This value corresponds to the \`width\` CSS-property and will center and crop images using \`object-fit: cover\`.
+If no width is provided the avatar will use the default width value.",
+      "name": "width",
+      "optional": true,
+      "type": "number",
     },
   ],
   "regions": [
