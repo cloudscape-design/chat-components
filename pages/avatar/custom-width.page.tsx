@@ -6,6 +6,7 @@ import { useState } from "react";
 import Checkbox from "@cloudscape-design/components/checkbox";
 import FormField from "@cloudscape-design/components/form-field";
 import Header from "@cloudscape-design/components/header";
+import { IconProps } from "@cloudscape-design/components/icon";
 import Input from "@cloudscape-design/components/input";
 import SpaceBetween from "@cloudscape-design/components/space-between";
 
@@ -54,7 +55,7 @@ export default function AvatarImageAndWidth() {
       <Avatar
         ariaLabel="Various Avatar permutations"
         color={genAI ? "gen-ai" : "default"}
-        iconName={iconName}
+        iconName={iconName as IconProps.Name}
         imgUrl={url}
         width={Number(width)}
         initials={initials}
