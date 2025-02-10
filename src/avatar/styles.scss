@@ -48,7 +48,7 @@ $avatar-size: 28px;
   inline-size: inherit;
   overflow: hidden;
 
-  img {
+  .image {
     @include mixins.border-radius-avatar;
     block-size: $avatar-size;
     inline-size: $avatar-size;
