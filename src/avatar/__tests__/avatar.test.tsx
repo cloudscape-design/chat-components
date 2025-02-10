@@ -9,6 +9,7 @@ import Avatar, { AvatarProps } from "../../../lib/components/avatar";
 import createWrapper from "../../../lib/components/test-utils/dom";
 
 import loadingDotsStyles from "../../../lib/components/avatar/loading-dots/styles.selectors.js";
+import avatarStyles from "../../../lib/components/avatar/styles.selectors.js";
 
 const defaultAvatarProps: AvatarProps = { ariaLabel: "Avatar" };
 
@@ -28,6 +29,15 @@ describe("Avatar", () => {
     const wrapper = renderAvatar({ ...defaultAvatarProps, initials });
 
     expect(wrapper.getElement().textContent).toBe(initials);
+  });
+
+  test("Renders avatar with image", () => {
+    const imgUrl =
+      "https://static1.colliderimages.com/wordpress/wp-content/uploads/2024/08/deadpool-wolverine-hugh-jackman-mask-reveal.jpg";
+    const wrapper = renderAvatar({ ...defaultAvatarProps, imgUrl });
+
+    const image = wrapper.findByClassName(avatarStyles.image)?.getElement();
+    expect(image).toBeInTheDocument();
   });
 
   test("Shows tooltip on focus", () => {
@@ -70,6 +80,15 @@ describe("Avatar", () => {
   test("Loading takes precedence over initials", () => {
     const initials = "JD";
     const wrapper = renderAvatar({ ...defaultAvatarProps, initials, loading: true });
+
+    const loading = wrapper.findByClassName(loadingDotsStyles.root)?.getElement();
+    expect(loading).toBeInTheDocument();
+  });
+
+  test("Loading takes precedence over image", () => {
+    const imgUrl =
+      "https://static1.colliderimages.com/wordpress/wp-content/uploads/2024/08/deadpool-wolverine-hugh-jackman-mask-reveal.jpg";
+    const wrapper = renderAvatar({ ...defaultAvatarProps, imgUrl, loading: true });
 
     const loading = wrapper.findByClassName(loadingDotsStyles.root)?.getElement();
     expect(loading).toBeInTheDocument();

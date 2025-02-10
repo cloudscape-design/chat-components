@@ -34,7 +34,7 @@ const AvatarContent = ({
   }
 
   if (imgUrl) {
-    return <img src={imgUrl} style={{ height: width, width: width }} />;
+    return <img className={styles.image} src={imgUrl} style={{ height: width, width: width }} />;
   }
 
   if (initials) {
