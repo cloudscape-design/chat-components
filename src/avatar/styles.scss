@@ -38,6 +38,10 @@ $avatar-size: 28px;
       @include shared.focus-highlight(1px, 50%);
     }
   }
+
+  &:has(.image) {
+    background: transparent;
+  }
 }
 
 .content {
