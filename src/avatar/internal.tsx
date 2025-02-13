@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { warnOnce } from "@cloudscape-design/component-toolkit/internal";
 import Icon from "@cloudscape-design/components/icon";
 import Tooltip from "@cloudscape-design/components/internal/tooltip-do-not-use";
-import * as awsui from "@cloudscape-design/design-tokens/index.js";
+import * as awsui from "@cloudscape-design/design-tokens";
 
 import { getDataAttributes } from "../internal/base-component/get-data-attributes";
 import { InternalBaseComponentProps } from "../internal/base-component/use-base-component";
