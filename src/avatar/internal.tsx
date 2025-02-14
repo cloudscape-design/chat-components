@@ -64,7 +64,7 @@ export default function InternalAvatar({
   iconSvg,
   iconUrl,
   imgUrl,
-  width,
+  width = 28,
   __internalRootRef = null,
   ...rest
 }: InternalAvatarProps) {
@@ -72,7 +72,7 @@ export default function InternalAvatar({
   const [showTooltip, setShowTooltip] = useState(false);
 
   const mergedRef = useMergeRefs(handleRef, __internalRootRef);
-  const computedSize = width && width > 28 ? width : 28;
+  const computedSize = width < 28 ? 28 : width;
 
   const tooltipAttributes = {
     onFocus: () => {
