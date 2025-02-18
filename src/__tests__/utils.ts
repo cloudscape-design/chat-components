@@ -15,6 +15,7 @@ export function getAllComponents(): string[] {
 }
 
 export function requireComponentDefinition(componentName: string) {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   return require(path.join(definitionsDir, componentName));
 }
 

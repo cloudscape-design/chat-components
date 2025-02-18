@@ -88,16 +88,16 @@ describe("Avatar", () => {
     );
   });
 
-  // test("a11y - Validates", async () => {
-  //   const props: AvatarProps = {
-  //     color: "default",
-  //     initials: "JD",
-  //     tooltipText: "Jane Doe",
-  //     ariaLabel: "User avatar",
-  //   };
-  //   const { container } = render(<Avatar {...props} />);
-  //   await expect(container).toValidateA11y();
-  // });
+  test.skip("a11y - Validates", async () => {
+    const props: AvatarProps = {
+      color: "default",
+      initials: "JD",
+      tooltipText: "Jane Doe",
+      ariaLabel: "User avatar",
+    };
+    const { container } = render(<Avatar {...props} />);
+    await expect(container).toValidateA11y();
+  });
 
   test("a11y - ariaLabel is directly used", () => {
     const ariaLabel = "User avatar JD Jane Doe";
