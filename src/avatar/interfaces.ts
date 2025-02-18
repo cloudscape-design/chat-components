@@ -67,10 +67,9 @@ export interface AvatarProps {
   imgUrl?: string;
 
   /**
-   * Defines the width of the avatar.
+   * Defines the width and height of the avatar.
    * This value corresponds to the `width` CSS-property and will center and crop images using `object-fit: cover`.
    * If no width is provided the avatar will use the default width value of 28px.
-   * The height of the avatar will be set to the same value as the width.
    */
   width?: number;
 }
