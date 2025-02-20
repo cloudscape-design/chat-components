@@ -30,7 +30,6 @@ describe("Chat bubble", () => {
           <ExpandableSection headerText="Sources">Sources</ExpandableSection>
         </>
       ),
-      ariaLabel: "Chat bubble",
       actions: (
         <ButtonGroup
           variant="icon"
@@ -68,7 +67,6 @@ describe("Chat bubble", () => {
       type: "outgoing",
       avatar: <Avatar ariaLabel="Avatar" />,
       children: "Test content",
-      ariaLabel: "Chat bubble",
       showLoadingBar: true,
     });
 
@@ -80,7 +78,6 @@ describe("Chat bubble", () => {
       type: "outgoing",
       avatar: <Avatar ariaLabel="Avatar" />,
       children: "Test content",
-      ariaLabel: "Chat bubble",
       showLoadingBar: false,
     });
 
@@ -92,7 +89,6 @@ describe("Chat bubble", () => {
       type: "outgoing",
       avatar: <Avatar ariaLabel="Avatar" />,
       children: "Test content",
-      ariaLabel: "Chat bubble",
       hideAvatar: true,
     });
 

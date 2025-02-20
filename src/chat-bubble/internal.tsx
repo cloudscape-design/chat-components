@@ -19,7 +19,6 @@ export default function InternalChatBubble({
   actions,
   showLoadingBar,
   hideAvatar = false,
-  ariaLabel,
   __internalRootRef = null,
   ...rest
 }: InternalChatBubbleProps) {
@@ -37,13 +36,7 @@ export default function InternalChatBubble({
   }, [hideAvatar]);
 
   return (
-    <div
-      className={styles.root}
-      {...getDataAttributes(rest)}
-      ref={__internalRootRef}
-      role="group"
-      aria-label={ariaLabel}
-    >
+    <div className={styles.root} {...getDataAttributes(rest)} ref={__internalRootRef}>
       {avatar && (
         <div ref={avatarRef} className={clsx(styles.avatar, hideAvatar && styles.hide)}>
           {avatar}

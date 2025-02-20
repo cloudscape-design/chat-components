@@ -73,7 +73,7 @@ export default function ChatBubblesContentVariantsPage() {
 
 function GenAIChatBubble({ children }: { children: React.ReactNode }) {
   return (
-    <ChatBubble avatar={<ChatBubbleAvatarGenAI />} type="incoming" actions={<Actions />} ariaLabel="Message">
+    <ChatBubble avatar={<ChatBubbleAvatarGenAI />} type="incoming" actions={<Actions />}>
       {children}
     </ChatBubble>
   );

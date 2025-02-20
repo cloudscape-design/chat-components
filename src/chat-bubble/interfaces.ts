@@ -23,8 +23,10 @@ export interface ChatBubbleProps {
   /**
    * Adds aria-label to the chat bubble container. Use this to provide a unique accessible name for each chat bubble on the page.
    * For example, "John Doe at 3:42:10am".
+   *
+   * @deprecated You can safely remove this property as it has no effect.
    */
-  ariaLabel: string;
+  ariaLabel?: string;
 
   /**
    * Hides the avatar while preserving its space.
