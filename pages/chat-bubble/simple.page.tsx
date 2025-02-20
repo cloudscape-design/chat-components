@@ -15,42 +15,26 @@ export default function ChatBubblePage() {
 
       <TestBed>
         <ChatContainer>
-          <ChatBubble type="outgoing" avatar={<ChatBubbleAvatarUser />} ariaLabel="User at 4:23:20pm">
+          <ChatBubble type="outgoing" avatar={<ChatBubbleAvatarUser />}>
             What can I do with Amazon S3?
           </ChatBubble>
-          <ChatBubble avatar={<ChatBubbleAvatarGenAI />} type="incoming" ariaLabel="Gen AI at at 4:23:23pm">
+          <ChatBubble avatar={<ChatBubbleAvatarGenAI />} type="incoming">
             Amazon S3 provides a simple web service interface that you can use to store and retrieve any amount of data,
             at any time, from anywhere.
           </ChatBubble>
 
-          <ChatBubble type="outgoing" avatar={<ChatBubbleAvatarUser />} ariaLabel="User at 4:25:00pm">
+          <ChatBubble type="outgoing" avatar={<ChatBubbleAvatarUser />}>
             Long text. {longText}
           </ChatBubble>
 
-          <ChatBubble
-            avatar={<ChatBubbleAvatarGenAI />}
-            type="incoming"
-            actions={<Actions />}
-            ariaLabel="Gen AI at 4:25:05pm"
-          >
+          <ChatBubble avatar={<ChatBubbleAvatarGenAI />} type="incoming" actions={<Actions />}>
             Long text. {longText}
           </ChatBubble>
-          <ChatBubble
-            avatar={<ChatBubbleAvatarGenAI />}
-            type="incoming"
-            actions={<Actions />}
-            ariaLabel="Gen AI at 4:25:07pm"
-            hideAvatar={true}
-          >
+          <ChatBubble avatar={<ChatBubbleAvatarGenAI />} type="incoming" actions={<Actions />} hideAvatar={true}>
             Second consecutive message coming from the same author, avatar is hidden.
           </ChatBubble>
 
-          <ChatBubble
-            avatar={<ChatBubbleAvatarGenAI loading={true} />}
-            type="incoming"
-            showLoadingBar={true}
-            ariaLabel="Gen AI at 4:24:24pm"
-          >
+          <ChatBubble avatar={<ChatBubbleAvatarGenAI loading={true} />} type="incoming" showLoadingBar={true}>
             <Box color="text-body-secondary">Generating a response (using Box)</Box>
           </ChatBubble>
 
@@ -59,7 +43,6 @@ export default function ChatBubblePage() {
             type="incoming"
             showLoadingBar={true}
             actions={<Actions />}
-            ariaLabel="Gen AI at 4:24:25pm"
           >
             Generating a response with actions
           </ChatBubble>
