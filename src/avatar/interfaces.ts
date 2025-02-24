@@ -47,19 +47,27 @@ export interface AvatarProps {
 
   /**
    * Specifies the URL of a custom icon. Use this property if the icon you want isn't available, and your custom icon can't be an SVG.
-   * For SVG icons, use the `iconSvg` slot instead.
-   *
-   * If you set both `iconUrl` and `iconSvg`, `iconSvg` will take precedence.
+   * @deprecated Use `iconSvg` or `imgUrl` instead.
    */
   iconUrl?: string;
 
   /**
    * Specifies the SVG of a custom icon.
-   *
    * Use this property if the icon you want isn't available.
-   * If you set both `iconUrl` and `iconSvg`, `iconSvg` will take precedence.
    */
   iconSvg?: React.ReactNode;
+
+  /**
+   * Specifies the URL of a custom image. If you set both `iconUrl` and `imgUrl`, `imgUrl` will take precedence.
+   */
+  imgUrl?: string;
+
+  /**
+   * Defines the width and height of the avatar.
+   * This value corresponds to the `width` CSS-property and will center and crop images using `object-fit: cover`.
+   * The default and minimum width value is 28px.
+   */
+  width?: number;
 }
 
 export namespace AvatarProps {

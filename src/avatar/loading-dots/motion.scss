@@ -39,8 +39,8 @@
   }
 
   50% {
-    block-size: 44px;
-    inline-size: 44px;
+    block-size: 150%;
+    inline-size: 150%;
   }
 
   100% {
@@ -55,8 +55,8 @@
   }
 
   50% {
-    block-size: 44px;
-    inline-size: 44px;
+    block-size: 150%;
+    inline-size: 150%;
     inset-inline-start: -100%;
   }
 
@@ -103,7 +103,7 @@
   }
 
   28% {
-    transform: translateY(-4px);
+    transform: translateY(-100%);
   }
 
   44% {
