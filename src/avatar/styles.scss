@@ -35,7 +35,7 @@ $avatar-size: 28px;
     outline: none;
 
     @include shared.when-visible {
-      @include shared.focus-highlight(1px, 50%);
+      @include shared.focus-highlight(4px, 50%);
     }
   }
 
