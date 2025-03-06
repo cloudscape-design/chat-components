@@ -110,10 +110,11 @@ exports[`definition for chat-bubble matches the snapshot > chat-bubble 1`] = `
   "name": "ChatBubble",
   "properties": [
     {
+      "deprecatedTag": "You can safely remove this property as it has no effect.",
       "description": "Adds aria-label to the chat bubble container. Use this to provide a unique accessible name for each chat bubble on the page.
 For example, "John Doe at 3:42:10am".",
       "name": "ariaLabel",
-      "optional": false,
+      "optional": true,
       "type": "string",
     },
     {
