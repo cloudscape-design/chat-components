@@ -22,6 +22,8 @@
   flex-direction: column;
   gap: cs.$space-scaled-s;
   padding: cs.$space-scaled-s;
+  min-width: 0;
+  overflow-x: auto;
 
   border-start-start-radius: cs.$border-radius-chat-bubble;
   border-start-end-radius: cs.$border-radius-chat-bubble;
