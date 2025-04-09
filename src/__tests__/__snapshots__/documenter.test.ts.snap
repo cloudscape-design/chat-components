@@ -10,8 +10,8 @@ exports[`definition for avatar matches the snapshot > avatar 1`] = `
       "description": "Text to describe the avatar for assistive technology.
 When more than one avatar is used, provide a unique label for each.
 For example, "Avatar of John Doe" or "Avatar of generative AI assistant".
-If \`tooltipText\` is used make sure to include it in the \`ariaLabel\`.
-",
+
+If \`tooltipText\` is used make sure to include it in the \`ariaLabel\`.",
       "name": "ariaLabel",
       "optional": false,
       "type": "string",
@@ -36,8 +36,8 @@ Use \`gen-ai\` for AI assistants and \`default\` otherwise.",
       "defaultValue": ""user-profile"",
       "description": "Specifies the icon to be displayed as Avatar.
 Use \`gen-ai\` icon for AI assistants. By default \`user-profile\` icon is used.
-If you set both \`iconName\` and \`initials\`, \`initials\` will take precedence.
-",
+
+If you set both \`iconName\` and \`initials\`, \`initials\` will take precedence.",
       "inlineType": {
         "name": "IconProps.Name",
         "type": "union",
@@ -76,8 +76,8 @@ Use it to define initials that uniquely identify the avatar's owner.",
     },
     {
       "description": "The text content shown in the avatar's tooltip.
-When you use this property, make sure to include it in the \`ariaLabel\`.
-",
+
+When you use this property, make sure to include it in the \`ariaLabel\`.",
       "name": "tooltipText",
       "optional": true,
       "type": "string",
