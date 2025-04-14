@@ -2,6 +2,7 @@
 
 exports[`definition for avatar matches the snapshot > avatar 1`] = `
 {
+  "dashCaseName": "avatar",
   "events": [],
   "functions": [],
   "name": "Avatar",
@@ -105,6 +106,7 @@ Use this property if the icon you want isn't available.",
 
 exports[`definition for chat-bubble matches the snapshot > chat-bubble 1`] = `
 {
+  "dashCaseName": "chat-bubble",
   "events": [],
   "functions": [],
   "name": "ChatBubble",
@@ -168,6 +170,7 @@ If avatar is being used, set its \`loading\` state to true.",
 
 exports[`definition for loading-bar matches the snapshot > loading-bar 1`] = `
 {
+  "dashCaseName": "loading-bar",
   "events": [],
   "functions": [],
   "name": "LoadingBar",
@@ -196,6 +199,7 @@ with rounded corners.",
 
 exports[`definition for support-prompt-group matches the snapshot > support-prompt-group 1`] = `
 {
+  "dashCaseName": "support-prompt-group",
   "events": [
     {
       "cancelable": false,

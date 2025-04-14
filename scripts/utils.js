@@ -8,10 +8,6 @@ export function pascalCase(text) {
   return capitalize(lodash.camelCase(text));
 }
 
-export function dashCase(text) {
-  return lodash.kebabCase(text);
-}
-
 function capitalize(text) {
   return text[0].toUpperCase() + text.slice(1);
 }
