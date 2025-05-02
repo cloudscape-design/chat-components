@@ -20,7 +20,7 @@ function renderChatBubble(props: ChatBubbleProps) {
 }
 
 describe("Chat bubble", () => {
-  test("Can access slots and elements inside", () => {
+  test("Can access slots and elements inside the slots", () => {
     const wrapper = renderChatBubble({
       type: "outgoing",
       avatar: <Avatar ariaLabel="Avatar" />,
