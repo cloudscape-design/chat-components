@@ -43,6 +43,8 @@
     "./chat-bubble": "./chat-bubble/index.js",
     "./loading-bar": "./loading-bar/index.js",
     "./support-prompt-group": "./support-prompt-group/index.js",
+    "./robot": "./robot/index.js",
+    "./star": "./star/index.js",
     "./test-utils/dom": "./test-utils/dom/index.js",
     "./test-utils/selectors": "./test-utils/selectors/index.js",
     "./internal/api-docs/*.js": "./internal/api-docs/*.js"

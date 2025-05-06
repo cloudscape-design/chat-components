@@ -197,6 +197,67 @@ with rounded corners.",
 }
 `;
 
+exports[`definition for robot matches the snapshot > robot 1`] = `
+{
+  "dashCaseName": "robot",
+  "events": [],
+  "functions": [],
+  "name": "Robot",
+  "properties": [
+    {
+      "inlineType": {
+        "name": ""small" | "large"",
+        "type": "union",
+        "values": [
+          "small",
+          "large",
+        ],
+      },
+      "name": "size",
+      "optional": false,
+      "type": "string",
+    },
+  ],
+  "regions": [],
+  "releaseStatus": "stable",
+  "systemTags": [
+    "core",
+  ],
+}
+`;
+
+exports[`definition for star matches the snapshot > star 1`] = `
+{
+  "dashCaseName": "star",
+  "events": [],
+  "functions": [],
+  "name": "Star",
+  "properties": [
+    {
+      "inlineType": {
+        "name": "{ width: number; }",
+        "properties": [
+          {
+            "name": "width",
+            "optional": false,
+            "type": "number",
+          },
+        ],
+        "type": "object",
+      },
+      "name": "style",
+      "optional": false,
+      "systemTags": [
+        "core",
+      ],
+      "type": "{ width: number; }",
+    },
+  ],
+  "regions": [],
+  "releaseStatus": "stable",
+}
+`;
+
 exports[`definition for support-prompt-group matches the snapshot > support-prompt-group 1`] = `
 {
   "dashCaseName": "support-prompt-group",
