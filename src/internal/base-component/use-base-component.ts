@@ -7,11 +7,13 @@ import {
   ComponentConfiguration,
   initAwsUiVersions,
   useComponentMetadata,
+  useComponentMetrics,
+  useFocusVisible,
 } from "@cloudscape-design/component-toolkit/internal";
 
-import { PACKAGE_SOURCE, PACKAGE_VERSION } from "../environment";
-import useFocusVisible from "../utils/focus-visible";
-import { useTelemetry } from "./use-telemetry";
+import { PACKAGE_SOURCE, PACKAGE_VERSION, THEME } from "../environment";
+import { getVisualTheme } from "../utils/get-visual-theme";
+import { useVisualRefresh } from "./use-visual-refresh";
 
 initAwsUiVersions(PACKAGE_SOURCE, PACKAGE_VERSION);
 
@@ -25,8 +27,14 @@ export interface InternalBaseComponentProps {
  * root DOM node and emits the telemetry for this component.
  */
 export default function useBaseComponent<T = any>(componentName: string, config?: ComponentConfiguration) {
-  useTelemetry(componentName, config);
+  const isVisualRefresh = useVisualRefresh();
+  const theme = getVisualTheme(THEME, isVisualRefresh);
+  useComponentMetrics(componentName, { packageSource: PACKAGE_SOURCE, packageVersion: PACKAGE_VERSION, theme }, config);
   useFocusVisible();
-  const elementRef = useComponentMetadata<T>(componentName, PACKAGE_VERSION);
+  const elementRef = useComponentMetadata<T>(componentName, {
+    packageName: PACKAGE_SOURCE,
+    version: PACKAGE_VERSION,
+    theme,
+  });
   return { __internalRootRef: elementRef };
 }
