@@ -20,3 +20,5 @@ jobs:
     secrets: inherit
     with:
       publish-packages: lib/components,lib/components-themeable
+      project-name: Beta-Importer-v2
+      role-to-assume: arn:aws:iam::084828579018:role/Beta-Shared-GitHubActionRole5D264369-mwZWAVVl9B2R
