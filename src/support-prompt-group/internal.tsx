@@ -10,13 +10,13 @@ import {
   KeyCode,
   SingleTabStopNavigationAPI,
   SingleTabStopNavigationProvider,
+  useMergeRefs,
   warnOnce,
 } from "@cloudscape-design/component-toolkit/internal";
 
 import { getDataAttributes } from "../internal/base-component/get-data-attributes";
 import { InternalBaseComponentProps } from "../internal/base-component/use-base-component";
 import { fireNonCancelableEvent } from "../internal/events";
-import { useMergeRefs } from "../internal/utils/use-merge-refs";
 import { getNextFocusTarget, onUnregisterActive } from "./focus-helpers";
 import { SupportPromptGroupProps } from "./interfaces";
 import { Prompt } from "./prompt";
@@ -135,9 +135,7 @@ export const InternalSupportPromptGroup = forwardRef(
       <div
         {...getDataAttributes(rest)}
         role="menubar"
-        className={clsx(styles.root, {
-          [styles.vertical]: alignment !== "horizontal",
-        })}
+        className={clsx(styles.root, { [styles.vertical]: alignment !== "horizontal" })}
         aria-label={ariaLabel}
         onFocus={onFocus}
         onBlur={onBlur}
