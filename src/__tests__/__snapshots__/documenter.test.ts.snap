@@ -42,7 +42,9 @@ If you set both \`iconName\` and \`initials\`, \`initials\` will take precedence
       "inlineType": {
         "name": "IconProps.Name",
         "type": "union",
-        "values": "comes from @cloudscape-design/components",
+        "values": [
+          "comes from @cloudscape-design/components",
+        ],
       },
       "name": "iconName",
       "optional": true,
