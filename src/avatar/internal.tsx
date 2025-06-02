@@ -3,14 +3,13 @@
 import { useRef, useState } from "react";
 import clsx from "clsx";
 
-import { warnOnce } from "@cloudscape-design/component-toolkit/internal";
+import { useMergeRefs, warnOnce } from "@cloudscape-design/component-toolkit/internal";
 import Icon from "@cloudscape-design/components/icon";
 import Tooltip from "@cloudscape-design/components/internal/tooltip-do-not-use";
 import * as awsui from "@cloudscape-design/design-tokens";
 
 import { getDataAttributes } from "../internal/base-component/get-data-attributes";
 import { InternalBaseComponentProps } from "../internal/base-component/use-base-component";
-import { useMergeRefs } from "../internal/utils/use-merge-refs";
 import { AvatarProps } from "./interfaces.js";
 import LoadingDots from "./loading-dots";
 
@@ -100,9 +99,7 @@ export default function InternalAvatar({
       {...getDataAttributes(rest)}
       ref={mergedRef}
       tabIndex={0}
-      className={clsx(styles.root, styles[`avatar-color-${color}`], {
-        [styles.initials]: initials,
-      })}
+      className={clsx(styles.root, styles[`avatar-color-${color}`], { [styles.initials]: initials })}
       role="img"
       aria-label={ariaLabel}
       {...tooltipAttributes}
