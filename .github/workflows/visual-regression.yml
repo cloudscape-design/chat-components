@@ -8,6 +8,10 @@ on:
     branches:
       - main
   merge_group:
+  workflow_run:
+    workflows: [Release]
+    types: [completed]
+
 
 env:
   VISUAL_REGRESSION_SNAPSHOT_DIRECTORY: "__image_snapshots__"
@@ -16,7 +20,7 @@ jobs:
   test:
     name: Run Tests
     runs-on: ubuntu-latest
-    if: github.event.ref != 'refs/heads/main'
+    if: (github.event.ref || github.event.workflow_run.head_branch) != 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -46,7 +50,7 @@ jobs:
   update:
     name: Update Snapshots
     runs-on: ubuntu-latest
-    if: github.event.ref == 'refs/heads/main'
+    if: (github.event.ref || github.event.workflow_run.head_branch) == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
