@@ -33,9 +33,10 @@ $avatar-size: 28px;
 
   &:focus {
     outline: none;
-    @include shared.when-visible {
-      @include shared.focus-highlight(4px, 50%);
-    }
+  }
+
+  &:focus-visible {
+    @include shared.focus-highlight(4px, 50%);
   }
 
   &:has(.image) {
