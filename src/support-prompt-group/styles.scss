@@ -53,9 +53,9 @@
 
   &:focus {
     outline: none;
+  }
 
-    @include shared.when-visible {
-      @include shared.focus-highlight(6px, 6px);
-    }
+  &:focus-visible {
+    @include shared.focus-highlight(6px, 6px);
   }
 }
