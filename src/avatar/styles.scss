@@ -9,9 +9,12 @@
 
 .root {
   @include shared.styles-reset;
+  align-items: center;
+  display: flex;
   color: cs.$color-text-avatar;
   block-size: var(#{custom-props.$avatarSize});
   inline-size: var(#{custom-props.$avatarSize});
+  justify-content: center;
   position: relative;
   @include mixins.border-radius-avatar;
 
