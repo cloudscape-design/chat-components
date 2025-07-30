@@ -10,9 +10,12 @@ $avatar-size: 28px;
 
 .root {
   @include shared.styles-reset;
+  align-items: center;
+  display: flex;
   color: cs.$color-text-avatar;
   block-size: $avatar-size;
   inline-size: $avatar-size;
+  justify-content: center;
   position: relative;
   @include mixins.border-radius-avatar;
 
