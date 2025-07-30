@@ -12,6 +12,7 @@ import { InternalBaseComponentProps } from "../internal/base-component/use-base-
 import customCssProps from "../internal/generated/custom-css-properties";
 import { AvatarProps } from "./interfaces.js";
 import LoadingDots from "./loading-dots";
+import { getContentStyles, getImageStyles, getRootStyles } from "./style";
 
 import styles from "./styles.css.js";
 
@@ -27,13 +28,14 @@ const AvatarContent = ({
   ariaLabel,
   width,
   imgUrl,
+  style,
 }: AvatarProps) => {
   if (loading) {
-    return <LoadingDots color={color} width={width} />;
+    return <LoadingDots color={color} width={width} style={style} />;
   }
 
   if (imgUrl) {
-    return <img className={styles.image} src={imgUrl} />;
+    return <img className={styles.image} src={imgUrl} style={getImageStyles(style)} />;
   }
 
   if (initials) {
@@ -59,6 +61,7 @@ export default function InternalAvatar({
   iconSvg,
   iconUrl,
   imgUrl,
+  style,
   width = 28,
   __internalRootRef = null,
   ...rest
@@ -99,7 +102,7 @@ export default function InternalAvatar({
       role="img"
       aria-label={ariaLabel}
       {...tooltipAttributes}
-      style={{ [customCssProps.avatarSize]: `${computedSize}px` }}
+      style={{ [customCssProps.avatarSize]: `${computedSize}px`, ...getRootStyles(style) }}
     >
       {showTooltip && tooltipText && (
         <Tooltip
@@ -112,7 +115,7 @@ export default function InternalAvatar({
 
       {/* aria-hidden is added so that screen readers focus only the parent div */}
       {/* when it is not hidden, it becomes unstable in JAWS */}
-      <div className={styles.content} aria-hidden="true">
+      <div className={styles.content} aria-hidden="true" style={getContentStyles(style)}>
         <AvatarContent
           color={color}
           ariaLabel={ariaLabel}
@@ -122,6 +125,7 @@ export default function InternalAvatar({
           iconSvg={iconSvg}
           iconUrl={iconUrl}
           imgUrl={imgUrl}
+          style={style}
           width={computedSize}
         />
       </div>
