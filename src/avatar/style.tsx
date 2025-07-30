@@ -4,7 +4,7 @@
 //import { SYSTEM } from '../internal/environment';
 import { AvatarProps } from "./interfaces";
 
-export function getRootStyles(style: AvatarProps | undefined) {
+export function getRootStyles(style: AvatarProps.Style | undefined) {
   let properties = {};
 
   if (style?.root) {
@@ -19,7 +19,7 @@ export function getRootStyles(style: AvatarProps | undefined) {
   return properties;
 }
 
-export function getContentStyles(style: AvatarProps | undefined) {
+export function getContentStyles(style: AvatarProps.Style | undefined) {
   let properties = {};
 
   if (style?.root) {
@@ -34,7 +34,7 @@ export function getContentStyles(style: AvatarProps | undefined) {
   return properties;
 }
 
-export function getImageStyles(style: AvatarProps | undefined) {
+export function getImageStyles(style: AvatarProps.Style | undefined) {
   let properties = {};
 
   if (style?.root) {
@@ -46,7 +46,7 @@ export function getImageStyles(style: AvatarProps | undefined) {
   return properties;
 }
 
-export function getLoadingDotsStyle(style: AvatarProps | undefined) {
+export function getLoadingDotsStyle(style: AvatarProps.Style | undefined) {
   let properties = {};
 
   if (style?.root) {
