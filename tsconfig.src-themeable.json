@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2021", "DOM"],
+    "module": "es2020",
+    "moduleResolution": "node",
+    "rootDir": "src-themeable",
+    "declaration": true,
+    "incremental": true,
+    "outDir": "lib/components-themeable",
+    "skipLibCheck": true,
+    "tsBuildInfoFile": "./.cache/themeable-source.tsbuildinfo"
+  },
+  "include": ["src-themeable"],
+}

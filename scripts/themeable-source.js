@@ -13,6 +13,7 @@ const stylesTargetDir = path.join(targetDir, "/scss");
 
 const componentsSourceDir = path.join(cwd, "./lib/components");
 const componentsTargetDir = path.join(targetDir, "/template");
+const designTokensTemplateDir = path.join(targetDir, "/template-tokens");
 
 function copyStyles() {
   for (const file of globbySync("**/*.scss", { cwd: stylesSourceDir })) {
@@ -32,6 +33,19 @@ function copyStyles() {
 function copyTemplate() {
   fs.mkdirSync(componentsTargetDir, { recursive: true });
   fs.cpSync(componentsSourceDir, componentsTargetDir, { recursive: true });
+  fs.mkdirSync(designTokensTemplateDir, { recursive: true });
+  fs.writeFileSync(
+    path.join(designTokensTemplateDir, "package.json"),
+    JSON.stringify(
+      {
+        name: "@cloudscape-design/design-tokens-themed",
+        version: "1.0.0",
+      },
+      null,
+      2,
+    ),
+    "utf-8",
+  );
 }
 
 copyTemplate();
