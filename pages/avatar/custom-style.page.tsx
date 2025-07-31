@@ -25,6 +25,11 @@ export default function CustomStyles() {
               borderWidth: "8px",
               boxShadow: "0px 0px 10px blue",
               color: "#f7f6ff",
+              focusRing: {
+                borderColor: "green",
+                borderRadius: "16px",
+                borderWidth: "4px",
+              },
             },
           }}
         />
@@ -42,6 +47,11 @@ export default function CustomStyles() {
               borderWidth: "3px",
               boxShadow: "0px 0px 10px blue",
               color: "#f7f6ff",
+              focusRing: {
+                borderColor: "green",
+                borderRadius: "8px",
+                borderWidth: "4px",
+              },
             },
           }}
         />
@@ -59,6 +69,10 @@ export default function CustomStyles() {
               borderWidth: "4px",
               boxShadow: "0px 0px 10px blue",
               color: "#f7f6ff",
+              focusRing: {
+                borderColor: "green",
+                borderWidth: "4px",
+              },
             },
           }}
         />
@@ -73,6 +87,11 @@ export default function CustomStyles() {
               borderColor: "green",
               borderRadius: "30px",
               borderWidth: "2px",
+              focusRing: {
+                borderColor: "green",
+                borderRadius: "30px",
+                borderWidth: "4px",
+              },
             },
           }}
         />
@@ -85,6 +104,9 @@ export default function CustomStyles() {
           style={{
             root: {
               borderRadius: "0px",
+              focusRing: {
+                borderRadius: "0px",
+              },
             },
           }}
         />
@@ -98,6 +120,9 @@ export default function CustomStyles() {
             root: {
               background: "blue",
               borderRadius: "14px",
+              focusRing: {
+                borderRadius: "14px",
+              },
             },
           }}
         />
