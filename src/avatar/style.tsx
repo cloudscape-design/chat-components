@@ -13,6 +13,10 @@ export function getRootStyles(style: AvatarProps.Style | undefined) {
       borderRadius: style.root?.borderRadius,
       boxShadow: style.root?.boxShadow,
       color: style.root?.color,
+      ["--root-border-width"]: style.root?.borderWidth,
+      ["--focus-ring-border-color"]: style.root?.focusRing?.borderColor,
+      ["--focus-ring-border-radius"]: style.root?.focusRing?.borderRadius,
+      ["--focus-ring-border-width"]: style.root?.focusRing?.borderWidth,
     };
   }
 

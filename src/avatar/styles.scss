@@ -38,7 +38,12 @@
   }
 
   &:focus-visible {
-    @include shared.focus-highlight(4px, 50%);
+    @include shared.focus-highlight(
+      $gutter: calc(4px + var(--root-border-width, 0px) + var(--focus-ring-border-width, 0px)),
+      $border-radius: var(--focus-ring-border-radius, 50%),
+      $border-color: var(--focus-ring-border-color, cs.$color-border-item-focused),
+      $border-width: var(--focus-ring-border-width, 2px)
+    );
   }
 
   &:has(.image) {
