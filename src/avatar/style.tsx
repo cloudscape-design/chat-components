@@ -1,13 +1,13 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-//import { SYSTEM } from '../internal/environment';
+import { SYSTEM } from "../internal/environment";
 import { AvatarProps } from "./interfaces";
 
 export function getRootStyles(style: AvatarProps.Style | undefined) {
   let properties = {};
 
-  if (style?.root) {
+  if (SYSTEM === "core" && style?.root) {
     properties = {
       background: style.root?.background,
       borderRadius: style.root?.borderRadius,
@@ -26,7 +26,7 @@ export function getRootStyles(style: AvatarProps.Style | undefined) {
 export function getContentStyles(style: AvatarProps.Style | undefined) {
   let properties = {};
 
-  if (style?.root) {
+  if (SYSTEM === "core" && style?.root) {
     properties = {
       borderColor: style.root?.borderColor,
       borderRadius: style.root?.borderRadius,
@@ -41,7 +41,7 @@ export function getContentStyles(style: AvatarProps.Style | undefined) {
 export function getImageStyles(style: AvatarProps.Style | undefined) {
   let properties = {};
 
-  if (style?.root) {
+  if (SYSTEM === "core" && style?.root) {
     properties = {
       borderRadius: style.root?.borderRadius,
     };
@@ -53,7 +53,7 @@ export function getImageStyles(style: AvatarProps.Style | undefined) {
 export function getLoadingDotsStyle(style: AvatarProps.Style | undefined) {
   let properties = {};
 
-  if (style?.root) {
+  if (SYSTEM === "core" && style?.root) {
     properties = {
       borderRadius: style.root?.borderRadius,
     };
