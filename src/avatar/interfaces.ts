@@ -71,6 +71,9 @@ export interface AvatarProps {
    * - `root.borderWidth` (string) - (Optional) Border width of the avatar.
    * - `root.boxShadow` (string) - (Optional) Box shadow of the avatar.
    * - `root.color` (string) - (Optional) Text color of the avatar.
+   * - `root.focusRing.borderColor` (string) - (Optional) Focus ring border color.
+   * - `root.focusRing.borderRadius` (string) - (Optional) Focus ring border radius.
+   * - `root.focusRing.borderWidth` (string) - (Optional) Focus ring border width.
    * @awsuiSystem core
    */
   style?: AvatarProps.Style;
@@ -94,6 +97,11 @@ export namespace AvatarProps {
       borderWidth?: string;
       boxShadow?: string;
       color?: string;
+      focusRing?: {
+        borderColor?: string;
+        borderRadius?: string;
+        borderWidth?: string;
+      };
     };
   }
 }
