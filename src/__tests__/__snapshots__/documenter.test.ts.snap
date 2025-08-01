@@ -78,6 +78,98 @@ Use it to define initials that uniquely identify the avatar's owner.",
       "type": "boolean",
     },
     {
+      "description": "Specifies an object of selectors and properties that are used to apply custom styles.
+
+- \`root.background\` (string) - (Optional) Background of the avatar.
+- \`root.borderColor\` (string) - (Optional) Border color of the avatar.
+- \`root.borderRadius\` (string) - (Optional) Border radius of the avatar.
+- \`root.borderWidth\` (string) - (Optional) Border width of the avatar.
+- \`root.boxShadow\` (string) - (Optional) Box shadow of the avatar.
+- \`root.color\` (string) - (Optional) Text color of the avatar.
+- \`root.focusRing.borderColor\` (string) - (Optional) Focus ring border color.
+- \`root.focusRing.borderRadius\` (string) - (Optional) Focus ring border radius.
+- \`root.focusRing.borderWidth\` (string) - (Optional) Focus ring border width.",
+      "inlineType": {
+        "name": "AvatarProps.Style",
+        "properties": [
+          {
+            "inlineType": {
+              "name": "object",
+              "properties": [
+                {
+                  "name": "background",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "name": "borderColor",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "name": "borderRadius",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "name": "borderWidth",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "name": "boxShadow",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "name": "color",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "inlineType": {
+                    "name": "object",
+                    "properties": [
+                      {
+                        "name": "borderColor",
+                        "optional": true,
+                        "type": "string",
+                      },
+                      {
+                        "name": "borderRadius",
+                        "optional": true,
+                        "type": "string",
+                      },
+                      {
+                        "name": "borderWidth",
+                        "optional": true,
+                        "type": "string",
+                      },
+                    ],
+                    "type": "object",
+                  },
+                  "name": "focusRing",
+                  "optional": true,
+                  "type": "{ borderColor?: string | undefined; borderRadius?: string | undefined; borderWidth?: string | undefined; }",
+                },
+              ],
+              "type": "object",
+            },
+            "name": "root",
+            "optional": true,
+            "type": "{ background?: string | undefined; borderColor?: string | undefined; borderRadius?: string | undefined; borderWidth?: string | undefined; boxShadow?: string | undefined; color?: string | undefined; focusRing?: { ...; } | undefined; }",
+          },
+        ],
+        "type": "object",
+      },
+      "name": "style",
+      "optional": true,
+      "systemTags": [
+        "core",
+      ],
+      "type": "AvatarProps.Style",
+    },
+    {
       "description": "The text content shown in the avatar's tooltip.
 
 When you use this property, make sure to include it in the \`ariaLabel\`.",

@@ -123,4 +123,38 @@ describe("Avatar", () => {
     const wrapper = renderAvatar({ ariaLabel, initials: "JD", tooltipText: "Jane Doe" });
     expect(wrapper.getElement()).toHaveAttribute("aria-label", ariaLabel);
   });
+
+  test("style api", () => {
+    const ariaLabel = "User avatar JD Jane Doe";
+    const wrapper = renderAvatar({
+      ariaLabel,
+      initials: "JD",
+      tooltipText: "Jane Doe",
+      style: {
+        root: {
+          background: "#000",
+          borderColor: "magenta",
+          borderRadius: "16px",
+          borderWidth: "8px",
+          boxShadow: "0px 0px 10px blue",
+          color: "#fff",
+        },
+      },
+    });
+
+    expect(getComputedStyle(wrapper.getElement()).getPropertyValue("background")).toBe("rgb(0, 0, 0)");
+    expect(getComputedStyle(wrapper.getElement()).getPropertyValue("border-radius")).toBe("16px");
+    expect(getComputedStyle(wrapper.getElement()).getPropertyValue("box-shadow")).toBe("0px 0px 10px blue");
+    expect(getComputedStyle(wrapper.getElement()).getPropertyValue("color")).toBe("rgb(255, 255, 255)");
+
+    expect(
+      getComputedStyle(wrapper.findByClassName(avatarStyles.content)!.getElement()).getPropertyValue("border-color"),
+    ).toBe("magenta");
+    expect(
+      getComputedStyle(wrapper.findByClassName(avatarStyles.content)!.getElement()).getPropertyValue("border-radius"),
+    ).toBe("16px");
+    expect(
+      getComputedStyle(wrapper.findByClassName(avatarStyles.content)!.getElement()).getPropertyValue("border-width"),
+    ).toBe("8px");
+  });
 });

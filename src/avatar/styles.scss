@@ -5,14 +5,16 @@
 @use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
 @use "./mixins.scss" as mixins;
 @use "../internal/shared" as shared;
-
-$avatar-size: 28px;
+@use "../internal/generated/custom-css-properties/index.scss" as custom-props;
 
 .root {
   @include shared.styles-reset;
+  align-items: center;
+  display: flex;
   color: cs.$color-text-avatar;
-  block-size: $avatar-size;
-  inline-size: $avatar-size;
+  block-size: var(#{custom-props.$avatarSize});
+  inline-size: var(#{custom-props.$avatarSize});
+  justify-content: center;
   position: relative;
   @include mixins.border-radius-avatar;
 
@@ -36,7 +38,12 @@ $avatar-size: 28px;
   }
 
   &:focus-visible {
-    @include shared.focus-highlight(4px, 50%);
+    @include shared.focus-highlight(
+      $gutter: calc(4px + var(#{custom-props.$rootBorderWidth}, 0px) + var(#{custom-props.$focusRingBorderWidth}, 0px)),
+      $border-radius: var(#{custom-props.$focusRingBorderRadius}, 50%),
+      $border-color: var(#{custom-props.$focusRingBorderColor}, cs.$color-border-item-focused),
+      $border-width: var(#{custom-props.$focusRingBorderWidth}, 2px)
+    );
   }
 
   &:has(.image) {
@@ -51,11 +58,19 @@ $avatar-size: 28px;
   block-size: inherit;
   inline-size: inherit;
   overflow: hidden;
+  line-height: calc(0.8 * var(#{custom-props.$avatarSize}));
 
   .image {
     @include mixins.border-radius-avatar;
-    block-size: $avatar-size;
-    inline-size: $avatar-size;
+    block-size: var(#{custom-props.$avatarSize});
+    inline-size: var(#{custom-props.$avatarSize});
     object-fit: cover;
+  }
+  .initials {
+    font-size: clamp(
+      cs.$font-size-body-s,
+      calc(0.4 * var(#{custom-props.$avatarSize})),
+      calc(0.4 * var(#{custom-props.$avatarSize}))
+    );
   }
 }
