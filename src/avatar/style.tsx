@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { SYSTEM } from "../internal/environment";
+import customCssProps from "../internal/generated/custom-css-properties";
 import { AvatarProps } from "./interfaces";
 
 export function getRootStyles(style: AvatarProps.Style | undefined) {
@@ -13,10 +14,10 @@ export function getRootStyles(style: AvatarProps.Style | undefined) {
       borderRadius: style.root?.borderRadius,
       boxShadow: style.root?.boxShadow,
       color: style.root?.color,
-      ["--root-border-width"]: style.root?.borderWidth,
-      ["--focus-ring-border-color"]: style.root?.focusRing?.borderColor,
-      ["--focus-ring-border-radius"]: style.root?.focusRing?.borderRadius,
-      ["--focus-ring-border-width"]: style.root?.focusRing?.borderWidth,
+      [customCssProps.rootBorderWidth]: style.root?.borderWidth,
+      [customCssProps.focusRingBorderColor]: style.root?.focusRing?.borderColor,
+      [customCssProps.focusRingBorderRadius]: style.root?.focusRing?.borderRadius,
+      [customCssProps.focusRingBorderWidth]: style.root?.focusRing?.borderWidth,
     };
   }
 
