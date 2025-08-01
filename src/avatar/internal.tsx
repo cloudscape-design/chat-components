@@ -6,10 +6,10 @@ import clsx from "clsx";
 import { useMergeRefs, warnOnce } from "@cloudscape-design/component-toolkit/internal";
 import Icon from "@cloudscape-design/components/icon";
 import Tooltip from "@cloudscape-design/components/internal/tooltip-do-not-use";
-import * as awsui from "@cloudscape-design/design-tokens";
 
 import { getDataAttributes } from "../internal/base-component/get-data-attributes";
 import { InternalBaseComponentProps } from "../internal/base-component/use-base-component";
+import customCssProps from "../internal/generated/custom-css-properties";
 import { AvatarProps } from "./interfaces.js";
 import LoadingDots from "./loading-dots";
 
@@ -33,7 +33,7 @@ const AvatarContent = ({
   }
 
   if (imgUrl) {
-    return <img className={styles.image} src={imgUrl} style={{ height: width, width: width }} />;
+    return <img className={styles.image} src={imgUrl} />;
   }
 
   if (initials) {
@@ -43,11 +43,7 @@ const AvatarContent = ({
       warnOnce("Avatar", `"initials" is longer than 2 characters. Only the first two characters are shown.`);
     }
 
-    return (
-      <span style={{ fontSize: `clamp(${awsui.fontSizeBodyS}, calc(0.4px * ${width}), calc(0.4px * ${width}))` }}>
-        {letters}
-      </span>
-    );
+    return <span className={styles.initials}>{letters}</span>;
   }
 
   return <Icon name={iconName} svg={iconSvg} url={iconUrl} alt={ariaLabel} size="inherit" />;
@@ -103,7 +99,7 @@ export default function InternalAvatar({
       role="img"
       aria-label={ariaLabel}
       {...tooltipAttributes}
-      style={{ height: computedSize, width: computedSize }}
+      style={{ [customCssProps.avatarSize]: `${computedSize}px` }}
     >
       {showTooltip && tooltipText && (
         <Tooltip
@@ -116,7 +112,7 @@ export default function InternalAvatar({
 
       {/* aria-hidden is added so that screen readers focus only the parent div */}
       {/* when it is not hidden, it becomes unstable in JAWS */}
-      <div className={styles.content} aria-hidden="true" style={{ lineHeight: `calc(.8px * ${computedSize})` }}>
+      <div className={styles.content} aria-hidden="true">
         <AvatarContent
           color={color}
           ariaLabel={ariaLabel}

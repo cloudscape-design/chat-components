@@ -5,14 +5,13 @@
 @use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
 @use "./mixins.scss" as mixins;
 @use "../internal/shared" as shared;
-
-$avatar-size: 28px;
+@use "../internal/generated/custom-css-properties/index.scss" as custom-props;
 
 .root {
   @include shared.styles-reset;
   color: cs.$color-text-avatar;
-  block-size: $avatar-size;
-  inline-size: $avatar-size;
+  block-size: var(#{custom-props.$avatarSize});
+  inline-size: var(#{custom-props.$avatarSize});
   position: relative;
   @include mixins.border-radius-avatar;
 
@@ -51,11 +50,19 @@ $avatar-size: 28px;
   block-size: inherit;
   inline-size: inherit;
   overflow: hidden;
+  line-height: calc(0.8 * var(#{custom-props.$avatarSize}));
 
   .image {
     @include mixins.border-radius-avatar;
-    block-size: $avatar-size;
-    inline-size: $avatar-size;
+    block-size: var(#{custom-props.$avatarSize});
+    inline-size: var(#{custom-props.$avatarSize});
     object-fit: cover;
+  }
+  .initials {
+    font-size: clamp(
+      cs.$font-size-body-s,
+      calc(0.4 * var(#{custom-props.$avatarSize})),
+      calc(0.4 * var(#{custom-props.$avatarSize}))
+    );
   }
 }

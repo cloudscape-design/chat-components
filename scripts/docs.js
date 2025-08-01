@@ -4,7 +4,7 @@ import path from "node:path";
 
 import { documentTestUtils, writeComponentsDocumentation } from "@cloudscape-design/documenter";
 
-import { writeSourceFile } from "./utils.js";
+import { writeSourceFile } from "./utils/files.js";
 
 const targetDir = "lib/components/internal/api-docs";
 
