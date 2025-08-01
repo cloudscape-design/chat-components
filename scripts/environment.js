@@ -3,10 +3,10 @@
 
 import * as fs from "node:fs";
 import path from "node:path";
-import process from "node:process";
+
+import { gitCommitVersion } from "./utils/workspace.js";
 
 const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
-const gitCommitVersion = (process.env.GITHUB_SHA || "HEAD").slice(0, 8);
 const packageVersion = `${pkg.version} (${gitCommitVersion})`;
 
 const basePath = "lib/components/internal/environment";

@@ -6,4 +6,5 @@ lib
 dist
 /src/test-utils/selectors
 /src/test-utils/dom/index.ts
+/src/internal/generated/custom-css-properties
 .DS_STORE

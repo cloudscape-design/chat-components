@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import fs from "node:fs";
 
-import { writeJSON } from "./utils.js";
+import { writeJSON } from "./utils/files.js";
 
 const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
 
