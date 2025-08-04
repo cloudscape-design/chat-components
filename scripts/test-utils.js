@@ -1,13 +1,13 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+import { pascalCase } from "change-case";
 import { execaSync } from "execa";
 import { globbySync } from "globby";
 import path from "node:path";
 
 import { generateTestUtils } from "@cloudscape-design/test-utils-converter";
 
-import { pluralizeComponentName } from "./pluralize.js";
-import { pascalCase } from "./utils.js";
+import { pluralizeComponentName } from "./utils/pluralize.js";
 
 const componentNames = globbySync(["src/test-utils/dom/**/index.ts", "!src/test-utils/dom/index.ts"]).map(
   (filePath) => {
