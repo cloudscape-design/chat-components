@@ -5,9 +5,9 @@
  */
 const customCssPropertiesList = [
   "avatarSize",
-  "rootBorderWidth",
-  "focusRingBorderColor",
-  "focusRingBorderRadius",
-  "focusRingBorderWidth",
+  "avatarRootBorderWidth",
+  "avatarFocusRingBorderColor",
+  "avatarFocusRingBorderRadius",
+  "avatarFocusRingBorderWidth",
 ];
 export default customCssPropertiesList;

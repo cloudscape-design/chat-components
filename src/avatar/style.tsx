@@ -14,10 +14,10 @@ export function getRootStyles(style: AvatarProps.Style | undefined) {
       borderRadius: style.root?.borderRadius,
       boxShadow: style.root?.boxShadow,
       color: style.root?.color,
-      [customCssProps.rootBorderWidth]: style.root?.borderWidth,
-      [customCssProps.focusRingBorderColor]: style.root?.focusRing?.borderColor,
-      [customCssProps.focusRingBorderRadius]: style.root?.focusRing?.borderRadius,
-      [customCssProps.focusRingBorderWidth]: style.root?.focusRing?.borderWidth,
+      [customCssProps.avatarRootBorderWidth]: style.root?.borderWidth,
+      [customCssProps.avatarFocusRingBorderColor]: style.root?.focusRing?.borderColor,
+      [customCssProps.avatarFocusRingBorderRadius]: style.root?.focusRing?.borderRadius,
+      [customCssProps.avatarFocusRingBorderWidth]: style.root?.focusRing?.borderWidth,
     };
   }
 
