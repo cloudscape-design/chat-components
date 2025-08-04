@@ -39,10 +39,12 @@
 
   &:focus-visible {
     @include shared.focus-highlight(
-      $gutter: calc(4px + var(#{custom-props.$rootBorderWidth}, 0px) + var(#{custom-props.$focusRingBorderWidth}, 0px)),
-      $border-radius: var(#{custom-props.$focusRingBorderRadius}, 50%),
-      $border-color: var(#{custom-props.$focusRingBorderColor}, cs.$color-border-item-focused),
-      $border-width: var(#{custom-props.$focusRingBorderWidth}, 2px)
+      $gutter: calc(
+          4px + var(#{custom-props.$avatarRootBorderWidth}, 0px) + var(#{custom-props.$avatarFocusRingBorderWidth}, 0px)
+        ),
+      $border-radius: var(#{custom-props.$avatarFocusRingBorderRadius}, 50%),
+      $border-color: var(#{custom-props.$avatarFocusRingBorderColor}, cs.$color-border-item-focused),
+      $border-width: var(#{custom-props.$avatarFocusRingBorderWidth}, 2px)
     );
   }
 
