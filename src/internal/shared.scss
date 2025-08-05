@@ -4,12 +4,7 @@
 */
 @use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
 
-@mixin focus-highlight(
-  $gutter: 4px,
-  $border-radius: cs.$border-radius-control-default-focus-ring,
-  $border-color: cs.$color-border-item-focused,
-  $border-width: 2px
-) {
+@mixin focus-highlight($gutter: 4px, $border-radius: cs.$border-radius-control-default-focus-ring) {
   position: relative;
   box-sizing: border-box;
   outline: 2px dotted transparent;
@@ -25,7 +20,7 @@
     inline-size: calc(100% + 2 * #{$gutter});
     block-size: calc(100% + 2 * #{$gutter});
     border-radius: $border-radius;
-    border: $border-width solid $border-color;
+    border: 2px solid cs.$color-border-item-focused;
   }
 }
 
