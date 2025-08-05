@@ -3,11 +3,5 @@
 /*
  * This file is only needed to generate the proper js and scss files in custom-css-properties script
  */
-const customCssPropertiesList = [
-  "avatarSize",
-  "avatarRootBorderWidth",
-  "avatarFocusRingBorderColor",
-  "avatarFocusRingBorderRadius",
-  "avatarFocusRingBorderWidth",
-];
+const customCssPropertiesList = ["avatarSize"];
 export default customCssPropertiesList;
