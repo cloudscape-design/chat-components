@@ -8,7 +8,7 @@ import { TestBed } from "../app/test-bed";
 import { ScreenshotArea } from "../screenshot-area";
 import smiley from "./smiley.png";
 
-export const customIconSvg = (
+const customIconSvg = (
   <svg
     className="w-6 h-6 text-gray-800 dark:text-white"
     aria-hidden="true"
