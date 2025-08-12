@@ -14,6 +14,7 @@ const values = {
   PACKAGE_SOURCE: "chat-components",
   PACKAGE_VERSION: packageVersion,
   THEME: "open-source-visual-refresh",
+  SYSTEM: "core",
   ALWAYS_VISUAL_REFRESH: true,
 };
 writeFile(`${basePath}.json`, JSON.stringify(values, null, 2));

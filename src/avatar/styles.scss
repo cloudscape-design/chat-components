@@ -9,9 +9,12 @@
 
 .root {
   @include shared.styles-reset;
+  align-items: center;
+  display: flex;
   color: cs.$color-text-avatar;
   block-size: var(#{custom-props.$avatarSize});
   inline-size: var(#{custom-props.$avatarSize});
+  justify-content: center;
   position: relative;
   @include mixins.border-radius-avatar;
 
@@ -35,7 +38,14 @@
   }
 
   &:focus-visible {
-    @include shared.focus-highlight(4px, 50%);
+    @include shared.focus-highlight(
+      $gutter: calc(
+          4px + var(#{custom-props.$avatarRootBorderWidth}, 0px) + var(#{custom-props.$avatarFocusRingBorderWidth}, 0px)
+        ),
+      $border-radius: var(#{custom-props.$avatarFocusRingBorderRadius}, 50%),
+      $border-color: var(#{custom-props.$avatarFocusRingBorderColor}, cs.$color-border-item-focused),
+      $border-width: var(#{custom-props.$avatarFocusRingBorderWidth}, 2px)
+    );
   }
 
   &:has(.image) {

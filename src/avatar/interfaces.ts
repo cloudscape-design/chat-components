@@ -63,6 +63,22 @@ export interface AvatarProps {
   imgUrl?: string;
 
   /**
+   * Specifies an object of selectors and properties that are used to apply custom styles.
+   *
+   * - `root.background` (string) - (Optional) Background of the avatar.
+   * - `root.borderColor` (string) - (Optional) Border color of the avatar.
+   * - `root.borderRadius` (string) - (Optional) Border radius of the avatar.
+   * - `root.borderWidth` (string) - (Optional) Border width of the avatar.
+   * - `root.boxShadow` (string) - (Optional) Box shadow of the avatar.
+   * - `root.color` (string) - (Optional) Text color of the avatar.
+   * - `root.focusRing.borderColor` (string) - (Optional) Focus ring border color.
+   * - `root.focusRing.borderRadius` (string) - (Optional) Focus ring border radius.
+   * - `root.focusRing.borderWidth` (string) - (Optional) Focus ring border width.
+   * @awsuiSystem core
+   */
+  style?: AvatarProps.Style;
+
+  /**
    * Defines the width and height of the avatar.
    * This value corresponds to the `width` CSS-property and will center and crop images using `object-fit: cover`.
    * The default and minimum width value is 28px.
@@ -72,4 +88,20 @@ export interface AvatarProps {
 
 export namespace AvatarProps {
   export type Color = "default" | "gen-ai";
+
+  export interface Style {
+    root?: {
+      background?: string;
+      borderColor?: string;
+      borderRadius?: string;
+      borderWidth?: string;
+      boxShadow?: string;
+      color?: string;
+      focusRing?: {
+        borderColor?: string;
+        borderRadius?: string;
+        borderWidth?: string;
+      };
+    };
+  }
 }

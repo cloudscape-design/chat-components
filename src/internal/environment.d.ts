@@ -5,5 +5,6 @@
 export declare const THEME: string;
 export declare const PACKAGE_SOURCE: string;
 export declare const PACKAGE_VERSION: string;
+export declare const SYSTEM: string;
 /** Indicates that the current theme is always in visual refresh mode. */
 export declare const ALWAYS_VISUAL_REFRESH: boolean;
