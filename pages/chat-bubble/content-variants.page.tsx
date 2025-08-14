@@ -9,13 +9,12 @@ import Steps from "@cloudscape-design/components/steps";
 import Table, { TableProps } from "@cloudscape-design/components/table";
 
 import { ChatBubble } from "../../lib/components";
+import { Page } from "../app/templates";
 import { Actions, ChatBubbleAvatarGenAI, ChatContainer } from "./util-components";
 
 export default function ChatBubblesContentVariantsPage() {
   return (
-    <>
-      <h1>Content variants in chat bubble</h1>
-
+    <Page title="Content variants in chat bubble">
       <ChatContainer>
         <GenAIChatBubble>
           Expandable section and list
@@ -67,7 +66,7 @@ export default function ChatBubblesContentVariantsPage() {
           />
         </GenAIChatBubble>
       </ChatContainer>
-    </>
+    </Page>
   );
 }
 

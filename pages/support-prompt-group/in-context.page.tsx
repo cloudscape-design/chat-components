@@ -9,9 +9,9 @@ import PromptInput from "@cloudscape-design/components/prompt-input";
 import SpaceBetween from "@cloudscape-design/components/space-between";
 
 import { ChatBubble, SupportPromptGroup } from "../../lib/components";
+import { Page } from "../app/templates";
 import { TestBed } from "../app/test-bed";
 import { ChatBubbleAvatarGenAI, ChatBubbleAvatarUser } from "../chat-bubble/util-components";
-import { ScreenshotArea } from "../screenshot-area";
 
 import styles from "./styles.module.scss";
 
@@ -52,7 +52,7 @@ export default function SupportPromptPage() {
   ];
 
   return (
-    <ScreenshotArea>
+    <Page title="Support prompt group">
       <main className={styles.container}>
         <TestBed>
           <SpaceBetween size="xl">
@@ -142,6 +142,6 @@ export default function SupportPromptPage() {
           </SpaceBetween>
         </TestBed>
       </main>
-    </ScreenshotArea>
+    </Page>
   );
 }

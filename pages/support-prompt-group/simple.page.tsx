@@ -2,13 +2,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { SupportPromptGroup } from "../../lib/components";
+import { Page } from "../app/templates";
 import { TestBed } from "../app/test-bed";
-import { ScreenshotArea } from "../screenshot-area";
 
 export default function SupportPromptPage() {
   return (
-    <ScreenshotArea>
-      <h1>Support prompt</h1>
+    <Page title="Support prompt">
       <main>
         <TestBed>
           <h2>horizontal group</h2>
@@ -102,6 +101,6 @@ export default function SupportPromptPage() {
           />
         </TestBed>
       </main>
-    </ScreenshotArea>
+    </Page>
   );
 }

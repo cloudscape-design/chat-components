@@ -4,15 +4,13 @@
 import Box from "@cloudscape-design/components/box";
 
 import { ChatBubble } from "../../lib/components";
+import { Page } from "../app/templates";
 import { TestBed } from "../app/test-bed";
-import { ScreenshotArea } from "../screenshot-area";
 import { Actions, ChatBubbleAvatarGenAI, ChatBubbleAvatarUser, ChatContainer, longText } from "./util-components";
 
 export default function ChatBubblePage() {
   return (
-    <ScreenshotArea>
-      <h1>Chat bubble</h1>
-
+    <Page title="Chat bubble">
       <TestBed>
         <ChatContainer>
           <ChatBubble type="outgoing" avatar={<ChatBubbleAvatarUser />} ariaLabel="User at 4:23:20pm">
@@ -65,6 +63,6 @@ export default function ChatBubblePage() {
           </ChatBubble>
         </ChatContainer>
       </TestBed>
-    </ScreenshotArea>
+    </Page>
   );
 }

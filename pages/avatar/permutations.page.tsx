@@ -4,8 +4,8 @@
 import SpaceBetween from "@cloudscape-design/components/space-between";
 
 import { Avatar } from "../../lib/components";
+import { Page } from "../app/templates";
 import { TestBed } from "../app/test-bed";
-import { ScreenshotArea } from "../screenshot-area";
 import smiley from "./smiley.png";
 
 export const customIconSvg = (
@@ -30,8 +30,7 @@ export const customIconSvg = (
 
 export default function AvatarPage() {
   return (
-    <ScreenshotArea>
-      <h1>Avatar</h1>
+    <Page title="Avatar permutations">
       <main>
         <TestBed>
           <Avatar ariaLabel="User avatar" />
@@ -110,6 +109,6 @@ export default function AvatarPage() {
           </SpaceBetween>
         </TestBed>
       </main>
-    </ScreenshotArea>
+    </Page>
   );
 }

@@ -4,20 +4,18 @@
 import CodeView from "@cloudscape-design/code-view/code-view";
 
 import { ChatBubble } from "../../lib/components";
+import { Page } from "../app/templates";
 import { TestBed } from "../app/test-bed";
 import smiley from "../avatar/smiley.png";
-import { ScreenshotArea } from "../screenshot-area";
 import { ChatBubbleAvatarGenAI, ChatContainer } from "./util-components";
 
 export default function ChatBubbleWithOverflowPage() {
   return (
-    <ScreenshotArea>
-      <h1>Chat bubble with overflowing content</h1>
-      <p>
-        These chat bubbles have content that is wider than the available space. The chat bubbles should render a scroll
-        bar.
-      </p>
-
+    <Page
+      title="Chat bubble with overflowing content"
+      subtitle="These chat bubbles have content that is wider than the available space. The chat bubbles should render a scroll
+        bar."
+    >
       <TestBed>
         <ChatContainer>
           <ChatBubble type="incoming" avatar={<ChatBubbleAvatarGenAI />} ariaLabel="Gen AI at 4:24:25pm">
@@ -35,6 +33,6 @@ export default function ChatBubbleWithOverflowPage() {
           </ChatBubble>
         </ChatContainer>
       </TestBed>
-    </ScreenshotArea>
+    </Page>
   );
 }
