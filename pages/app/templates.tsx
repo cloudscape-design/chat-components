@@ -10,30 +10,6 @@ import Header from "@cloudscape-design/components/header";
 
 import { ScreenshotArea } from "./screenshot-area";
 
-export interface DocsSectionProps {
-  functional?: DocsBlockProps;
-  visualDesign?: DocsBlockProps;
-  behavior?: DocsBlockProps;
-  implementation?: DocsBlockProps;
-  custom?: TitledDocsBlockProps[];
-}
-
-export interface DocsBlockProps {
-  before?: React.ReactNode;
-  bullets?: DocsBulletPoint[];
-  after?: React.ReactNode;
-}
-
-export interface TitledDocsBlockProps extends DocsBlockProps {
-  title: string;
-}
-
-export type DocsBulletPoint =
-  | string
-  | {
-      content: React.ReactNode;
-    };
-
 export function Page({
   title,
   subtitle,

@@ -14,7 +14,20 @@ export default function AvatarPage() {
   const [initials, setInitials] = useState(false);
 
   return (
-    <Page title="Avatar">
+    <Page
+      title="Avatar"
+      settings={
+        <SpaceBetween size="s">
+          <Toggle checked={loading} onChange={({ detail }) => setLoading(detail.checked)}>
+            Loading
+          </Toggle>
+
+          <Toggle checked={initials} onChange={({ detail }) => setInitials(detail.checked)}>
+            Initials
+          </Toggle>
+        </SpaceBetween>
+      }
+    >
       <SpaceBetween size="m">
         <Avatar
           color="default"
@@ -31,14 +44,6 @@ export default function AvatarPage() {
           ariaLabel="Avatar Gen AI assistant"
           tooltipText="Gen AI assistant"
         />
-
-        <Toggle checked={loading} onChange={({ detail }) => setLoading(detail.checked)}>
-          Loading
-        </Toggle>
-
-        <Toggle checked={initials} onChange={({ detail }) => setInitials(detail.checked)}>
-          Initials
-        </Toggle>
       </SpaceBetween>
     </Page>
   );

@@ -5,7 +5,6 @@ import { useState } from "react";
 
 import Checkbox from "@cloudscape-design/components/checkbox";
 import FormField from "@cloudscape-design/components/form-field";
-import Header from "@cloudscape-design/components/header";
 import { IconProps } from "@cloudscape-design/components/icon";
 import Input from "@cloudscape-design/components/input";
 import SpaceBetween from "@cloudscape-design/components/space-between";
@@ -24,10 +23,10 @@ export default function AvatarImageAndWidth() {
   const [genAI, setGenAI] = useState(false);
 
   return (
-    <Page title="Custom width">
-      <SpaceBetween direction="vertical" size="m">
-        <Header>Input an Image URL and custom size.</Header>
-
+    <Page
+      title="Custom width"
+      subtitle="Use page settings to input an Image URL and custom size."
+      settings={
         <SpaceBetween alignItems="center" direction="horizontal" size="m">
           <FormField label="Width:">
             <Input onChange={({ detail }) => setWidth(detail.value)} value={width} inputMode="numeric" type="number" />
@@ -53,17 +52,17 @@ export default function AvatarImageAndWidth() {
             Gen AI
           </Checkbox>
         </SpaceBetween>
-
-        <Avatar
-          ariaLabel="Various Avatar permutations"
-          color={genAI ? "gen-ai" : "default"}
-          iconName={iconName as IconProps.Name}
-          imgUrl={url}
-          width={Number(width)}
-          initials={initials}
-          loading={loading}
-        />
-      </SpaceBetween>
+      }
+    >
+      <Avatar
+        ariaLabel="Various Avatar permutations"
+        color={genAI ? "gen-ai" : "default"}
+        iconName={iconName as IconProps.Name}
+        imgUrl={url}
+        width={Number(width)}
+        initials={initials}
+        loading={loading}
+      />
     </Page>
   );
 }
