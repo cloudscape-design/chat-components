@@ -5,13 +5,12 @@ import Box from "@cloudscape-design/components/box";
 import Container from "@cloudscape-design/components/container";
 
 import { LoadingBar } from "../../lib/components";
+import { Page } from "../app/templates";
 import { TestBed } from "../app/test-bed";
-import { ScreenshotArea } from "../screenshot-area";
 
 export default function LoadingBarPage() {
   return (
-    <ScreenshotArea>
-      <h1>Loading bar</h1>
+    <Page title="Loading bar">
       <main>
         <TestBed>
           <h2>gen-ai</h2>
@@ -26,6 +25,6 @@ export default function LoadingBarPage() {
           </Container>
         </TestBed>
       </main>
-    </ScreenshotArea>
+    </Page>
   );
 }

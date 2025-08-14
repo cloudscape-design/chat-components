@@ -7,14 +7,27 @@ import SpaceBetween from "@cloudscape-design/components/space-between";
 import Toggle from "@cloudscape-design/components/toggle";
 
 import { Avatar } from "../../lib/components";
+import { Page } from "../app/templates";
 
 export default function AvatarPage() {
   const [loading, setLoading] = useState(false);
   const [initials, setInitials] = useState(false);
 
   return (
-    <>
-      <h1>Avatar</h1>
+    <Page
+      title="Avatar"
+      settings={
+        <SpaceBetween size="s">
+          <Toggle checked={loading} onChange={({ detail }) => setLoading(detail.checked)}>
+            Loading
+          </Toggle>
+
+          <Toggle checked={initials} onChange={({ detail }) => setInitials(detail.checked)}>
+            Initials
+          </Toggle>
+        </SpaceBetween>
+      }
+    >
       <SpaceBetween size="m">
         <Avatar
           color="default"
@@ -31,15 +44,7 @@ export default function AvatarPage() {
           ariaLabel="Avatar Gen AI assistant"
           tooltipText="Gen AI assistant"
         />
-
-        <Toggle checked={loading} onChange={({ detail }) => setLoading(detail.checked)}>
-          Loading
-        </Toggle>
-
-        <Toggle checked={initials} onChange={({ detail }) => setInitials(detail.checked)}>
-          Initials
-        </Toggle>
       </SpaceBetween>
-    </>
+    </Page>
   );
 }
