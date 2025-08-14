@@ -1,10 +1,12 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+
 import { useEffect, useRef } from "react";
 import clsx from "clsx";
 
 import { getDataAttributes } from "../internal/base-component/get-data-attributes";
 import { InternalBaseComponentProps } from "../internal/base-component/use-base-component";
+import { fireNonCancelableEvent } from "../internal/events";
 import { InternalLoadingBar } from "../loading-bar/internal";
 import { ChatBubbleProps } from "./interfaces.js";
 
@@ -20,6 +22,9 @@ export default function InternalChatBubble({
   showLoadingBar,
   hideAvatar = false,
   ariaLabel,
+  selectionType,
+  selected,
+  onSelect,
   __internalRootRef = null,
   ...rest
 }: InternalChatBubbleProps) {
@@ -36,6 +41,8 @@ export default function InternalChatBubble({
     }
   }, [hideAvatar]);
 
+  const Tag = selectionType === "click" && onSelect ? "button" : "div";
+
   return (
     <div
       className={styles.root}
@@ -50,9 +57,14 @@ export default function InternalChatBubble({
         </div>
       )}
 
-      <div
+      <Tag
+        aria-pressed={selected}
+        onClick={() => fireNonCancelableEvent(onSelect)}
         className={clsx(styles["message-area"], styles[`chat-bubble-type-${type}`], {
           [styles["with-loading-bar"]]: showLoadingBar,
+          [styles["message-area-selectable"]]: !!selectionType,
+          [styles["message-area-clickable"]]: selectionType === "click",
+          [styles["message-area-selected"]]: selected,
         })}
       >
         <div className={styles.content}>{children}</div>
@@ -60,7 +72,7 @@ export default function InternalChatBubble({
         {actions && <div className={styles.actions}>{actions}</div>}
 
         {showLoadingBar && <InternalLoadingBar variant="gen-ai-masked" />}
-      </div>
+      </Tag>
     </div>
   );
 }

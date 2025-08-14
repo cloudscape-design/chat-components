@@ -1,6 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { NonCancelableEventHandler } from "../internal/events";
+
 export interface ChatBubbleProps {
   /** Avatar slot paired with the chat bubble content. Use [avatar](/components/avatar/). */
   avatar: React.ReactNode;
@@ -31,6 +33,21 @@ export interface ChatBubbleProps {
    * Useful for when there are multiple consecutive messages coming from the same author.
    */
   hideAvatar?: boolean;
+
+  /**
+   * POC
+   */
+  selectionType?: "click" | "custom";
+
+  /**
+   * POC
+   */
+  selected?: boolean;
+
+  /**
+   * POC
+   */
+  onSelect?: NonCancelableEventHandler<null>;
 }
 
 export namespace ChatBubbleProps {

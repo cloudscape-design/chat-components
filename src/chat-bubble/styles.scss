@@ -18,12 +18,14 @@
 }
 
 .message-area {
+  @include shared.styles-reset;
+
   display: flex;
   flex-direction: column;
   gap: cs.$space-scaled-s;
   padding: cs.$space-scaled-s;
   min-width: 0;
-  overflow-x: auto;
+  // overflow-x: auto;
 
   border-start-start-radius: cs.$border-radius-chat-bubble;
   border-start-end-radius: cs.$border-radius-chat-bubble;
@@ -37,6 +39,34 @@
   &.chat-bubble-type-outgoing {
     color: cs.$color-text-chat-bubble-outgoing;
     background-color: cs.$color-background-chat-bubble-outgoing;
+  }
+
+  // TODO: create new tokens for outgoing-selectable (background, border, selected background, selected border)
+  // Potentially, need some for border width, too.
+  &.message-area-selectable.message-area-selectable {
+    border-color: cs.$color-border-divider-default;
+    border-width: 2px;
+    border-style: solid;
+    background-color: cs.$color-background-layout-main;
+  }
+
+  &.message-area-clickable.message-area-clickable {
+    cursor: pointer;
+
+    &:focus-visible {
+      @include shared.focus-highlight(6px, cs.$border-radius-chat-bubble);
+    }
+
+    &:hover {
+      background-color: cs.$color-background-dropdown-item-hover;
+    }
+  }
+
+  &.message-area-selected.message-area-selected.message-area-selected {
+    border-color: cs.$color-border-item-selected;
+    border-width: 2px;
+    border-style: solid;
+    background-color: cs.$color-background-item-selected;
   }
 
   &.chat-bubble-type-incoming {
