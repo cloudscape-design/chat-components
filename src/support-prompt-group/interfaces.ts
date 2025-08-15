@@ -27,14 +27,20 @@ export interface SupportPromptGroupProps {
    * Use this to provide a unique accessible name for each support prompt group on the page.
    */
   ariaLabel: string;
+
+  /**
+   * POC
+   */
+  toggledItems?: string[];
 }
 
 export namespace SupportPromptGroupProps {
   export type Alignment = "vertical" | "horizontal";
 
   export interface Item {
-    text: string;
     id: string;
+    text: string;
+    header?: { text: string; icon?: React.ReactNode; pressedIcon?: React.ReactNode };
   }
 
   export interface ItemClickDetail extends _ClickDetail {

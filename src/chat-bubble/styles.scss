@@ -19,6 +19,7 @@
 
 .message-area {
   @include shared.styles-reset;
+  @include shared.default-text-style;
 
   display: flex;
   flex-direction: column;

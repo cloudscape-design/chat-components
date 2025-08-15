@@ -31,6 +31,7 @@ export const InternalSupportPromptGroup = forwardRef(
       items,
       __internalRootRef,
       ariaLabel,
+      toggledItems,
       ...rest
     }: SupportPromptGroupProps & InternalBaseComponentProps,
     ref: Ref<SupportPromptGroupProps.Ref>,
@@ -154,9 +155,16 @@ export const InternalSupportPromptGroup = forwardRef(
                 key={index}
                 onClick={(event) => handleClick(event, item.id)}
                 id={item.id}
+                pressed={toggledItems?.includes(item.id)}
                 ref={(element) => (itemsRef.current[item.id] = element)}
               >
-                {item.text}
+                {item.header && (
+                  <div className={styles["item-header"]}>
+                    <div>{item.header.text}</div>
+                    <div>{toggledItems?.includes(item.id) ? item.header.pressedIcon : item.header.icon}</div>
+                  </div>
+                )}
+                <div>{item.text}</div>
               </Prompt>
             );
           })}

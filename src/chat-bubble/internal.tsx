@@ -17,6 +17,7 @@ export interface InternalChatBubbleProps extends ChatBubbleProps, InternalBaseCo
 export default function InternalChatBubble({
   type,
   children,
+  additionalContent,
   avatar,
   actions,
   showLoadingBar,
@@ -57,22 +58,26 @@ export default function InternalChatBubble({
         </div>
       )}
 
-      <Tag
-        aria-pressed={selected}
-        onClick={() => fireNonCancelableEvent(onSelect)}
-        className={clsx(styles["message-area"], styles[`chat-bubble-type-${type}`], {
-          [styles["with-loading-bar"]]: showLoadingBar,
-          [styles["message-area-selectable"]]: !!selectionType,
-          [styles["message-area-clickable"]]: selectionType === "click",
-          [styles["message-area-selected"]]: selected,
-        })}
-      >
-        <div className={styles.content}>{children}</div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <Tag
+          aria-pressed={selected}
+          onClick={() => fireNonCancelableEvent(onSelect)}
+          className={clsx(styles["message-area"], styles[`chat-bubble-type-${type}`], {
+            [styles["with-loading-bar"]]: showLoadingBar,
+            [styles["message-area-selectable"]]: !!selectionType,
+            [styles["message-area-clickable"]]: selectionType === "click",
+            [styles["message-area-selected"]]: selected,
+          })}
+        >
+          <div className={styles.content}>{children}</div>
 
-        {actions && <div className={styles.actions}>{actions}</div>}
+          {actions && <div className={styles.actions}>{actions}</div>}
 
-        {showLoadingBar && <InternalLoadingBar variant="gen-ai-masked" />}
-      </Tag>
+          {showLoadingBar && <InternalLoadingBar variant="gen-ai-masked" />}
+        </Tag>
+
+        {additionalContent && <div>{additionalContent}</div>}
+      </div>
     </div>
   );
 }

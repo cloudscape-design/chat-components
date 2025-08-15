@@ -4,6 +4,23 @@
 */
 @use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
 
+$font-family-base: cs.$font-family-base;
+$font-weight-normal: 400;
+
+@mixin default-text-style {
+  @include font-body-m;
+  color: cs.$color-text-body-default;
+  font-weight: $font-weight-normal;
+  font-family: $font-family-base;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
+
+@mixin font-body-m {
+  font-size: cs.$font-size-body-m;
+  line-height: cs.$line-height-body-m;
+}
+
 @mixin focus-highlight(
   $gutter: 4px,
   $border-radius: cs.$border-radius-control-default-focus-ring,
@@ -44,12 +61,14 @@
     animation: none;
     transition: none;
   }
+
   :global(.awsui-motion-disabled) &,
   :global(.awsui-mode-entering) & {
     animation: none;
     transition: none;
   }
 }
+
 /* stylelint-enable @cloudscape-design/no-motion-outside-of-mixin, selector-combinator-disallowed-list, selector-pseudo-class-no-unknown, selector-class-pattern */
 
 @mixin styles-reset {

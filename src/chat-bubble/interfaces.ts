@@ -13,6 +13,11 @@ export interface ChatBubbleProps {
   /** Content of the chat bubble */
   children: React.ReactNode;
 
+  /**
+   * POC
+   */
+  additionalContent?: React.ReactNode;
+
   /** Actions slot of the chat bubble, placed at the footer. Use [button group](/components/button-group/). */
   actions?: React.ReactNode;
 
