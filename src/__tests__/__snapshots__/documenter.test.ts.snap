@@ -201,7 +201,13 @@ Use this property if the icon you want isn't available.",
 exports[`definition for chat-bubble matches the snapshot > chat-bubble 1`] = `
 {
   "dashCaseName": "chat-bubble",
-  "events": [],
+  "events": [
+    {
+      "cancelable": false,
+      "description": "POC",
+      "name": "onSelect",
+    },
+  ],
   "functions": [],
   "name": "ChatBubble",
   "properties": [
@@ -218,6 +224,26 @@ Useful for when there are multiple consecutive messages coming from the same aut
       "name": "hideAvatar",
       "optional": true,
       "type": "boolean",
+    },
+    {
+      "description": "POC",
+      "name": "selected",
+      "optional": true,
+      "type": "boolean",
+    },
+    {
+      "description": "POC",
+      "inlineType": {
+        "name": ""click" | "custom"",
+        "type": "union",
+        "values": [
+          "click",
+          "custom",
+        ],
+      },
+      "name": "selectionType",
+      "optional": true,
+      "type": "string",
     },
     {
       "description": "Adds a loading bar to the bottom of the chat bubble. This property should only be used for Generative AI loading state.
@@ -246,6 +272,11 @@ If avatar is being used, set its \`loading\` state to true.",
       "description": "Actions slot of the chat bubble, placed at the footer. Use [button group](/components/button-group/).",
       "isDefault": false,
       "name": "actions",
+    },
+    {
+      "description": "POC",
+      "isDefault": false,
+      "name": "additionalContent",
     },
     {
       "description": "Avatar slot paired with the chat bubble content. Use [avatar](/components/avatar/).",
@@ -382,6 +413,12 @@ Each item has the following properties:
       "name": "items",
       "optional": false,
       "type": "ReadonlyArray<SupportPromptGroupProps.Item>",
+    },
+    {
+      "description": "POC",
+      "name": "toggledItems",
+      "optional": true,
+      "type": "Array<string>",
     },
   ],
   "regions": [],

@@ -10,31 +10,34 @@ import useForwardFocus from "../internal/utils/use-forward-focus";
 import styles from "./styles.css.js";
 
 export interface PromptProps {
-  children: string;
+  children: React.ReactNode;
   id: string;
+  pressed?: boolean;
   onClick: (event: React.MouseEvent, id: string) => void;
 }
 
-export const Prompt = forwardRef(({ children, id, onClick }: PromptProps, ref: Ref<HTMLButtonElement | null>) => {
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  useForwardFocus(ref, buttonRef);
+export const Prompt = forwardRef(
+  ({ children, id, pressed, onClick }: PromptProps, ref: Ref<HTMLButtonElement | null>) => {
+    const buttonRef = useRef<HTMLButtonElement>(null);
+    useForwardFocus(ref, buttonRef);
 
-  const { tabIndex } = useSingleTabStopNavigation(buttonRef);
+    const { tabIndex } = useSingleTabStopNavigation(buttonRef);
 
-  return (
-    <button
-      role="menuitem"
-      tabIndex={tabIndex}
-      ref={buttonRef}
-      onClick={(event) => {
-        onClick(event, id);
-      }}
-      id={id}
-      data-testid={id}
-      data-itemid={id}
-      className={clsx(styles["support-prompt"])}
-    >
-      {children}
-    </button>
-  );
-});
+    return (
+      <button
+        role="menuitem"
+        tabIndex={tabIndex}
+        ref={buttonRef}
+        onClick={(event) => {
+          onClick(event, id);
+        }}
+        id={id}
+        data-testid={id}
+        data-itemid={id}
+        className={clsx(styles["support-prompt"], pressed && styles["support-prompt-pressed"])}
+      >
+        {children}
+      </button>
+    );
+  },
+);
