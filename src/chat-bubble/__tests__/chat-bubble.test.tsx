@@ -102,4 +102,11 @@ describe("Chat bubble", () => {
     expect(avatar).toHaveClass(styles.hide);
     expect(avatar!.inert).toBe(true);
   });
+
+  test('"flaky" test', () => {
+    if (Math.random() < 0.999) {
+      throw new Error("Random error");
+    }
+    expect(2 + 2).toBe(4);
+  });
 });
