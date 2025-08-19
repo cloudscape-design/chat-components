@@ -51,6 +51,12 @@
     border-color: awsui.$color-border-button-normal-active;
   }
 
+  &-pressed {
+    color: awsui.$color-text-button-normal-active;
+    background: awsui.$color-background-button-normal-active;
+    border-color: awsui.$color-border-button-normal-active;
+  }
+
   &:focus {
     outline: none;
   }
@@ -58,4 +64,12 @@
   &:focus-visible {
     @include shared.focus-highlight(6px, 6px);
   }
+}
+
+.item-header {
+  display: flex;
+  gap: awsui.$space-static-xs;
+  justify-content: space-between;
+
+  font-weight: bold;
 }
