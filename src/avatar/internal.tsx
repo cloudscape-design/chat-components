@@ -106,6 +106,7 @@ export default function InternalAvatar({
     >
       {showTooltip && tooltipText && (
         <Tooltip
+          className={styles.tooltip}
           value={tooltipText}
           trackRef={handleRef}
           // This is added to ensure tooltip is closed when clicked for consistency with other tooltip usages
