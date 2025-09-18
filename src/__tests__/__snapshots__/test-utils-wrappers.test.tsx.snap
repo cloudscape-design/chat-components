@@ -104,7 +104,10 @@ findAllSupportPromptGroups(selector?: string): Array<SupportPromptGroupWrapper>;
 
 
 ElementWrapper.prototype.findAvatar = function(selector) {
-  const rootSelector = \`.\${AvatarWrapper.rootSelector}\`;
+  let rootSelector = \`.\${AvatarWrapper.rootSelector}\`;
+  if("legacyRootSelector" in AvatarWrapper && AvatarWrapper.legacyRootSelector){
+    rootSelector = \`:is(.\${AvatarWrapper.rootSelector}, .\${AvatarWrapper.legacyRootSelector})\`;
+  }
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
   return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, AvatarWrapper);
@@ -114,7 +117,10 @@ ElementWrapper.prototype.findAllAvatars = function(selector) {
   return this.findAllComponents(AvatarWrapper, selector);
 };
 ElementWrapper.prototype.findChatBubble = function(selector) {
-  const rootSelector = \`.\${ChatBubbleWrapper.rootSelector}\`;
+  let rootSelector = \`.\${ChatBubbleWrapper.rootSelector}\`;
+  if("legacyRootSelector" in ChatBubbleWrapper && ChatBubbleWrapper.legacyRootSelector){
+    rootSelector = \`:is(.\${ChatBubbleWrapper.rootSelector}, .\${ChatBubbleWrapper.legacyRootSelector})\`;
+  }
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
   return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, ChatBubbleWrapper);
@@ -124,7 +130,10 @@ ElementWrapper.prototype.findAllChatBubbles = function(selector) {
   return this.findAllComponents(ChatBubbleWrapper, selector);
 };
 ElementWrapper.prototype.findLoadingBar = function(selector) {
-  const rootSelector = \`.\${LoadingBarWrapper.rootSelector}\`;
+  let rootSelector = \`.\${LoadingBarWrapper.rootSelector}\`;
+  if("legacyRootSelector" in LoadingBarWrapper && LoadingBarWrapper.legacyRootSelector){
+    rootSelector = \`:is(.\${LoadingBarWrapper.rootSelector}, .\${LoadingBarWrapper.legacyRootSelector})\`;
+  }
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
   return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, LoadingBarWrapper);
@@ -134,7 +143,10 @@ ElementWrapper.prototype.findAllLoadingBars = function(selector) {
   return this.findAllComponents(LoadingBarWrapper, selector);
 };
 ElementWrapper.prototype.findSupportPromptGroup = function(selector) {
-  const rootSelector = \`.\${SupportPromptGroupWrapper.rootSelector}\`;
+  let rootSelector = \`.\${SupportPromptGroupWrapper.rootSelector}\`;
+  if("legacyRootSelector" in SupportPromptGroupWrapper && SupportPromptGroupWrapper.legacyRootSelector){
+    rootSelector = \`:is(.\${SupportPromptGroupWrapper.rootSelector}, .\${SupportPromptGroupWrapper.legacyRootSelector})\`;
+  }
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
   return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, SupportPromptGroupWrapper);
@@ -250,7 +262,10 @@ findAllSupportPromptGroups(selector?: string): MultiElementWrapper<SupportPrompt
 
 
 ElementWrapper.prototype.findAvatar = function(selector) {
-  const rootSelector = \`.\${AvatarWrapper.rootSelector}\`;
+  let rootSelector = \`.\${AvatarWrapper.rootSelector}\`;
+  if("legacyRootSelector" in AvatarWrapper && AvatarWrapper.legacyRootSelector){
+    rootSelector = \`:is(.\${AvatarWrapper.rootSelector}, .\${AvatarWrapper.legacyRootSelector})\`;
+  }
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
   return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, AvatarWrapper);
@@ -260,7 +275,10 @@ ElementWrapper.prototype.findAllAvatars = function(selector) {
   return this.findAllComponents(AvatarWrapper, selector);
 };
 ElementWrapper.prototype.findChatBubble = function(selector) {
-  const rootSelector = \`.\${ChatBubbleWrapper.rootSelector}\`;
+  let rootSelector = \`.\${ChatBubbleWrapper.rootSelector}\`;
+  if("legacyRootSelector" in ChatBubbleWrapper && ChatBubbleWrapper.legacyRootSelector){
+    rootSelector = \`:is(.\${ChatBubbleWrapper.rootSelector}, .\${ChatBubbleWrapper.legacyRootSelector})\`;
+  }
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
   return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, ChatBubbleWrapper);
@@ -270,7 +288,10 @@ ElementWrapper.prototype.findAllChatBubbles = function(selector) {
   return this.findAllComponents(ChatBubbleWrapper, selector);
 };
 ElementWrapper.prototype.findLoadingBar = function(selector) {
-  const rootSelector = \`.\${LoadingBarWrapper.rootSelector}\`;
+  let rootSelector = \`.\${LoadingBarWrapper.rootSelector}\`;
+  if("legacyRootSelector" in LoadingBarWrapper && LoadingBarWrapper.legacyRootSelector){
+    rootSelector = \`:is(.\${LoadingBarWrapper.rootSelector}, .\${LoadingBarWrapper.legacyRootSelector})\`;
+  }
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
   return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, LoadingBarWrapper);
@@ -280,7 +301,10 @@ ElementWrapper.prototype.findAllLoadingBars = function(selector) {
   return this.findAllComponents(LoadingBarWrapper, selector);
 };
 ElementWrapper.prototype.findSupportPromptGroup = function(selector) {
-  const rootSelector = \`.\${SupportPromptGroupWrapper.rootSelector}\`;
+  let rootSelector = \`.\${SupportPromptGroupWrapper.rootSelector}\`;
+  if("legacyRootSelector" in SupportPromptGroupWrapper && SupportPromptGroupWrapper.legacyRootSelector){
+    rootSelector = \`:is(.\${SupportPromptGroupWrapper.rootSelector}, .\${SupportPromptGroupWrapper.legacyRootSelector})\`;
+  }
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
   return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, SupportPromptGroupWrapper);
