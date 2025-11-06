@@ -15,6 +15,16 @@ export interface ClickDetail {
   metaKey: boolean;
 }
 
+export interface BaseKeyDetail {
+  key: string;
+  keyCode: number;
+  ctrlKey: boolean;
+  shiftKey: boolean;
+  altKey: boolean;
+  metaKey: boolean;
+  isComposing: boolean;
+}
+
 export class CustomEventStub<T> {
   defaultPrevented = false;
   cancelBubble = false;
@@ -61,4 +71,23 @@ export function fireNonCancelableEvent<T = null>(handler: NonCancelableEventHand
   }
   const event = createCustomEvent({ cancelable: false, detail });
   handler(event);
+}
+
+export function fireKeyboardEvent(
+  handler: CancelableEventHandler<BaseKeyDetail> | undefined,
+  reactEvent: React.KeyboardEvent,
+) {
+  return fireCancelableEvent(
+    handler,
+    {
+      keyCode: reactEvent.keyCode,
+      key: reactEvent.key,
+      ctrlKey: reactEvent.ctrlKey,
+      shiftKey: reactEvent.shiftKey,
+      altKey: reactEvent.altKey,
+      metaKey: reactEvent.metaKey,
+      isComposing: reactEvent.nativeEvent.isComposing,
+    },
+    reactEvent,
+  );
 }

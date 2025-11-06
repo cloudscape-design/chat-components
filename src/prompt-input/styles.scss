@@ -1,0 +1,194 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+/* stylelint-disable */
+
+@use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as awsui;
+@use "../internal/shared" as shared;
+
+$send-icon-right-spacing: awsui.$space-static-xxs;
+
+.root {
+  @include shared.styles-reset;
+  @include shared.control-border-radius-full();
+  cursor: text;
+
+  background-color: awsui.$color-background-input-default;
+
+  border-block: awsui.$border-width-field solid awsui.$color-border-input-default;
+  border-inline: awsui.$border-width-field solid awsui.$color-border-input-default;
+
+  &.textarea-readonly {
+    @include shared.form-readonly-element;
+  }
+
+  &.disabled {
+    @include shared.form-disabled-element;
+    cursor: default;
+  }
+
+  &.textarea-invalid {
+    @include shared.form-invalid-control();
+    & {
+      padding-inline-start: 0;
+    }
+
+    &:focus-within,
+    &:focus {
+      @include shared.form-invalid-control();
+      & {
+        padding-inline-start: 0;
+        box-shadow: shared.$box-shadow-focused-light-invalid;
+      }
+    }
+  }
+
+  &.textarea-warning {
+    @include shared.form-warning-control();
+    & {
+      padding-inline-start: 0;
+    }
+
+    &:focus-within,
+    &:focus {
+      @include shared.form-warning-control();
+      & {
+        padding-inline-start: 0;
+        box-shadow: shared.$box-shadow-focused-light-invalid;
+      }
+    }
+  }
+
+  &:focus-within,
+  &:focus {
+    @include shared.form-focus-element;
+  }
+}
+
+.textarea {
+  @include shared.styles-reset;
+  @include shared.control-border-radius-full();
+  @include shared.font-body-m;
+  // Restore browsers' default resize values
+  resize: none;
+  // Restore default text cursor
+  cursor: text;
+  // Allow multi-line placeholders
+  white-space: pre-wrap;
+  background-color: inherit;
+
+  padding-block: shared.$control-padding-vertical;
+  padding-inline: shared.$control-padding-horizontal;
+
+  color: awsui.$color-text-body-default;
+  max-inline-size: 100%;
+  inline-size: 100%;
+  display: block;
+  box-sizing: border-box;
+
+  border: 0;
+
+  &::placeholder {
+    @include shared.form-placeholder;
+    opacity: 1;
+  }
+
+
+  &:focus {
+    outline: none;
+  }
+
+  &:invalid {
+    // discard built-in invalid styles, customers should use `invalid` property only (AWSUI-3947)
+    box-shadow: none;
+  }
+
+  &.invalid,
+  &.warning {
+    padding-inline-start: shared.$invalid-control-left-padding;
+  }
+
+  &:disabled {
+    @include shared.form-disabled-element;
+    border: 0;
+    cursor: default;
+
+    &::placeholder {
+      @include shared.form-placeholder-disabled;
+      opacity: 1;
+    }
+
+  }
+
+  &-wrapper {
+    display: flex;
+  }
+}
+
+.primary-action {
+  align-self: flex-end;
+  flex-shrink: 0;
+  padding-inline-start: calc(shared.$control-padding-horizontal / 2);
+  
+  .textarea-wrapper > & {
+    padding-inline-end: calc(shared.$control-padding-horizontal / 2);
+
+    > .action-button {
+      margin-block-end: awsui.$space-scaled-xxxs;
+      padding: 0;
+    }
+  }
+}
+
+.secondary-content {
+  @include shared.styles-reset;
+  @include shared.control-border-radius-full();
+
+  &.with-paddings {
+    padding-block-start: awsui.$space-scaled-s;
+    padding-block-end: awsui.$space-scaled-s;
+    padding-inline-start: shared.$control-padding-horizontal;
+    padding-inline-end: shared.$control-padding-horizontal;
+
+    &.invalid,
+    &.warning {
+      padding-inline-start: shared.$invalid-control-left-padding;
+    }
+  }
+}
+
+.action-stripe {
+  @include shared.styles-reset;
+  @include shared.control-border-radius-full();
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.secondary-actions {
+  flex-basis: max-content;
+  flex-grow: 0;
+  flex-shrink: 1;
+  box-sizing: border-box;
+  @include shared.text-flex-wrapping;
+  &.with-paddings {
+    padding-inline: shared.$control-padding-horizontal;
+    padding-block-start: awsui.$space-scaled-s;
+    padding-block-end: shared.$control-padding-vertical;
+
+    &.invalid,
+    &.warning {
+      padding-inline-start: shared.$invalid-control-left-padding;
+    }
+  }
+  &.with-paddings-and-actions {
+    padding-inline-end: 0;
+  }
+}
+
+.buffer {
+  flex: 1;
+  align-self: stretch;
+  cursor: text;
+}

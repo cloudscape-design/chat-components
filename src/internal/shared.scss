@@ -4,6 +4,24 @@
 */
 @use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
 
+$font-weight-normal: 400;
+
+$control-padding-vertical: cs.$space-scaled-xxs;
+$control-padding-horizontal: cs.$space-field-horizontal;
+$invalid-control-left-border: 8px;
+$invalid-control-left-padding: calc(
+  #{$control-padding-horizontal} - (#{$invalid-control-left-border} - #{cs.$border-width-field})
+);
+
+$box-shadow-focused-width: 2px;
+
+// focus for clickable elements, like buttons
+$box-shadow-focused: 0 0 0 $box-shadow-focused-width cs.$color-border-item-focused;
+// focus for form input elements, excluding buttons
+$box-shadow-focused-light: 0 0 0 1px cs.$color-border-item-focused;
+// focus for form input elements, excluding buttons
+$box-shadow-focused-light-invalid: 0 0 0 cs.$space-scaled-xxxs cs.$color-border-item-focused;
+
 @mixin focus-highlight(
   $gutter: 4px,
   $border-radius: cs.$border-radius-control-default-focus-ring,
@@ -52,6 +70,20 @@
 }
 /* stylelint-enable @cloudscape-design/no-motion-outside-of-mixin, selector-combinator-disallowed-list, selector-pseudo-class-no-unknown, selector-class-pattern */
 
+@mixin font-body-m {
+  font-size: cs.$font-size-body-m;
+  line-height: cs.$line-height-body-m;
+}
+
+@mixin default-text-style {
+  @include font-body-m;
+  color: cs.$color-text-body-default;
+  font-weight: $font-weight-normal;
+  font-family: cs.$font-family-base;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
+
 @mixin styles-reset {
   border-collapse: separate;
   border-spacing: 0;
@@ -78,4 +110,103 @@
   visibility: visible;
   white-space: normal;
   word-spacing: normal;
+  @include default-text-style;
+}
+
+@mixin control-border-radius-full {
+  border-start-start-radius: cs.$border-radius-input;
+  border-start-end-radius: cs.$border-radius-input;
+  border-end-start-radius: cs.$border-radius-input;
+  border-end-end-radius: cs.$border-radius-input;
+}
+
+@mixin form-readonly-element(
+  $background-color: cs.$color-background-input-default,
+  $border-color: cs.$color-background-input-disabled
+) {
+  background-color: $background-color;
+  border-block: cs.$border-width-field solid $border-color;
+  border-inline: cs.$border-width-field solid $border-color;
+}
+
+@mixin form-disabled-element(
+  $background-color: cs.$color-background-input-disabled,
+  $border-color: cs.$color-background-input-disabled,
+  $color: cs.$color-text-input-disabled,
+  $cursor: auto
+) {
+  background-color: $background-color;
+  border-block: cs.$border-width-field solid $border-color;
+  border-inline: cs.$border-width-field solid $border-color;
+  color: $color;
+  cursor: $cursor;
+}
+
+@mixin form-invalid-control {
+  color: cs.$color-text-status-error;
+  border-color: cs.$color-text-status-error;
+  padding-inline-start: $invalid-control-left-padding;
+  border-inline-start-width: $invalid-control-left-border;
+  &:focus {
+    box-shadow: $box-shadow-focused-light-invalid;
+  }
+  @content;
+}
+
+@mixin form-warning-control {
+  color: cs.$color-text-status-warning;
+  border-color: cs.$color-text-status-warning;
+  padding-inline-start: $invalid-control-left-padding;
+  border-inline-start-width: $invalid-control-left-border;
+  &:focus {
+    box-shadow: $box-shadow-focused-light-invalid;
+  }
+  @content;
+}
+
+// Use for form input elements, excluding buttons
+// or for elements that have a light border and light background
+@mixin form-focus-element(
+  $border-radius: cs.$border-radius-input,
+  $border-color: cs.$color-border-input-focused,
+  $box-shadow: $box-shadow-focused-light
+) {
+  // Using a special transparent outline only visible in Windows High Contrast Mode.
+  // See focus-highlight above.
+  outline: 2px dotted transparent;
+
+  border-block: cs.$border-width-field solid $border-color;
+  border-inline: cs.$border-width-field solid $border-color;
+  border-start-start-radius: $border-radius;
+  border-start-end-radius: $border-radius;
+  border-end-start-radius: $border-radius;
+  border-end-end-radius: $border-radius;
+
+  box-shadow: $box-shadow;
+}
+
+@mixin form-placeholder(
+  $color: cs.$color-text-input-placeholder,
+  $font-size: null,
+  $font-style: italic,
+  $font-weight: null
+) {
+  color: $color;
+  @if $font-size {
+    font-size: $font-size;
+  }
+  font-style: $font-style;
+  @if $font-weight {
+    font-weight: $font-weight;
+  }
+}
+
+@mixin form-placeholder-disabled($color: cs.$color-text-input-disabled) {
+  color: $color;
+}
+
+@mixin text-flex-wrapping {
+  word-wrap: break-word;
+  max-inline-size: 100%;
+  overflow: hidden;
 }

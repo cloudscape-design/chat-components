@@ -5,9 +5,9 @@ import { createRef, useState } from "react";
 import Button from "@cloudscape-design/components/button";
 import Container from "@cloudscape-design/components/container";
 import Header from "@cloudscape-design/components/header";
-import PromptInput from "@cloudscape-design/components/prompt-input";
 import SpaceBetween from "@cloudscape-design/components/space-between";
 
+import { PromptInput } from "../../lib/components";
 import { ChatBubble, SupportPromptGroup } from "../../lib/components";
 import { Page } from "../app/templates";
 import { TestBed } from "../app/test-bed";
