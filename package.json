@@ -34,7 +34,7 @@
     "build:src:copy": "cp README.md NOTICE LICENSE lib/components/",
     "build:src:docs": "node scripts/docs.js",
     "build:src:environment": "node scripts/environment",
-    "build:themeable": "node scripts/themeable-source",
+    "build:themeable": "tsc -p tsconfig.src-themeable.json && node scripts/themeable-source.js",
     "build:pages:vite": "vite build",
     "build:pages:tsc": "tsc -p pages/tsconfig.json"
   },

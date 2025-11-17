@@ -23,5 +23,11 @@ function themablePackage() {
     version: pkg.version,
     repository: pkg.repository,
     homepage: pkg.homepage,
+    exports: {
+      ".": {
+        types: "./theming.d.ts",
+        import: "./theming.js",
+      },
+    },
   });
 }
