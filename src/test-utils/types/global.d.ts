@@ -8,3 +8,8 @@ declare module "*.selectors.js" {
   const styles: Record<string, string>;
   export default styles;
 }
+
+declare module "*.png" {
+  const value: string;
+  export default value;
+}
