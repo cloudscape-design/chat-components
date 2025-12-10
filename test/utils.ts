@@ -13,7 +13,7 @@ export function setupTest<P extends BasePageObject & { init?(): Promise<void> }>
   test: (page: P) => Promise<void>,
 ) {
   return useBrowser(windowSize, async (browser) => {
-    await browser.url(url);
+    await browser.url(`${url}?screenshotMode=true`);
     const page = new PageClass(browser);
     await page.waitForVisible("main");
 
