@@ -10,13 +10,17 @@ const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
 const packageVersion = `${pkg.version} (${gitCommitVersion})`;
 
 const basePath = "lib/components/internal/environment";
-const values = {
-  PACKAGE_SOURCE: "chat-components",
-  PACKAGE_VERSION: packageVersion,
-  THEME: "open-source-visual-refresh",
-  SYSTEM: "core",
-  ALWAYS_VISUAL_REFRESH: true,
-};
+export function getBuildTimeEnvironmentConstants() {
+  return {
+    PACKAGE_SOURCE: "chat-components",
+    PACKAGE_VERSION: packageVersion,
+    THEME: "open-source-visual-refresh",
+    SYSTEM: "core",
+    ALWAYS_VISUAL_REFRESH: true,
+  };
+}
+
+const values = getBuildTimeEnvironmentConstants();
 writeFile(`${basePath}.json`, JSON.stringify(values, null, 2));
 writeFile(
   `${basePath}.js`,

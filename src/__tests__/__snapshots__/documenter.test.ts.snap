@@ -216,6 +216,102 @@ If avatar is being used, set its \`loading\` state to true.",
       "type": "boolean",
     },
     {
+      "inlineType": {
+        "name": "ChatBubbleProps.Style",
+        "properties": [
+          {
+            "inlineType": {
+              "name": "object",
+              "properties": [
+                {
+                  "name": "background",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "name": "borderColor",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "name": "borderRadius",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "name": "borderWidth",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "name": "boxShadow",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "name": "color",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "name": "fontSize",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "name": "fontWeight",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "name": "paddingBlock",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "name": "paddingInline",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
+                  "name": "rowGap",
+                  "optional": true,
+                  "type": "string",
+                },
+              ],
+              "type": "object",
+            },
+            "name": "bubble",
+            "optional": true,
+            "type": "{ background?: string | undefined; borderColor?: string | undefined; borderRadius?: string | undefined; borderWidth?: string | undefined; boxShadow?: string | undefined; color?: string | undefined; ... 4 more ...; paddingInline?: string | undefined; }",
+          },
+          {
+            "inlineType": {
+              "name": "{ columnGap?: string | undefined; }",
+              "properties": [
+                {
+                  "name": "columnGap",
+                  "optional": true,
+                  "type": "string",
+                },
+              ],
+              "type": "object",
+            },
+            "name": "root",
+            "optional": true,
+            "type": "{ columnGap?: string | undefined; }",
+          },
+        ],
+        "type": "object",
+      },
+      "name": "style",
+      "optional": true,
+      "systemTags": [
+        "core",
+      ],
+      "type": "ChatBubbleProps.Style",
+    },
+    {
       "description": "Defines the type of the chat bubble and sets its color accordingly.",
       "inlineType": {
         "name": "ChatBubbleProps.Type",
