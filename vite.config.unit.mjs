@@ -2,13 +2,40 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import process from "node:process";
+
 import { defineConfig } from "vite";
+
+import { getBuildTimeEnvironmentConstants } from "./scripts/environment.js";
 import base from "./vite.config.mjs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   ...base,
   root: "./",
+  resolve: {
+    alias: {
+      "../internal/environment": "/virtual:environment-mock",
+    },
+  },
+  plugins: [
+    ...(base.plugins || []),
+    {
+      name: "virtual-environment-mock",
+      resolveId(id) {
+        if (id === "/virtual:environment-mock") {
+          return id;
+        }
+      },
+      load(id) {
+        if (id === "/virtual:environment-mock") {
+          const values = getBuildTimeEnvironmentConstants();
+          return Object.entries(values)
+            .map(([key, value]) => `export const ${key} = ${JSON.stringify(value)};`)
+            .join("\n");
+        }
+      },
+    },
+  ],
   test: {
     include: ["./src/**/__tests__/**/*.test.{ts,tsx}"],
     environment: "jsdom",

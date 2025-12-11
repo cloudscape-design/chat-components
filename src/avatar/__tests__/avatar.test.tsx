@@ -125,6 +125,9 @@ describe("Avatar", () => {
   });
 
   test("style api", () => {
+    vi.mock("../internal/environment", () => ({
+      SYSTEM: "core",
+    }));
     const ariaLabel = "User avatar JD Jane Doe";
     const wrapper = renderAvatar({
       ariaLabel,
