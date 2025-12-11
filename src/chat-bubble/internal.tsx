@@ -7,6 +7,7 @@ import { getDataAttributes } from "../internal/base-component/get-data-attribute
 import { InternalBaseComponentProps } from "../internal/base-component/use-base-component";
 import { InternalLoadingBar } from "../loading-bar/internal";
 import { ChatBubbleProps } from "./interfaces.js";
+import { getBubbleStyle, getChatBubbleRootStyle } from "./style";
 
 import styles from "./styles.css.js";
 
@@ -20,6 +21,7 @@ export default function InternalChatBubble({
   showLoadingBar,
   hideAvatar = false,
   ariaLabel,
+  style,
   __internalRootRef = null,
   ...rest
 }: InternalChatBubbleProps) {
@@ -43,6 +45,7 @@ export default function InternalChatBubble({
       ref={__internalRootRef}
       role="group"
       aria-label={ariaLabel}
+      style={getChatBubbleRootStyle(style)}
     >
       {avatar && (
         <div ref={avatarRef} className={clsx(styles.avatar, hideAvatar && styles.hide)}>
@@ -50,16 +53,14 @@ export default function InternalChatBubble({
         </div>
       )}
 
-      <div
-        className={clsx(styles["message-area"], styles[`chat-bubble-type-${type}`], {
-          [styles["with-loading-bar"]]: showLoadingBar,
-        })}
-      >
+      <div className={clsx(styles["message-area"], styles[`chat-bubble-type-${type}`])} style={getBubbleStyle(style)}>
         <div className={styles.content}>{children}</div>
-
         {actions && <div className={styles.actions}>{actions}</div>}
-
-        {showLoadingBar && <InternalLoadingBar variant="gen-ai-masked" />}
+        {showLoadingBar && (
+          <div className={styles["loading-bar-wrapper"]}>
+            <InternalLoadingBar variant="gen-ai-masked" />
+          </div>
+        )}
       </div>
     </div>
   );

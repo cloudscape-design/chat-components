@@ -18,6 +18,7 @@
 }
 
 .message-area {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: cs.$space-scaled-s;
@@ -30,10 +31,6 @@
   border-end-start-radius: cs.$border-radius-chat-bubble;
   border-end-end-radius: cs.$border-radius-chat-bubble;
 
-  &.with-loading-bar {
-    padding-block-end: 0;
-  }
-
   &.chat-bubble-type-outgoing {
     color: cs.$color-text-chat-bubble-outgoing;
     background-color: cs.$color-background-chat-bubble-outgoing;
@@ -43,6 +40,13 @@
     color: cs.$color-text-chat-bubble-incoming;
     background-color: cs.$color-background-chat-bubble-incoming;
   }
+}
+
+.loading-bar-wrapper {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  inline-size: 100%;
 }
 
 .avatar {
