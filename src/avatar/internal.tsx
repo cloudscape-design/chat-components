@@ -104,13 +104,7 @@ export default function InternalAvatar({
       {...tooltipAttributes}
       style={{ [customCssProps.avatarSize]: `${computedSize}px`, ...getRootStyles(style) }}
     >
-      {showTooltip && tooltipText && (
-        <Tooltip
-          className={styles.tooltip}
-          value={tooltipText}
-          trackRef={handleRef}}
-        />
-      )}
+      {showTooltip && tooltipText && <Tooltip className={styles.tooltip} value={tooltipText} trackRef={handleRef} />}
 
       {/* aria-hidden is added so that screen readers focus only the parent div */}
       {/* when it is not hidden, it becomes unstable in JAWS */}
