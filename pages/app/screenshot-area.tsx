@@ -1,8 +1,14 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
+import clsx from "clsx";
+
+import AppContext from "./app-context";
+
+import styles from "./screenshot-area.module.css";
 
 export function ScreenshotArea({ children }: { children: ReactNode }) {
-  return <div className="screenshot-area">{children}</div>;
+  const { urlParams } = useContext(AppContext);
+  return <div className={clsx("screenshot-area", urlParams.screenshotMode && styles["no-animation"])}>{children}</div>;
 }
