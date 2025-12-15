@@ -107,9 +107,8 @@ export default function InternalAvatar({
       {showTooltip && tooltipText && (
         <Tooltip
           className={styles.tooltip}
-          content={tooltipText}
-          getTrack={() => handleRef.current}
-          onEscape={() => setShowTooltip(false)}
+          value={tooltipText}
+          trackRef={handleRef}}
         />
       )}
 
