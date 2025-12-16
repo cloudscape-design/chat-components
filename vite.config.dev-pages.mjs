@@ -26,9 +26,9 @@ export default defineConfig({
     },
     outDir: "lib/dev-pages/bundle",
     rollupOptions: {
-      external: [componentsPath, /^@cloudscape-design\/*/, "react", "react-dom"],
+      external: [componentsPath, /^@cloudscape-design\/*/, "react"],
       output: {
-        globals: { [componentsPath]: "components", react: "React", "react-dom": "ReactDom" },
+        globals: { [componentsPath]: "components", react: "React" },
       },
     },
   },
