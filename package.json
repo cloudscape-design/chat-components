@@ -43,6 +43,7 @@
     "./avatar": "./avatar/index.js",
     "./chat-bubble": "./chat-bubble/index.js",
     "./loading-bar": "./loading-bar/index.js",
+    "./prompt-input": "./prompt-input/index.js",
     "./support-prompt-group": "./support-prompt-group/index.js",
     "./test-utils/dom": "./test-utils/dom/index.js",
     "./test-utils/selectors": "./test-utils/selectors/index.js",
