@@ -19,11 +19,11 @@
   @include mixins.border-radius-avatar;
 
   &.avatar-color-default {
-    background-color: cs.$color-background-avatar-default;
+    background-color: blue;
   }
 
   &.avatar-color-gen-ai {
-    background: cs.$color-background-avatar-gen-ai;
+    background: yellow;
   }
 
   &.initials {
