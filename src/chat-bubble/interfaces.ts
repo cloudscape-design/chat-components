@@ -31,8 +31,31 @@ export interface ChatBubbleProps {
    * Useful for when there are multiple consecutive messages coming from the same author.
    */
   hideAvatar?: boolean;
+
+  /**
+   * @awsuiSystem core
+   */
+  style?: ChatBubbleProps.Style;
 }
 
 export namespace ChatBubbleProps {
   export type Type = "incoming" | "outgoing";
+  export interface Style {
+    root?: {
+      columnGap?: string;
+    };
+    bubble?: {
+      background?: string;
+      borderColor?: string;
+      borderRadius?: string;
+      borderWidth?: string;
+      boxShadow?: string;
+      color?: string;
+      fontSize?: string;
+      fontWeight?: string;
+      rowGap?: string;
+      paddingBlock?: string;
+      paddingInline?: string;
+    };
+  }
 }

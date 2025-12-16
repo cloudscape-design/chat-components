@@ -1,0 +1,70 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`getBubbleStyle > handles all possible style configurations 1`] = `
+{
+  "background": undefined,
+  "borderColor": undefined,
+  "borderRadius": undefined,
+  "borderStyle": undefined,
+  "borderWidth": undefined,
+  "boxShadow": undefined,
+  "color": undefined,
+  "fontSize": undefined,
+  "fontWeight": undefined,
+  "paddingBlock": undefined,
+  "paddingInline": undefined,
+  "rowGap": undefined,
+}
+`;
+
+exports[`getBubbleStyle > handles all possible style configurations 2`] = `
+{
+  "background": undefined,
+  "borderColor": undefined,
+  "borderRadius": undefined,
+  "borderStyle": undefined,
+  "borderWidth": undefined,
+  "boxShadow": undefined,
+  "color": undefined,
+  "fontSize": undefined,
+  "fontWeight": undefined,
+  "paddingBlock": undefined,
+  "paddingInline": undefined,
+  "rowGap": undefined,
+}
+`;
+
+exports[`getBubbleStyle > handles all possible style configurations 3`] = `
+{
+  "background": "#f0f0f0",
+  "borderColor": "#ccc",
+  "borderRadius": "8px",
+  "borderStyle": "solid",
+  "borderWidth": "2px",
+  "boxShadow": "0 4px 8px rgba(0,0,0,0.2)",
+  "color": "#333",
+  "fontSize": "16px",
+  "fontWeight": "500",
+  "paddingBlock": "20px",
+  "paddingInline": "24px",
+  "rowGap": "12px",
+}
+`;
+
+exports[`getChatBubbleRootStyle > handles all possible style configurations 1`] = `
+{
+  "columnGap": undefined,
+}
+`;
+
+exports[`getChatBubbleRootStyle > handles all possible style configurations 2`] = `
+{
+  "columnGap": undefined,
+}
+`;
+
+exports[`getChatBubbleRootStyle > handles all possible style configurations 3`] = `
+{
+  "columnGap": "10px",
+}
+`;
