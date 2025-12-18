@@ -32,6 +32,18 @@ function copyStyles() {
 function copyTemplate() {
   fs.mkdirSync(componentsTargetDir, { recursive: true });
   fs.cpSync(componentsSourceDir, componentsTargetDir, { recursive: true });
+  fs.writeFileSync(
+    path.join(componentsTargetDir, "package.json"),
+    JSON.stringify(
+      {
+        name: "@cloudscape-design/chat-components-themed",
+        version: "1.0.0",
+      },
+      null,
+      2,
+    ),
+    "utf-8",
+  );
 }
 
 copyTemplate();
