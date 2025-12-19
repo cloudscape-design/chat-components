@@ -24,8 +24,12 @@
     inset-block-start: calc(-1 * #{$gutter});
     inline-size: calc(100% + 2 * #{$gutter});
     block-size: calc(100% + 2 * #{$gutter});
-    border-radius: $border-radius;
-    border: $border-width solid $border-color;
+    border-start-start-radius: $border-radius;
+    border-start-end-radius: $border-radius;
+    border-end-start-radius: $border-radius;
+    border-end-end-radius: $border-radius;
+    border-block: $border-width solid $border-color;
+    border-inline: $border-width solid $border-color;
   }
 }
 

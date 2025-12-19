@@ -28,7 +28,7 @@
 
 .variant-gen-ai,
 .variant-gen-ai-masked {
-  height: 2px;
+  block-size: 2px;
   background: awsui.$color-background-loading-bar-gen-ai;
   background-size: 200% 100%;
   background-position: 0 100%;
