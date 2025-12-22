@@ -31,7 +31,8 @@
   color: awsui.$color-text-button-normal-default;
   background: awsui.$color-background-button-normal-default;
 
-  border: 1px solid awsui.$color-border-button-normal-default;
+  border-block: 1px solid awsui.$color-border-button-normal-default;
+  border-inline: 1px solid awsui.$color-border-button-normal-default;
   border-start-start-radius: awsui.$space-static-xs;
   border-start-end-radius: awsui.$space-static-xs;
   border-end-start-radius: awsui.$space-static-xs;

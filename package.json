@@ -110,6 +110,7 @@
     "stylelint": "^16.9.0",
     "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-prettier": "^5.0.2",
+    "stylelint-use-logical": "^2.1.2",
     "typescript": "^4.9.4",
     "vite": "^6.4.1",
     "vitest": "^3.2.4"
