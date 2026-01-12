@@ -12,12 +12,14 @@ export { ElementWrapper };
 import AvatarWrapper from './avatar';
 import ChatBubbleWrapper from './chat-bubble';
 import LoadingBarWrapper from './loading-bar';
+import PromptInputWrapper from './prompt-input';
 import SupportPromptGroupWrapper from './support-prompt-group';
 
 
 export { AvatarWrapper };
 export { ChatBubbleWrapper };
 export { LoadingBarWrapper };
+export { PromptInputWrapper };
 export { SupportPromptGroupWrapper };
 
 declare module '@cloudscape-design/test-utils-core/dist/dom' {
@@ -81,6 +83,25 @@ findLoadingBar(selector?: string): LoadingBarWrapper | null;
  */
 findAllLoadingBars(selector?: string): Array<LoadingBarWrapper>;
 /**
+ * Returns the wrapper of the first PromptInput that matches the specified CSS selector.
+ * If no CSS selector is specified, returns the wrapper of the first PromptInput.
+ * If no matching PromptInput is found, returns \`null\`.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {PromptInputWrapper | null}
+ */
+findPromptInput(selector?: string): PromptInputWrapper | null;
+
+/**
+ * Returns an array of PromptInput wrapper that matches the specified CSS selector.
+ * If no CSS selector is specified, returns all of the PromptInputs inside the current wrapper.
+ * If no matching PromptInput is found, returns an empty array.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {Array<PromptInputWrapper>}
+ */
+findAllPromptInputs(selector?: string): Array<PromptInputWrapper>;
+/**
  * Returns the wrapper of the first SupportPromptGroup that matches the specified CSS selector.
  * If no CSS selector is specified, returns the wrapper of the first SupportPromptGroup.
  * If no matching SupportPromptGroup is found, returns \`null\`.
@@ -142,6 +163,19 @@ ElementWrapper.prototype.findLoadingBar = function(selector) {
 ElementWrapper.prototype.findAllLoadingBars = function(selector) {
   return this.findAllComponents(LoadingBarWrapper, selector);
 };
+ElementWrapper.prototype.findPromptInput = function(selector) {
+  let rootSelector = \`.\${PromptInputWrapper.rootSelector}\`;
+  if("legacyRootSelector" in PromptInputWrapper && PromptInputWrapper.legacyRootSelector){
+    rootSelector = \`:is(.\${PromptInputWrapper.rootSelector}, .\${PromptInputWrapper.legacyRootSelector})\`;
+  }
+  // casting to 'any' is needed to avoid this issue with generics
+  // https://github.com/microsoft/TypeScript/issues/29132
+  return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, PromptInputWrapper);
+};
+
+ElementWrapper.prototype.findAllPromptInputs = function(selector) {
+  return this.findAllComponents(PromptInputWrapper, selector);
+};
 ElementWrapper.prototype.findSupportPromptGroup = function(selector) {
   let rootSelector = \`.\${SupportPromptGroupWrapper.rootSelector}\`;
   if("legacyRootSelector" in SupportPromptGroupWrapper && SupportPromptGroupWrapper.legacyRootSelector){
@@ -178,12 +212,14 @@ export { ElementWrapper };
 import AvatarWrapper from './avatar';
 import ChatBubbleWrapper from './chat-bubble';
 import LoadingBarWrapper from './loading-bar';
+import PromptInputWrapper from './prompt-input';
 import SupportPromptGroupWrapper from './support-prompt-group';
 
 
 export { AvatarWrapper };
 export { ChatBubbleWrapper };
 export { LoadingBarWrapper };
+export { PromptInputWrapper };
 export { SupportPromptGroupWrapper };
 
 declare module '@cloudscape-design/test-utils-core/dist/selectors' {
@@ -240,6 +276,23 @@ findLoadingBar(selector?: string): LoadingBarWrapper;
  * @returns {MultiElementWrapper<LoadingBarWrapper>}
  */
 findAllLoadingBars(selector?: string): MultiElementWrapper<LoadingBarWrapper>;
+/**
+ * Returns a wrapper that matches the PromptInputs with the specified CSS selector.
+ * If no CSS selector is specified, returns a wrapper that matches PromptInputs.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {PromptInputWrapper}
+ */
+findPromptInput(selector?: string): PromptInputWrapper;
+
+/**
+ * Returns a multi-element wrapper that matches PromptInputs with the specified CSS selector.
+ * If no CSS selector is specified, returns a multi-element wrapper that matches PromptInputs.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {MultiElementWrapper<PromptInputWrapper>}
+ */
+findAllPromptInputs(selector?: string): MultiElementWrapper<PromptInputWrapper>;
 /**
  * Returns a wrapper that matches the SupportPromptGroups with the specified CSS selector.
  * If no CSS selector is specified, returns a wrapper that matches SupportPromptGroups.
@@ -299,6 +352,19 @@ ElementWrapper.prototype.findLoadingBar = function(selector) {
 
 ElementWrapper.prototype.findAllLoadingBars = function(selector) {
   return this.findAllComponents(LoadingBarWrapper, selector);
+};
+ElementWrapper.prototype.findPromptInput = function(selector) {
+  let rootSelector = \`.\${PromptInputWrapper.rootSelector}\`;
+  if("legacyRootSelector" in PromptInputWrapper && PromptInputWrapper.legacyRootSelector){
+    rootSelector = \`:is(.\${PromptInputWrapper.rootSelector}, .\${PromptInputWrapper.legacyRootSelector})\`;
+  }
+  // casting to 'any' is needed to avoid this issue with generics
+  // https://github.com/microsoft/TypeScript/issues/29132
+  return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, PromptInputWrapper);
+};
+
+ElementWrapper.prototype.findAllPromptInputs = function(selector) {
+  return this.findAllComponents(PromptInputWrapper, selector);
 };
 ElementWrapper.prototype.findSupportPromptGroup = function(selector) {
   let rootSelector = \`.\${SupportPromptGroupWrapper.rootSelector}\`;
