@@ -60,7 +60,7 @@
   },
   "devDependencies": {
     "@cloudscape-design/browser-test-tools": "^3.0.4",
-    "@cloudscape-design/build-tools": "github:cloudscape-design/build-tools#main",
+    "@cloudscape-design/build-tools": "github:cloudscape-design/build-tools#add-test-pages-util-permutation-view",
     "@cloudscape-design/code-view": "^3",
     "@cloudscape-design/components": "^3",
     "@cloudscape-design/design-tokens": "^3",
