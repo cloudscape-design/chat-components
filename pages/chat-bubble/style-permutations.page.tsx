@@ -5,7 +5,7 @@ import { createPermutations, PermutationsView } from "@cloudscape-design/build-t
 import { ChatBubble, ChatBubbleProps } from "../../lib/components";
 import { Page } from "../app/templates";
 import { TestBed } from "../app/test-bed";
-import { ChatBubbleAvatarGenAI, ChatBubbleAvatarUser, ChatContainer } from "./util-components";
+import { Actions, ChatBubbleAvatarGenAI, ChatBubbleAvatarUser, ChatContainer } from "./util-components";
 
 const style1 = {
   root: {
@@ -33,7 +33,7 @@ const style2 = {
     fontWeight: "bold",
     paddingBlock: "20px",
     paddingInline: "30px",
-    rowGap: "20px",
+    rowGap: "30px",
   },
 };
 
@@ -44,6 +44,7 @@ const permutations = createPermutations<ChatBubbleProps>([
     ariaLabel: ["Chat bubble permutation"],
     children: ["Response coming from AI"],
     showLoadingBar: [false, true],
+    actions: [<Actions key="action" />],
     hideAvatar: [false],
     style: [style1, style2],
   },
