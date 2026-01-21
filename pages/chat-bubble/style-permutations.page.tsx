@@ -68,7 +68,11 @@ export default function ChatBubbleStylePermutations() {
       <ChatContainer>
         <PermutationsView
           permutations={permutations}
-          render={(permutation: ChatBubbleProps) => <ChatBubble {...permutation} />}
+          render={(permutation: ChatBubbleProps) => (
+            <div style={{ padding: "20px" }}>
+              <ChatBubble {...permutation} />
+            </div>
+          )}
         />
       </ChatContainer>
     </Page>
