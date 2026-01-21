@@ -4,7 +4,6 @@ import { createPermutations, PermutationsView } from "@cloudscape-design/build-t
 
 import { ChatBubble, ChatBubbleProps } from "../../lib/components";
 import { Page } from "../app/templates";
-import { TestBed } from "../app/test-bed";
 import { Actions, ChatBubbleAvatarGenAI, ChatBubbleAvatarUser, ChatContainer } from "./util-components";
 
 const style1 = {
@@ -54,24 +53,20 @@ const permutations = createPermutations<ChatBubbleProps>([
     ariaLabel: ["Chat bubble permutation"],
     children: ["A message sent from the user"],
     showLoadingBar: [false],
-    hideAvatar: [false],
+    hideAvatar: [true, false],
     style: [style1, style2],
   },
 ]);
 
 export default function ChatBubbleStylePermutations() {
   return (
-    <>
-      <Page title="Chat bubble">
-        <TestBed>
-          <ChatContainer>
-            <PermutationsView
-              permutations={permutations}
-              render={(permutation: ChatBubbleProps) => <ChatBubble {...permutation} />}
-            />
-          </ChatContainer>
-        </TestBed>
-      </Page>
-    </>
+    <Page title="Chat bubble">
+      <ChatContainer>
+        <PermutationsView
+          permutations={permutations}
+          render={(permutation: ChatBubbleProps) => <ChatBubble {...permutation} />}
+        />
+      </ChatContainer>
+    </Page>
   );
 }
