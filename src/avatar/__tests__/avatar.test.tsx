@@ -11,6 +11,16 @@ import createWrapper from "../../../lib/components/test-utils/dom";
 import loadingDotsStyles from "../../../lib/components/avatar/loading-dots/styles.selectors.js";
 import avatarStyles from "../../../lib/components/avatar/styles.selectors.js";
 
+vi.mock("@cloudscape-design/component-toolkit/internal", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@cloudscape-design/component-toolkit/internal")>();
+  return {
+    ...actual,
+    warnOnce: vi.fn(),
+  };
+});
+
+const warnOnce = vi.mocked(ComponentToolkitInternal.warnOnce);
+
 const defaultAvatarProps: AvatarProps = { ariaLabel: "Avatar" };
 
 function renderAvatar(props: AvatarProps) {
@@ -95,8 +105,6 @@ describe("Avatar", () => {
   });
 
   test("Shows warning when initials length is longer than 2", () => {
-    const warnOnce = vi.spyOn(ComponentToolkitInternal, "warnOnce");
-
     const initials = "JDD";
     renderAvatar({ ...defaultAvatarProps, initials });
 

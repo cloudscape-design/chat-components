@@ -10,6 +10,16 @@ import createWrapper from "../../../lib/components/test-utils/dom";
 
 import styles from "../../../lib/components/support-prompt-group/styles.selectors.js";
 
+vi.mock("@cloudscape-design/component-toolkit/internal", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@cloudscape-design/component-toolkit/internal")>();
+  return {
+    ...actual,
+    warnOnce: vi.fn(),
+  };
+});
+
+const warnOnce = vi.mocked(ComponentToolkitInternal.warnOnce);
+
 const onItemClick = vi.fn();
 
 const defaultProps = {
@@ -109,7 +119,6 @@ describe("Support prompt group", () => {
 
     test("Throws console warning when no ID is found", () => {
       renderSupportPromptGroup({}, ref);
-      const warnOnce = vi.spyOn(ComponentToolkitInternal, "warnOnce");
 
       ref.current!.focus("doesnt-exist");
 
