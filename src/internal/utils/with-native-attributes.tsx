@@ -1,0 +1,80 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+import { forwardRef, HTMLAttributes, ReactNode, Ref } from "react";
+import clsx from "clsx";
+
+import { warnOnce } from "@cloudscape-design/component-toolkit/internal";
+
+export type NativeAttributes<T extends HTMLAttributes<HTMLElement>> =
+  | (Omit<T, "children"> & Record<`data-${string}`, string>)
+  | undefined;
+
+export type SkipWarnings = boolean | string[];
+
+type NativeAttributesProps<AT extends HTMLAttributes<HTMLElement>> = {
+  tag: string;
+  children?: ReactNode;
+  skipWarnings?: SkipWarnings;
+  nativeAttributes: NativeAttributes<AT>;
+  componentName: string;
+} & NativeAttributes<AT>;
+interface ForwardRefType {
+  <ET extends HTMLElement, AT extends HTMLAttributes<ET>>(
+    props: NativeAttributesProps<AT> & { ref?: Ref<ET> },
+  ): JSX.Element;
+}
+
+export function processAttributes<ET extends HTMLElement, AT extends HTMLAttributes<ET>>(
+  rest: Omit<NativeAttributesProps<AT>, "children" | "tag" | "skipWarnings" | "componentName" | "nativeAttributes">,
+  nativeAttributes: NativeAttributes<AT>,
+  componentName: string,
+  skipWarnings?: SkipWarnings,
+) {
+  return Object.entries(nativeAttributes || {}).reduce(
+    (acc, [key, value]) => {
+      // concatenate className
+      if (key === "className") {
+        acc[key] = clsx(rest.className, value);
+
+        // merge style
+      } else if (key === "style") {
+        acc[key] = { ...rest.style, ...value };
+
+        // chain event handlers
+      } else if (key.match(/^on[A-Z]/) && typeof value === "function" && key in rest) {
+        acc[key] = (event: Event) => {
+          value(event);
+          if (!event.defaultPrevented) {
+            (rest as any)[key](event);
+          }
+        };
+
+        // override other attributes, warning if it already exists
+      } else {
+        if (key in rest && (!skipWarnings || (skipWarnings !== true && !skipWarnings.includes(key)))) {
+          warnOnce(componentName, `Overriding native attribute [${key}] which has a Cloudscape-provided value`);
+        }
+        acc[key] = value;
+      }
+      return acc;
+    },
+    { ...rest } as any,
+  );
+}
+
+export default forwardRef(
+  <ET extends HTMLElement, AT extends HTMLAttributes<ET>>(
+    { tag, nativeAttributes, children, skipWarnings, componentName, ...rest }: NativeAttributesProps<AT>,
+    ref: Ref<ET>,
+  ) => {
+    const Tag = tag;
+
+    const processedAttributes = processAttributes<ET, AT>(rest, nativeAttributes, componentName, skipWarnings);
+
+    return (
+      <Tag {...processedAttributes} ref={ref}>
+        {children}
+      </Tag>
+    );
+  },
+) as ForwardRefType;
