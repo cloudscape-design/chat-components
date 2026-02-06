@@ -53,7 +53,10 @@ export default function InternalChatBubble({
         </div>
       )}
 
-      <div className={clsx(styles["message-area"], styles[`chat-bubble-type-${type}`])} style={getBubbleStyle(style)}>
+      <div
+        className={clsx(styles["message-area"], styles[`chat-bubble-type-${type}`], "awsui-context-chat-bubble")}
+        style={getBubbleStyle(style)}
+      >
         <div className={styles.content}>{children}</div>
         {actions && <div className={styles.actions}>{actions}</div>}
         {showLoadingBar && (
