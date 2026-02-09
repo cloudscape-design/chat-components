@@ -14,6 +14,15 @@ export default defineConfig({
   resolve: {
     alias: {
       lodash: "lodash-es",
+      "@cloudscape-design/components/internal/components/card": resolve(
+        __dirname,
+        "node_modules",
+        "@cloudscape-design",
+        "components",
+        "internal",
+        "components",
+        "card",
+      ),
     },
   },
   build: {
