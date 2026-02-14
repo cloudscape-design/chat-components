@@ -33,6 +33,7 @@ export interface ChatBubbleProps {
   hideAvatar?: boolean;
 
   /**
+   * An object containing CSS properties to customize the chat bubble's visual appearance.
    * @awsuiSystem core
    */
   style?: ChatBubbleProps.Style;
