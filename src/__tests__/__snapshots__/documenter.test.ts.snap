@@ -78,7 +78,8 @@ Use it to define initials that uniquely identify the avatar's owner.",
       "type": "boolean",
     },
     {
-      "description": "An object containing CSS properties to customize the avatar's visual appearance.",
+      "description": "An object containing CSS properties to customize the avatar's visual appearance.
+Refer to the [style](/components/avatar/?tabId=style) tab for more details.",
       "inlineType": {
         "name": "AvatarProps.Style",
         "properties": [
@@ -217,7 +218,8 @@ If avatar is being used, set its \`loading\` state to true.",
       "type": "boolean",
     },
     {
-      "description": "An object containing CSS properties to customize the chat bubble's visual appearance.",
+      "description": "An object containing CSS properties to customize the chat bubble's visual appearance.
+Refer to the [style](/components/chat-bubble/?tabId=style) tab for more details.",
       "inlineType": {
         "name": "ChatBubbleProps.Style",
         "properties": [
