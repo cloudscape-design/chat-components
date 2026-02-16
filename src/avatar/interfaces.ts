@@ -63,6 +63,8 @@ export interface AvatarProps {
   imgUrl?: string;
 
   /**
+   * An object containing CSS properties to customize the avatar's visual appearance.
+   * Refer to the [style](/components/avatar/?tabId=style) tab for more details.
    * @awsuiSystem core
    */
   style?: AvatarProps.Style;
