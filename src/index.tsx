@@ -12,3 +12,6 @@ export type { ChatBubbleProps } from "./chat-bubble";
 
 export { default as SupportPromptGroup } from "./support-prompt-group";
 export type { SupportPromptGroupProps } from "./support-prompt-group";
+
+export { default as PromptInput } from "./prompt-input";
+export type { PromptInputProps } from "./prompt-input";
