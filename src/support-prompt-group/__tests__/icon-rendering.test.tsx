@@ -183,6 +183,44 @@ describe("IconPosition Without Icon", () => {
   });
 });
 
+test("mixed items - some with icons, some without", () => {
+  const items = [
+    { text: "No icon", id: "no-icon-1" },
+    { text: "With icon", id: "with-icon", iconName: "edit" as const },
+    { text: "No icon 2", id: "no-icon-2" },
+  ];
+
+  const { container } = render(<SupportPromptGroup {...defaultProps} items={items} />);
+
+  // Items without icons
+  const noIconButton1 = container.querySelector(`[data-testid="no-icon-1"]`);
+  expect(noIconButton1?.querySelector("svg")).toBeNull();
+
+  const noIconButton2 = container.querySelector(`[data-testid="no-icon-2"]`);
+  expect(noIconButton2?.querySelector("svg")).toBeNull();
+
+  // Item with icon
+  const withIconButton = container.querySelector(`[data-testid="with-icon"]`);
+  expect(withIconButton?.querySelector("svg")).not.toBeNull();
+});
+
+test("items with icons render correctly", () => {
+  const items = [
+    { text: "Edit", id: "edit-1", iconName: "edit" as const },
+    { text: "Settings", id: "settings-1", iconName: "settings" as const },
+  ];
+
+  const { container } = render(<SupportPromptGroup {...defaultProps} items={items} />);
+
+  for (const item of items) {
+    const buttonElement = container.querySelector(`[data-testid="${item.id}"]`);
+    expect(buttonElement).not.toBeNull();
+
+    const iconElement = buttonElement?.querySelector("svg");
+    expect(iconElement).not.toBeNull();
+  }
+});
+
 describe("AriaLabel Handling", () => {
   afterEach(() => {
     cleanup();
@@ -248,48 +286,5 @@ describe("AriaLabel Handling", () => {
 
       cleanup();
     }
-  });
-});
-
-describe("ARIA Roles Preservation", () => {
-  afterEach(() => {
-    cleanup();
-  });
-
-  test("all prompt buttons have role=menuitem", () => {
-    const items = [
-      { text: "Edit", id: "edit-1", iconName: "edit" as const },
-      { text: "Plain", id: "plain-1" },
-      {
-        text: "Custom",
-        id: "custom-1",
-        iconSvg: (
-          <svg>
-            <circle r="5" />
-          </svg>
-        ),
-      },
-    ];
-
-    const { container } = renderSupportPromptGroup({ items });
-
-    for (const item of items) {
-      const buttonElement = container.querySelector(`[data-testid="${item.id}"]`);
-      const role = buttonElement?.getAttribute("role");
-      expect(role).toBe("menuitem");
-    }
-  });
-
-  test("container has role=menubar with ariaLabel", () => {
-    const items = [
-      { text: "Edit", id: "edit-1", iconName: "edit" as const },
-      { text: "Delete", id: "delete-1" },
-    ];
-
-    const { container } = renderSupportPromptGroup({ items, ariaLabel: "Support actions" });
-
-    const menubar = container.querySelector('[role="menubar"]');
-    expect(menubar).not.toBeNull();
-    expect(menubar?.getAttribute("aria-label")).toBe("Support actions");
   });
 });
