@@ -68,6 +68,7 @@ export default function SupportPromptPage() {
               {
                 text: "Summarize this long and complex PDF for me. Include a paragraph containing 3-4 sentences that capture the main ideas and overall message of the documents, a list of 5 to 10 key points from the document, and up to 3 follow-up questions that arise from the content of the document.",
                 id: "summarize",
+                iconName: "edit",
               },
               {
                 text: "What  questions remain unanswered after reading the document(s)? The response shall consider all current or past uploaded documents.",
