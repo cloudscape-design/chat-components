@@ -20,6 +20,10 @@
 .support-prompt {
   cursor: pointer;
 
+  display: inline-flex;
+  align-items: center;
+  gap: awsui.$space-scaled-xs;
+
   font-family: awsui.$font-family-base;
   font-size: awsui.$font-size-body-m;
   line-height: awsui.$line-height-heading-m;
@@ -59,4 +63,13 @@
   &:focus-visible {
     @include shared.focus-highlight(6px, 6px);
   }
+}
+
+.support-prompt-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.support-prompt-text {
+  display: inline-flex;
 }

@@ -1,6 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { IconProps } from "@cloudscape-design/components/icon";
+
 import { ClickDetail as _ClickDetail, NonCancelableEventHandler } from "../internal/events";
 
 export interface SupportPromptGroupProps {
@@ -14,6 +16,10 @@ export interface SupportPromptGroupProps {
    * Each item has the following properties:
    *   - text: The text of the support prompt.
    *   - id: The ID of the support prompt.
+   *   - iconName (optional): The name of a built-in icon to display.
+   *   - iconSvg (optional): A custom SVG icon to display. Takes precedence over iconName.
+   *   - iconPosition (optional): Position of the icon relative to text. Can be "left" (default) or "right".
+   *   - ariaLabel (optional): Custom accessible label for the prompt.
    **/
   items: ReadonlyArray<SupportPromptGroupProps.Item>;
 
@@ -35,6 +41,10 @@ export namespace SupportPromptGroupProps {
   export interface Item {
     text: string;
     id: string;
+    iconName?: IconProps.Name;
+    iconSvg?: React.ReactNode;
+    iconPosition?: "left" | "right";
+    ariaLabel?: string;
   }
 
   export interface ItemClickDetail extends _ClickDetail {

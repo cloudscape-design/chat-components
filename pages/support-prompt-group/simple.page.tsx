@@ -99,6 +99,113 @@ export default function SupportPromptPage() {
               },
             ]}
           />
+
+          <h2>horizontal group with icons (left position)</h2>
+          <SupportPromptGroup
+            ariaLabel="Support prompts with icons"
+            alignment="horizontal"
+            onItemClick={({ detail }) => console.log(detail)}
+            items={[
+              {
+                text: "Edit document",
+                id: "edit-icon",
+                iconName: "edit",
+              },
+              {
+                text: "Generate with AI",
+                id: "gen-ai-icon",
+                iconName: "gen-ai",
+              },
+              {
+                text: "Search content",
+                id: "search-icon",
+                iconName: "search",
+              },
+            ]}
+          />
+
+          <h2>vertical group with icons (right position)</h2>
+          <SupportPromptGroup
+            ariaLabel="Support prompts with right-aligned icons"
+            onItemClick={({ detail }) => console.log(detail)}
+            items={[
+              {
+                text: "Settings",
+                id: "settings-icon",
+                iconName: "settings",
+                iconPosition: "right",
+              },
+              {
+                text: "Upload file",
+                id: "upload-icon",
+                iconName: "upload",
+                iconPosition: "right",
+              },
+              {
+                text: "Download results",
+                id: "download-icon",
+                iconName: "download",
+                iconPosition: "right",
+              },
+            ]}
+          />
+
+          <h2>mixed items (with and without icons)</h2>
+          <SupportPromptGroup
+            ariaLabel="Mixed support prompts"
+            alignment="horizontal"
+            onItemClick={({ detail }) => console.log(detail)}
+            items={[
+              {
+                text: "Create image",
+                id: "create-image",
+                iconName: "gen-ai",
+                ariaLabel: "Create image (using AI)",
+              },
+              {
+                text: "Brainstorm ideas",
+                id: "brainstorm-plain",
+              },
+              {
+                text: "Edit content",
+                id: "edit-content",
+                iconName: "edit",
+                iconPosition: "right",
+              },
+              {
+                text: "Summarize text",
+                id: "summarize-plain",
+              },
+            ]}
+          />
+
+          <h2>custom SVG icons</h2>
+          <SupportPromptGroup
+            ariaLabel="Support prompts with custom SVG icons"
+            alignment="horizontal"
+            onItemClick={({ detail }) => console.log(detail)}
+            items={[
+              {
+                text: "Custom action 1",
+                id: "custom-1",
+                iconSvg: (
+                  <svg viewBox="0 0 16 16" focusable="false">
+                    <circle cx="8" cy="8" r="6" fill="currentColor" />
+                  </svg>
+                ),
+              },
+              {
+                text: "Custom action 2",
+                id: "custom-2",
+                iconSvg: (
+                  <svg viewBox="0 0 16 16" focusable="false">
+                    <rect x="4" y="4" width="8" height="8" fill="currentColor" />
+                  </svg>
+                ),
+                iconPosition: "right",
+              },
+            ]}
+          />
         </TestBed>
       </main>
     </Page>
