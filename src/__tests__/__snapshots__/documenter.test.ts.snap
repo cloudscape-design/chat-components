@@ -467,7 +467,11 @@ Use this to provide a unique accessible name for each support prompt group on th
       "description": "An array of objects representing support prompts.
 Each item has the following properties:
   - text: The text of the support prompt.
-  - id: The ID of the support prompt.",
+  - id: The ID of the support prompt.
+  - iconName (optional): The name of a built-in icon to display.
+  - iconSvg (optional): A custom SVG icon to display. Takes precedence over iconName.
+  - iconPosition (optional): Position of the icon relative to text. Can be "left" (default) or "right".
+  - ariaLabel (optional): Custom accessible label for the prompt.",
       "name": "items",
       "optional": false,
       "type": "ReadonlyArray<SupportPromptGroupProps.Item>",
