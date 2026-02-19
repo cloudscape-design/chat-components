@@ -5,6 +5,9 @@ import { SupportPromptGroup } from "../../lib/components";
 import { Page } from "../app/templates";
 import { TestBed } from "../app/test-bed";
 
+const longPromptText =
+  "Summarize this long and complex PDF for me. Include a paragraph containing 3-4 sentences that capture the main ideas and overall message of the documents, a list of 5 to 10 key points from the document, and up to 3 follow-up questions that arise from the content of the document.";
+
 export default function SupportPromptPage() {
   return (
     <Page title="Support prompt">
@@ -66,9 +69,8 @@ export default function SupportPromptPage() {
                 id: "brainstorm",
               },
               {
-                text: "Summarize this long and complex PDF for me. Include a paragraph containing 3-4 sentences that capture the main ideas and overall message of the documents, a list of 5 to 10 key points from the document, and up to 3 follow-up questions that arise from the content of the document.",
+                text: longPromptText,
                 id: "summarize",
-                iconName: "edit",
               },
               {
                 text: "What  questions remain unanswered after reading the document(s)? The response shall consider all current or past uploaded documents.",
@@ -91,7 +93,7 @@ export default function SupportPromptPage() {
                 id: "brainstorm",
               },
               {
-                text: "Summarize this long and complex PDF for me. Include a paragraph containing 3-4 sentences that capture the main ideas and overall message of the documents, a list of 5 to 10 key points from the document, and up to 3 follow-up questions that arise from the content of the document.",
+                text: longPromptText,
                 id: "summarize",
               },
               {
@@ -208,63 +210,49 @@ export default function SupportPromptPage() {
             ]}
           />
 
-          <h2>icon vertical alignment (start - default)</h2>
+          <h2>icon vertical alignments</h2>
           <SupportPromptGroup
-            ariaLabel="Support prompts with start-aligned icons"
+            ariaLabel="Support prompts with different icon alignments"
             alignment="horizontal"
             onItemClick={({ detail }) => console.log(detail)}
             items={[
               {
-                text: "This is a multi-line prompt that demonstrates how the icon aligns to the start (top) of the text content when using the default alignment",
-                id: "align-start-1",
+                text: longPromptText,
+                id: "align-start-left",
                 iconName: "edit",
                 iconVerticalAlignment: "start",
               },
               {
-                text: "Another example with a longer text to show the start alignment behavior",
-                id: "align-start-2",
-                iconName: "gen-ai",
-              },
-            ]}
-          />
-
-          <h2>icon vertical alignment (center)</h2>
-          <SupportPromptGroup
-            ariaLabel="Support prompts with center-aligned icons"
-            alignment="horizontal"
-            onItemClick={({ detail }) => console.log(detail)}
-            items={[
-              {
-                text: "This is a multi-line prompt that demonstrates how the icon aligns to the center of the text content",
-                id: "align-center-1",
-                iconName: "edit",
-                iconVerticalAlignment: "center",
-              },
-              {
-                text: "Another example with center alignment",
-                id: "align-center-2",
+                text: longPromptText,
+                id: "align-center-left",
                 iconName: "gen-ai",
                 iconVerticalAlignment: "center",
               },
-            ]}
-          />
-
-          <h2>icon vertical alignment (end)</h2>
-          <SupportPromptGroup
-            ariaLabel="Support prompts with end-aligned icons"
-            alignment="horizontal"
-            onItemClick={({ detail }) => console.log(detail)}
-            items={[
               {
-                text: "This is a multi-line prompt that demonstrates how the icon aligns to the end (bottom) of the text content",
-                id: "align-end-1",
-                iconName: "edit",
+                text: longPromptText,
+                id: "align-end-left",
+                iconName: "search",
                 iconVerticalAlignment: "end",
               },
               {
-                text: "Another example with end alignment",
-                id: "align-end-2",
+                text: longPromptText,
+                id: "align-start-right",
+                iconName: "search",
+                iconPosition: "right",
+                iconVerticalAlignment: "start",
+              },
+              {
+                text: longPromptText,
+                id: "align-center-right",
                 iconName: "gen-ai",
+                iconPosition: "right",
+                iconVerticalAlignment: "center",
+              },
+              {
+                text: longPromptText,
+                id: "align-end-right",
+                iconName: "edit",
+                iconPosition: "right",
                 iconVerticalAlignment: "end",
               },
             ]}
