@@ -19,6 +19,7 @@ const allStyles = {
     borderWidth: "2px",
     boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
     color: "#333",
+    fontFamily: "Arial, sans-serif",
     fontSize: "16px",
     fontWeight: "500",
     rowGap: "12px",
