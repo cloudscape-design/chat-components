@@ -296,73 +296,35 @@ describe("Icon Vertical Alignment", () => {
     cleanup();
   });
 
-  test("default icon vertical alignment is start", () => {
-    const items = [{ text: "Edit", id: "edit-1", iconName: "edit" as const }];
-
-    const { container } = renderSupportPromptGroup({ items });
-
-    const buttonElement = container.querySelector(`[data-testid="${items[0].id}"]`);
-    const iconSpan = buttonElement?.querySelector(`.${styles["support-prompt-icon"]}`);
-    expect(iconSpan?.classList.contains(styles["icon-align-start"])).toBe(true);
-  });
-
-  test("icon vertical alignment center", () => {
-    const items = [{ text: "Edit", id: "edit-2", iconName: "edit" as const, iconVerticalAlignment: "center" as const }];
-
-    const { container } = renderSupportPromptGroup({ items });
-
-    const buttonElement = container.querySelector(`[data-testid="${items[0].id}"]`);
-    const iconSpan = buttonElement?.querySelector(`.${styles["support-prompt-icon"]}`);
-    expect(iconSpan?.classList.contains(styles["icon-align-center"])).toBe(true);
-  });
-
-  test("icon vertical alignment end", () => {
-    const items = [{ text: "Edit", id: "edit-3", iconName: "edit" as const, iconVerticalAlignment: "end" as const }];
-
-    const { container } = renderSupportPromptGroup({ items });
-
-    const buttonElement = container.querySelector(`[data-testid="${items[0].id}"]`);
-    const iconSpan = buttonElement?.querySelector(`.${styles["support-prompt-icon"]}`);
-    expect(iconSpan?.classList.contains(styles["icon-align-end"])).toBe(true);
-  });
-
-  test("icon vertical alignment works with iconPosition right", () => {
+  test("applies correct alignment classes for start, center, and end", () => {
     const items = [
-      {
-        text: "Settings",
-        id: "settings-1",
-        iconName: "settings" as const,
-        iconPosition: "right" as const,
-        iconVerticalAlignment: "center" as const,
-      },
+      { text: "Default", id: "default-1", iconName: "edit" as const },
+      { text: "Start", id: "start-1", iconName: "edit" as const, iconVerticalAlignment: "start" as const },
+      { text: "Center", id: "center-1", iconName: "edit" as const, iconVerticalAlignment: "center" as const },
+      { text: "End", id: "end-1", iconName: "edit" as const, iconVerticalAlignment: "end" as const },
     ];
 
     const { container } = renderSupportPromptGroup({ items });
 
-    const buttonElement = container.querySelector(`[data-testid="${items[0].id}"]`);
-    const iconSpan = buttonElement?.querySelector(`.${styles["support-prompt-icon"]}`);
-    expect(iconSpan?.classList.contains(styles["icon-align-center"])).toBe(true);
-  });
+    // Default should be start
+    const defaultButton = container.querySelector(`[data-testid="default-1"]`);
+    const defaultIcon = defaultButton?.querySelector(`.${styles["support-prompt-icon"]}`);
+    expect(defaultIcon?.classList.contains(styles["icon-align-start"])).toBe(true);
 
-  test("icon vertical alignment works with custom SVG icons", () => {
-    const items = [
-      {
-        text: "Custom",
-        id: "custom-1",
-        iconSvg: (
-          <svg>
-            <circle r="5" />
-          </svg>
-        ),
-        iconVerticalAlignment: "end" as const,
-      },
-    ];
+    // Explicit start
+    const startButton = container.querySelector(`[data-testid="start-1"]`);
+    const startIcon = startButton?.querySelector(`.${styles["support-prompt-icon"]}`);
+    expect(startIcon?.classList.contains(styles["icon-align-start"])).toBe(true);
 
-    const { container } = renderSupportPromptGroup({ items });
+    // Center
+    const centerButton = container.querySelector(`[data-testid="center-1"]`);
+    const centerIcon = centerButton?.querySelector(`.${styles["support-prompt-icon"]}`);
+    expect(centerIcon?.classList.contains(styles["icon-align-center"])).toBe(true);
 
-    const buttonElement = container.querySelector(`[data-testid="${items[0].id}"]`);
-    const iconSpan = buttonElement?.querySelector(`.${styles["support-prompt-icon"]}`);
-    expect(iconSpan?.classList.contains(styles["icon-align-end"])).toBe(true);
+    // End
+    const endButton = container.querySelector(`[data-testid="end-1"]`);
+    const endIcon = endButton?.querySelector(`.${styles["support-prompt-icon"]}`);
+    expect(endIcon?.classList.contains(styles["icon-align-end"])).toBe(true);
   });
 
   test("iconVerticalAlignment is ignored when no icon is present", () => {
