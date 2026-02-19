@@ -19,6 +19,7 @@ export interface SupportPromptGroupProps {
    *   - iconName (optional): The name of a built-in icon to display.
    *   - iconSvg (optional): A custom SVG icon to display. Takes precedence over iconName.
    *   - iconPosition (optional): Position of the icon relative to text. Can be "left" (default) or "right".
+   *   - iconVerticalAlignment (optional): Vertical alignment of the icon. Can be "center", "start" (default), or "end".
    *   - ariaLabel (optional): Custom accessible label for the prompt.
    **/
   items: ReadonlyArray<SupportPromptGroupProps.Item>;
@@ -44,6 +45,7 @@ export namespace SupportPromptGroupProps {
     iconName?: IconProps.Name;
     iconSvg?: React.ReactNode;
     iconPosition?: "left" | "right";
+    iconVerticalAlignment?: "center" | "start" | "end";
     ariaLabel?: string;
   }
 

@@ -17,12 +17,22 @@ export interface PromptProps {
   iconName?: IconProps.Name;
   iconSvg?: React.ReactNode;
   iconPosition?: "left" | "right";
+  iconVerticalAlignment?: "center" | "start" | "end";
   ariaLabel?: string;
 }
 
 export const Prompt = forwardRef(
   (
-    { children, id, onClick, iconName, iconSvg, iconPosition = "left", ariaLabel }: PromptProps,
+    {
+      children,
+      id,
+      onClick,
+      iconName,
+      iconSvg,
+      iconPosition = "left",
+      iconVerticalAlignment = "start",
+      ariaLabel,
+    }: PromptProps,
     ref: Ref<HTMLButtonElement | null>,
   ) => {
     const buttonRef = useRef<HTMLButtonElement>(null);
@@ -38,7 +48,7 @@ export const Prompt = forwardRef(
       }
 
       return (
-        <span className={styles["support-prompt-icon"]}>
+        <span className={clsx(styles["support-prompt-icon"], styles[`icon-align-${iconVerticalAlignment}`])}>
           <Icon name={iconName} svg={iconSvg} size="inherit" />
         </span>
       );

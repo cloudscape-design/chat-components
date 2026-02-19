@@ -6,6 +6,8 @@ import { afterEach, describe, expect, test, vi } from "vitest";
 import SupportPromptGroup, { SupportPromptGroupProps } from "../../../lib/components/support-prompt-group";
 import createWrapper from "../../../lib/components/test-utils/dom";
 
+import styles from "../../../lib/components/support-prompt-group/styles.css.js";
+
 const onItemClick = vi.fn();
 
 const defaultProps = {
@@ -286,5 +288,90 @@ describe("AriaLabel Handling", () => {
 
       cleanup();
     }
+  });
+});
+
+describe("Icon Vertical Alignment", () => {
+  afterEach(() => {
+    cleanup();
+  });
+
+  test("default icon vertical alignment is start", () => {
+    const items = [{ text: "Edit", id: "edit-1", iconName: "edit" as const }];
+
+    const { container } = renderSupportPromptGroup({ items });
+
+    const buttonElement = container.querySelector(`[data-testid="${items[0].id}"]`);
+    const iconSpan = buttonElement?.querySelector(`.${styles["support-prompt-icon"]}`);
+    expect(iconSpan?.classList.contains(styles["icon-align-start"])).toBe(true);
+  });
+
+  test("icon vertical alignment center", () => {
+    const items = [{ text: "Edit", id: "edit-2", iconName: "edit" as const, iconVerticalAlignment: "center" as const }];
+
+    const { container } = renderSupportPromptGroup({ items });
+
+    const buttonElement = container.querySelector(`[data-testid="${items[0].id}"]`);
+    const iconSpan = buttonElement?.querySelector(`.${styles["support-prompt-icon"]}`);
+    expect(iconSpan?.classList.contains(styles["icon-align-center"])).toBe(true);
+  });
+
+  test("icon vertical alignment end", () => {
+    const items = [{ text: "Edit", id: "edit-3", iconName: "edit" as const, iconVerticalAlignment: "end" as const }];
+
+    const { container } = renderSupportPromptGroup({ items });
+
+    const buttonElement = container.querySelector(`[data-testid="${items[0].id}"]`);
+    const iconSpan = buttonElement?.querySelector(`.${styles["support-prompt-icon"]}`);
+    expect(iconSpan?.classList.contains(styles["icon-align-end"])).toBe(true);
+  });
+
+  test("icon vertical alignment works with iconPosition right", () => {
+    const items = [
+      {
+        text: "Settings",
+        id: "settings-1",
+        iconName: "settings" as const,
+        iconPosition: "right" as const,
+        iconVerticalAlignment: "center" as const,
+      },
+    ];
+
+    const { container } = renderSupportPromptGroup({ items });
+
+    const buttonElement = container.querySelector(`[data-testid="${items[0].id}"]`);
+    const iconSpan = buttonElement?.querySelector(`.${styles["support-prompt-icon"]}`);
+    expect(iconSpan?.classList.contains(styles["icon-align-center"])).toBe(true);
+  });
+
+  test("icon vertical alignment works with custom SVG icons", () => {
+    const items = [
+      {
+        text: "Custom",
+        id: "custom-1",
+        iconSvg: (
+          <svg>
+            <circle r="5" />
+          </svg>
+        ),
+        iconVerticalAlignment: "end" as const,
+      },
+    ];
+
+    const { container } = renderSupportPromptGroup({ items });
+
+    const buttonElement = container.querySelector(`[data-testid="${items[0].id}"]`);
+    const iconSpan = buttonElement?.querySelector(`.${styles["support-prompt-icon"]}`);
+    expect(iconSpan?.classList.contains(styles["icon-align-end"])).toBe(true);
+  });
+
+  test("iconVerticalAlignment is ignored when no icon is present", () => {
+    const items = [{ text: "Plain", id: "plain-1", iconVerticalAlignment: "center" as const }];
+
+    const { container } = renderSupportPromptGroup({ items });
+
+    const buttonElement = container.querySelector(`[data-testid="${items[0].id}"]`);
+    const iconSpan = buttonElement?.querySelector(`.${styles["support-prompt-icon"]}`);
+    expect(iconSpan).toBeNull();
   });
 });

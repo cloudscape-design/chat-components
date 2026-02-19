@@ -68,6 +68,18 @@
 .support-prompt-icon {
   display: inline-flex;
   flex-shrink: 0;
+
+  &.icon-align-center {
+    align-self: center;
+  }
+
+  &.icon-align-start {
+    align-self: flex-start;
+  }
+
+  &.icon-align-end {
+    align-self: flex-end;
+  }
 }
 
 .support-prompt-text {

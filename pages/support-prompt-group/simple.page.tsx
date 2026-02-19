@@ -207,6 +207,68 @@ export default function SupportPromptPage() {
               },
             ]}
           />
+
+          <h2>icon vertical alignment (start - default)</h2>
+          <SupportPromptGroup
+            ariaLabel="Support prompts with start-aligned icons"
+            alignment="horizontal"
+            onItemClick={({ detail }) => console.log(detail)}
+            items={[
+              {
+                text: "This is a multi-line prompt that demonstrates how the icon aligns to the start (top) of the text content when using the default alignment",
+                id: "align-start-1",
+                iconName: "edit",
+                iconVerticalAlignment: "start",
+              },
+              {
+                text: "Another example with a longer text to show the start alignment behavior",
+                id: "align-start-2",
+                iconName: "gen-ai",
+              },
+            ]}
+          />
+
+          <h2>icon vertical alignment (center)</h2>
+          <SupportPromptGroup
+            ariaLabel="Support prompts with center-aligned icons"
+            alignment="horizontal"
+            onItemClick={({ detail }) => console.log(detail)}
+            items={[
+              {
+                text: "This is a multi-line prompt that demonstrates how the icon aligns to the center of the text content",
+                id: "align-center-1",
+                iconName: "edit",
+                iconVerticalAlignment: "center",
+              },
+              {
+                text: "Another example with center alignment",
+                id: "align-center-2",
+                iconName: "gen-ai",
+                iconVerticalAlignment: "center",
+              },
+            ]}
+          />
+
+          <h2>icon vertical alignment (end)</h2>
+          <SupportPromptGroup
+            ariaLabel="Support prompts with end-aligned icons"
+            alignment="horizontal"
+            onItemClick={({ detail }) => console.log(detail)}
+            items={[
+              {
+                text: "This is a multi-line prompt that demonstrates how the icon aligns to the end (bottom) of the text content",
+                id: "align-end-1",
+                iconName: "edit",
+                iconVerticalAlignment: "end",
+              },
+              {
+                text: "Another example with end alignment",
+                id: "align-end-2",
+                iconName: "gen-ai",
+                iconVerticalAlignment: "end",
+              },
+            ]}
+          />
         </TestBed>
       </main>
     </Page>

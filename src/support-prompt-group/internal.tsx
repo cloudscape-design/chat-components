@@ -158,6 +158,7 @@ export const InternalSupportPromptGroup = forwardRef(
                 iconName={item.iconName}
                 iconSvg={item.iconSvg}
                 iconPosition={item.iconPosition}
+                iconVerticalAlignment={item.iconVerticalAlignment}
                 ariaLabel={item.ariaLabel}
               >
                 {item.text}
