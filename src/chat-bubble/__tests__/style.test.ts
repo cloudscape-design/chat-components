@@ -22,6 +22,7 @@ const allStyles = {
     fontFamily: "Arial, sans-serif",
     fontSize: "16px",
     fontWeight: "500",
+    letterSpacing: "0.5px",
     rowGap: "12px",
     paddingBlock: "20px",
     paddingInline: "24px",

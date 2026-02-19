@@ -29,6 +29,7 @@ export function getBubbleStyle(style: ChatBubbleProps.Style | undefined) {
     fontFamily: style?.bubble?.fontFamily,
     fontSize: style?.bubble?.fontSize,
     fontWeight: style?.bubble?.fontWeight,
+    letterSpacing: style?.bubble?.letterSpacing,
     paddingBlock: style?.bubble?.paddingBlock,
     paddingInline: style?.bubble?.paddingInline,
     rowGap: style?.bubble?.rowGap,

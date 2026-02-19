@@ -56,6 +56,7 @@ export namespace ChatBubbleProps {
       fontFamily?: string;
       fontSize?: string;
       fontWeight?: string;
+      letterSpacing?: string;
       rowGap?: string;
       paddingBlock?: string;
       paddingInline?: string;
