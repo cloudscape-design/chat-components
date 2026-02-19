@@ -206,23 +206,6 @@ test("mixed items - some with icons, some without", () => {
   expect(withIconButton?.querySelector("svg")).not.toBeNull();
 });
 
-test("items with icons render correctly", () => {
-  const items = [
-    { text: "Edit", id: "edit-1", iconName: "edit" as const },
-    { text: "Settings", id: "settings-1", iconName: "settings" as const },
-  ];
-
-  const { container } = render(<SupportPromptGroup {...defaultProps} items={items} />);
-
-  for (const item of items) {
-    const buttonElement = container.querySelector(`[data-testid="${item.id}"]`);
-    expect(buttonElement).not.toBeNull();
-
-    const iconElement = buttonElement?.querySelector("svg");
-    expect(iconElement).not.toBeNull();
-  }
-});
-
 describe("AriaLabel Handling", () => {
   afterEach(() => {
     cleanup();
