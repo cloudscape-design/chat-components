@@ -36,6 +36,8 @@ const styles = [
       paddingBlock: "20px",
       paddingInline: "30px",
       rowGap: "20px",
+      fontFamily: "cursive",
+      letterSpacing: "1px",
     },
   },
 ];
