@@ -8,7 +8,7 @@ import Header from "@cloudscape-design/components/header";
 import PromptInput from "@cloudscape-design/components/prompt-input";
 import SpaceBetween from "@cloudscape-design/components/space-between";
 
-import { ChatBubble, SupportPromptGroup } from "../../lib/components";
+import { ChatBubble, SupportPromptGroup, SupportPromptGroupProps } from "../../lib/components";
 import { Page } from "../app/templates";
 import { TestBed } from "../app/test-bed";
 import { ChatBubbleAvatarGenAI, ChatBubbleAvatarUser } from "../chat-bubble/util-components";
@@ -21,7 +21,7 @@ export default function SupportPromptPage() {
   const [sentText, setSentText] = useState("");
   const ref = createRef<HTMLTextAreaElement>();
 
-  const items = [
+  const items: Array<SupportPromptGroupProps.Item> = [
     {
       text: "Create a really detailed and powerful image. The image should be of a mountain scene with a blue lake and green hills, with a sunset in the background. In the lake, there should be 3 whales leaping out of the water.",
       id: "image",
@@ -36,18 +36,24 @@ export default function SupportPromptPage() {
     },
   ];
 
-  const items2 = [
+  const items2: Array<SupportPromptGroupProps.Item> = [
     {
       text: "Create a really detailed and powerful image.",
       id: "image",
+      iconName: "edit",
+      ariaLabel: "Create a really detailed and powerful image. (edit before submit)",
     },
     {
       text: "Help me brainstorm for an upcoming sign-off.",
       id: "brainstorm",
+      iconName: "edit",
+      ariaLabel: "Help me brainstorm for an upcoming sign-off. (edit before submit)",
     },
     {
       text: "Summarize this long PDF for me.",
       id: "summarize",
+      iconName: "edit",
+      ariaLabel: "Summarize this long PDF for me. (edit before submit)",
     },
   ];
 
