@@ -1,6 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import { forwardRef, Ref, useRef } from "react";
+import { forwardRef, ReactNode, Ref, useRef } from "react";
 import clsx from "clsx";
 
 import { useSingleTabStopNavigation } from "@cloudscape-design/component-toolkit/internal";
@@ -10,7 +10,7 @@ import useForwardFocus from "../internal/utils/use-forward-focus";
 import styles from "./styles.css.js";
 
 export interface PromptProps {
-  children: string;
+  children: ReactNode;
   id: string;
   onClick: (event: React.MouseEvent, id: string) => void;
 }
