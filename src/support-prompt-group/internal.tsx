@@ -155,6 +155,11 @@ export const InternalSupportPromptGroup = forwardRef(
                 onClick={(event) => handleClick(event, item.id)}
                 id={item.id}
                 ref={(element) => (itemsRef.current[item.id] = element)}
+                iconName={item.iconName}
+                iconSvg={item.iconSvg}
+                iconPosition={item.iconPosition}
+                iconVerticalAlignment={item.iconVerticalAlignment}
+                ariaLabel={item.ariaLabel}
               >
                 {item.text}
               </Prompt>
