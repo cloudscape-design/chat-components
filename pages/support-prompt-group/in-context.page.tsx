@@ -187,7 +187,7 @@ export default function SupportPromptPage() {
             </Container>
             <Container
               header={
-                <Header actions={<Button onClick={() => setSentText("")}>Reset</Button>}>
+                <Header actions={<Button onClick={() => setSentText2("")}>Reset</Button>}>
                   Support prompt test: react slot
                 </Header>
               }
