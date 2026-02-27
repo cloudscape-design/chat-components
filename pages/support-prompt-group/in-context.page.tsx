@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import { createRef, useState } from "react";
 
+import Badge from "@cloudscape-design/components/badge";
 import Button from "@cloudscape-design/components/button";
 import Container from "@cloudscape-design/components/container";
 import Header from "@cloudscape-design/components/header";
@@ -18,7 +19,9 @@ import styles from "./styles.module.scss";
 export default function SupportPromptPage() {
   const [text, setText] = useState("");
   const [text2, setText2] = useState("");
+  const [text3, setText3] = useState("");
   const [sentText, setSentText] = useState("");
+  const [sentText2, setSentText2] = useState("");
   const ref = createRef<HTMLTextAreaElement>();
 
   const items: Array<SupportPromptGroupProps.Item> = [
@@ -56,6 +59,47 @@ export default function SupportPromptPage() {
       ariaLabel: "Summarize this long PDF for me. (edit before submit)",
     },
   ];
+  const items3PlainText: Record<string, string> = {
+    image: "Create a really detailed and powerful image.",
+    brainstorm: "Help me brainstorm for an upcoming sign-off.",
+    summarize: "Summarize this long PDF for me.",
+  };
+
+  const items3: Array<SupportPromptGroupProps.Item> = [
+    {
+      text: (
+        <SpaceBetween direction="vertical" size="xs">
+          <b>Create a really detailed and powerful image</b>
+          <Badge>Generate Image</Badge>
+        </SpaceBetween>
+      ),
+      id: "image",
+      iconName: "edit",
+      ariaLabel: "Create a really detailed and powerful image. (edit before submit)",
+    },
+    {
+      text: (
+        <SpaceBetween direction="vertical" size="xs">
+          <b>Help me brainstorm for an upcoming sign-off</b>
+          <Badge>Brainstorm</Badge>
+        </SpaceBetween>
+      ),
+      id: "brainstorm",
+      iconName: "edit",
+      ariaLabel: "Help me brainstorm for an upcoming sign-off. (edit before submit)",
+    },
+    {
+      text: (
+        <SpaceBetween direction="vertical" size="xs">
+          <b>Summarize this long PDF for me</b>
+          <Badge>Summarize</Badge>
+        </SpaceBetween>
+      ),
+      id: "summarize",
+      iconName: "edit",
+      ariaLabel: "Summarize this long PDF for me. (edit before submit)",
+    },
+  ];
 
   return (
     <Page title="Support prompt group">
@@ -84,8 +128,7 @@ export default function SupportPromptPage() {
                           alignment="vertical"
                           onItemClick={({ detail }) => {
                             const activeItem = items.find((item) => item.id === detail.id);
-                            setText(activeItem?.text || "");
-                            console.log(detail);
+                            setText((activeItem?.text as string) || "");
                           }}
                           items={items}
                         />
@@ -125,7 +168,7 @@ export default function SupportPromptPage() {
                       ariaLabel="Test support prompt group 2"
                       onItemClick={({ detail }) => {
                         const activeItem = items2.find((item) => item.id === detail.id);
-                        setText2(activeItem?.text || "");
+                        setText2((activeItem?.text as string) || "");
                         ref.current?.focus();
                       }}
                       items={items2}
@@ -140,6 +183,46 @@ export default function SupportPromptPage() {
                     onAction={() => {
                       setSentText(text2);
                       setText2("");
+                    }}
+                  />
+                </SpaceBetween>
+              </SpaceBetween>
+            </Container>
+            <Container
+              header={
+                <Header actions={<Button onClick={() => setSentText2("")}>Reset</Button>}>
+                  Support prompt test: react slot
+                </Header>
+              }
+            >
+              <SpaceBetween direction="vertical" size="m">
+                <div className={styles.placeholder} />
+                {sentText2 !== "" && (
+                  <ChatBubble type="outgoing" avatar={<ChatBubbleAvatarUser />} ariaLabel="User at 4:23:20pm">
+                    {sentText2}
+                  </ChatBubble>
+                )}
+                <SpaceBetween direction="vertical" size="m">
+                  {sentText2 === "" && (
+                    <SupportPromptGroup
+                      alignment="horizontal"
+                      ariaLabel="Test support prompt group 2"
+                      onItemClick={({ detail }) => {
+                        setText3(items3PlainText[detail.id] || "");
+                        ref.current?.focus();
+                      }}
+                      items={items3}
+                    />
+                  )}
+
+                  <PromptInput
+                    ref={ref}
+                    placeholder="Write a prompt"
+                    value={text3}
+                    actionButtonIconName="send"
+                    onAction={() => {
+                      setSentText2(text3);
+                      setText3("");
                     }}
                   />
                 </SpaceBetween>
