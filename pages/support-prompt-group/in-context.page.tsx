@@ -59,10 +59,15 @@ export default function SupportPromptPage() {
       ariaLabel: "Summarize this long PDF for me. (edit before submit)",
     },
   ];
+  const items3PlainText: Record<string, string> = {
+    image: "Create a really detailed and powerful image.",
+    brainstorm: "Help me brainstorm for an upcoming sign-off.",
+    summarize: "Summarize this long PDF for me.",
+  };
+
   const items3: Array<SupportPromptGroupProps.Item> = [
     {
-      text: "Create a really detailed and powerful image.",
-      content: (
+      text: (
         <SpaceBetween direction="vertical" size="xs">
           <b>Create a really detailed and powerful image</b>
           <Badge>Generate Image</Badge>
@@ -73,8 +78,7 @@ export default function SupportPromptPage() {
       ariaLabel: "Create a really detailed and powerful image. (edit before submit)",
     },
     {
-      text: "Help me brainstorm for an upcoming sign-off.",
-      content: (
+      text: (
         <SpaceBetween direction="vertical" size="xs">
           <b>Help me brainstorm for an upcoming sign-off</b>
           <Badge>Brainstorm</Badge>
@@ -85,8 +89,7 @@ export default function SupportPromptPage() {
       ariaLabel: "Help me brainstorm for an upcoming sign-off. (edit before submit)",
     },
     {
-      text: "Summarize this long PDF for me.",
-      content: (
+      text: (
         <SpaceBetween direction="vertical" size="xs">
           <b>Summarize this long PDF for me</b>
           <Badge>Summarize</Badge>
@@ -125,7 +128,7 @@ export default function SupportPromptPage() {
                           alignment="vertical"
                           onItemClick={({ detail }) => {
                             const activeItem = items.find((item) => item.id === detail.id);
-                            setText(activeItem?.text || "");
+                            setText((activeItem?.text as string) || "");
                           }}
                           items={items}
                         />
@@ -165,7 +168,7 @@ export default function SupportPromptPage() {
                       ariaLabel="Test support prompt group 2"
                       onItemClick={({ detail }) => {
                         const activeItem = items2.find((item) => item.id === detail.id);
-                        setText2(activeItem?.text || "");
+                        setText2((activeItem?.text as string) || "");
                         ref.current?.focus();
                       }}
                       items={items2}
@@ -205,8 +208,7 @@ export default function SupportPromptPage() {
                       alignment="horizontal"
                       ariaLabel="Test support prompt group 2"
                       onItemClick={({ detail }) => {
-                        const activeItem = items3.find((item) => item.id === detail.id);
-                        setText3(activeItem?.text || "");
+                        setText3(items3PlainText[detail.id] || "");
                         ref.current?.focus();
                       }}
                       items={items3}

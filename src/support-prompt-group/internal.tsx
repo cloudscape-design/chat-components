@@ -161,7 +161,7 @@ export const InternalSupportPromptGroup = forwardRef(
                 iconVerticalAlignment={item.iconVerticalAlignment}
                 ariaLabel={item.ariaLabel}
               >
-                {item.content ?? item.text}
+                {item.text}
               </Prompt>
             );
           })}

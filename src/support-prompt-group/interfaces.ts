@@ -16,8 +16,7 @@ export interface SupportPromptGroupProps {
   /**
    * An array of objects representing support prompts.
    * Each item has the following properties:
-   *   - text: The text of the support prompt.
-   *   - content: The content of the support prompt, will be used instead of text when specified.
+   *   - text: The text or ReactNode content of the support prompt.
    *   - id: The ID of the support prompt.
    *   - iconName (optional): The name of a built-in icon to display.
    *   - iconSvg (optional): A custom SVG icon to display. Takes precedence over iconName.
@@ -43,8 +42,7 @@ export namespace SupportPromptGroupProps {
   export type Alignment = "vertical" | "horizontal";
 
   export interface Item {
-    text: string;
-    content?: ReactNode;
+    text: ReactNode;
     id: string;
     iconName?: IconProps.Name;
     iconSvg?: React.ReactNode;

@@ -264,8 +264,7 @@ export default function SupportPromptPage() {
             onItemClick={({ detail }) => console.log(detail)}
             items={[
               {
-                text: "Create image - Generate a visual",
-                content: (
+                text: (
                   <div>
                     <strong>Create image</strong> - Generate a visual
                   </div>
@@ -273,8 +272,7 @@ export default function SupportPromptPage() {
                 id: "react-image",
               },
               {
-                text: "Brainstorm - Get creative ideas",
-                content: (
+                text: (
                   <div>
                     <strong>Brainstorm</strong> - Get creative ideas
                   </div>
@@ -282,8 +280,7 @@ export default function SupportPromptPage() {
                 id: "react-brainstorm",
               },
               {
-                text: "Summarize - Condense text",
-                content: (
+                text: (
                   <div>
                     <strong>Summarize</strong> - Condense text
                   </div>
