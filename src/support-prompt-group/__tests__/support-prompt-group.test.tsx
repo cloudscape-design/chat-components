@@ -128,6 +128,21 @@ describe("Support prompt group", () => {
       expect(warnOnce).toHaveBeenCalledWith("SupportPromptGroup", `No matching ID found to focus.`);
     });
   });
+
+  test("renders ReactNode content with div element", () => {
+    const wrapper = renderSupportPromptGroup({
+      items: [
+        {
+          text: <div data-testid="custom-div">Custom content</div>,
+          id: "jsx-item",
+        },
+      ],
+    });
+
+    const item = wrapper.findItemById("jsx-item")!.getElement();
+    expect(item.querySelector('[data-testid="custom-div"]')).toHaveTextContent("Custom content");
+  });
+
   describe("Keyboard navigation", () => {
     const ref: { current: SupportPromptGroupProps.Ref | null } = { current: null };
     const { KeyCode } = ComponentToolkitInternal;
