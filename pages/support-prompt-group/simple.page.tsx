@@ -257,6 +257,38 @@ export default function SupportPromptPage() {
               },
             ]}
           />
+          <h2>horizontal group with ReactNode content</h2>
+          <SupportPromptGroup
+            ariaLabel="Support prompt group with ReactNode content"
+            alignment="horizontal"
+            onItemClick={({ detail }) => console.log(detail)}
+            items={[
+              {
+                text: (
+                  <div>
+                    <strong>Create image</strong> - Generate a visual
+                  </div>
+                ),
+                id: "react-image",
+              },
+              {
+                text: (
+                  <div>
+                    <strong>Brainstorm</strong> - Get creative ideas
+                  </div>
+                ),
+                id: "react-brainstorm",
+              },
+              {
+                text: (
+                  <div>
+                    <strong>Summarize</strong> - Condense text
+                  </div>
+                ),
+                id: "react-summarize",
+              },
+            ]}
+          />
         </TestBed>
       </main>
     </Page>
