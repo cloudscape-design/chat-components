@@ -158,9 +158,11 @@ describe("Avatar", () => {
     expect(getComputedStyle(wrapper.getElement()).getPropertyValue("box-shadow")).toBe("0px 0px 10px blue");
     expect(getComputedStyle(wrapper.getElement()).getPropertyValue("color")).toBe("rgb(255, 255, 255)");
 
+    // jsdom resolves the `border-color` shorthand as 3 space-separated rgb values (top, horizontal, bottom)
+    // because all four sides are equal and it collapses them using CSS shorthand notation
     expect(
       getComputedStyle(wrapper.findByClassName(avatarStyles.content)!.getElement()).getPropertyValue("border-color"),
-    ).toBe("magenta");
+    ).toBe("rgb(255, 0, 255) rgb(255, 0, 255) rgb(255, 0, 255)");
     expect(
       getComputedStyle(wrapper.findByClassName(avatarStyles.content)!.getElement()).getPropertyValue("border-radius"),
     ).toBe("16px");
