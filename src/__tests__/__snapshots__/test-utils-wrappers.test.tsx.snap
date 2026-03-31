@@ -42,6 +42,15 @@ findAvatar(selector?: string): AvatarWrapper | null;
  * @returns {Array<AvatarWrapper>}
  */
 findAllAvatars(selector?: string): Array<AvatarWrapper>;
+
+/**
+ * Returns the wrapper of the closest parent Avatar for the current element,
+ * or the element itself if it is an instance of Avatar.
+ * If no Avatar is found, returns \`null\`.
+ *
+ * @returns {AvatarWrapper | null}
+ */
+findClosestAvatar(): AvatarWrapper | null;
 /**
  * Returns the wrapper of the first ChatBubble that matches the specified CSS selector.
  * If no CSS selector is specified, returns the wrapper of the first ChatBubble.
@@ -61,6 +70,15 @@ findChatBubble(selector?: string): ChatBubbleWrapper | null;
  * @returns {Array<ChatBubbleWrapper>}
  */
 findAllChatBubbles(selector?: string): Array<ChatBubbleWrapper>;
+
+/**
+ * Returns the wrapper of the closest parent ChatBubble for the current element,
+ * or the element itself if it is an instance of ChatBubble.
+ * If no ChatBubble is found, returns \`null\`.
+ *
+ * @returns {ChatBubbleWrapper | null}
+ */
+findClosestChatBubble(): ChatBubbleWrapper | null;
 /**
  * Returns the wrapper of the first LoadingBar that matches the specified CSS selector.
  * If no CSS selector is specified, returns the wrapper of the first LoadingBar.
@@ -80,6 +98,15 @@ findLoadingBar(selector?: string): LoadingBarWrapper | null;
  * @returns {Array<LoadingBarWrapper>}
  */
 findAllLoadingBars(selector?: string): Array<LoadingBarWrapper>;
+
+/**
+ * Returns the wrapper of the closest parent LoadingBar for the current element,
+ * or the element itself if it is an instance of LoadingBar.
+ * If no LoadingBar is found, returns \`null\`.
+ *
+ * @returns {LoadingBarWrapper | null}
+ */
+findClosestLoadingBar(): LoadingBarWrapper | null;
 /**
  * Returns the wrapper of the first SupportPromptGroup that matches the specified CSS selector.
  * If no CSS selector is specified, returns the wrapper of the first SupportPromptGroup.
@@ -99,6 +126,15 @@ findSupportPromptGroup(selector?: string): SupportPromptGroupWrapper | null;
  * @returns {Array<SupportPromptGroupWrapper>}
  */
 findAllSupportPromptGroups(selector?: string): Array<SupportPromptGroupWrapper>;
+
+/**
+ * Returns the wrapper of the closest parent SupportPromptGroup for the current element,
+ * or the element itself if it is an instance of SupportPromptGroup.
+ * If no SupportPromptGroup is found, returns \`null\`.
+ *
+ * @returns {SupportPromptGroupWrapper | null}
+ */
+findClosestSupportPromptGroup(): SupportPromptGroupWrapper | null;
    }
 }
 
@@ -156,6 +192,26 @@ ElementWrapper.prototype.findAllSupportPromptGroups = function(selector) {
   return this.findAllComponents(SupportPromptGroupWrapper, selector);
 };
 
+ElementWrapper.prototype.findClosestAvatar = function() {
+  // casting to 'any' is needed to avoid this issue with generics
+  // https://github.com/microsoft/TypeScript/issues/29132
+  return (this as any).findClosestComponent(AvatarWrapper);
+};
+ElementWrapper.prototype.findClosestChatBubble = function() {
+  // casting to 'any' is needed to avoid this issue with generics
+  // https://github.com/microsoft/TypeScript/issues/29132
+  return (this as any).findClosestComponent(ChatBubbleWrapper);
+};
+ElementWrapper.prototype.findClosestLoadingBar = function() {
+  // casting to 'any' is needed to avoid this issue with generics
+  // https://github.com/microsoft/TypeScript/issues/29132
+  return (this as any).findClosestComponent(LoadingBarWrapper);
+};
+ElementWrapper.prototype.findClosestSupportPromptGroup = function() {
+  // casting to 'any' is needed to avoid this issue with generics
+  // https://github.com/microsoft/TypeScript/issues/29132
+  return (this as any).findClosestComponent(SupportPromptGroupWrapper);
+};
 
 export default function wrapper(root: Element = document.body) {
   if (document && document.body && !document.body.contains(root)) {
