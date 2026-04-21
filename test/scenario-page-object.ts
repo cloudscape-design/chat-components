@@ -34,14 +34,7 @@ export default class ScenarioPageObject extends ScreenshotPageObject {
     params.append("motionDisabled", "true");
     params.append("screenshotMode", "true");
     const pagePath = `#/${pageName}?${params.toString()}`;
-    await this.openPage(pagePath);
-    // we use hash routing on our test pages. Geckodriver in this case does not handle navigation correctly
-    // https://github.com/mozilla/geckodriver/issues/1678
-    await this.browser.waitUntil(async () => {
-      const currentUrl = await this.browser.getUrl();
-      const pageUrl = new URL(pagePath, this.baseUrl).toString();
-      return currentUrl.startsWith(pageUrl);
-    });
+    await this.browser.url(pagePath);
     await this.waitForVisible("main");
     await this.waitForJsTimers(100);
   }
