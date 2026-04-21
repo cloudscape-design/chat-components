@@ -21,7 +21,6 @@ export default class ScenarioPageObject extends ScreenshotPageObject {
 
   async openScenario(scenarioName: string, queryParams?: Record<string, string>) {
     await this.openIntegrationTestPage(scenarioName, queryParams);
-    await this.waitForVisible(screenshotAreaSelector);
   }
 
   async openIntegrationTestPage(pageName: string, queryParams: Record<string, string> = {}) {

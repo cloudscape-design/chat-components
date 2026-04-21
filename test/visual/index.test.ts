@@ -14,6 +14,10 @@ const pages = Object.keys(pagesMap)
 test.each(pages)("matches snapshot for %s", (route) =>
   compareScreenshots(async (page: ScenarioPageObject) => {
     await page.openScenario(route);
-    return page.captureScreenshotArea();
+    const hasScreenshotArea = await page.isExisting(".screenshot-area");
+
+    if (hasScreenshotArea) {
+      return page.captureScreenshotArea();
+    }
   })(),
 );

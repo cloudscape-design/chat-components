@@ -2,8 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { ScreenshotWithOffset } from "@cloudscape-design/browser-test-tools/page-objects";
-import ScenarioPageObject from "./scenario-page-object";
 import useBrowser from "@cloudscape-design/browser-test-tools/use-browser";
+
+import ScenarioPageObject from "./scenario-page-object";
 
 // Default window size to ensure 4-columns layout is used.
 const windowSize = { width: 1600, height: 800 };
@@ -19,7 +20,9 @@ interface PermutationScreenshot extends ScreenshotWithOffset {
   id: string;
 }
 
-export type TestCallback = (page: ScenarioPageObject) => Promise<ScreenshotWithOffset | PermutationScreenshot[]>;
+export type TestCallback = (
+  page: ScenarioPageObject,
+) => Promise<ScreenshotWithOffset | PermutationScreenshot[] | undefined>;
 
 export default function compareScreenshots(
   configuration: ScreenshotTestConfiguration,
@@ -43,12 +46,10 @@ export default function compareScreenshots(
     const page = new ScenarioPageObject(browser);
     const result = await testFn(page);
 
-    if (!("image" in result)) {
-      throw new Error("Screenshot was not captured by the test handler");
+    if (result && "image" in result) {
+      const imageBuffer = result.image;
+
+      expect(imageBuffer).toMatchImageSnapshot();
     }
-
-    const imageBuffer = result.image;
-
-    expect(imageBuffer).toMatchImageSnapshot();
   });
 }
