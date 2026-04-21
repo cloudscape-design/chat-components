@@ -33,7 +33,7 @@ export default class ScenarioPageObject extends ScreenshotPageObject {
     const params = new URLSearchParams(queryParams);
     params.append("motionDisabled", "true");
     params.append("screenshotMode", "true");
-    const pagePath = `#/${pageName}?${params.toString()}`;
+    const pagePath = `/#/${pageName}?${params.toString()}`;
     await this.browser.url(pagePath);
     await this.waitForVisible("main");
     await this.waitForJsTimers(100);
