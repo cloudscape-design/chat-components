@@ -24,14 +24,7 @@ export type TestCallback = (
   page: ScenarioPageObject,
 ) => Promise<ScreenshotWithOffset | PermutationScreenshot[] | undefined>;
 
-export default function compareScreenshots(
-  configuration: ScreenshotTestConfiguration,
-  testFn: TestCallback,
-): () => Promise<void>;
-export default function compareScreenshots(testFn: TestCallback): () => Promise<void>;
-export default function compareScreenshots(
-  ...args: [ScreenshotTestConfiguration, TestCallback] | [TestCallback]
-): () => Promise<void> {
+export default function compareScreenshots(...args: [ScreenshotTestConfiguration, TestCallback] | [TestCallback]) {
   let testFn: TestCallback;
   let configuration: ScreenshotTestConfiguration;
   if (args.length === 1) {
@@ -51,5 +44,5 @@ export default function compareScreenshots(
 
       expect(imageBuffer).toMatchImageSnapshot();
     }
-  });
+  })();
 }

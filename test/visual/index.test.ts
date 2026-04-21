@@ -19,5 +19,5 @@ test.each(pages)("matches snapshot for %s", (route) =>
     if (hasScreenshotArea) {
       return page.captureScreenshotArea();
     }
-  })(),
+  }),
 );
