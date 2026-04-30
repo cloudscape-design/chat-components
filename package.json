@@ -8,7 +8,7 @@
   "homepage": "https://cloudscape.design",
   "scripts": {
     "prebuild": "rm -rf lib dist .cache",
-    "build": "npm-run-all build:pkg build:custom-css-properties --parallel build:src:* --parallel build:pages:* build:themeable",
+    "build": "npm-run-all build:pkg build:custom-css-properties --parallel build:src:* --parallel build:pages:* build:themeable build:integration-tests",
     "lint": "npm-run-all --parallel lint:*",
     "lint:eslint": "eslint --ignore-path .gitignore --ext ts,tsx,js .",
     "lint:stylelint": "stylelint --ignore-path .gitignore '{src,pages}/**/*.{css,scss}'",
@@ -38,6 +38,7 @@
     "build:pages:vite": "vite build",
     "build:pages:tsc": "tsc -p pages/tsconfig.json",
     "build:pages:bundle": "vite build -c vite.config.dev-pages.mjs",
+    "build:integration-tests": "node scripts/integration-tests.js",
     "postinstall": "prepare-package-lock"
   },
   "exports": {

@@ -1,0 +1,25 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "test",
+    "outDir": "lib/integration-tests",
+    "noEmit": false,
+    "declaration": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "composite": false,
+    "incremental": true,
+    "types": [],
+    "tsBuildInfoFile": "./.cache/integration-tests.tsbuildinfo"
+  },
+  "include": ["test/compare-screenshots.ts", "test/scenario-page-object.ts", "test/visual/**/*.test.ts"],
+  "exclude": [
+    "test/utils.ts",
+    "test/visual-test-setup.ts",
+    "test/test-setup.ts",
+    "test/global-setup.ts",
+    "test/functional/**",
+    "test/__image_snapshots__/**",
+    "test/visual/index.test.ts"
+  ]
+}

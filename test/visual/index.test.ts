@@ -4,7 +4,6 @@ import path from "path";
 import { test } from "vitest";
 
 import compareScreenshots from "../compare-screenshots";
-import ScenarioPageObject from "../scenario-page-object";
 
 const pagesMap = import.meta.glob("../../pages/**/*.page.tsx", { as: "raw" });
 const pages = Object.keys(pagesMap)
@@ -12,12 +11,8 @@ const pages = Object.keys(pagesMap)
   .map((page) => "/#/" + path.relative("../../pages/", page));
 
 test.each(pages)("matches snapshot for %s", (route) =>
-  compareScreenshots(async (page: ScenarioPageObject) => {
+  compareScreenshots(async (page) => {
     await page.openScenario(route);
-    const hasScreenshotArea = await page.isExisting(".screenshot-area");
-
-    if (hasScreenshotArea) {
-      return page.captureScreenshotArea();
-    }
-  }),
+    return page.captureScreenshotArea();
+  })(),
 );

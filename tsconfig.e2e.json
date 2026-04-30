@@ -3,7 +3,7 @@
   "compilerOptions": {
     "noEmit": true,
     "rootDir": "test",
-    "types": ["vite/client"],
+    "types": ["vite/client", "@types/jest-image-snapshot"],
     "tsBuildInfoFile": "./.cache/e2e-tests.tsbuildinfo"
   },
   "include": ["types", "test"],
