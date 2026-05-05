@@ -12,7 +12,6 @@ const tsconfigPath = path.resolve("tsconfig.integration-tests.json");
 
 compileTypescript();
 writePackageJson();
-copyStaticFiles();
 
 function compileTypescript() {
   // When none of the portable test files exist yet (e.g. before the
@@ -41,14 +40,4 @@ function writePackageJson() {
     private: true,
     type: "module",
   });
-}
-
-function copyStaticFiles() {
-  // LICENSE / NOTICE so that the mirrored internal package carries the same
-  // provenance markers the other lib/* outputs already carry.
-  for (const name of ["LICENSE", "NOTICE"]) {
-    if (fs.existsSync(name)) {
-      fs.copyFileSync(name, path.join(outDir, name));
-    }
-  }
 }
