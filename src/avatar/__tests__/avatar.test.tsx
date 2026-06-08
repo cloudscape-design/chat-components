@@ -19,6 +19,10 @@ vi.mock("@cloudscape-design/component-toolkit/internal", async (importOriginal) 
   };
 });
 
+vi.mock("../internal/environment", () => ({
+  SYSTEM: "core",
+}));
+
 const warnOnce = vi.mocked(ComponentToolkitInternal.warnOnce);
 
 const defaultAvatarProps: AvatarProps = { ariaLabel: "Avatar" };
@@ -133,9 +137,6 @@ describe("Avatar", () => {
   });
 
   test("style api", () => {
-    vi.mock("../internal/environment", () => ({
-      SYSTEM: "core",
-    }));
     const ariaLabel = "User avatar JD Jane Doe";
     const wrapper = renderAvatar({
       ariaLabel,
