@@ -94,7 +94,13 @@
       }
     ],
     "simple-import-sort/imports": "warn",
-    "@vitest/no-focused-tests": "error"
+    "@vitest/no-focused-tests": "error",
+    "@vitest/expect-expect": [
+      "error",
+      {
+        "assertFunctionNames": ["expect", "compareScreenshots"]
+      }
+    ]
   },
   "settings": {
     "react": {
