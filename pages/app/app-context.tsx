@@ -7,10 +7,29 @@ import mapValues from "lodash/mapValues";
 
 import { applyDensity, applyMode, Density, disableMotion, Mode } from "@cloudscape-design/global-styles";
 
+export enum Theme {
+  Default = "default",
+  OneTheme = "one-theme",
+}
+
+const themeClassNames: Record<Theme, string> = {
+  [Theme.Default]: "",
+  [Theme.OneTheme]: "awsui-one-theme",
+};
+
+function applyThemeClass(activeTheme: Theme) {
+  for (const [theme, className] of Object.entries(themeClassNames)) {
+    if (className) {
+      document.body.classList.toggle(className, theme === activeTheme);
+    }
+  }
+}
+
 interface AppUrlParams {
   mode: Mode;
   density: Density;
   direction: "ltr" | "rtl";
+  theme: Theme;
   motionDisabled: boolean;
   i18n: boolean;
   screenshotMode: boolean;
@@ -28,6 +47,7 @@ const appContextDefaults: AppContextType = {
     mode: Mode.Light,
     density: Density.Comfortable,
     direction: "ltr",
+    theme: Theme.Default,
     motionDisabled: false,
     i18n: true,
     screenshotMode: false,
@@ -43,7 +63,12 @@ function parseQuery(urlParams: URLSearchParams) {
   const queryParams: Record<string, any> = { ...appContextDefaults.urlParams };
   urlParams.forEach((value, key) => (queryParams[key] = value));
 
-  return mapValues(queryParams, (value) => {
+  const themeValues = Object.values(Theme) as string[];
+
+  return mapValues(queryParams, (value, key) => {
+    if (key === "theme") {
+      return themeValues.includes(value) ? value : Theme.Default;
+    }
     if (value === "true" || value === "false") {
       return value === "true";
     }
@@ -85,6 +110,10 @@ export function AppContextProvider({ children }: { children: React.ReactNode }) 
   useEffect(() => {
     disableMotion(urlParams.motionDisabled);
   }, [urlParams.motionDisabled]);
+
+  useEffect(() => {
+    applyThemeClass(urlParams.theme);
+  }, [urlParams.theme]);
 
   document.documentElement.setAttribute("dir", urlParams.direction);
 
