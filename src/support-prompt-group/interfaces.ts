@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 
 import { IconProps } from "@cloudscape-design/components/icon";
 
-import { ClickDetail as _ClickDetail, NonCancelableEventHandler } from "../internal/events";
+import { ClickDetail as _ClickDetail, NonCancelableEventHandler } from "../types/events";
 
 export interface SupportPromptGroupProps {
   /**
