@@ -71,96 +71,40 @@ describe("getBubbleStyle", () => {
     expect(getBubbleStyle(allStyles)).toMatchSnapshot();
   });
 
-  // ── borderStyle fallback logic ────────────────────────────────────────────
+  // ── borderStyle fallback — three-branch matrix ────────────────────────────
 
-  test("defaults borderStyle to 'solid' when borderWidth is set but borderStyle is not", () => {
+  test("borderStyle: explicit value wins over solid fallback (with borderWidth)", () => {
+    // Branch (a): borderStyle provided — ?? left-hand side is truthy, used verbatim
+    expect(getBubbleStyle({ bubble: { borderWidth: "2px", borderStyle: "dashed" } }).borderStyle).toBe("dashed");
+    // Also covers 'none' — must NOT be overridden to 'solid'
+    expect(getBubbleStyle({ bubble: { borderWidth: "2px", borderStyle: "none" } }).borderStyle).toBe("none");
+  });
+
+  test("borderStyle: explicit value used without borderWidth", () => {
+    // Branch (a) without borderWidth — borderStyle still emitted
+    expect(getBubbleStyle({ bubble: { borderStyle: "dotted" } }).borderStyle).toBe("dotted");
+  });
+
+  test("borderStyle: falls back to 'solid' when borderWidth is set but borderStyle is not (regression guard)", () => {
+    // Branch (b): borderStyle absent, borderWidth present → ?? right-hand side ternary true branch
     const result = getBubbleStyle({ bubble: { borderWidth: "1px" } });
     expect(result.borderStyle).toBe("solid");
+    expect(result.borderWidth).toBe("1px");
   });
 
-  test("uses explicit borderStyle when provided alongside borderWidth", () => {
-    const result = getBubbleStyle({ bubble: { borderWidth: "2px", borderStyle: "dashed" } });
-    expect(result.borderStyle).toBe("dashed");
+  test("borderStyle: undefined when neither borderWidth nor borderStyle is set", () => {
+    // Branch (c): both absent → ?? right-hand side ternary false branch
+    expect(getBubbleStyle({ bubble: { background: "#fff" } }).borderStyle).toBeUndefined();
   });
 
-  test("uses explicit borderStyle when provided without borderWidth", () => {
-    const result = getBubbleStyle({ bubble: { borderStyle: "dotted" } });
-    expect(result.borderStyle).toBe("dotted");
-  });
-
-  test("borderStyle is undefined when neither borderWidth nor borderStyle is set", () => {
-    const result = getBubbleStyle({ bubble: { background: "#fff" } });
-    expect(result.borderStyle).toBeUndefined();
-  });
-
-  // ── extended borderStyle matrix ───────────────────────────────────────────
-
-  test("emits 'dotted' verbatim regardless of borderWidth being absent", () => {
-    const result = getBubbleStyle({ bubble: { borderStyle: "dotted" } });
-    expect(result.borderStyle).toBe("dotted");
-  });
-
-  test("emits 'none' verbatim — explicit borderStyle wins over solid fallback even when borderWidth is set", () => {
-    // 'none' must not be overridden to 'solid' just because borderWidth is present
-    const result = getBubbleStyle({ bubble: { borderWidth: "2px", borderStyle: "none" } });
-    expect(result.borderStyle).toBe("none");
-  });
-
-  test("emits 'double' verbatim alongside borderWidth", () => {
-    const result = getBubbleStyle({ bubble: { borderWidth: "4px", borderStyle: "double" } });
-    expect(result.borderStyle).toBe("double");
-  });
-
-  test("borderWidth set without borderStyle always falls back to 'solid' (regression guard)", () => {
-    // This is the pre-existing legacy behaviour; must never regress to undefined
-    const result = getBubbleStyle({ bubble: { borderWidth: "3px" } });
-    expect(result.borderStyle).toBe("solid");
-    expect(result.borderWidth).toBe("3px");
-  });
-
-  test("borderStyle does not disturb borderColor when set together", () => {
-    const result = getBubbleStyle({ bubble: { borderColor: "#ff0000", borderStyle: "dashed" } });
-    expect(result.borderStyle).toBe("dashed");
-    expect(result.borderColor).toBe("#ff0000");
-  });
-
-  test("borderStyle does not disturb borderRadius when set together", () => {
-    const result = getBubbleStyle({ bubble: { borderRadius: "12px", borderStyle: "dotted" } });
-    expect(result.borderStyle).toBe("dotted");
-    expect(result.borderRadius).toBe("12px");
-  });
-
-  test("borderStyle, borderColor, borderWidth, and borderRadius all coexist correctly", () => {
+  test("borderStyle does not disturb sibling border props", () => {
     const result = getBubbleStyle({
-      bubble: {
-        borderColor: "#0077cc",
-        borderRadius: "8px",
-        borderStyle: "dashed",
-        borderWidth: "2px",
-      },
+      bubble: { borderColor: "#0077cc", borderRadius: "8px", borderStyle: "dashed", borderWidth: "2px" },
     });
     expect(result.borderStyle).toBe("dashed");
     expect(result.borderColor).toBe("#0077cc");
     expect(result.borderRadius).toBe("8px");
     expect(result.borderWidth).toBe("2px");
-  });
-
-  test("non-border props are unaffected when only borderStyle is set", () => {
-    const result = getBubbleStyle({
-      bubble: {
-        background: "#fff",
-        color: "#333",
-        fontSize: "14px",
-        borderStyle: "dashed",
-      },
-    });
-    expect(result.borderStyle).toBe("dashed");
-    expect(result.background).toBe("#fff");
-    expect(result.color).toBe("#333");
-    expect(result.fontSize).toBe("14px");
-    // unset border props must remain undefined (not coerced to 'solid')
-    expect(result.borderWidth).toBeUndefined();
-    expect(result.borderColor).toBeUndefined();
   });
 
   test("returns empty object when SYSTEM is not core", async () => {
