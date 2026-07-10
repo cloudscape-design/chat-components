@@ -243,6 +243,11 @@ Refer to the [style](/components/chat-bubble/?tabId=style) tab for more details.
                   "type": "string",
                 },
                 {
+                  "name": "borderStyle",
+                  "optional": true,
+                  "type": "string",
+                },
+                {
                   "name": "borderWidth",
                   "optional": true,
                   "type": "string",
@@ -297,7 +302,7 @@ Refer to the [style](/components/chat-bubble/?tabId=style) tab for more details.
             },
             "name": "bubble",
             "optional": true,
-            "type": "{ background?: string | undefined; borderColor?: string | undefined; borderRadius?: string | undefined; borderWidth?: string | undefined; boxShadow?: string | undefined; color?: string | undefined; ... 6 more ...; paddingInline?: string | undefined; }",
+            "type": "{ background?: string | undefined; borderColor?: string | undefined; borderRadius?: string | undefined; borderStyle?: string | undefined; borderWidth?: string | undefined; boxShadow?: string | undefined; ... 7 more ...; paddingInline?: string | undefined; }",
           },
           {
             "inlineType": {

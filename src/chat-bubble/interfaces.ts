@@ -50,6 +50,12 @@ export namespace ChatBubbleProps {
       background?: string;
       borderColor?: string;
       borderRadius?: string;
+      /**
+       * Sets the `border-style` CSS property on the chat bubble.
+       * When `borderWidth` is set and `borderStyle` is not provided, defaults to `"solid"`.
+       * Use this to apply non-solid borders, for example `"dashed"` for a queued-message state.
+       */
+      borderStyle?: string;
       borderWidth?: string;
       boxShadow?: string;
       color?: string;

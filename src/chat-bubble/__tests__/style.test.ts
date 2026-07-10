@@ -16,6 +16,7 @@ const allStyles = {
     background: "#f0f0f0",
     borderColor: "#ccc",
     borderRadius: "8px",
+    borderStyle: "dashed",
     borderWidth: "2px",
     boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
     color: "#333",
@@ -68,6 +69,26 @@ describe("getBubbleStyle", () => {
     expect(getBubbleStyle(undefined)).toMatchSnapshot();
     expect(getBubbleStyle({})).toMatchSnapshot();
     expect(getBubbleStyle(allStyles)).toMatchSnapshot();
+  });
+
+  test("defaults borderStyle to 'solid' when borderWidth is set but borderStyle is not", () => {
+    const result = getBubbleStyle({ bubble: { borderWidth: "1px" } });
+    expect(result.borderStyle).toBe("solid");
+  });
+
+  test("uses explicit borderStyle when provided alongside borderWidth", () => {
+    const result = getBubbleStyle({ bubble: { borderWidth: "2px", borderStyle: "dashed" } });
+    expect(result.borderStyle).toBe("dashed");
+  });
+
+  test("uses explicit borderStyle when provided without borderWidth", () => {
+    const result = getBubbleStyle({ bubble: { borderStyle: "dotted" } });
+    expect(result.borderStyle).toBe("dotted");
+  });
+
+  test("borderStyle is undefined when neither borderWidth nor borderStyle is set", () => {
+    const result = getBubbleStyle({ bubble: { background: "#fff" } });
+    expect(result.borderStyle).toBeUndefined();
   });
 
   test("returns empty object when SYSTEM is not core", async () => {
