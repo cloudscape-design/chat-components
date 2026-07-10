@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import { describe, expect, it, vi } from "vitest";
 
-import { CustomEventStub, fireCancelableEvent } from "..";
+import { CustomEventStub, fireCancelableEvent, fireNonCancelableEvent } from "..";
 
 describe("CustomEventStub", () => {
   it("should initialize with default values", () => {
@@ -121,5 +121,24 @@ describe("fireCancelableEvent", () => {
     const result = fireCancelableEvent(undefined, { key: "value" });
 
     expect(result).toBe(false);
+  });
+});
+
+describe("fireNonCancelableEvent", () => {
+  it("should call the handler with a non-cancelable event", () => {
+    const handler = vi.fn();
+    const detail = { key: "value" };
+
+    fireNonCancelableEvent(handler, detail);
+
+    expect(handler).toHaveBeenCalledTimes(1);
+    const event = handler.mock.calls[0][0];
+    expect(event.cancelable).toBe(false);
+    expect(event.detail).toEqual(detail);
+  });
+
+  it("should do nothing when no handler is provided", () => {
+    // Should not throw
+    expect(() => fireNonCancelableEvent(undefined)).not.toThrow();
   });
 });

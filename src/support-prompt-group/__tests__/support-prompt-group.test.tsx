@@ -54,6 +54,7 @@ export function renderSupportPromptGroup(
 describe("Support prompt group", () => {
   afterEach(() => {
     cleanup();
+    vi.clearAllMocks();
   });
 
   test("Renders null with no items", () => {
@@ -198,6 +199,24 @@ describe("Support prompt group", () => {
 
       fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.down });
       expect(document.body).toHaveFocus();
+    });
+
+    test("Home key moves focus to first item", () => {
+      const wrapper = renderSupportPromptGroup({}, ref);
+
+      // Start from item-3, then Home should jump to item-1
+      ref.current!.focus("item-3");
+      fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.home });
+      expect(wrapper.findItemById("item-1")!.getElement()).toHaveFocus();
+    });
+
+    test("End key moves focus to last item", () => {
+      const wrapper = renderSupportPromptGroup({}, ref);
+
+      // Start from item-1, then End should jump to item-3
+      ref.current!.focus("item-1");
+      fireEvent.keyDown(wrapper.getElement(), { keyCode: KeyCode.end });
+      expect(wrapper.findItemById("item-3")!.getElement()).toHaveFocus();
     });
   });
 });
