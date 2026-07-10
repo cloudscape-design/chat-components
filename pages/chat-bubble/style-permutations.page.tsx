@@ -14,6 +14,14 @@ const styles = [
   { bubble: { boxShadow: "10px 5px 5px red" } },
   {
     bubble: {
+      borderColor: "light-dark(#6c757d, #adb5bd)",
+      borderWidth: "2px",
+      borderStyle: "dashed",
+      borderRadius: "12px",
+    },
+  },
+  {
+    bubble: {
       background: "light-dark(#fff3cd, #3d3d00)",
       borderColor: "light-dark(#ffc107, #ffeb3b)",
       borderWidth: "1px",
