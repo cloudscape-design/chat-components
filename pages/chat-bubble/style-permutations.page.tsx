@@ -3,10 +3,13 @@
 import { createPermutations, PermutationsView } from "@cloudscape-design/build-tools/lib/dev-pages-utils";
 
 import { ChatBubble, ChatBubbleProps } from "../../lib/components";
+import { ChatBubbleInternalStyle } from "../../lib/components/chat-bubble/internal-interfaces";
 import { Page } from "../app/templates";
 import { Actions, ChatBubbleAvatarGenAI, ChatBubbleAvatarUser, ChatContainer } from "./util-components";
 
-const styles = [
+// `_borderStyle` is internal (not in the public ChatBubbleProps.Style): opt in via
+// ChatBubbleInternalStyle.
+const styles: ChatBubbleInternalStyle[] = [
   {
     bubble: { borderColor: "light-dark(#e74c3c, #ff6b6b)", borderWidth: "2px", borderRadius: "20px" },
   },
@@ -16,7 +19,7 @@ const styles = [
     bubble: {
       borderColor: "light-dark(#6c757d, #adb5bd)",
       borderWidth: "2px",
-      borderStyle: "dashed",
+      _borderStyle: "dashed",
       borderRadius: "12px",
     },
   },

@@ -10,6 +10,7 @@ import createWrapper from "@cloudscape-design/components/test-utils/dom";
 import "../../../lib/components/test-utils/dom";
 import { Avatar } from "../../../lib/components";
 import ChatBubble, { ChatBubbleProps } from "../../../lib/components/chat-bubble";
+import { ChatBubbleInternalStyle } from "../../../lib/components/chat-bubble/internal-interfaces";
 
 import styles from "../../../lib/components/chat-bubble/styles.selectors.js";
 
@@ -118,7 +119,9 @@ describe("Chat bubble", () => {
       avatar: <Avatar ariaLabel="Avatar" />,
       children: "Test content",
       ariaLabel: "Chat bubble",
-      style: { bubble: { borderStyle: "dashed", borderWidth: "2px", borderColor: "#ff0000" } },
+      style: {
+        bubble: { _borderStyle: "dashed", borderWidth: "2px", borderColor: "#ff0000" },
+      } as ChatBubbleInternalStyle,
     });
     const el = getBubbleElement(wrapper);
     expect(getComputedStyle(el).getPropertyValue("border-style")).toBe("dashed");

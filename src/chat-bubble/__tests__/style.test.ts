@@ -2,13 +2,14 @@
 // SPDX-License-Identifier: Apache-2.0
 import { afterEach, describe, expect, test, vi } from "vitest";
 
+import { ChatBubbleInternalStyle } from "../internal-interfaces";
 import { getBubbleStyle, getChatBubbleRootStyle } from "../style";
 
 vi.mock("../internal/environment", () => ({
   SYSTEM: "core",
 }));
 
-const allStyles = {
+const allStyles: ChatBubbleInternalStyle = {
   root: {
     columnGap: "10px",
   },
@@ -16,7 +17,7 @@ const allStyles = {
     background: "#f0f0f0",
     borderColor: "#ccc",
     borderRadius: "8px",
-    borderStyle: "dashed",
+    _borderStyle: "dashed",
     borderWidth: "2px",
     boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
     color: "#333",
@@ -74,15 +75,21 @@ describe("getBubbleStyle", () => {
   // ── borderStyle fallback — three-branch matrix ────────────────────────────
 
   test("borderStyle: explicit value wins over solid fallback (with borderWidth)", () => {
-    // Branch (a): borderStyle provided — ?? left-hand side is truthy, used verbatim
-    expect(getBubbleStyle({ bubble: { borderWidth: "2px", borderStyle: "dashed" } }).borderStyle).toBe("dashed");
+    // Branch (a): _borderStyle provided — ?? left-hand side is truthy, used verbatim
+    expect(
+      getBubbleStyle({ bubble: { borderWidth: "2px", _borderStyle: "dashed" } } as ChatBubbleInternalStyle).borderStyle,
+    ).toBe("dashed");
     // Also covers 'none' — must NOT be overridden to 'solid'
-    expect(getBubbleStyle({ bubble: { borderWidth: "2px", borderStyle: "none" } }).borderStyle).toBe("none");
+    expect(
+      getBubbleStyle({ bubble: { borderWidth: "2px", _borderStyle: "none" } } as ChatBubbleInternalStyle).borderStyle,
+    ).toBe("none");
   });
 
   test("borderStyle: explicit value used without borderWidth", () => {
     // Branch (a) without borderWidth — borderStyle still emitted
-    expect(getBubbleStyle({ bubble: { borderStyle: "dotted" } }).borderStyle).toBe("dotted");
+    expect(getBubbleStyle({ bubble: { _borderStyle: "dotted" } } as ChatBubbleInternalStyle).borderStyle).toBe(
+      "dotted",
+    );
   });
 
   test("borderStyle: falls back to 'solid' when borderWidth is set but borderStyle is not (regression guard)", () => {
@@ -99,8 +106,8 @@ describe("getBubbleStyle", () => {
 
   test("borderStyle does not disturb sibling border props", () => {
     const result = getBubbleStyle({
-      bubble: { borderColor: "#0077cc", borderRadius: "8px", borderStyle: "dashed", borderWidth: "2px" },
-    });
+      bubble: { borderColor: "#0077cc", borderRadius: "8px", _borderStyle: "dashed", borderWidth: "2px" },
+    } as ChatBubbleInternalStyle);
     expect(result.borderStyle).toBe("dashed");
     expect(result.borderColor).toBe("#0077cc");
     expect(result.borderRadius).toBe("8px");
