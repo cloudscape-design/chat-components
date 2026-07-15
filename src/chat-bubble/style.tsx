@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import { SYSTEM } from "../internal/environment";
 import { ChatBubbleProps } from "./interfaces";
+import { ChatBubbleInternalStyle } from "./internal-interfaces";
 
 export function getChatBubbleRootStyle(style: ChatBubbleProps.Style | undefined) {
   if (SYSTEM !== "core") {
@@ -18,11 +19,14 @@ export function getBubbleStyle(style: ChatBubbleProps.Style | undefined) {
     return {};
   }
 
+  // `_borderStyle`: internal escape hatch, not part of the public Style.
+  const internalBubble = (style as ChatBubbleInternalStyle | undefined)?.bubble;
+
   return {
     background: style?.bubble?.background,
     borderColor: style?.bubble?.borderColor,
     borderRadius: style?.bubble?.borderRadius,
-    borderStyle: style?.bubble?.borderWidth ? "solid" : undefined,
+    borderStyle: internalBubble?._borderStyle ?? (style?.bubble?.borderWidth ? "solid" : undefined),
     borderWidth: style?.bubble?.borderWidth,
     boxShadow: style?.bubble?.boxShadow,
     color: style?.bubble?.color,

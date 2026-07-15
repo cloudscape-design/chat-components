@@ -10,6 +10,7 @@ import createWrapper from "@cloudscape-design/components/test-utils/dom";
 import "../../../lib/components/test-utils/dom";
 import { Avatar } from "../../../lib/components";
 import ChatBubble, { ChatBubbleProps } from "../../../lib/components/chat-bubble";
+import { ChatBubbleInternalStyle } from "../../../lib/components/chat-bubble/internal-interfaces";
 
 import styles from "../../../lib/components/chat-bubble/styles.selectors.js";
 
@@ -17,6 +18,11 @@ function renderChatBubble(props: ChatBubbleProps) {
   const { container } = render(<ChatBubble {...props} />);
 
   return createWrapper(container).findChatBubble()!;
+}
+
+/** Returns the message-area element — the DOM node that receives getBubbleStyle(). */
+function getBubbleElement(wrapper: ReturnType<typeof renderChatBubble>) {
+  return wrapper.findByClassName(styles["message-area"])!.getElement();
 }
 
 describe("Chat bubble", () => {
@@ -101,5 +107,37 @@ describe("Chat bubble", () => {
     const avatar = wrapper.findByClassName(styles.avatar)?.getElement();
     expect(avatar).toHaveClass(styles.hide);
     expect(avatar!.inert).toBe(true);
+  });
+
+  // ── style API — DOM-level assertions ─────────────────────────────────────
+  // Mirror the Avatar "style api" test: render the component and assert that
+  // CSS properties reach the actual DOM element via getComputedStyle.
+
+  test("style api — borderStyle reaches the bubble element", () => {
+    const wrapper = renderChatBubble({
+      type: "incoming",
+      avatar: <Avatar ariaLabel="Avatar" />,
+      children: "Test content",
+      ariaLabel: "Chat bubble",
+      style: {
+        bubble: { _borderStyle: "dashed", borderWidth: "2px", borderColor: "#ff0000" },
+      } as ChatBubbleInternalStyle,
+    });
+    const el = getBubbleElement(wrapper);
+    expect(getComputedStyle(el).getPropertyValue("border-style")).toBe("dashed");
+    expect(getComputedStyle(el).getPropertyValue("border-width")).toBe("2px");
+  });
+
+  test("style api — borderWidth alone defaults border-style to 'solid' on the DOM element", () => {
+    const wrapper = renderChatBubble({
+      type: "outgoing",
+      avatar: <Avatar ariaLabel="Avatar" />,
+      children: "Test content",
+      ariaLabel: "Chat bubble",
+      style: { bubble: { borderWidth: "3px" } },
+    });
+    const el = getBubbleElement(wrapper);
+    expect(getComputedStyle(el).getPropertyValue("border-style")).toBe("solid");
+    expect(getComputedStyle(el).getPropertyValue("border-width")).toBe("3px");
   });
 });

@@ -43,7 +43,7 @@ exports[`getBubbleStyle > handles all possible style configurations 3`] = `
   "background": "#f0f0f0",
   "borderColor": "#ccc",
   "borderRadius": "8px",
-  "borderStyle": "solid",
+  "borderStyle": "dashed",
   "borderWidth": "2px",
   "boxShadow": "0 4px 8px rgba(0,0,0,0.2)",
   "color": "#333",
