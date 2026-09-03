@@ -33,6 +33,15 @@ export interface ChatBubbleProps {
   hideAvatar?: boolean;
 
   /**
+   * By default (or when this property is set to `false`), the chat bubble width fits its content.
+   *
+   * If this property is set to `true`, the bubble stretches to fill the available horizontal space
+   * in its container. Use this when messages contain aligned elements, such as timestamps or footer links,
+   * that should line up across messages.
+   */
+  stretch?: boolean;
+
+  /**
    * An object containing CSS properties to customize the chat bubble's visual appearance.
    * Refer to the [style](/components/chat-bubble/?tabId=style) tab for more details.
    * @awsuiSystem core
