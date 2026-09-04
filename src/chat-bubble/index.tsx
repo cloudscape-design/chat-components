@@ -7,15 +7,16 @@ import InternalChatBubble from "./internal";
 
 export type { ChatBubbleProps };
 
-export default function ChatBubble({ type, hideAvatar, showLoadingBar, ...props }: ChatBubbleProps) {
+export default function ChatBubble({ type, hideAvatar, showLoadingBar, stretch, ...props }: ChatBubbleProps) {
   const baseComponentProps = useBaseComponent("ChatBubble", {
-    props: { type },
+    props: { type, stretch },
   });
   return (
     <InternalChatBubble
       type={type}
       hideAvatar={hideAvatar}
       showLoadingBar={showLoadingBar}
+      stretch={stretch}
       {...props}
       {...baseComponentProps}
     />
