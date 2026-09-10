@@ -20,6 +20,7 @@ export default function InternalChatBubble({
   actions,
   showLoadingBar,
   hideAvatar = false,
+  stretch = false,
   ariaLabel,
   style,
   __internalRootRef = null,
@@ -53,7 +54,10 @@ export default function InternalChatBubble({
         </div>
       )}
 
-      <div className={clsx(styles["message-area"], styles[`chat-bubble-type-${type}`])} style={getBubbleStyle(style)}>
+      <div
+        className={clsx(styles["message-area"], styles[`chat-bubble-type-${type}`], stretch && styles.stretch)}
+        style={getBubbleStyle(style)}
+      >
         <div className={styles.content}>{children}</div>
         {actions && <div className={styles.actions}>{actions}</div>}
         {showLoadingBar && (
