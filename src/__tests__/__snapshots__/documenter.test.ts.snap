@@ -201,9 +201,7 @@ exports[`definition for chat-bubble matches the snapshot > chat-bubble 1`] = `
       "description": "Controls the alignment of the chat bubble and the avatar.
 
 - \`"start"\` — Aligns the bubble and the avatar on the inline-start.
-- \`"end"\` — Aligns the bubble and the avatar on the inline-end.
-  Use for outgoing or ongoing messages where the user's avatar should appear
-  on the right side in LTR layouts (left side in RTL).",
+- \`"end"\` — Aligns the bubble and the avatar on the inline-end.",
       "inlineType": {
         "name": "ChatBubbleProps.Alignment",
         "type": "union",
