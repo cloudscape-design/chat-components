@@ -42,6 +42,17 @@ export interface ChatBubbleProps {
   stretch?: boolean;
 
   /**
+   * Controls the alignment of the chat bubble and the avatar.
+   *
+   * - `"start"` — Aligns the bubble and the avatar on the inline-start.
+   * - `"end"` — Aligns the bubble and the avatar on the inline-end.
+   *   Use for outgoing or ongoing messages where the user's avatar should appear
+   *   on the right side in LTR layouts (left side in RTL).
+   *
+   */
+  alignment?: ChatBubbleProps.Alignment;
+
+  /**
    * An object containing CSS properties to customize the chat bubble's visual appearance.
    * Refer to the [style](/components/chat-bubble/?tabId=style) tab for more details.
    * @awsuiSystem core
@@ -51,6 +62,11 @@ export interface ChatBubbleProps {
 
 export namespace ChatBubbleProps {
   export type Type = "incoming" | "outgoing";
+
+  /**
+   * Controls the alignment of the bubble row and the side on which the avatar is placed.
+   */
+  export type Alignment = "start" | "end";
   export interface Style {
     root?: {
       columnGap?: string;

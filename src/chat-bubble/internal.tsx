@@ -21,6 +21,7 @@ export default function InternalChatBubble({
   showLoadingBar,
   hideAvatar = false,
   stretch = false,
+  alignment,
   ariaLabel,
   style,
   __internalRootRef = null,
@@ -39,33 +40,47 @@ export default function InternalChatBubble({
     }
   }, [hideAvatar]);
 
+  const avatarSlot = avatar && (
+    <div ref={avatarRef} className={clsx(styles.avatar, hideAvatar && styles.hide)}>
+      {avatar}
+    </div>
+  );
+
+  const messageArea = (
+    <div
+      className={clsx(styles["message-area"], styles[`chat-bubble-type-${type}`], stretch && styles.stretch)}
+      style={getBubbleStyle(style)}
+    >
+      <div className={styles.content}>{children}</div>
+      {actions && <div className={styles.actions}>{actions}</div>}
+      {showLoadingBar && (
+        <div className={styles["loading-bar-wrapper"]}>
+          <InternalLoadingBar variant="gen-ai-masked" />
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <div
-      className={styles.root}
+      className={clsx(styles.root, alignment === "end" && styles["alignment-end"])}
       {...getDataAttributes(rest)}
       ref={__internalRootRef}
       role="group"
       aria-label={ariaLabel}
       style={getChatBubbleRootStyle(style)}
     >
-      {avatar && (
-        <div ref={avatarRef} className={clsx(styles.avatar, hideAvatar && styles.hide)}>
-          {avatar}
-        </div>
+      {alignment === "end" ? (
+        <>
+          {messageArea}
+          {avatarSlot}
+        </>
+      ) : (
+        <>
+          {avatarSlot}
+          {messageArea}
+        </>
       )}
-
-      <div
-        className={clsx(styles["message-area"], styles[`chat-bubble-type-${type}`], stretch && styles.stretch)}
-        style={getBubbleStyle(style)}
-      >
-        <div className={styles.content}>{children}</div>
-        {actions && <div className={styles.actions}>{actions}</div>}
-        {showLoadingBar && (
-          <div className={styles["loading-bar-wrapper"]}>
-            <InternalLoadingBar variant="gen-ai-masked" />
-          </div>
-        )}
-      </div>
     </div>
   );
 }

@@ -15,6 +15,10 @@
   font-family: cs.$font-family-base;
   font-size: cs.$font-size-body-m;
   line-height: cs.$line-height-heading-m;
+
+  &.alignment-end {
+    justify-content: flex-end;
+  }
 }
 
 .message-area {
