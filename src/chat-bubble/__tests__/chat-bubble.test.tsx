@@ -25,6 +25,11 @@ function getBubbleElement(wrapper: ReturnType<typeof renderChatBubble>) {
   return wrapper.findByClassName(styles["message-area"])!.getElement();
 }
 
+/** Returns the avatar element (the slot wrapper's DOM node). */
+function getAvatarElement(wrapper: ReturnType<typeof renderChatBubble>) {
+  return wrapper.findByClassName(styles.avatar)!.getElement();
+}
+
 describe("Chat bubble", () => {
   test("Can access slots and elements inside the slots", () => {
     const wrapper = renderChatBubble({
@@ -139,6 +144,32 @@ describe("Chat bubble", () => {
     const el = getBubbleElement(wrapper);
     expect(getComputedStyle(el).getPropertyValue("border-style")).toBe("solid");
     expect(getComputedStyle(el).getPropertyValue("border-width")).toBe("3px");
+  });
+
+  describe("alignment", () => {
+    const baseProps: ChatBubbleProps = {
+      type: "incoming",
+      avatar: <Avatar ariaLabel="Avatar" />,
+      children: "Test content",
+      ariaLabel: "Chat bubble",
+    };
+
+    test.each<[ChatBubbleProps["alignment"]]>([[undefined], ["start"]])(
+      "renders the avatar before the message area when alignment is %s",
+      (alignment) => {
+        const wrapper = renderChatBubble({ ...baseProps, alignment });
+        const avatar = getAvatarElement(wrapper);
+        const bubble = getBubbleElement(wrapper);
+        expect(avatar.compareDocumentPosition(bubble) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+      },
+    );
+
+    test("renders the message area before the avatar when alignment is 'end'", () => {
+      const wrapper = renderChatBubble({ ...baseProps, alignment: "end" });
+      const avatar = getAvatarElement(wrapper);
+      const bubble = getBubbleElement(wrapper);
+      expect(avatar.compareDocumentPosition(bubble) & Node.DOCUMENT_POSITION_PRECEDING).toBeTruthy();
+    });
   });
 
   describe("stretch", () => {
