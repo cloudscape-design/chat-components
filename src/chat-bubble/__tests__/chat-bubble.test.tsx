@@ -140,4 +140,31 @@ describe("Chat bubble", () => {
     expect(getComputedStyle(el).getPropertyValue("border-style")).toBe("solid");
     expect(getComputedStyle(el).getPropertyValue("border-width")).toBe("3px");
   });
+
+  describe("stretch", () => {
+    const baseProps: ChatBubbleProps = {
+      type: "incoming",
+      avatar: <Avatar ariaLabel="Avatar" />,
+      children: "Test content",
+      ariaLabel: "Chat bubble",
+    };
+
+    test("does not apply the stretch class by default", () => {
+      const wrapper = renderChatBubble(baseProps);
+      expect(getBubbleElement(wrapper)).not.toHaveClass(styles.stretch);
+    });
+
+    test("does not apply the stretch class when set to false", () => {
+      const wrapper = renderChatBubble({ ...baseProps, stretch: false });
+      expect(getBubbleElement(wrapper)).not.toHaveClass(styles.stretch);
+    });
+
+    test.each<ChatBubbleProps.Type>(["incoming", "outgoing"])(
+      "applies the stretch class when set to true for type %s",
+      (type) => {
+        const wrapper = renderChatBubble({ ...baseProps, type, stretch: true });
+        expect(getBubbleElement(wrapper)).toHaveClass(styles.stretch);
+      },
+    );
+  });
 });

@@ -41,6 +41,10 @@
     color: cs.$color-text-chat-bubble-incoming;
     background-color: cs.$color-background-chat-bubble-incoming;
   }
+
+  &.stretch {
+    flex: 1;
+  }
 }
 
 .loading-bar-wrapper {

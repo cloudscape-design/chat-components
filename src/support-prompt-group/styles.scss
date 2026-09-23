@@ -37,10 +37,10 @@
 
   border-block: 1px solid awsui.$color-border-button-normal-default;
   border-inline: 1px solid awsui.$color-border-button-normal-default;
-  border-start-start-radius: awsui.$space-static-xs;
-  border-start-end-radius: awsui.$space-static-xs;
-  border-end-start-radius: awsui.$space-static-xs;
-  border-end-end-radius: awsui.$space-static-xs;
+  border-start-start-radius: awsui.$border-radius-support-prompt;
+  border-start-end-radius: awsui.$border-radius-support-prompt;
+  border-end-start-radius: awsui.$border-radius-support-prompt;
+  border-end-end-radius: awsui.$border-radius-support-prompt;
 
   inline-size: fit-content;
 
