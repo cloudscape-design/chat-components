@@ -146,7 +146,7 @@ describe("Chat bubble", () => {
     expect(getComputedStyle(el).getPropertyValue("border-width")).toBe("3px");
   });
 
-  describe("alignment", () => {
+  describe("align", () => {
     const baseProps: ChatBubbleProps = {
       type: "incoming",
       avatar: <Avatar ariaLabel="Avatar" />,
