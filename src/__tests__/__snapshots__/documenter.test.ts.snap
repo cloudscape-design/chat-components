@@ -203,7 +203,7 @@ exports[`definition for chat-bubble matches the snapshot > chat-bubble 1`] = `
 - \`"start"\` — Aligns the bubble and the avatar on the inline-start.
 - \`"end"\` — Aligns the bubble and the avatar on the inline-end.",
       "inlineType": {
-        "name": "ChatBubbleProps.Alignment",
+        "name": "ChatBubbleProps.Align",
         "type": "union",
         "values": [
           "start",
