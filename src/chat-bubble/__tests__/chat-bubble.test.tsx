@@ -154,18 +154,18 @@ describe("Chat bubble", () => {
       ariaLabel: "Chat bubble",
     };
 
-    test.each<[ChatBubbleProps["alignment"]]>([[undefined], ["start"]])(
-      "renders the avatar before the message area when alignment is %s",
-      (alignment) => {
-        const wrapper = renderChatBubble({ ...baseProps, alignment });
+    test.each<[ChatBubbleProps["align"]]>([[undefined], ["start"]])(
+      "renders the avatar before the message area when align is %s",
+      (align) => {
+        const wrapper = renderChatBubble({ ...baseProps, align });
         const avatar = getAvatarElement(wrapper);
         const bubble = getBubbleElement(wrapper);
         expect(avatar.compareDocumentPosition(bubble) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
       },
     );
 
-    test("renders the message area before the avatar when alignment is 'end'", () => {
-      const wrapper = renderChatBubble({ ...baseProps, alignment: "end" });
+    test("renders the message area before the avatar when align is 'end'", () => {
+      const wrapper = renderChatBubble({ ...baseProps, align: "end" });
       const avatar = getAvatarElement(wrapper);
       const bubble = getBubbleElement(wrapper);
       expect(avatar.compareDocumentPosition(bubble) & Node.DOCUMENT_POSITION_PRECEDING).toBeTruthy();

@@ -210,7 +210,7 @@ exports[`definition for chat-bubble matches the snapshot > chat-bubble 1`] = `
           "end",
         ],
       },
-      "name": "alignment",
+      "name": "align",
       "optional": true,
       "type": "string",
     },

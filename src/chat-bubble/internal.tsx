@@ -21,7 +21,7 @@ export default function InternalChatBubble({
   showLoadingBar,
   hideAvatar = false,
   stretch = false,
-  alignment,
+  align,
   ariaLabel,
   style,
   __internalRootRef = null,
@@ -63,14 +63,14 @@ export default function InternalChatBubble({
 
   return (
     <div
-      className={clsx(styles.root, alignment === "end" && styles["alignment-end"])}
+      className={clsx(styles.root, align === "end" && styles["alignment-end"])}
       {...getDataAttributes(rest)}
       ref={__internalRootRef}
       role="group"
       aria-label={ariaLabel}
       style={getChatBubbleRootStyle(style)}
     >
-      {alignment === "end" ? (
+      {align === "end" ? (
         <>
           {messageArea}
           {avatarSlot}

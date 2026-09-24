@@ -12,7 +12,7 @@ export default function ChatBubbleAlignmentPage() {
   return (
     <Page title="Chat bubble: alignment">
       <TestBed>
-        <Box variant="h2">alignment=&quot;start&quot; (default) — avatar on the inline-start</Box>
+        <Box variant="h2">align=&quot;start&quot; (default) — avatar on the inline-start</Box>
         <ChatContainer>
           <ChatBubble
             type="incoming"
@@ -33,14 +33,14 @@ export default function ChatBubbleAlignmentPage() {
           </ChatBubble>
         </ChatContainer>
 
-        <Box variant="h2">alignment=&quot;end&quot; — avatar on the inline-end (outgoing)</Box>
+        <Box variant="h2">align=&quot;end&quot; — avatar on the inline-end (outgoing)</Box>
         <ChatContainer>
-          <ChatBubble type="outgoing" alignment="end" avatar={<ChatBubbleAvatarUser />} ariaLabel="Jane Doe at 3:42pm">
+          <ChatBubble type="outgoing" align="end" avatar={<ChatBubbleAvatarUser />} ariaLabel="Jane Doe at 3:42pm">
             How do I create an S3 bucket?
           </ChatBubble>
           <ChatBubble
             type="outgoing"
-            alignment="end"
+            align="end"
             avatar={<ChatBubbleAvatarUser />}
             ariaLabel="Jane Doe at 3:43pm"
             hideAvatar={true}
@@ -51,7 +51,7 @@ export default function ChatBubbleAlignmentPage() {
 
         <Box variant="h2">Full conversation — both sides using avatars</Box>
         <ChatContainer>
-          <ChatBubble type="outgoing" alignment="end" avatar={<ChatBubbleAvatarUser />} ariaLabel="Jane Doe at 3:42pm">
+          <ChatBubble type="outgoing" align="end" avatar={<ChatBubbleAvatarUser />} ariaLabel="Jane Doe at 3:42pm">
             How do I create an S3 bucket?
           </ChatBubble>
           <ChatBubble
@@ -62,7 +62,7 @@ export default function ChatBubbleAlignmentPage() {
           >
             To create an S3 bucket, navigate to the S3 console and choose &ldquo;Create bucket&rdquo;.
           </ChatBubble>
-          <ChatBubble type="outgoing" alignment="end" avatar={<ChatBubbleAvatarUser />} ariaLabel="Jane Doe at 3:42pm">
+          <ChatBubble type="outgoing" align="end" avatar={<ChatBubbleAvatarUser />} ariaLabel="Jane Doe at 3:42pm">
             And what&apos;s the cheapest storage class?
           </ChatBubble>
           <ChatBubble
@@ -75,11 +75,11 @@ export default function ChatBubbleAlignmentPage() {
           </ChatBubble>
         </ChatContainer>
 
-        <Box variant="h2">alignment=&quot;end&quot; with stretch=true</Box>
+        <Box variant="h2">align=&quot;end&quot; with stretch=true</Box>
         <ChatContainer>
           <ChatBubble
             type="outgoing"
-            alignment="end"
+            align="end"
             stretch={true}
             avatar={<ChatBubbleAvatarUser />}
             ariaLabel="Jane Doe at 3:45pm"
@@ -88,9 +88,9 @@ export default function ChatBubbleAlignmentPage() {
           </ChatBubble>
         </ChatContainer>
 
-        <Box variant="h2">alignment=&quot;end&quot; with long text</Box>
+        <Box variant="h2">align=&quot;end&quot; with long text</Box>
         <ChatContainer>
-          <ChatBubble type="outgoing" alignment="end" avatar={<ChatBubbleAvatarUser />} ariaLabel="Jane Doe at 3:46pm">
+          <ChatBubble type="outgoing" align="end" avatar={<ChatBubbleAvatarUser />} ariaLabel="Jane Doe at 3:46pm">
             Long text. {longText}
           </ChatBubble>
         </ChatContainer>

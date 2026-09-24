@@ -13,11 +13,11 @@ export default function ChatBubble({
   hideAvatar,
   showLoadingBar,
   stretch,
-  alignment = "start",
+  align = "start",
   ...props
 }: ChatBubbleProps) {
   const baseComponentProps = useBaseComponent("ChatBubble", {
-    props: { type, stretch, alignment },
+    props: { type, stretch, align },
   });
   return (
     <InternalChatBubble
@@ -25,7 +25,7 @@ export default function ChatBubble({
       hideAvatar={hideAvatar}
       showLoadingBar={showLoadingBar}
       stretch={stretch}
-      alignment={alignment}
+      align={align}
       {...props}
       {...baseComponentProps}
     />
