@@ -47,7 +47,7 @@ export interface ChatBubbleProps {
    * - `"start"` — Aligns the bubble and the avatar on the inline-start.
    * - `"end"` — Aligns the bubble and the avatar on the inline-end.
    */
-  align?: ChatBubbleProps.Alignment;
+  align?: ChatBubbleProps.Align;
 
   /**
    * An object containing CSS properties to customize the chat bubble's visual appearance.
@@ -59,7 +59,7 @@ export interface ChatBubbleProps {
 
 export namespace ChatBubbleProps {
   export type Type = "incoming" | "outgoing";
-  export type Alignment = "start" | "end";
+  export type Align = "start" | "end";
   export interface Style {
     root?: {
       columnGap?: string;
