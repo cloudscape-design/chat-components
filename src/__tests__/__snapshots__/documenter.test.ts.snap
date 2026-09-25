@@ -197,6 +197,24 @@ exports[`definition for chat-bubble matches the snapshot > chat-bubble 1`] = `
   "name": "ChatBubble",
   "properties": [
     {
+      "defaultValue": ""start"",
+      "description": "Controls the alignment of the chat bubble and the avatar.
+
+- \`"start"\` — Aligns the bubble and the avatar on the inline-start.
+- \`"end"\` — Aligns the bubble and the avatar on the inline-end.",
+      "inlineType": {
+        "name": "ChatBubbleProps.Align",
+        "type": "union",
+        "values": [
+          "start",
+          "end",
+        ],
+      },
+      "name": "align",
+      "optional": true,
+      "type": "string",
+    },
+    {
       "description": "Adds aria-label to the chat bubble container. Use this to provide a unique accessible name for each chat bubble on the page.
 For example, "John Doe at 3:42:10am".",
       "name": "ariaLabel",
