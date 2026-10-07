@@ -10,7 +10,6 @@ import { preset, TypedOverride } from "./internal/template/internal/generated/th
 const internalDir = join(__dirname, "./internal");
 const scssDir = join(internalDir, "./scss");
 const templateDir = join(internalDir, "./template");
-const designTokensTemplateDir = join(internalDir, "./template-tokens");
 
 export type Theme = TypedOverride;
 export interface BuildThemedComponentsParams {
@@ -25,9 +24,10 @@ export function buildThemedComponents({ theme, outputDir, baseThemeId }: BuildTh
     preset,
     baseThemeId,
     componentsOutputDir: join(outputDir, "components"),
+    // The chat components reuse the core design tokens and ship no
+    // design-tokens template, so designTokensTemplateDir is omitted.
     designTokensOutputDir: join(outputDir, "design-tokens"),
     templateDir,
-    designTokensTemplateDir,
     scssDir,
   });
 }
