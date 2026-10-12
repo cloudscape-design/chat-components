@@ -26,7 +26,7 @@ function themablePackage() {
     exports: {
       ".": {
         types: "./theming.d.ts",
-        import: "./theming.js",
+        default: "./theming.js",
       },
     },
   });
