@@ -1,0 +1,27 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+@use "../../lib/components/styling/avatar";
+
+.brand {
+  @include avatar.root(
+    $background: #000,
+    $color: #f7f6ff,
+    $box-shadow: 0px 0px 10px crimson,
+    $border-color: crimson,
+    $border-width: 4px,
+    $border-radius: 16px,
+    $focus-ring-color: deeppink,
+    $focus-ring-width: 4px,
+    $focus-ring-radius: 16px
+  );
+}
+
+.square {
+  @include avatar.root(
+    $background: light-dark(#e8f5e8, #1b2e1b),
+    $color: light-dark(#1b5e20, #81c784),
+    $border-radius: 4px
+  );
+}

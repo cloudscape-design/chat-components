@@ -1,0 +1,98 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Style API docs of avatar match the snapshot > avatar 1`] = `
+{
+  "slots": [
+    {
+      "name": "root",
+      "properties": [
+        "background",
+        "color",
+        "border-radius",
+        "box-shadow",
+      ],
+      "propertyDescriptions": {},
+      "tokenDescriptions": {},
+      "tokens": [
+        "border-color",
+        "border-width",
+        "focus-ring-color",
+        "focus-ring-width",
+        "focus-ring-radius",
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Style API docs of chat-bubble match the snapshot > chat-bubble 1`] = `
+{
+  "slots": [
+    {
+      "name": "root",
+      "properties": [
+        "column-gap",
+      ],
+      "propertyDescriptions": {
+        "column-gap": "Space between the avatar and the bubble.",
+      },
+      "tokenDescriptions": {},
+      "tokens": [],
+    },
+    {
+      "name": "bubble",
+      "properties": [
+        "background",
+        "color",
+        "border",
+        "border-radius",
+        "box-shadow",
+        "padding",
+        "row-gap",
+        "font-family",
+        "font-size",
+        "font-weight",
+        "letter-spacing",
+      ],
+      "propertyDescriptions": {
+        "row-gap": "Space between the message content and the actions.",
+      },
+      "tokenDescriptions": {},
+      "tokens": [],
+    },
+  ],
+}
+`;
+
+exports[`Style API docs of support-prompt-group match the snapshot > support-prompt-group 1`] = `
+{
+  "slots": [
+    {
+      "name": "item",
+      "properties": [
+        "color",
+        "background",
+        "border",
+        "border-radius",
+        "padding",
+        "box-shadow",
+      ],
+      "propertyDescriptions": {},
+      "tokenDescriptions": {},
+      "tokens": [
+        "focus-ring-color",
+        "focus-ring-width",
+        "focus-ring-radius",
+      ],
+    },
+  ],
+}
+`;
+
+exports[`list of components with a Style API doc matches the snapshot 1`] = `
+[
+  "avatar",
+  "chat-bubble",
+  "support-prompt-group",
+]
+`;

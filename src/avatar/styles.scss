@@ -6,8 +6,19 @@
 @use "./mixins.scss" as mixins;
 @use "../internal/shared" as shared;
 @use "../internal/generated/custom-css-properties/index.scss" as custom-props;
+@use "../internal/style-api" as style-api;
+
+@include style-api.register(mixins.$tokens);
+@include style-api.docs("root", mixins.$tokens, $properties: (background, color, border-radius, box-shadow));
+
+$focus-ring-width: style-api.value(
+  mixins.$tokens,
+  focus-ring-width,
+  var(#{custom-props.$avatarFocusRingBorderWidth}, 0px)
+);
 
 .root {
+  @include style-api.carriers(mixins.$tokens);
   @include shared.styles-reset;
   align-items: center;
   display: flex;
@@ -16,7 +27,10 @@
   inline-size: var(#{custom-props.$avatarSize});
   justify-content: center;
   position: relative;
-  @include mixins.border-radius-avatar;
+  border-start-start-radius: 50%;
+  border-start-end-radius: 50%;
+  border-end-start-radius: 50%;
+  border-end-end-radius: 50%;
 
   &.avatar-color-default {
     background-color: cs.$color-background-avatar-default;
@@ -39,12 +53,22 @@
 
   &:focus-visible {
     @include shared.focus-highlight(
-      $gutter: calc(
-          4px + var(#{custom-props.$avatarRootBorderWidth}, 0px) + var(#{custom-props.$avatarFocusRingBorderWidth}, 0px)
+      $gutter: calc(4px + #{$focus-ring-width}),
+      $border-radius: style-api.value(
+          mixins.$tokens,
+          focus-ring-radius,
+          var(#{custom-props.$avatarFocusRingBorderRadius}, 50%)
         ),
-      $border-radius: var(#{custom-props.$avatarFocusRingBorderRadius}, 50%),
-      $border-color: var(#{custom-props.$avatarFocusRingBorderColor}, cs.$color-border-item-focused),
-      $border-width: var(#{custom-props.$avatarFocusRingBorderWidth}, 2px)
+      $border-color: style-api.value(
+          mixins.$tokens,
+          focus-ring-color,
+          var(#{custom-props.$avatarFocusRingBorderColor}, cs.$color-border-item-focused)
+        ),
+      $border-width: style-api.value(
+          mixins.$tokens,
+          focus-ring-width,
+          var(#{custom-props.$avatarFocusRingBorderWidth}, 2px)
+        )
     );
   }
 
@@ -54,6 +78,17 @@
 }
 
 .content {
+  box-sizing: border-box;
+  // Inherits the root radius, so a radius set on the root reaches the nested layers.
+  border-start-start-radius: inherit;
+  border-start-end-radius: inherit;
+  border-end-start-radius: inherit;
+  border-end-end-radius: inherit;
+  // The border sits on the content, which clips the image to the border's inner edge.
+  border-color: style-api.value(mixins.$tokens, border-color, currentColor);
+  border-width: style-api.value(mixins.$tokens, border-width, 0);
+  border-block-style: solid;
+  border-inline-style: solid;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,7 +98,10 @@
   line-height: calc(0.8 * var(#{custom-props.$avatarSize}));
 
   .image {
-    @include mixins.border-radius-avatar;
+    border-start-start-radius: inherit;
+    border-start-end-radius: inherit;
+    border-end-start-radius: inherit;
+    border-end-end-radius: inherit;
     block-size: var(#{custom-props.$avatarSize});
     inline-size: var(#{custom-props.$avatarSize});
     object-fit: cover;

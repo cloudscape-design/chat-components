@@ -12,6 +12,7 @@ export function getAllComponents(): string[] {
     .filter(
       (name) =>
         name !== "internal" &&
+        name !== "styling" &&
         name !== "test-utils" &&
         name !== "types" &&
         !name.includes(".") &&

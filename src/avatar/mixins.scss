@@ -3,9 +3,6 @@
  SPDX-License-Identifier: Apache-2.0
 */
 
-@mixin border-radius-avatar {
-  border-start-start-radius: 50%;
-  border-start-end-radius: 50%;
-  border-end-start-radius: 50%;
-  border-end-end-radius: 50%;
-}
+@use "../internal/style-api" as style-api;
+
+$tokens: style-api.resolve(style-api.combine((border-color, border-width), style-api.$focus-ring), carrier);

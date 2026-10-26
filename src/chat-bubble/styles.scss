@@ -4,6 +4,38 @@
 */
 @use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as cs;
 @use "../internal/shared" as shared;
+@use "../internal/style-api" as style-api;
+
+@include style-api.docs(
+  "root",
+  $properties: (column-gap),
+  $descriptions: (
+    properties: (
+      column-gap: "Space between the avatar and the bubble.",
+    )
+  )
+);
+@include style-api.docs(
+  "bubble",
+  $properties: (
+    background,
+    color,
+    border,
+    border-radius,
+    box-shadow,
+    padding,
+    row-gap,
+    font-family,
+    font-size,
+    font-weight,
+    letter-spacing
+  ),
+  $descriptions: (
+    properties: (
+      row-gap: "Space between the message content and the actions.",
+    )
+  )
+);
 
 .root {
   @include shared.styles-reset;
@@ -35,6 +67,9 @@
   border-start-end-radius: cs.$border-radius-chat-bubble;
   border-end-start-radius: cs.$border-radius-chat-bubble;
   border-end-end-radius: cs.$border-radius-chat-bubble;
+  // Sets default border style to be used for styling.
+  border-block: 0 solid;
+  border-inline: 0 solid;
 
   &.chat-bubble-type-outgoing {
     color: cs.$color-text-chat-bubble-outgoing;
