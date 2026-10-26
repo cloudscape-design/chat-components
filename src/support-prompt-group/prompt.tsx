@@ -19,6 +19,7 @@ export interface PromptProps {
   iconPosition?: "left" | "right";
   iconVerticalAlignment?: "center" | "start" | "end";
   ariaLabel?: string;
+  className?: string;
 }
 
 export const Prompt = forwardRef(
@@ -32,6 +33,7 @@ export const Prompt = forwardRef(
       iconPosition = "left",
       iconVerticalAlignment = "start",
       ariaLabel,
+      className,
     }: PromptProps,
     ref: Ref<HTMLButtonElement | null>,
   ) => {
@@ -65,7 +67,7 @@ export const Prompt = forwardRef(
         id={id}
         data-testid={id}
         data-itemid={id}
-        className={clsx(styles["support-prompt"])}
+        className={clsx(className, styles["support-prompt"])}
         aria-label={ariaLabel}
       >
         {iconPosition !== "right" && renderIcon()}

@@ -16,7 +16,14 @@ import { getContentStyles, getImageStyles, getRootStyles } from "./style";
 
 import styles from "./styles.css.js";
 
-export interface InternalAvatarProps extends AvatarProps, InternalBaseComponentProps {}
+export interface InternalAvatarProps extends AvatarProps, InternalBaseComponentProps {
+  styleClassNames?: StyleClassNames;
+}
+
+// Style API v2
+export interface StyleClassNames {
+  root?: string;
+}
 
 const AvatarContent = ({
   color,
@@ -63,6 +70,7 @@ export default function InternalAvatar({
   imgUrl,
   style,
   width = 28,
+  styleClassNames,
   __internalRootRef = null,
   ...rest
 }: InternalAvatarProps) {
@@ -98,7 +106,9 @@ export default function InternalAvatar({
       {...getDataAttributes(rest)}
       ref={mergedRef}
       tabIndex={0}
-      className={clsx(styles.root, styles[`avatar-color-${color}`], { [styles.initials]: initials })}
+      className={clsx(styleClassNames?.root, styles.root, styles[`avatar-color-${color}`], {
+        [styles.initials]: initials,
+      })}
       role="img"
       aria-label={ariaLabel}
       {...tooltipAttributes}
