@@ -146,7 +146,10 @@ exports[`Style API mixins of support-prompt-group match the snapshot > support-p
   $padding: null,
   $padding-block: null,
   $padding-inline: null,
-  $box-shadow: null
+  $box-shadow: null,
+  $font-family: null,
+  $font-size: null,
+  $font-weight: null
 ) {
   @include slot-mixins.apply(
     'support-prompt-group.item',
@@ -176,6 +179,9 @@ exports[`Style API mixins of support-prompt-group match the snapshot > support-p
       'padding-block': $padding-block,
       'padding-inline': $padding-inline,
       'box-shadow': $box-shadow,
+      'font-family': $font-family,
+      'font-size': $font-size,
+      'font-weight': $font-weight,
     ),
   );
 }

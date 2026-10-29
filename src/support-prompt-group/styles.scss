@@ -6,13 +6,13 @@
 @use "../internal/shared" as shared;
 @use "../internal/style-api" as style-api;
 
-// The item is the group's own button; it takes the same arguments as the button root slot.
+// The item is the group's own button; it takes the button root slot's arguments.
 $item-tokens: style-api.resolve(style-api.$focus-ring, carrier);
 @include style-api.register($item-tokens);
 @include style-api.docs(
   "item",
   $item-tokens,
-  $properties: (color, background, border, border-radius, padding, box-shadow)
+  $properties: (color, background, border, border-radius, padding, box-shadow, font-family, font-size, font-weight)
 );
 
 .root {
