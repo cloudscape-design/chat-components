@@ -1,0 +1,42 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+@forward "@cloudscape-design/component-toolkit/internal/style-api" show combine, resolve;
+
+@use "@cloudscape-design/component-toolkit/internal/style-api" as toolkit;
+@use "awsui:environment" as env;
+
+// Focus-outline tokens, shared by every focusable component.
+$focus-ring: (focus-ring-color, focus-ring-width, focus-ring-radius);
+
+@function enabled() {
+  @return env.$system != "console";
+}
+
+// Emits `var(<token>, <fallback>)` when enabled, or just `<fallback>` when disabled.
+@function value($tokens, $token, $fallback) {
+  @if not enabled() {
+    @return $fallback;
+  }
+  @return var(#{toolkit.read($tokens, $token)}, #{$fallback});
+}
+
+// Gated wrappers around the toolkit's CSS-emitting mixins: same signatures, no-op when disabled.
+@mixin register($maps...) {
+  @if enabled() {
+    @include toolkit.register($maps...);
+  }
+}
+
+@mixin carriers($map) {
+  @if enabled() {
+    @include toolkit.carriers($map);
+  }
+}
+
+@mixin docs($name, $tokens: null, $properties: null, $descriptions: null) {
+  @if enabled() {
+    @include toolkit.docs($name, $tokens, $properties, $descriptions);
+  }
+}
