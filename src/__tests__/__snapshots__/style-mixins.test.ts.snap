@@ -1,0 +1,197 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Style API mixins of avatar match the snapshot > avatar 1`] = `
+"// GENERATED from the avatar Style API docs — do not edit.
+@use '@cloudscape-design/component-toolkit/internal/style-api/slot-mixins' as slot-mixins;
+
+@mixin root(
+  $border-color: null,
+  $border-width: null,
+  $focus-ring-color: null,
+  $focus-ring-width: null,
+  $focus-ring-radius: null,
+  $background: null,
+  $color: null,
+  $border-radius: null,
+  $border-start-start-radius: null,
+  $border-start-end-radius: null,
+  $border-end-start-radius: null,
+  $border-end-end-radius: null,
+  $box-shadow: null
+) {
+  @include slot-mixins.apply(
+    'avatar.root',
+    $tokens: (
+      'border-color': $border-color,
+      'border-width': $border-width,
+      'focus-ring-color': $focus-ring-color,
+      'focus-ring-width': $focus-ring-width,
+      'focus-ring-radius': $focus-ring-radius,
+    ),
+    $properties: (
+      'background': $background,
+      'color': $color,
+      'border-radius': $border-radius,
+      'border-start-start-radius': $border-start-start-radius,
+      'border-start-end-radius': $border-start-end-radius,
+      'border-end-start-radius': $border-end-start-radius,
+      'border-end-end-radius': $border-end-end-radius,
+      'box-shadow': $box-shadow,
+    ),
+  );
+}
+"
+`;
+
+exports[`Style API mixins of chat-bubble match the snapshot > chat-bubble 1`] = `
+"// GENERATED from the chat-bubble Style API docs — do not edit.
+@use '@cloudscape-design/component-toolkit/internal/style-api/slot-mixins' as slot-mixins;
+
+@mixin root(
+  $column-gap: null
+) {
+  @include slot-mixins.apply(
+    'chat-bubble.root',
+    $properties: (
+      'column-gap': $column-gap,
+    ),
+  );
+}
+
+@mixin bubble(
+  $background: null,
+  $color: null,
+  $border-color: null,
+  $border-width: null,
+  $border-style: null,
+  $border-block-color: null,
+  $border-block-width: null,
+  $border-block-style: null,
+  $border-inline-color: null,
+  $border-inline-width: null,
+  $border-inline-style: null,
+  $border-radius: null,
+  $border-start-start-radius: null,
+  $border-start-end-radius: null,
+  $border-end-start-radius: null,
+  $border-end-end-radius: null,
+  $box-shadow: null,
+  $padding: null,
+  $padding-block: null,
+  $padding-inline: null,
+  $row-gap: null,
+  $font-family: null,
+  $font-size: null,
+  $font-weight: null,
+  $letter-spacing: null
+) {
+  @include slot-mixins.apply(
+    'chat-bubble.bubble',
+    $properties: (
+      'background': $background,
+      'color': $color,
+      'border-color': $border-color,
+      'border-width': $border-width,
+      'border-style': $border-style,
+      'border-block-color': $border-block-color,
+      'border-block-width': $border-block-width,
+      'border-block-style': $border-block-style,
+      'border-inline-color': $border-inline-color,
+      'border-inline-width': $border-inline-width,
+      'border-inline-style': $border-inline-style,
+      'border-radius': $border-radius,
+      'border-start-start-radius': $border-start-start-radius,
+      'border-start-end-radius': $border-start-end-radius,
+      'border-end-start-radius': $border-end-start-radius,
+      'border-end-end-radius': $border-end-end-radius,
+      'box-shadow': $box-shadow,
+      'padding': $padding,
+      'padding-block': $padding-block,
+      'padding-inline': $padding-inline,
+      'row-gap': $row-gap,
+      'font-family': $font-family,
+      'font-size': $font-size,
+      'font-weight': $font-weight,
+      'letter-spacing': $letter-spacing,
+    ),
+  );
+}
+"
+`;
+
+exports[`Style API mixins of support-prompt-group match the snapshot > support-prompt-group 1`] = `
+"// GENERATED from the support-prompt-group Style API docs — do not edit.
+@use '@cloudscape-design/component-toolkit/internal/style-api/slot-mixins' as slot-mixins;
+
+@mixin item(
+  $focus-ring-color: null,
+  $focus-ring-width: null,
+  $focus-ring-radius: null,
+  $color: null,
+  $background: null,
+  $border-color: null,
+  $border-width: null,
+  $border-style: null,
+  $border-block-color: null,
+  $border-block-width: null,
+  $border-block-style: null,
+  $border-inline-color: null,
+  $border-inline-width: null,
+  $border-inline-style: null,
+  $border-radius: null,
+  $border-start-start-radius: null,
+  $border-start-end-radius: null,
+  $border-end-start-radius: null,
+  $border-end-end-radius: null,
+  $padding: null,
+  $padding-block: null,
+  $padding-inline: null,
+  $box-shadow: null,
+  $font-family: null,
+  $font-size: null,
+  $font-weight: null
+) {
+  @include slot-mixins.apply(
+    'support-prompt-group.item',
+    $tokens: (
+      'focus-ring-color': $focus-ring-color,
+      'focus-ring-width': $focus-ring-width,
+      'focus-ring-radius': $focus-ring-radius,
+    ),
+    $properties: (
+      'color': $color,
+      'background': $background,
+      'border-color': $border-color,
+      'border-width': $border-width,
+      'border-style': $border-style,
+      'border-block-color': $border-block-color,
+      'border-block-width': $border-block-width,
+      'border-block-style': $border-block-style,
+      'border-inline-color': $border-inline-color,
+      'border-inline-width': $border-inline-width,
+      'border-inline-style': $border-inline-style,
+      'border-radius': $border-radius,
+      'border-start-start-radius': $border-start-start-radius,
+      'border-start-end-radius': $border-start-end-radius,
+      'border-end-start-radius': $border-end-start-radius,
+      'border-end-end-radius': $border-end-end-radius,
+      'padding': $padding,
+      'padding-block': $padding-block,
+      'padding-inline': $padding-inline,
+      'box-shadow': $box-shadow,
+      'font-family': $font-family,
+      'font-size': $font-size,
+      'font-weight': $font-weight,
+    ),
+  );
+}
+"
+`;
+
+exports[`list of components with Style API mixins matches the snapshot 1`] = `
+[
+  "avatar",
+  "chat-bubble",
+  "support-prompt-group",
+]
+`;

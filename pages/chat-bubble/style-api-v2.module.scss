@@ -1,0 +1,36 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+@use "../../lib/components/styling/chat-bubble";
+
+.root {
+  @include chat-bubble.root($column-gap: 25px);
+}
+
+.bubble {
+  @include chat-bubble.bubble(
+    $background: light-dark(#ffffff, #2d2d2d),
+    $color: light-dark(#1b5e20, #81c784),
+    $border-color: light-dark(#4caf50, #66bb6a),
+    $border-width: 2px,
+    $border-radius: 24px,
+    $box-shadow: 0 4px 12px rgb(29, 130, 118),
+    $padding-block: 20px,
+    $padding-inline: 30px,
+    $row-gap: 20px,
+    $font-family: cursive,
+    $font-size: 16px,
+    $font-weight: bold,
+    $letter-spacing: 1px
+  );
+}
+
+.bubble-dashed {
+  @include chat-bubble.bubble(
+    $border-color: light-dark(#6c757d, #adb5bd),
+    $border-width: 2px,
+    $border-style: dashed,
+    $border-radius: 12px
+  );
+}

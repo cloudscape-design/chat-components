@@ -11,7 +11,15 @@ import { getBubbleStyle, getChatBubbleRootStyle } from "./style";
 
 import styles from "./styles.css.js";
 
-export interface InternalChatBubbleProps extends ChatBubbleProps, InternalBaseComponentProps {}
+export interface InternalChatBubbleProps extends ChatBubbleProps, InternalBaseComponentProps {
+  styleClassNames?: StyleClassNames;
+}
+
+// Style API v2
+export interface StyleClassNames {
+  root?: string;
+  bubble?: string;
+}
 
 export default function InternalChatBubble({
   type,
@@ -24,6 +32,7 @@ export default function InternalChatBubble({
   align,
   ariaLabel,
   style,
+  styleClassNames,
   __internalRootRef = null,
   ...rest
 }: InternalChatBubbleProps) {
@@ -48,7 +57,12 @@ export default function InternalChatBubble({
 
   const messageArea = (
     <div
-      className={clsx(styles["message-area"], styles[`chat-bubble-type-${type}`], stretch && styles.stretch)}
+      className={clsx(
+        styleClassNames?.bubble,
+        styles["message-area"],
+        styles[`chat-bubble-type-${type}`],
+        stretch && styles.stretch,
+      )}
       style={getBubbleStyle(style)}
     >
       <div className={styles.content}>{children}</div>
@@ -63,7 +77,7 @@ export default function InternalChatBubble({
 
   return (
     <div
-      className={clsx(styles.root, align === "end" && styles["alignment-end"])}
+      className={clsx(styleClassNames?.root, styles.root, align === "end" && styles["alignment-end"])}
       {...getDataAttributes(rest)}
       ref={__internalRootRef}
       role="group"

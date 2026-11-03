@@ -1,0 +1,135 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Style API docs of avatar match the snapshot > avatar 1`] = `
+{
+  "slots": [
+    {
+      "name": "root",
+      "properties": [
+        "background",
+        "color",
+        "border-radius",
+        "border-start-start-radius",
+        "border-start-end-radius",
+        "border-end-start-radius",
+        "border-end-end-radius",
+        "box-shadow",
+      ],
+      "propertyDescriptions": {},
+      "tokenDescriptions": {
+        "focus-ring-radius": "Defaults to the avatar border radius.",
+      },
+      "tokens": [
+        "border-color",
+        "border-width",
+        "focus-ring-color",
+        "focus-ring-width",
+        "focus-ring-radius",
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Style API docs of chat-bubble match the snapshot > chat-bubble 1`] = `
+{
+  "slots": [
+    {
+      "name": "root",
+      "properties": [
+        "column-gap",
+      ],
+      "propertyDescriptions": {
+        "column-gap": "Space between the avatar and the bubble.",
+      },
+      "tokenDescriptions": {},
+      "tokens": [],
+    },
+    {
+      "name": "bubble",
+      "properties": [
+        "background",
+        "color",
+        "border-color",
+        "border-width",
+        "border-style",
+        "border-block-color",
+        "border-block-width",
+        "border-block-style",
+        "border-inline-color",
+        "border-inline-width",
+        "border-inline-style",
+        "border-radius",
+        "border-start-start-radius",
+        "border-start-end-radius",
+        "border-end-start-radius",
+        "border-end-end-radius",
+        "box-shadow",
+        "padding",
+        "padding-block",
+        "padding-inline",
+        "row-gap",
+        "font-family",
+        "font-size",
+        "font-weight",
+        "letter-spacing",
+      ],
+      "propertyDescriptions": {
+        "row-gap": "Space between the message content and the actions.",
+      },
+      "tokenDescriptions": {},
+      "tokens": [],
+    },
+  ],
+}
+`;
+
+exports[`Style API docs of support-prompt-group match the snapshot > support-prompt-group 1`] = `
+{
+  "slots": [
+    {
+      "name": "item",
+      "properties": [
+        "color",
+        "background",
+        "border-color",
+        "border-width",
+        "border-style",
+        "border-block-color",
+        "border-block-width",
+        "border-block-style",
+        "border-inline-color",
+        "border-inline-width",
+        "border-inline-style",
+        "border-radius",
+        "border-start-start-radius",
+        "border-start-end-radius",
+        "border-end-start-radius",
+        "border-end-end-radius",
+        "padding",
+        "padding-block",
+        "padding-inline",
+        "box-shadow",
+        "font-family",
+        "font-size",
+        "font-weight",
+      ],
+      "propertyDescriptions": {},
+      "tokenDescriptions": {},
+      "tokens": [
+        "focus-ring-color",
+        "focus-ring-width",
+        "focus-ring-radius",
+      ],
+    },
+  ],
+}
+`;
+
+exports[`list of components with a Style API doc matches the snapshot 1`] = `
+[
+  "avatar",
+  "chat-bubble",
+  "support-prompt-group",
+]
+`;

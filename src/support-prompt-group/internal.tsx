@@ -23,6 +23,11 @@ import { Prompt } from "./prompt";
 
 import styles from "./styles.css.js";
 
+// Style API v2
+export interface StyleClassNames {
+  item?: string | ((args: { item: SupportPromptGroupProps.Item }) => string);
+}
+
 export const InternalSupportPromptGroup = forwardRef(
   (
     {
@@ -31,8 +36,9 @@ export const InternalSupportPromptGroup = forwardRef(
       items,
       __internalRootRef,
       ariaLabel,
+      styleClassNames,
       ...rest
-    }: SupportPromptGroupProps & InternalBaseComponentProps,
+    }: SupportPromptGroupProps & InternalBaseComponentProps & { styleClassNames?: StyleClassNames },
     ref: Ref<SupportPromptGroupProps.Ref>,
   ) => {
     const focusedIdRef = useRef<null | string>(null);
@@ -160,6 +166,9 @@ export const InternalSupportPromptGroup = forwardRef(
                 iconPosition={item.iconPosition}
                 iconVerticalAlignment={item.iconVerticalAlignment}
                 ariaLabel={item.ariaLabel}
+                className={
+                  typeof styleClassNames?.item === "function" ? styleClassNames.item({ item }) : styleClassNames?.item
+                }
               >
                 {item.text}
               </Prompt>

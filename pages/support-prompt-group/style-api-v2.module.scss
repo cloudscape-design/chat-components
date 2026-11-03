@@ -1,0 +1,37 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+@use "../../lib/components/styling/support-prompt-group";
+
+.item {
+  @include support-prompt-group.item(
+    $color: light-dark(#5b21b6, #ddd6fe),
+    $background: light-dark(#f5f3ff, #2e1065),
+    $border-color: light-dark(#8b5cf6, #a78bfa),
+    $border-radius: 16px,
+    $focus-ring-color: light-dark(#8b5cf6, #a78bfa),
+    $focus-ring-radius: 20px
+  );
+
+  &:hover {
+    @include support-prompt-group.item($background: light-dark(#ede9fe, #4c1d95), $color: light-dark(#5b21b6, #ede9fe));
+  }
+
+  &:active {
+    @include support-prompt-group.item($background: light-dark(#ddd6fe, #5b21b6), $color: light-dark(#4c1d95, #f5f3ff));
+  }
+}
+
+// Declared after .item, so its states win over the ones above on the same element.
+.item-featured {
+  @include support-prompt-group.item($color: #fff, $background: #7c3aed, $border-color: #7c3aed, $font-weight: 700);
+
+  &:hover {
+    @include support-prompt-group.item($color: #fff, $background: #6d28d9, $border-color: #6d28d9);
+  }
+
+  &:active {
+    @include support-prompt-group.item($color: #fff, $background: #5b21b6, $border-color: #5b21b6);
+  }
+}

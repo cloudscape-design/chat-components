@@ -4,6 +4,16 @@
 */
 @use "../../node_modules/@cloudscape-design/design-tokens/index.scss" as awsui;
 @use "../internal/shared" as shared;
+@use "../internal/style-api" as style-api;
+
+// The item is the group's own button; it takes the button root slot's arguments.
+$item-tokens: style-api.resolve(style-api.$focus-ring, carrier);
+@include style-api.register($item-tokens);
+@include style-api.docs(
+  "item",
+  $item-tokens,
+  $properties: (color, background, border, border-radius, padding, box-shadow, font-family, font-size, font-weight)
+);
 
 .root {
   @include shared.styles-reset;
@@ -18,6 +28,7 @@
 }
 
 .support-prompt {
+  @include style-api.carriers($item-tokens);
   cursor: pointer;
 
   display: inline-flex;
@@ -61,7 +72,12 @@
   }
 
   &:focus-visible {
-    @include shared.focus-highlight(6px, 6px);
+    @include shared.focus-highlight(
+      $gutter: 6px,
+      $border-radius: style-api.value($item-tokens, focus-ring-radius, 6px),
+      $border-color: style-api.value($item-tokens, focus-ring-color, awsui.$color-border-item-focused),
+      $border-width: style-api.value($item-tokens, focus-ring-width, 2px)
+    );
   }
 }
 
