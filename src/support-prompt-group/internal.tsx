@@ -17,6 +17,7 @@ import {
 import { getDataAttributes } from "../internal/base-component/get-data-attributes";
 import { InternalBaseComponentProps } from "../internal/base-component/use-base-component";
 import { fireNonCancelableEvent } from "../internal/events";
+import { getStyleClassName, Slot } from "../internal/utils/style-slot";
 import { getNextFocusTarget, onUnregisterActive } from "./focus-helpers";
 import { SupportPromptGroupProps } from "./interfaces";
 import { Prompt } from "./prompt";
@@ -25,7 +26,7 @@ import styles from "./styles.css.js";
 
 // Style API v2
 export interface StyleClassNames {
-  item?: string | ((args: { item: SupportPromptGroupProps.Item }) => string);
+  item?: Slot<{ item: SupportPromptGroupProps.Item }>;
 }
 
 export const InternalSupportPromptGroup = forwardRef(
@@ -166,9 +167,7 @@ export const InternalSupportPromptGroup = forwardRef(
                 iconPosition={item.iconPosition}
                 iconVerticalAlignment={item.iconVerticalAlignment}
                 ariaLabel={item.ariaLabel}
-                className={
-                  typeof styleClassNames?.item === "function" ? styleClassNames.item({ item }) : styleClassNames?.item
-                }
+                className={getStyleClassName(styleClassNames?.item, { item })}
               >
                 {item.text}
               </Prompt>

@@ -5,11 +5,11 @@ exports[`Style API mixins of avatar match the snapshot > avatar 1`] = `
 @use '@cloudscape-design/component-toolkit/internal/style-api/slot-mixins' as slot-mixins;
 
 @mixin root(
-  $border-color: null,
-  $border-width: null,
-  $focus-ring-color: null,
-  $focus-ring-width: null,
-  $focus-ring-radius: null,
+  $awsui-border-color: null,
+  $awsui-border-width: null,
+  $awsui-focus-ring-color: null,
+  $awsui-focus-ring-width: null,
+  $awsui-focus-ring-radius: null,
   $background: null,
   $color: null,
   $border-radius: null,
@@ -22,11 +22,11 @@ exports[`Style API mixins of avatar match the snapshot > avatar 1`] = `
   @include slot-mixins.apply(
     'avatar.root',
     $tokens: (
-      'border-color': $border-color,
-      'border-width': $border-width,
-      'focus-ring-color': $focus-ring-color,
-      'focus-ring-width': $focus-ring-width,
-      'focus-ring-radius': $focus-ring-radius,
+      'border-color': $awsui-border-color,
+      'border-width': $awsui-border-width,
+      'focus-ring-color': $awsui-focus-ring-color,
+      'focus-ring-width': $awsui-focus-ring-width,
+      'focus-ring-radius': $awsui-focus-ring-radius,
     ),
     $properties: (
       'background': $background,
@@ -124,9 +124,9 @@ exports[`Style API mixins of support-prompt-group match the snapshot > support-p
 @use '@cloudscape-design/component-toolkit/internal/style-api/slot-mixins' as slot-mixins;
 
 @mixin item(
-  $focus-ring-color: null,
-  $focus-ring-width: null,
-  $focus-ring-radius: null,
+  $awsui-focus-ring-color: null,
+  $awsui-focus-ring-width: null,
+  $awsui-focus-ring-radius: null,
   $color: null,
   $background: null,
   $border-color: null,
@@ -154,9 +154,9 @@ exports[`Style API mixins of support-prompt-group match the snapshot > support-p
   @include slot-mixins.apply(
     'support-prompt-group.item',
     $tokens: (
-      'focus-ring-color': $focus-ring-color,
-      'focus-ring-width': $focus-ring-width,
-      'focus-ring-radius': $focus-ring-radius,
+      'focus-ring-color': $awsui-focus-ring-color,
+      'focus-ring-width': $awsui-focus-ring-width,
+      'focus-ring-radius': $awsui-focus-ring-radius,
     ),
     $properties: (
       'color': $color,
