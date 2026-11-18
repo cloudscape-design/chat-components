@@ -48,6 +48,7 @@
     "./support-prompt-group": "./support-prompt-group/index.js",
     "./test-utils/dom": "./test-utils/dom/index.js",
     "./test-utils/selectors": "./test-utils/selectors/index.js",
+    "./styling/*": "./styling/*.scss",
     "./internal/api-docs/*.js": "./internal/api-docs/*.js"
   },
   "dependencies": {
