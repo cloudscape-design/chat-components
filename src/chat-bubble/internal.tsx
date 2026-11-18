@@ -11,15 +11,7 @@ import { getBubbleStyle, getChatBubbleRootStyle } from "./style";
 
 import styles from "./styles.css.js";
 
-export interface InternalChatBubbleProps extends ChatBubbleProps, InternalBaseComponentProps {
-  styleClassNames?: StyleClassNames;
-}
-
-// Style API v2
-export interface StyleClassNames {
-  root?: string;
-  bubble?: string;
-}
+export type InternalChatBubbleProps = ChatBubbleProps & InternalBaseComponentProps;
 
 export default function InternalChatBubble({
   type,

@@ -6,6 +6,7 @@ import { ReactNode } from "react";
 import { IconProps } from "@cloudscape-design/components/icon";
 
 import { ClickDetail as _ClickDetail, NonCancelableEventHandler } from "../types/events";
+import { StyleSlot } from "../types/utils";
 
 export interface SupportPromptGroupProps {
   /**
@@ -36,9 +37,21 @@ export interface SupportPromptGroupProps {
    * Use this to provide a unique accessible name for each support prompt group on the page.
    */
   ariaLabel: string;
+
+  /**
+   * CSS class names for the slots of the component that can be styled with the Style API.
+   * Available slots: item.
+   * Refer to the [style docs](/components/support-prompt-group/?tabId=style) for more details.
+   * @awsuiSystem core
+   */
+  styleClassNames?: SupportPromptGroupProps.StyleClassNames;
 }
 
 export namespace SupportPromptGroupProps {
+  export interface StyleClassNames {
+    item?: StyleSlot<{ item: SupportPromptGroupProps.Item }>;
+  }
+
   export type Alignment = "vertical" | "horizontal";
 
   export interface Item {

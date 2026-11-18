@@ -64,7 +64,7 @@ export interface AvatarProps {
 
   /**
    * An object containing CSS properties to customize the avatar's visual appearance.
-   * Refer to the [style](/components/avatar/?tabId=style) tab for more details.
+   * Refer to the [style docs](/components/avatar/?tabId=style) for more details.
    * @awsuiSystem core
    */
   style?: AvatarProps.Style;
@@ -75,9 +75,21 @@ export interface AvatarProps {
    * The default and minimum width value is 28px.
    */
   width?: number;
+
+  /**
+   * CSS class names for the slots of the component that can be styled with the Style API.
+   * Available slots: root.
+   * Refer to the [style docs](/components/avatar/?tabId=style) for more details.
+   * @awsuiSystem core
+   */
+  styleClassNames?: AvatarProps.StyleClassNames;
 }
 
 export namespace AvatarProps {
+  export interface StyleClassNames {
+    root?: string;
+  }
+
   export type Color = "default" | "gen-ai";
 
   export interface Style {

@@ -79,7 +79,7 @@ Use it to define initials that uniquely identify the avatar's owner.",
     },
     {
       "description": "An object containing CSS properties to customize the avatar's visual appearance.
-Refer to the [style](/components/avatar/?tabId=style) tab for more details.",
+Refer to the [style docs](/components/avatar/?tabId=style) for more details.",
       "inlineType": {
         "name": "AvatarProps.Style",
         "properties": [
@@ -159,6 +159,28 @@ Refer to the [style](/components/avatar/?tabId=style) tab for more details.",
         "core",
       ],
       "type": "AvatarProps.Style",
+    },
+    {
+      "description": "CSS class names for the slots of the component that can be styled with the Style API.
+Available slots: root.
+Refer to the [style docs](/components/avatar/?tabId=style) for more details.",
+      "inlineType": {
+        "name": "AvatarProps.StyleClassNames",
+        "properties": [
+          {
+            "name": "root",
+            "optional": true,
+            "type": "string",
+          },
+        ],
+        "type": "object",
+      },
+      "name": "styleClassNames",
+      "optional": true,
+      "systemTags": [
+        "core",
+      ],
+      "type": "AvatarProps.StyleClassNames",
     },
     {
       "description": "The text content shown in the avatar's tooltip.
@@ -247,7 +269,7 @@ that should line up across messages.",
     },
     {
       "description": "An object containing CSS properties to customize the chat bubble's visual appearance.
-Refer to the [style](/components/chat-bubble/?tabId=style) tab for more details.",
+Refer to the [style docs](/components/chat-bubble/?tabId=style) for more details.",
       "inlineType": {
         "name": "ChatBubbleProps.Style",
         "properties": [
@@ -352,6 +374,33 @@ Refer to the [style](/components/chat-bubble/?tabId=style) tab for more details.
         "core",
       ],
       "type": "ChatBubbleProps.Style",
+    },
+    {
+      "description": "CSS class names for the slots of the component that can be styled with the Style API.
+Available slots: root, bubble.
+Refer to the [style docs](/components/chat-bubble/?tabId=style) for more details.",
+      "inlineType": {
+        "name": "ChatBubbleProps.StyleClassNames",
+        "properties": [
+          {
+            "name": "bubble",
+            "optional": true,
+            "type": "string",
+          },
+          {
+            "name": "root",
+            "optional": true,
+            "type": "string",
+          },
+        ],
+        "type": "object",
+      },
+      "name": "styleClassNames",
+      "optional": true,
+      "systemTags": [
+        "core",
+      ],
+      "type": "ChatBubbleProps.StyleClassNames",
     },
     {
       "description": "Defines the type of the chat bubble and sets its color accordingly.",
@@ -514,6 +563,36 @@ Each item has the following properties:
       "name": "items",
       "optional": false,
       "type": "ReadonlyArray<SupportPromptGroupProps.Item>",
+    },
+    {
+      "description": "CSS class names for the slots of the component that can be styled with the Style API.
+Available slots: item.
+Refer to the [style docs](/components/support-prompt-group/?tabId=style) for more details.",
+      "inlineType": {
+        "name": "SupportPromptGroupProps.StyleClassNames",
+        "properties": [
+          {
+            "inlineType": {
+              "name": "StyleSlot<{ item: SupportPromptGroupProps.Item; }>",
+              "type": "union",
+              "values": [
+                "string",
+                "(args: { item: SupportPromptGroupProps.Item; }) => string",
+              ],
+            },
+            "name": "item",
+            "optional": true,
+            "type": "StyleSlot<{ item: SupportPromptGroupProps.Item; }>",
+          },
+        ],
+        "type": "object",
+      },
+      "name": "styleClassNames",
+      "optional": true,
+      "systemTags": [
+        "core",
+      ],
+      "type": "SupportPromptGroupProps.StyleClassNames",
     },
   ],
   "regions": [],

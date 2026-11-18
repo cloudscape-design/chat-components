@@ -17,17 +17,12 @@ import {
 import { getDataAttributes } from "../internal/base-component/get-data-attributes";
 import { InternalBaseComponentProps } from "../internal/base-component/use-base-component";
 import { fireNonCancelableEvent } from "../internal/events";
-import { getStyleClassName, Slot } from "../internal/utils/style-slot";
+import { getStyleClassName } from "../internal/utils/style-slot";
 import { getNextFocusTarget, onUnregisterActive } from "./focus-helpers";
 import { SupportPromptGroupProps } from "./interfaces";
 import { Prompt } from "./prompt";
 
 import styles from "./styles.css.js";
-
-// Style API v2
-export interface StyleClassNames {
-  item?: Slot<{ item: SupportPromptGroupProps.Item }>;
-}
 
 export const InternalSupportPromptGroup = forwardRef(
   (
@@ -39,7 +34,7 @@ export const InternalSupportPromptGroup = forwardRef(
       ariaLabel,
       styleClassNames,
       ...rest
-    }: SupportPromptGroupProps & InternalBaseComponentProps & { styleClassNames?: StyleClassNames },
+    }: SupportPromptGroupProps & InternalBaseComponentProps,
     ref: Ref<SupportPromptGroupProps.Ref>,
   ) => {
     const focusedIdRef = useRef<null | string>(null);
