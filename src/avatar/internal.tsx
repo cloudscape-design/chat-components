@@ -16,14 +16,7 @@ import { getContentStyles, getImageStyles, getRootStyles } from "./style";
 
 import styles from "./styles.css.js";
 
-export interface InternalAvatarProps extends AvatarProps, InternalBaseComponentProps {
-  styleClassNames?: StyleClassNames;
-}
-
-// Style API v2
-export interface StyleClassNames {
-  root?: string;
-}
+export type InternalAvatarProps = AvatarProps & InternalBaseComponentProps;
 
 const AvatarContent = ({
   color,

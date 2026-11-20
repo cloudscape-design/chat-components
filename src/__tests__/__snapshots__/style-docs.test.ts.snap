@@ -87,6 +87,7 @@ exports[`Style API docs of support-prompt-group match the snapshot > support-pro
 {
   "slots": [
     {
+      "description": "The semantic button of each prompt.",
       "name": "item",
       "properties": [
         "color",
