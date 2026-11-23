@@ -52,6 +52,8 @@ export interface ChatBubbleProps {
   /**
    * An object containing CSS properties to customize the chat bubble's visual appearance.
    * Refer to the [style docs](/components/chat-bubble/?tabId=style) for more details.
+   *
+   * **Deprecated** Replaced by `styleClassNames`.
    * @awsuiSystem core
    */
   style?: ChatBubbleProps.Style;

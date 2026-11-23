@@ -79,7 +79,9 @@ Use it to define initials that uniquely identify the avatar's owner.",
     },
     {
       "description": "An object containing CSS properties to customize the avatar's visual appearance.
-Refer to the [style docs](/components/avatar/?tabId=style) for more details.",
+Refer to the [style docs](/components/avatar/?tabId=style) for more details.
+
+**Deprecated** Replaced by \`styleClassNames\`.",
       "inlineType": {
         "name": "AvatarProps.Style",
         "properties": [
@@ -269,7 +271,9 @@ that should line up across messages.",
     },
     {
       "description": "An object containing CSS properties to customize the chat bubble's visual appearance.
-Refer to the [style docs](/components/chat-bubble/?tabId=style) for more details.",
+Refer to the [style docs](/components/chat-bubble/?tabId=style) for more details.
+
+**Deprecated** Replaced by \`styleClassNames\`.",
       "inlineType": {
         "name": "ChatBubbleProps.Style",
         "properties": [

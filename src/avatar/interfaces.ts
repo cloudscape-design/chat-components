@@ -65,6 +65,8 @@ export interface AvatarProps {
   /**
    * An object containing CSS properties to customize the avatar's visual appearance.
    * Refer to the [style docs](/components/avatar/?tabId=style) for more details.
+   *
+   * **Deprecated** Replaced by `styleClassNames`.
    * @awsuiSystem core
    */
   style?: AvatarProps.Style;
