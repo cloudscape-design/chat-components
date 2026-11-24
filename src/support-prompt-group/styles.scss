@@ -12,7 +12,8 @@ $item-tokens: style-api.resolve(style-api.$focus-ring, carrier);
 @include style-api.docs(
   "item",
   $item-tokens,
-  $properties: (color, background, border, border-radius, padding, box-shadow, font-family, font-size, font-weight)
+  $properties: (color, background, border, border-radius, padding, box-shadow, font-family, font-size, font-weight),
+  $descriptions: (slot: "The semantic button of each prompt.")
 );
 
 .root {

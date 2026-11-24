@@ -51,13 +51,28 @@ export interface ChatBubbleProps {
 
   /**
    * An object containing CSS properties to customize the chat bubble's visual appearance.
-   * Refer to the [style](/components/chat-bubble/?tabId=style) tab for more details.
+   * Refer to the [style docs](/components/chat-bubble/?tabId=style) for more details.
+   *
+   * **Deprecated** Replaced by `styleClassNames`.
    * @awsuiSystem core
    */
   style?: ChatBubbleProps.Style;
+
+  /**
+   * CSS class names for the slots of the component that can be styled with the Style API.
+   * Available slots: root, bubble.
+   * Refer to the [style docs](/components/chat-bubble/?tabId=style) for more details.
+   * @awsuiSystem core
+   */
+  styleClassNames?: ChatBubbleProps.StyleClassNames;
 }
 
 export namespace ChatBubbleProps {
+  export interface StyleClassNames {
+    root?: string;
+    bubble?: string;
+  }
+
   export type Type = "incoming" | "outgoing";
   export type Align = "start" | "end";
   export interface Style {
